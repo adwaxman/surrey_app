@@ -1,11 +1,67 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# This model initially had no columns defined.  If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+one:
+  fname: MyString
+  lname: MyString
+  email: MyString
+  password: MyString
+  area_code: MyString
+  local_exchange: MyString
+  phone_ending: MyString
+  address_line1: MyString
+  address_line2: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  primaryEC_fname: MyString
+  primaryEC_lname: MyString
+  primaryEC_area_code: MyString
+  primaryEC_local_exchange: MyString
+  primaryEC_phone_ending: MyString
+  primaryEC_relationship: MyString
+  secondaryEC_fname: MyString
+  secondaryEC_lname: MyString
+  secondaryEC_area_code: MyString
+  secondaryEC_local_exchange: MyString
+  secondaryEC_phone_ending: MyString
+  secondaryEC_relationship: MyString
+  tertiaryEC_fname: MyString
+  tertiaryEC_lname: MyString
+  tertiaryEC_area_code: MyString
+  tertiaryEC_local_exchange: MyString
+  tertiaryEC_phone_ending: MyString
+  tertiaryEC_relationship: MyString
+  active: false
+
+two:
+  fname: MyString
+  lname: MyString
+  email: MyString
+  password: MyString
+  area_code: MyString
+  local_exchange: MyString
+  phone_ending: MyString
+  address_line1: MyString
+  address_line2: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  primaryEC_fname: MyString
+  primaryEC_lname: MyString
+  primaryEC_area_code: MyString
+  primaryEC_local_exchange: MyString
+  primaryEC_phone_ending: MyString
+  primaryEC_relationship: MyString
+  secondaryEC_fname: MyString
+  secondaryEC_lname: MyString
+  secondaryEC_area_code: MyString
+  secondaryEC_local_exchange: MyString
+  secondaryEC_phone_ending: MyString
+  secondaryEC_relationship: MyString
+  tertiaryEC_fname: MyString
+  tertiaryEC_lname: MyString
+  tertiaryEC_area_code: MyString
+  tertiaryEC_local_exchange: MyString
+  tertiaryEC_phone_ending: MyString
+  tertiaryEC_relationship: MyString
+  active: false

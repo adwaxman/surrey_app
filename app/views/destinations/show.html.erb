@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @destination.client %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @destination.name %>
+</p>
+
+<p>
+  <strong>Address line1:</strong>
+  <%= @destination.address_line1 %>
+</p>
+
+<p>
+  <strong>Address line2:</strong>
+  <%= @destination.address_line2 %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @destination.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @destination.state %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @destination.zip %>
+</p>
+
+<p>
+  <strong>Destination type:</strong>
+  <%= @destination.destination_type %>
+</p>
+
+<%= link_to 'Edit', edit_destination_path(@destination) %> |
+<%= link_to 'Back', destinations_path %>

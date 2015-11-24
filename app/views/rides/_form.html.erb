@@ -1,0 +1,69 @@
+<%= form_for(@ride) do |f| %>
+  <% if @ride.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ride.errors.count, "error") %> prohibited this ride from being saved:</h2>
+
+      <ul>
+      <% @ride.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :client_id %><br>
+    <%= f.text_field :client_id %>
+  </div>
+  <div class="field">
+    <%= f.label :driver_id %><br>
+    <%= f.text_field :driver_id %>
+  </div>
+  <div class="field">
+    <%= f.label :origin_id %><br>
+    <%= f.text_field :origin_id %>
+  </div>
+  <div class="field">
+    <%= f.label :destination_id %><br>
+    <%= f.text_field :destination_id %>
+  </div>
+  <div class="field">
+    <%= f.label :wheelchair %><br>
+    <%= f.check_box :wheelchair %>
+  </div>
+  <div class="field">
+    <%= f.label :aide %><br>
+    <%= f.check_box :aide %>
+  </div>
+  <div class="field">
+    <%= f.label :vision_impaired %><br>
+    <%= f.check_box :vision_impaired %>
+  </div>
+  <div class="field">
+    <%= f.label :hearing_impaired %><br>
+    <%= f.check_box :hearing_impaired %>
+  </div>
+  <div class="field">
+    <%= f.label :recurring %><br>
+    <%= f.check_box :recurring %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :completion_notes %><br>
+    <%= f.text_area :completion_notes %>
+  </div>
+  <div class="field">
+    <%= f.label :requested_driver %><br>
+    <%= f.number_field :requested_driver %>
+  </div>
+  <div class="field">
+    <%= f.label :request_checked %><br>
+    <%= f.check_box :request_checked %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
