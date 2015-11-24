@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151124170910) do
+ActiveRecord::Schema.define(version: 20151124210338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20151124170910) do
   end
 
   create_table "destinations", force: :cascade do |t|
-    t.integer  "client_id"
+    t.integer  "member_id"
     t.string   "name"
     t.string   "address_line1"
     t.string   "address_line2"
@@ -114,7 +114,7 @@ ActiveRecord::Schema.define(version: 20151124170910) do
   end
 
   create_table "origins", force: :cascade do |t|
-    t.integer  "client_id"
+    t.integer  "member_id"
     t.string   "address_line1"
     t.string   "address_line2"
     t.string   "city"
@@ -126,7 +126,7 @@ ActiveRecord::Schema.define(version: 20151124170910) do
   end
 
   create_table "rides", force: :cascade do |t|
-    t.integer  "client_id"
+    t.integer  "member_id"
     t.integer  "driver_id"
     t.integer  "origin_id"
     t.integer  "destination_id"
@@ -141,6 +141,8 @@ ActiveRecord::Schema.define(version: 20151124170910) do
     t.boolean  "request_checked"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.string   "pickup_time"
+    t.string   "pickup_date"
   end
 
 end
