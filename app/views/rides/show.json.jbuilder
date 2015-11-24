@@ -1,1 +1,0 @@
-json.extract! @ride, :id, :client_id, :driver_id, :origin_id, :destination_id, :wheelchair, :aide, :vision_impaired, :hearing_impaired, :recurring, :status, :completion_notes, :requested_driver, :request_checked, :created_at, :updated_at
