@@ -8,7 +8,6 @@ class CreateAdmins < ActiveRecord::Migration
       t.string :password
       t.boolean :super_admin
 
-
       t.timestamps null: false
     end
   end
