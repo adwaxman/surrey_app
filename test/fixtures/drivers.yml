@@ -1,11 +1,69 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# This model initially had no columns defined.  If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+one:
+  fname: MyString
+  lname: MyString
+  email: MyString
+  password: MyString
+  area_code: MyString
+  local_exchange: MyString
+  phone_ending: MyString
+  address_line1: MyString
+  address_line2: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  car_type: MyString
+  monday: false
+  monday_min: 1
+  monday_max: 1
+  tuesday: false
+  tuesday_min: 1
+  tuesday_max: 1
+  wednesday: false
+  wednesday_min: 1
+  wednesday_max: 1
+  thursday: false
+  thursday_min: 1
+  thursday_max: 1
+  friday: false
+  friday_min: 1
+  friday_max: 1
+  unavailable: false
+  accommodate_wheelchair: false
+  accommodate_aide: false
+  preferred_contact: MyString
+
+two:
+  fname: MyString
+  lname: MyString
+  email: MyString
+  password: MyString
+  area_code: MyString
+  local_exchange: MyString
+  phone_ending: MyString
+  address_line1: MyString
+  address_line2: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  car_type: MyString
+  monday: false
+  monday_min: 1
+  monday_max: 1
+  tuesday: false
+  tuesday_min: 1
+  tuesday_max: 1
+  wednesday: false
+  wednesday_min: 1
+  wednesday_max: 1
+  thursday: false
+  thursday_min: 1
+  thursday_max: 1
+  friday: false
+  friday_min: 1
+  friday_max: 1
+  unavailable: false
+  accommodate_wheelchair: false
+  accommodate_aide: false
+  preferred_contact: MyString

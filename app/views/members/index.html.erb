@@ -1,0 +1,87 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Members</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fname</th>
+      <th>Lname</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th>Area code</th>
+      <th>Local exchange</th>
+      <th>Phone ending</th>
+      <th>Address line1</th>
+      <th>Address line2</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Primaryec fname</th>
+      <th>Primaryec lname</th>
+      <th>Primaryec area code</th>
+      <th>Primaryec local exchange</th>
+      <th>Primaryec phone ending</th>
+      <th>Primaryec relationship</th>
+      <th>Secondaryec fname</th>
+      <th>Secondaryec lname</th>
+      <th>Secondaryec area code</th>
+      <th>Secondaryec local exchange</th>
+      <th>Secondaryec phone ending</th>
+      <th>Secondaryec relationship</th>
+      <th>Tertiaryec fname</th>
+      <th>Tertiaryec lname</th>
+      <th>Tertiaryec area code</th>
+      <th>Tertiaryec local exchange</th>
+      <th>Tertiaryec phone ending</th>
+      <th>Tertiaryec relationship</th>
+      <th>Active</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= member.fname %></td>
+        <td><%= member.lname %></td>
+        <td><%= member.email %></td>
+        <td><%= member.password %></td>
+        <td><%= member.area_code %></td>
+        <td><%= member.local_exchange %></td>
+        <td><%= member.phone_ending %></td>
+        <td><%= member.address_line1 %></td>
+        <td><%= member.address_line2 %></td>
+        <td><%= member.city %></td>
+        <td><%= member.state %></td>
+        <td><%= member.zip %></td>
+        <td><%= member.primaryEC_fname %></td>
+        <td><%= member.primaryEC_lname %></td>
+        <td><%= member.primaryEC_area_code %></td>
+        <td><%= member.primaryEC_local_exchange %></td>
+        <td><%= member.primaryEC_phone_ending %></td>
+        <td><%= member.primaryEC_relationship %></td>
+        <td><%= member.secondaryEC_fname %></td>
+        <td><%= member.secondaryEC_lname %></td>
+        <td><%= member.secondaryEC_area_code %></td>
+        <td><%= member.secondaryEC_local_exchange %></td>
+        <td><%= member.secondaryEC_phone_ending %></td>
+        <td><%= member.secondaryEC_relationship %></td>
+        <td><%= member.tertiaryEC_fname %></td>
+        <td><%= member.tertiaryEC_lname %></td>
+        <td><%= member.tertiaryEC_area_code %></td>
+        <td><%= member.tertiaryEC_local_exchange %></td>
+        <td><%= member.tertiaryEC_phone_ending %></td>
+        <td><%= member.tertiaryEC_relationship %></td>
+        <td><%= member.active %></td>
+        <td><%= link_to 'Show', member %></td>
+        <td><%= link_to 'Edit', edit_member_path(member) %></td>
+        <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Member', new_member_path %>

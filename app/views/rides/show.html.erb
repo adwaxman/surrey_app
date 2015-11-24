@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @ride.client %>
+</p>
+
+<p>
+  <strong>Driver:</strong>
+  <%= @ride.driver %>
+</p>
+
+<p>
+  <strong>Origin:</strong>
+  <%= @ride.origin %>
+</p>
+
+<p>
+  <strong>Destination:</strong>
+  <%= @ride.destination %>
+</p>
+
+<p>
+  <strong>Wheelchair:</strong>
+  <%= @ride.wheelchair %>
+</p>
+
+<p>
+  <strong>Aide:</strong>
+  <%= @ride.aide %>
+</p>
+
+<p>
+  <strong>Vision impaired:</strong>
+  <%= @ride.vision_impaired %>
+</p>
+
+<p>
+  <strong>Hearing impaired:</strong>
+  <%= @ride.hearing_impaired %>
+</p>
+
+<p>
+  <strong>Recurring:</strong>
+  <%= @ride.recurring %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @ride.status %>
+</p>
+
+<p>
+  <strong>Completion notes:</strong>
+  <%= @ride.completion_notes %>
+</p>
+
+<p>
+  <strong>Requested driver:</strong>
+  <%= @ride.requested_driver %>
+</p>
+
+<p>
+  <strong>Request checked:</strong>
+  <%= @ride.request_checked %>
+</p>
+
+<%= link_to 'Edit', edit_ride_path(@ride) %> |
+<%= link_to 'Back', rides_path %>
