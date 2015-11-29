@@ -6,4 +6,11 @@ class MembersController < ApplicationController
   def create
 
   end
+
+  private
+    def member_params
+      params.require(:member).permit()
+    end
+
+  end
 end
