@@ -12,6 +12,16 @@
   <body class="blue lighten-4">
     <%= render 'shared/nav' %>
     <div class="container indigo lighten-5 z-depth-3">
+      <% if flash[:notice] %>
+        <p>
+          <%= flash[:notice] %>
+        </p>
+      <% end %>
+      <% if flash[:alert] %>
+        <p>
+          <%= flash[:alert] %>
+        </p>
+      <% end %>
       <%= yield %>
     </div>
     <!--Import jQuery before materialize.js-->

@@ -1,0 +1,155 @@
+
+<%= form_tag rides_path, method: :post  do %>
+<div class="destination-section">
+  <div class="row">
+    <div class="input-field col s8 offset-s2">
+      <h2 class="center">Where would you like to go?</h2>
+  <% if current_member && current_member.destinations.length >= 1 %>
+      <h5 class="center">
+        Select from one of your previous destinations below
+      </h5>
+      <%= select_tag :destination_id,
+            options_from_collection_for_select(current_member.destinations, :id, :name), class: 'validate browser-default'%>
+    </div>
+  </div>
+  <div class="row">
+    <div class="center">
+      <%= submit_tag :Submit, class:'btn' %>
+    </div>
+  </div>
+
+  <h3 class="center">OR</h3>
+  <div class='center'>
+    <a class='btn trigger-destination-dropdown' href="#">Add a new destination</a>
+  </div>
+
+  <div class="dropdown-add-destination">
+    <h3 class="center">Add new destination</h3>
+  <% else %>
+  </div>
+  <% end %>
+    <div class="row">
+      <div class="input-field col s10 offset-s1">
+        <%= label_tag 'Name' %>
+        <%= text_field_tag :destination_name %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s10 offset-s1">
+        <%= text_field_tag :destination_address_line1, nil, class: "validate" %>
+        <%= label_tag :destination_address_line1, "Address line 1" %>
+      </div>
+      <div class="input-field col s10 offset-s1">
+        <%= text_field_tag :destination_address_line2, nil, class:"validate" %>
+        <%= label_tag :destination_address_line2, "Address line 2" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s5 offset-s1">
+        <%= text_field_tag :destination_city, nil, class: "validate" %>
+        <%= label_tag :destination_city, "City" %>
+      </div>
+      <div class="input-field col s2">
+        <%= select_tag :destination_state, options_for_select([['PA', 1], ['NJ', 2], ['DE', 3]]), class: "validate browser-default" %>
+      </div>
+      <div class="input-field col s3">
+        <%= text_field_tag :destination_zip, nil, class: "validate" %>
+        <%= label_tag :destination_zip, "Zip code" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s4 offset-s4">
+        <p>
+          Reason:
+        </p>
+        <%= radio_button_tag :destination_type, "doctor", false, class: 'with-gap' %>
+        <%= label_tag(:destination_type_doctor, "Doctor's appointment") %>
+        <br>
+        <%= radio_button_tag :destination_type, "grocery", false, class: 'with-gap' %>
+        <%= label_tag(:destination_type_grocery, "Grocery store") %>
+        <br>
+        <%= radio_button_tag :destination_type, "salon", false, class: 'with-gap' %>
+        <%= label_tag(:destination_type_salon, "Hair salon") %>
+        <br>
+        <%= radio_button_tag :destination_type, "other", false, class: 'with-gap'  %>
+        <%= label_tag(:destination_type_other, "Other") %>
+        <%= text_field_tag :reason %>
+      </div>
+    </div>
+    <div class="row center">
+      <a class="btn" href="">
+        Add Destination</a>
+    </div>
+  </div>
+</div>
+
+<div class="origin-section">
+  <div class="row">
+    <div class="input-field col s8 offset-s2">
+      <h2 class="center">Where would you like to be picked up?</h2>
+
+<% if current_member && current_member.origins.length >= 1 %>
+
+      <h5 class="center">
+        Select from one of your previous pickup locations below
+      </h5>
+      <%= select_tag :id,
+              options_from_collection_for_select(current_member.origins, :id, :address_line1), class: 'validate browser-default'%>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="center">
+      <%= submit_tag :Submit, class:'btn' %>
+    </div>
+  </div>
+
+  <h3 class="center">OR</h3>
+  <div class='center'>
+    <a class='btn trigger-origin-dropdown' href="#">Add a new pickup location</a>
+  </div>
+  <h3 class="center">Add new pickup location</h3>
+  <% else %>
+  </div>
+<% end %>
+
+  <div class="dropdown-add-origin">
+
+    <div class="row">
+      <div class="input-field col s10 offset-s1">
+        <%= label_tag 'Name' %>
+        <%= text_field_tag :origin_name %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s10 offset-s1">
+        <%= text_field_tag :origin_address_line1, nil, class: "validate" %>
+        <%= label_tag :origin_address_line1, "Address line 1" %>
+      </div>
+      <div class="input-field col s10 offset-s1">
+        <%= text_field_tag :origin_address_line2, nil, class:"validate" %>
+        <%= label_tag :origin_address_line2, "Address line 2" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s5 offset-s1">
+        <%= text_field_tag :origin_city, nil, class: "validate" %>
+        <%= label_tag :origin_city, "City" %>
+      </div>
+      <div class="input-field col s2">
+        <%= select_tag :origin_state, options_for_select([['PA', 1], ['NJ', 2], ['DE', 3]]), class: "validate browser-default" %>
+      </div>
+      <div class="input-field col s3">
+        <%= text_field_tag :origin_zip, nil, class: "validate" %>
+        <%= label_tag :origin_zip, "Zip code" %>
+      </div>
+    </div>
+    <div class="row center">
+      <a class="btn" href="">
+        Add Destination</a>
+    </div>
+  </div>
+</div>
+
+<% end %>
