@@ -17,5 +17,8 @@
 //= require_tree .
 //= require materialize-sprockets
 //= require pickadate
+//= require picker
+//= require picker.date
+//= require picker.time
 
 $('.timepicker').pickatime()
