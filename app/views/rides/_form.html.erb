@@ -151,5 +151,57 @@
     </div>
   </div>
 </div>
+<br>
+<br>
+
+<div class="ride-datetime-section">
+  <div class="row">
+    <div class="input-field col s6 offset-s3">
+      <%= label_tag :pickup_date, "Click below to select a date", class: "datepicker-label", style: "font-size: 18px" %>
+      <input type="date" class="datepicker" name="pickup_date" placeholder=" ">
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6 offset-s3">
+      <%= label_tag :pickup_time, "Click below to select a time", class: "timepicker-label", style: "font-size: 18px" %>
+      <input type="text" class="timepicker" name="pickup_time" placeholder=" ">
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6 offset-s3">
+      <p>
+        Please check all that apply:
+      </p>
+      <%= check_box_tag :wheelchair, true %>
+      <%= label_tag :wheelchair, "I will have a wheelchair"  %>
+      <br>
+      <%= check_box_tag :aide, true %>
+      <%= label_tag :aide, "I will have an aide/additional person with me" %>
+      <br>
+      <%= check_box_tag :vision_impaired, true %>
+      <%= label_tag :vision_impaired, "My vision is impaired" %>
+      <br>
+      <%= check_box_tag :hearing_impaired, true %>
+      <%= label_tag :hearing_impaired, "My hearing is impaired" %>
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+
+<div class="center">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <%= submit_tag :submit, class: "btn" %>
+</div>
 
 <% end %>
+
+<%= javascript_include_tag params[:rides] %>

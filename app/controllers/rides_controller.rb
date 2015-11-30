@@ -7,6 +7,8 @@ class RidesController < ApplicationController
   end
 
   def create
+    puts "*" * 35
+    puts params
 
   end
 

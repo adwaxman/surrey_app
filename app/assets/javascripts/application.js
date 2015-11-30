@@ -16,3 +16,6 @@
 //= require turbolinks
 //= require_tree .
 //= require materialize-sprockets
+//= require pickadate
+
+$('.timepicker').pickatime()
