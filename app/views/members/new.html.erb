@@ -33,11 +33,11 @@
       <%= f.label :area_code, "Area code" %>
     </div>
     <div class="input-field col s4">
-      <%= f.text_field :area_code, class: "validate" %>
+      <%= f.text_field :local_exchange, class: "validate" %>
       <%= f.label :local_exchange, "Phone" %>
     </div>
     <div class="input-field col s4">
-      <%= f.text_field :area_code, class: "validate" %>
+      <%= f.text_field :phone_ending, class: "validate" %>
       <%= f.label :phone_ending, "Number" %>
     </div>
   </div>
@@ -57,7 +57,8 @@
       <%= f.label :city, "City" %>
     </div>
     <div class="input-field col s2">
-      <%= select_tag :state, options_for_select([['PA', 1], ['NJ', 2], ['DE', 3]]), class: "validate browser-default" %>
+      <input disabled value="PA" id="state" value="PA" type="text" class="validate">
+      <%= f.hidden_field :state, :value => "PA"%>
     </div>
     <div class="input-field col s4">
       <%= f.text_field :zip, class: "validate" %>
