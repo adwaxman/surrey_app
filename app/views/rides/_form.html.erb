@@ -30,7 +30,7 @@
   <% end %>
     <div class="row">
       <div class="input-field col s10 offset-s1">
-        <%= text_field_tag :destination_name, nil, class: "validate" %>
+        <%= text_field_tag :destination_name, nil, class:'validate' %>
         <%= label_tag :destination_name, 'Name' %>
       </div>
     </div>
@@ -72,11 +72,16 @@
         <%= radio_button_tag :destination_type, "salon", false, class: 'with-gap' %>
         <%= label_tag(:destination_type_salon, "Hair salon") %>
         <br>
-        <%= radio_button_tag :destination_type, "other", false, class: 'with-gap'  %>
-        <%= label_tag(:destination_type_other, "Other") %>
-        <%= text_field_tag :reason %>
+
       </div>
     </div>
+    <div class="row">
+      <div class="input-field col s4 offset-s4">
+        <%= label_tag :destination_type_other, "Click below to list another reason"  %>
+        <%= text_field_tag :reason, nil, placeholder: ' ' %>
+      </div>
+    </div>
+
     <div class="row center">
       <a class="btn" href="">
         Add Destination</a>
@@ -118,7 +123,7 @@
 
     <div class="row">
       <div class="input-field col s10 offset-s1">
-        <%= label_tag 'Name' %>
+        <%= label_tag :origin_name, 'Name' %>
         <%= text_field_tag :origin_name %>
       </div>
     </div>
@@ -158,7 +163,7 @@
   <div class="row">
     <div class="input-field col s6 offset-s3">
       <%= label_tag :pickup_date, "Click below to select a date", class: "datepicker-label", style: "font-size: 18px" %>
-      <input type="date" class="datepicker" name="pickup_date" placeholder=" ">
+      <input type="date" class="datepicker" name="pickup_date", placeholder= " ">
     </div>
   </div>
   <div class="row">
@@ -204,6 +209,10 @@
 
 <% end %>
 <script>
-  $('.timepicker').pickatime();
+  $('.timepicker').pickatime({
+    interval: 15,
+    min: [6,0],
+    max: [18,0]
+  });
 </script>
 <%= javascript_include_tag params[:rides] %>
