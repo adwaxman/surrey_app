@@ -1,33 +1,33 @@
-
 <%= form_tag rides_path, method: :post  do %>
 <div class="destination-section">
-  <div class="row">
-    <div class="input-field col s8 offset-s2">
-      <h2 class="center">Where would you like to go?</h2>
-  <% if current_member && current_member.destinations.length >= 1 %>
-      <h5 class="center">
-        Select from one of your previous destinations below
-      </h5>
-      <%= select_tag :destination_id,
+  <h2 class="center">Where would you like to go?</h2>
+  <% if current_member && current_member.destinations.length >=1 %>
+  <div class="submit-previous-destination">
+    <div class="row">
+      <div class="input-field col s8 offset-s2">
+
+        <h5 class="center">
+          Select from one of your previous destinations below
+        </h5>
+        <%= select_tag :destination_id,
             options_from_collection_for_select(current_member.destinations, :id, :name), class: 'validate browser-default'%>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="center">
-      <%= submit_tag :Submit, class:'btn' %>
+    <div class="row">
+      <div class="center">
+        <%= submit_tag :Submit, class:'btn' %>
+      </div>
     </div>
-  </div>
 
-  <h3 class="center">OR</h3>
-  <div class='center'>
-    <a class='btn trigger-destination-dropdown' href="#">Add a new destination</a>
-  </div>
-
-  <div class="dropdown-add-destination">
-    <h3 class="center">Add new destination</h3>
-  <% else %>
+    <h3 class="center">OR</h3>
+    <div class='center'>
+      <a class='btn trigger-destination-dropdown' href="#">Add a new destination</a>
+    </div>
   </div>
   <% end %>
+  <div class="dropdown-add-destination">
+    <h3 class="center">Add new destination</h3>
+
     <div class="row">
       <div class="input-field col s10 offset-s1">
         <%= text_field_tag :destination_name, nil, class:'validate' %>
@@ -90,37 +90,34 @@
 </div>
 
 <div class="origin-section">
-  <div class="row">
-    <div class="input-field col s8 offset-s2">
-      <h2 class="center">Where would you like to be picked up?</h2>
+  <h2 class="center">Where would you like to be picked up?</h2>
+  <% if current_member && current_member.origins.length >=1 %>
+  <div class="submit-previous-origin">
+    <div class="row">
+      <div class="input-field col s8 offset-s2">
 
-<% if current_member && current_member.origins.length >= 1 %>
-
-      <h5 class="center">
-        Select from one of your previous pickup locations below
-      </h5>
-      <%= select_tag :id,
+        <h5 class="center">
+          Select from one of your previous pickup locations below
+        </h5>
+        <%= select_tag :id,
               options_from_collection_for_select(current_member.origins, :id, :address_line1), class: 'validate browser-default'%>
 
+      </div>
+    </div>
+    <div class="row">
+      <div class="center">
+        <%= submit_tag :Submit, class:'btn' %>
+      </div>
+    </div>
+
+    <h3 class="center">OR</h3>
+    <div class='center'>
+      <a class='btn trigger-origin-dropdown' href="#">Add a new pickup location</a>
     </div>
   </div>
-  <div class="row">
-    <div class="center">
-      <%= submit_tag :Submit, class:'btn' %>
-    </div>
-  </div>
-
-  <h3 class="center">OR</h3>
-  <div class='center'>
-    <a class='btn trigger-origin-dropdown' href="#">Add a new pickup location</a>
-  </div>
-  <h3 class="center">Add new pickup location</h3>
-  <% else %>
-  </div>
-<% end %>
-
+  <% end %>
   <div class="dropdown-add-origin">
-
+    <h3 class="center">Add new pickup location</h3>
     <div class="row">
       <div class="input-field col s10 offset-s1">
         <%= label_tag :origin_name, 'Name' %>
@@ -152,24 +149,25 @@
     </div>
     <div class="row center">
       <a class="btn" href="">
-        Add Destination</a>
+        Add Origin</a>
     </div>
   </div>
 </div>
+
 <br>
 <br>
 
-<div class="ride-datetime-section">
+<div class="ride-section">
   <div class="row">
     <div class="input-field col s6 offset-s3">
       <%= label_tag :pickup_date, "Click below to select a date", class: "datepicker-label", style: "font-size: 18px" %>
-      <input type="date" class="datepicker" name="pickup_date", placeholder= " ">
+      <input , class="datepicker" name="pickup_date" placeholder=" " type="date">
     </div>
   </div>
   <div class="row">
     <div class="input-field col s6 offset-s3">
       <%= label_tag :pickup_time, "Click below to select a time", class: "timepicker-label", style: "font-size: 18px" %>
-      <input type="text" class="timepicker" name="pickup_time" placeholder=" ">
+      <input class="timepicker" name="pickup_time" placeholder=" " type="text">
     </div>
   </div>
   <div class="row">
@@ -192,27 +190,23 @@
 
   </div>
 
-
-</div>
-
-
-
-
-<div class="center">
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <%= submit_tag :submit, class: "btn" %>
+  <div class="center">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <%= submit_tag :submit, class: "btn" %>
+  </div>
 </div>
 
 <% end %>
 <script>
   $('.timepicker').pickatime({
     interval: 15,
-    min: [6,0],
-    max: [18,0]
+    min: [
+      6, 0
+    ],
+    max: [18, 0]
   });
 </script>
-<%= javascript_include_tag params[:rides] %>
