@@ -1,7 +1,9 @@
 <div class="row">
   <%= form_for @driver, :html => {:class => "col s10 offset-s1"} do |f| %>
   <div class="row">
-    <div class="col s12"><h3>Driver Sign-up</h3></div>
+    <div class="col s12">
+      <h3>Driver Sign-up</h3>
+    </div>
     <div class="input-field col s12 m6">
       <%= f.text_field :fname, class: "validate" %>
       <%= f.label :fname, "First name" %>
@@ -12,9 +14,17 @@
     </div>
   </div>
   <div class="row">
-    <div class="input-field col s12">
+    <div class="input-field col s12 m6">
       <%= f.text_field :email, class: "validate" %>
-      <%= f.label :email, "Email" %>
+      <%= f.label :email, "Email address" %>
+    </div>
+    <div class="input-field col s12 m3">
+      <%= f.text_field :phone, class: "validate phone" %>
+      <%= f.label :phone, "Home phone number" %>
+    </div>
+    <div class="input-field col s12 m3">
+      <%= f.text_field :cell, class: "validate phone" %>
+      <%= f.label :cell, "Cell phone number" %>
     </div>
   </div>
   <div class="row">
@@ -45,7 +55,7 @@
       <%= f.label :city, "City" %>
     </div>
     <div class="input-field col s2">
-      <input class="validate" disabled id="state" type="text" value="PA" value="PA">
+      <input class="validate" disabled id="state" type="text" value="PA">
       <%= f.hidden_field :state, :value => "PA"%>
     </div>
     <div class="input-field col s4">
@@ -53,6 +63,36 @@
       <%= f.label :zip, "Zip code" %>
     </div>
   </div>
+  <div class="row">
+    <div class="input-field col s6">
+      Car type:
+      <br>
+      <%= f.radio_button :car_type, "two"%>
+      <%= f.label(:car_type_two, "Two door") %>
+      <br>
+      <%= f.radio_button :car_type, "four"%>
+      <%= f.label(:car_type_four, "Four door") %>
+      <br>
+      <%= f.radio_button :car_type, "suv"%>
+      <%= f.label(:car_type_suv, "SUV") %>
+      <br>
+      <%= f.radio_button :car_type, "Pickup"%>
+      <%= f.label(:car_type_pickup, "Pickup") %>
+      <br>
+    </div>
+    <div class="col s6">
+      <div class="row">
+        <div class="row center"><strong>Schedule</strong></div>
+        <div class="input-field col s1">
+          <%= f.select :monday_min, options_for_select(1..9)%>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= f.submit "Submit", class:"btn" %>
   <% end %>
 </div>
-</div>
+
+<script>$(document).ready(function() {
+    $('select').material_select();
+});</script>
