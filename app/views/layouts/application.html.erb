@@ -4,7 +4,7 @@
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css" media="screen" title="no title" charset="utf-8">
+    <link charset="utf-8" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css" media="screen" rel="stylesheet" title="no title">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
     <!--Let browser know website is optimized for mobile-->
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -17,14 +17,14 @@
     <%= render 'shared/nav' %>
     <div class="container indigo lighten-5 z-depth-3">
       <% if flash[:notice] %>
-        <p>
-          <%= flash[:notice] %>
-        </p>
+      <p>
+        <%= flash[:notice] %>
+      </p>
       <% end %>
       <% if flash[:alert] %>
-        <p>
-          <%= flash[:alert] %>
-        </p>
+      <p>
+        <%= flash[:alert] %>
+      </p>
       <% end %>
       <%= yield %>
     </div>
@@ -38,6 +38,7 @@
         selectYears: 15 // Creates a dropdown of 15 years to control year
       });
       $('.timepicker').pickatime()
+
     </script>
   </body>
 </html>

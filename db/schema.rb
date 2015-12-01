@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151201161214) do
+ActiveRecord::Schema.define(version: 20151201184401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,9 +82,6 @@ ActiveRecord::Schema.define(version: 20151201161214) do
     t.string   "lname"
     t.string   "email"
     t.string   "password"
-    t.string   "area_code"
-    t.string   "local_exchange"
-    t.string   "phone_ending"
     t.string   "address_line1"
     t.string   "address_line2"
     t.string   "city"
@@ -92,26 +89,26 @@ ActiveRecord::Schema.define(version: 20151201161214) do
     t.string   "zip"
     t.string   "primaryEC_fname"
     t.string   "primaryEC_lname"
-    t.string   "primaryEC_area_code"
-    t.string   "primaryEC_local_exchange"
-    t.string   "primaryEC_phone_ending"
     t.string   "primaryEC_relationship"
     t.string   "secondaryEC_fname"
     t.string   "secondaryEC_lname"
-    t.string   "secondaryEC_area_code"
-    t.string   "secondaryEC_local_exchange"
-    t.string   "secondaryEC_phone_ending"
     t.string   "secondaryEC_relationship"
     t.string   "tertiaryEC_fname"
     t.string   "tertiaryEC_lname"
-    t.string   "tertiaryEC_area_code"
     t.string   "tertiaryEC_local_exchange"
-    t.string   "tertiaryEC_phone_ending"
     t.string   "tertiaryEC_relationship"
     t.boolean  "active"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.string   "mi"
+    t.string   "phone"
+    t.string   "primaryEC_phone"
+    t.string   "secondaryEC_phone"
+    t.string   "tertiaryEC_phone"
+    t.string   "cell"
+    t.string   "primaryEC_cell"
+    t.string   "secondaryEC_cell"
+    t.string   "tertiaryEC_cell"
   end
 
   create_table "origins", force: :cascade do |t|
