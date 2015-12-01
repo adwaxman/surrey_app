@@ -10,18 +10,18 @@
           Select from one of your previous destinations below
         </h5>
         <%= select_tag :destination_id,
-            options_from_collection_for_select(current_member.destinations, :id, :name), class: 'validate browser-default'%>
+            options_from_collection_for_select(current_member.destinations, :id, :name), class: 'validate browser-default', prompt: "Select a previous destination..."%>
       </div>
     </div>
     <div class="row">
       <div class="center">
-        <%= submit_tag :Submit, class:'btn' %>
+        <a class="btn"> Submit </a>
       </div>
     </div>
 
     <h3 class="center">OR</h3>
     <div class='center'>
-      <a class='btn trigger-destination-dropdown' href="#">Add a new destination</a>
+      <a class='btn trigger-destination-dropdown'>Add a new destination</a>
     </div>
   </div>
   <% end %>
@@ -77,13 +77,13 @@
     </div>
     <div class="row">
       <div class="input-field col s4 offset-s4">
-        <%= label_tag :destination_type_other, "Click below to list another reason"  %>
-        <%= text_field_tag :reason, nil, placeholder: ' ' %>
+        <%= label_tag :destination_other_type, "Click below to list another reason"  %>
+        <%= text_field_tag :destination__other_type, nil, placeholder: ' ' %>
       </div>
     </div>
 
     <div class="row center">
-      <a class="btn" href="">
+      <a class="btn">
         Add Destination</a>
     </div>
   </div>
@@ -99,31 +99,25 @@
         <h5 class="center">
           Select from one of your previous pickup locations below
         </h5>
-        <%= select_tag :id,
-              options_from_collection_for_select(current_member.origins, :id, :address_line1), class: 'validate browser-default'%>
+        <%= select_tag :origin_id,
+              options_from_collection_for_select(current_member.origins, :id, :address_line1), class: 'validate browser-default', prompt: "Select a previous pickup location..."%>
 
       </div>
     </div>
     <div class="row">
       <div class="center">
-        <%= submit_tag :Submit, class:'btn' %>
+        <a class="btn">Submit</a>
       </div>
     </div>
 
     <h3 class="center">OR</h3>
     <div class='center'>
-      <a class='btn trigger-origin-dropdown' href="#">Add a new pickup location</a>
+      <a class='btn trigger-origin-dropdown'>Add a new pickup location</a>
     </div>
   </div>
   <% end %>
   <div class="dropdown-add-origin">
     <h3 class="center">Add new pickup location</h3>
-    <div class="row">
-      <div class="input-field col s10 offset-s1">
-        <%= label_tag :origin_name, 'Name' %>
-        <%= text_field_tag :origin_name %>
-      </div>
-    </div>
     <div class="row">
       <div class="input-field col s10 offset-s1">
         <%= text_field_tag :origin_address_line1, nil, class: "validate" %>
@@ -148,7 +142,7 @@
       </div>
     </div>
     <div class="row center">
-      <a class="btn" href="">
+      <a class="btn">
         Add Origin</a>
     </div>
   </div>
