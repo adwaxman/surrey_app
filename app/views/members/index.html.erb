@@ -10,7 +10,7 @@
         <tr>
           <th data-field="id">Name</th>
           <th data-field="name">Address</th>
-          <th data-field="price">Phone Number</th>
+          <th data-field="price">Phone Numbers</th>
           <th data-field="rides">Rides
           </th>
           <th data-field="price">Action</th>
@@ -29,7 +29,9 @@
             <%= member.state %>,
             <%= member.zip %></td>
           <td>
-            <%= member.area_code %>-<%= member.local_exchange %>-<%= member.phone_ending %></td>
+            <strong> Home: </strong><%= member.phone %> <br>
+            <strong> Cell: </strong> <%= member.cell %>
+          </td>
           <td>
             <% member.rides.each do |rides| %>
             <%= link_to rides.name, "#" %>

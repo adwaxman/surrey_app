@@ -6,18 +6,14 @@ class Member < ActiveRecord::Base
 
   validates :email, uniqueness: true, presence: true
   validates :password, presence: true, confirmation: true
-  validates :area_code, format: { with: /\A\d{3}\z/, message: "is not valid" }
-  validates :local_exchange, format: { with: /\A\d{3}\z/, message: "is not valid" }
-  validates :phone_ending, format: { with: /\A\d{4}\z/, message: "is not valid" }
-  validates :primaryEC_area_code, format: { with: /\A\d{3}\z/, message: "is not valid" }, allow_blank: true
-  validates :primaryEC_local_exchange, format: { with: /\A\d{3}\z/, message: "is not valid" }, allow_blank: true
-  validates :primaryEC_phone_ending, format: { with: /\A\d{4}\z/, message: "is not valid" }, allow_blank: true
-  validates :secondaryEC_area_code, format: { with: /\A\d{3}\z/, message: "is not valid" }, allow_blank: true
-  validates :secondaryEC_local_exchange, format: { with: /\A\d{3}\z/, message: "is not valid" }, allow_blank: true
-  validates :secondaryEC_phone_ending, format: { with: /\A\d{4}\z/, message: "is not valid" }, allow_blank: true
-  validates :tertiaryEC_area_code, format: { with: /\A\d{3}\z/, message: "is not valid" }, allow_blank: true
-  validates :tertiaryEC_local_exchange, format: { with: /\A\d{3}\z/, message: "is not valid" }, allow_blank: true
-  validates :tertiaryEC_phone_ending, format: { with: /\A\d{4}\z/, message: "is not valid" }, allow_blank: true
+  validates :phone, format: { with: /[(][0-9]{3}[)][ ][0-9]{3}-[0-9]{4}/, message: "is not valid" }
+  validates :cell, format: { with: /[(][0-9]{3}[)][ ][0-9]{3}-[0-9]{4}/, message: "is not valid" }
+  validates :primaryEC_phone, format: { with: /[(][0-9]{3}[)][ ][0-9]{3}-[0-9]{4}/, message: "is not valid" }, allow_blank: true
+  validates :primaryEC_cell, format: { with: /[(][0-9]{3}[)][ ][0-9]{3}-[0-9]{4}/, message: "is not valid" }, allow_blank: true
+  validates :secondaryEC_phone, format: { with: /[(][0-9]{3}[)][ ][0-9]{3}-[0-9]{4}/, message: "is not valid" }, allow_blank: true
+  validates :secondaryEC_cell, format: { with: /[(][0-9]{3}[)][ ][0-9]{3}-[0-9]{4}/, message: "is not valid" }, allow_blank: true
+  validates :tertiaryEC_phone, format: { with: /[(][0-9]{3}[)][ ][0-9]{3}-[0-9]{4}/, message: "is not valid" }, allow_blank: true
+  validates :tertiaryEC_cell, format: { with: /[(][0-9]{3}[)][ ][0-9]{3}-[0-9]{4}/, message: "is not valid" }, allow_blank: true
   validates_presence_of :fname, :lname, :address_line1, :city, :state, :zip
 
 
