@@ -30,8 +30,8 @@
   <% end %>
     <div class="row">
       <div class="input-field col s10 offset-s1">
-        <%= label_tag 'Name' %>
-        <%= text_field_tag :destination_name %>
+        <%= text_field_tag :destination_name, nil, class: "validate" %>
+        <%= label_tag :destination_name, 'Name' %>
       </div>
     </div>
     <div class="row">
