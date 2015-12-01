@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col s12">
+    <h3>Member List</h3>
+  </div>
+</div>
+<div class="row">
+  <div class="col s12">
+    <table>
+      <thead>
+        <tr>
+          <th data-field="id">Name</th>
+          <th data-field="name">Address</th>
+          <th data-field="price">Phone Number</th>
+          <th data-field="rides">Rides
+          </th>
+          <th data-field="price">Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @members.each do |member| %>
+        <tr>
+          <td>
+            <%= member.fname %>
+            <%= member.lname %></td>
+          <td>
+            <%= member.address_line1 %><br>
+            <%= member.city %>,
+            <%= member.state %>,
+            <%= member.zip %></td>
+          <td>
+            <%= member.area_code %>-<%= member.local_exchange %>-<%= member.phone_ending %></td>
+          <td>
+            <% member.rides.each do |rides| %>
+            <%= link_to rides.name, "#" %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to "Update", edit_member_path(member.id), class: "btn" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</div>
