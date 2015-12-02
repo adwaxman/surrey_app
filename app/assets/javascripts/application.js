@@ -21,3 +21,5 @@
 //= require picker.date
 //= require picker.time
 //= require phonevalidator
+//= require ourjquery
+//= require rides

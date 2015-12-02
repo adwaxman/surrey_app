@@ -1,0 +1,72 @@
+$(document).ready(function() {
+
+  if(parseInt($('.workaround').html()) === 0) {
+    $('.dropdown-add-destination').show();
+  }
+
+  $('.prev-dest-btn').click(function() {
+
+    if ($('#destination_id').val() !== "") {
+      $('.submit-previous-destination').hide();
+      $('.destination-section-heading').hide();
+      $('.origin-section').show();
+
+      if (parseInt($('.workaround').html()) > 0) {
+        $('.dropdown-add-origin').hide();
+      }
+      else {
+        $('.submit-previous-origin').hide();
+        $('.destination-section-heading').hide();
+      }
+    }
+  });
+
+  $('.trigger-destination-dropdown').click(function() {
+
+    $('.submit-previous-destination').hide();
+    $('.destination-section-heading').hide();
+    $('.dropdown-add-destination').show();
+
+  });
+
+  $('.add-destination-btn').click(function() {
+
+    $('.dropdown-add-destination').hide();
+    $('.origin-section').show();
+
+    if (parseInt($('.workaround').html()) > 0) {
+      $('.dropdown-add-origin').hide();
+    }
+    else {
+      $('.submit-previous-origin').hide();
+      $('.destination-section-heading').hide();
+    }
+
+  });
+
+  $('.prev-origin-btn').click(function() {
+
+    if ($('#origin_id').val() !== "") {
+      $('.submit-previous-origin').hide();
+      $('.origin-section-heading').hide();
+      $('.ride-section').show();
+    }
+
+  });
+
+  $('.trigger-origin-dropdown').click(function() {
+
+    $('.submit-previous-origin').hide();
+    $('.origin-section-heading').hide();
+    $('.dropdown-add-origin').show();
+
+  });
+
+  $('.add-origin-btn').click(function() {
+
+    $('.dropdown-add-origin').hide();
+    $('.ride-section').show();
+
+  });
+
+});
