@@ -31,7 +31,7 @@ class RidesController < ApplicationController
     hearing_impaired = params[:hearing_impaired]
     vision_impaired = params[:vision_impaired]
 
-    if params[:destination_id] == ""
+    if params[:destination_id] == "" || current_member.destinations.length ==0
       @destination = Destination.new(member_id: member_id, name: destination_name, address_line1: destination_address_line1, address_line2: destination_address_line2, city: destination_city, state: state, zip: destination_zip, destination_type: destination_type, destination_other_type: destination_other_type)
       if @destination.save
       else
@@ -42,7 +42,7 @@ class RidesController < ApplicationController
 
     end
 
-    if params[:origin_id] == ""
+    if params[:origin_id] == "" || current_member.origins.length ==0
       @origin = Origin.new(member_id: member_id, address_line1: origin_address_line1, address_line2: origin_address_line2, city: origin_city, state: state, zip: origin_zip)
       if @origin.save
       else
@@ -53,6 +53,7 @@ class RidesController < ApplicationController
 
     end
 
+    debugger
     destination_id_to_be_passed = @destination_id ? @destination_id : destination_id_to_be_passed = current_member.destinations.last.id
 
     origin_id_to_be_passed = @origin_id ? @origin_id : origin_id_to_be_passed = current_member.origins.last.id
