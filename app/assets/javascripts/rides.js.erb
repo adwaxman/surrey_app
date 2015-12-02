@@ -10,13 +10,17 @@ $(document).ready(function() {
       $('.submit-previous-destination').hide();
       $('.destination-section-heading').hide();
       $('.origin-section').show();
+      $('.dropdown-add-origin').show();
+      $('.submit-previous-origin').show();
+      $('.origin-section-heading').show();
 
       if (parseInt($('.workaround').html()) > 0) {
         $('.dropdown-add-origin').hide();
+
       }
       else {
         $('.submit-previous-origin').hide();
-        $('.destination-section-heading').hide();
+        $('.origin-section-heading').hide();
       }
     }
   });
@@ -33,6 +37,9 @@ $(document).ready(function() {
 
     $('.dropdown-add-destination').hide();
     $('.origin-section').show();
+    $('.dropdown-add-origin').show();
+    $('.submit-previous-origin').show();
+    $('.origin-section-heading').show();
 
     if (parseInt($('.workaround').html()) > 0) {
       $('.dropdown-add-origin').hide();
@@ -40,6 +47,7 @@ $(document).ready(function() {
     else {
       $('.submit-previous-origin').hide();
       $('.destination-section-heading').hide();
+      $('.origin-section-heading').hide();
     }
 
   });
@@ -66,6 +74,60 @@ $(document).ready(function() {
 
     $('.dropdown-add-origin').hide();
     $('.ride-section').show();
+
+  });
+
+  $('.back-prev-dest-btn').click(function() {
+
+    $('.submit-previous-destination').show();
+    $('.destination-section-heading').show();
+    $('.dropdown-add-destination').hide();
+
+  });
+
+  $('.back-prev-origin-btn').click(function() {
+
+    $('.submit-previous-origin').show();
+    $('.origin-section-heading').show();
+    $('.dropdown-add-origin').hide();
+
+  });
+
+  $('.back-to-origin').click(function(){
+
+    $('.ride-section').hide();
+
+    if($('#origin_address_line1').val() !== "" ||         $('#origin_address_line2').val() !== "" ||  $('#origin_city').val() !== "" || $('#origin_zip').val() !== "") {
+
+      $('.dropdown-add-origin').show();
+    }
+
+    else {
+      $('.submit-previous-origin').show();
+      $('.origin-section-heading').show();
+    }
+
+  });
+
+  $('.back-to-destination').click(function() {
+
+    $('.submit-previous-origin').hide();
+    $('.origin-section-heading').hide();
+
+    if($('#destination_address_line1').val() !== "" || $('#destination_address_line2').val() !== "" ||  $('#destination_city').val() !== "" || $('#destination_zip').val() !== "" || $('#destination_name').val() !== "")   {
+
+      $('.destination-section').show();
+      $('.dropdown-add-destination').show();
+
+    }
+
+    else {
+
+      $('.destination-section').show();
+      $('.submit-previous-destination').show();
+      $('.destination-section-heading').show();
+
+    }
 
   });
 
