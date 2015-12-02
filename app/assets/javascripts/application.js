@@ -20,5 +20,7 @@
 //= require picker.date
 //= require picker.time
 //= require phonevalidator
-//= require ourjquery
-//= require rides
+
+$(document).ready(function () {
+  $('select').material_select();
+});
