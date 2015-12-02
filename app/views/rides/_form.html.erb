@@ -84,6 +84,12 @@
     <div class="row center">
       <a class="btn add-destination-btn">
         Add Destination</a>
+        <br>
+        <br>
+        <% if current_member && current_member.destinations.length > 0 %>
+      <a class="btn back-prev-dest-btn">
+          Back</a>
+        <% end %>
     </div>
   </div>
 </div>
@@ -112,7 +118,11 @@
     <h3 class="center">OR</h3>
     <div class='center'>
       <a class='btn trigger-origin-dropdown'>Add a new pickup location</a>
+      <br>
+      <br>
+      <a class='btn back-to-destination center'>Back</a>
     </div>
+
   </div>
   <% end %>
   <div class="dropdown-add-origin">
@@ -142,7 +152,13 @@
     </div>
     <div class="row center">
       <a class="btn add-origin-btn">
-        Add Origin</a>
+        Add Pickup Location</a>
+        <br>
+        <br>
+        <% if current_member && current_member.origins.length > 0 %>
+      <a class="btn back-prev-origin-btn">
+          Back</a>
+        <% end %>
     </div>
   </div>
 </div>
@@ -183,13 +199,15 @@
 
   </div>
 
-  <div class="center">
+  <div class='row center'>
     <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <%= submit_tag :submit, class: "btn submit-ride-btn" %>
+      <%= submit_tag :submit, class: "btn submit-ride-btn" %>
+      <br>
+      <br>
+      <a class="btn back-to-origin">
+          Back</a>
+      <br>
+      <br>
   </div>
 </div>
 
