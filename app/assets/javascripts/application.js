@@ -21,7 +21,7 @@
 //= require phonevalidator
 //= require drivers
 //= require turbolinks
-
+//= require rails.validations
 
 // timepicker for driver form
 $('.timepicker2').pickatime({

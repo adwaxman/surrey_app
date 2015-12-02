@@ -29,6 +29,9 @@ gem 'gmaps4rails'
 # materialize css
 #gem 'materialize-sass'
 
+gem 'client_side_validations', github: 'DavyJonesLocker/client_side_validations'
+
+gem 'js_regex'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
