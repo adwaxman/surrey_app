@@ -1,6 +1,6 @@
 <%= form_tag rides_path, method: :post  do %>
 <div class="destination-section">
-  <h2 class="center">Where would you like to go?</h2>
+  <h2 class="center destination-section-heading">Where would you like to go?</h2>
   <% if current_member && current_member.destinations.length >=1 %>
   <div class="submit-previous-destination">
     <div class="row">
@@ -15,7 +15,7 @@
     </div>
     <div class="row">
       <div class="center">
-        <a class="btn"> Submit </a>
+        <a class="btn prev-dest-btn"> Submit </a>
       </div>
     </div>
 
@@ -82,14 +82,14 @@
     </div>
 
     <div class="row center">
-      <a class="btn">
+      <a class="btn add-destination-btn">
         Add Destination</a>
     </div>
   </div>
 </div>
 
 <div class="origin-section">
-  <h2 class="center">Where would you like to be picked up?</h2>
+  <h2 class="center origin-section-heading">Where would you like to be picked up?</h2>
   <% if current_member && current_member.origins.length >=1 %>
   <div class="submit-previous-origin">
     <div class="row">
@@ -105,7 +105,7 @@
     </div>
     <div class="row">
       <div class="center">
-        <a class="btn">Submit</a>
+        <a class="btn prev-origin-btn">Submit</a>
       </div>
     </div>
 
@@ -141,7 +141,7 @@
       </div>
     </div>
     <div class="row center">
-      <a class="btn">
+      <a class="btn add-origin-btn">
         Add Origin</a>
     </div>
   </div>
@@ -189,9 +189,15 @@
     <br>
     <br>
     <br>
-    <%= submit_tag :submit, class: "btn" %>
+    <%= submit_tag :submit, class: "btn submit-ride-btn" %>
   </div>
 </div>
+
+<% if current_member %>
+<div class="workaround">
+  <%= current_member.origins.length %>
+</div>
+<% end %>
 
 <% end %>
 <script>
