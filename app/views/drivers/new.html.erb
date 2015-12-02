@@ -81,10 +81,29 @@
       <br>
     </div>
     <div class="col s6">
-      <div class="row">
-        <div class="row center"><strong>Schedule</strong></div>
-        <div class="input-field col s1">
+      <div class="row center">
+        <div class="row center">
+          <strong>Schedule</strong>
+        </div>
+        <div class="input-field col s2">
+          <strong>Monday</strong>
           <%= f.select :monday_min, options_for_select(1..9)%>
+        </div>
+        <div class="input-field col s2">
+          <strong>Tuesday</strong>
+          <%= f.select :tuesday_min, options_for_select(1..9)%>
+        </div>
+        <div class="input-field col s2">
+          <strong>Wednesday</strong>
+          <%= f.select :wednesday_min, options_for_select(1..9)%>
+        </div>
+        <div class="input-field col s2">
+          <strong>Thursday</strong>
+          <%= f.select :thursday_min, options_for_select(1..9)%>
+        </div>
+        <div class="input-field col s2">
+          <strong>Friday</strong>
+          <%= f.select :friday_min, options_for_select(1..9)%>
         </div>
       </div>
     </div>
@@ -92,7 +111,3 @@
   <%= f.submit "Submit", class:"btn" %>
   <% end %>
 </div>
-
-<script>$(document).ready(function() {
-    $('select').material_select();
-});</script>

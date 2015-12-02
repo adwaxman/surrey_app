@@ -20,3 +20,7 @@
 //= require picker.date
 //= require picker.time
 //= require phonevalidator
+
+$(document).ready(function () {
+  $('select').material_select();
+});
