@@ -13,81 +13,14 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require turbolinks
 //= require_tree .
 //= require pickadate
 //= require picker
 //= require picker.date
 //= require picker.time
 //= require phonevalidator
-//= require drivers
-//= require turbolinks
 
-
-// timepicker for driver form
-$('.timepicker2').pickatime({
-  interval: 15,
-  min: [
-    8, 30
-  ],
-  max: [16, 30]
-});
-
-$(document).ready(function() {
+$(document).ready(function () {
   $('select').material_select();
-
 });
-
-$(document).ready(function() {
-  $('.check1').on('click', function(event) {
-
-    if ($(this).is(":checked")) {
-      $('.disable1').attr('disabled', true);
-    } else {
-      {
-        $('.disable1').attr('disabled', false);
-      }
-    }
-  });
-  $('.check2').on('click', function(event) {
-
-    if ($(this).is(":checked")) {
-      $('.disable2').attr('disabled', true);
-    } else {
-      {
-        $('.disable2').attr('disabled', false);
-      }
-    }
-  });
-  $('.check3').on('click', function(event) {
-
-    if ($(this).is(":checked")) {
-      $('.disable3').attr('disabled', true);
-    } else {
-      {
-        $('.disable3').attr('disabled', false);
-      }
-    }
-  });
-  $('.check4').on('click', function(event) {
-
-    if ($(this).is(":checked")) {
-      $('.disable4').attr('disabled', true);
-    } else {
-      {
-        $('.disable4').attr('disabled', false);
-      }
-    }
-  });
-  $('.check5').on('click', function(event) {
-
-    if ($(this).is(":checked")) {
-      $('.disable5').attr('disabled', true);
-    } else {
-      {
-        $('.disable5').attr('disabled', false);
-      }
-    }
-  });
-
-
-})
