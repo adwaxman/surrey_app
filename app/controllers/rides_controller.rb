@@ -35,7 +35,9 @@ class RidesController < ApplicationController
       @destination = Destination.new(member_id: member_id, name: destination_name, address_line1: destination_address_line1, address_line2: destination_address_line2, city: destination_city, state: state, zip: destination_zip, destination_type: destination_type, destination_other_type: destination_other_type)
       if @destination.save
       else
+        flash[:alert] = "problem 1"
         render :new
+        return
       end
     else
       @destination_id = params[:destination_id]
@@ -46,14 +48,15 @@ class RidesController < ApplicationController
       @origin = Origin.new(member_id: member_id, address_line1: origin_address_line1, address_line2: origin_address_line2, city: origin_city, state: state, zip: origin_zip)
       if @origin.save
       else
+        flash[:alert] = "problem 2"
         render :new
+        return
       end
     else
       @origin_id = params[:origin_id]
 
     end
 
-    debugger
     destination_id_to_be_passed = @destination_id ? @destination_id : destination_id_to_be_passed = current_member.destinations.last.id
 
     origin_id_to_be_passed = @origin_id ? @origin_id : origin_id_to_be_passed = current_member.origins.last.id
@@ -66,13 +69,6 @@ class RidesController < ApplicationController
     else
       render :new
     end
-
-
-
-
-
-
-
   end
 
   def show
