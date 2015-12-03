@@ -21,7 +21,6 @@
 //= require phonevalidator
 //= require drivers
 //= require turbolinks
-//= require turboboost/turboboost
 
 
 

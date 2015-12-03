@@ -1,0 +1,197 @@
+
+<div class="errors">
+
+</div>
+<div class="row">
+  <%= form_for @driver, :html => {:class => "col s10 offset-s1"} do |f| %>
+  <div class="row">
+    <div class="col s12">
+      <h3>Driver Sign-up</h3>
+    </div>
+    <div class="input-field col s12 m6">
+      <%= f.text_field :fname, class: "validate" %>
+      <%= f.label :fname, "First name" %>
+    </div>
+    <div class="input-field col s12 m6">
+      <%= f.text_field :lname, class: "validate" %>
+      <%= f.label :lname, "Last name" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12 m6">
+      <%= f.text_field :email, class: "validate" %>
+      <%= f.label :email, "Email address" %>
+    </div>
+    <div class="input-field col s12 m3">
+      <%= f.text_field :phone, class: "validate phone" %>
+      <%= f.label :phone, "Home phone number" %>
+    </div>
+    <div class="input-field col s12 m3">
+      <%= f.text_field :cell, class: "validate phone" %>
+      <%= f.label :cell, "Cell phone number" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12 m6">
+      <%= f.text_field :password, class: "validate" %>
+      <%= f.label :password, "Password" %>
+    </div>
+    <div class="input-field col s12 m6">
+      <%= f.text_field :password_confirmation, class: "validate" %>
+      <%= f.label :password_confirmation, "Password confirmation" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.text_field :address_line1, class: "validate" %>
+      <%= f.label :address_line1, "Address line 1" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.text_field :address_line2, class: "validate" %>
+      <%= f.label :address_line2, "Address line 2" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6">
+      <%= f.text_field :city, class: "validate" %>
+      <%= f.label :city, "City" %>
+    </div>
+    <div class="input-field col s2">
+      <input class="validate" disabled id="state" type="text" value="PA">
+      <%= f.hidden_field :state, :value => "PA"%>
+    </div>
+    <div class="input-field col s4">
+      <%= f.text_field :zip, class: "validate" %>
+      <%= f.label :zip, "Zip code" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col m6 s12">
+      Car type:
+      <br>
+      <%= f.radio_button :car_type, "two"%>
+      <%= f.label(:car_type_two, "Two door") %>
+      <br>
+      <%= f.radio_button :car_type, "four"%>
+      <%= f.label(:car_type_four, "Four door") %>
+      <br>
+      <%= f.radio_button :car_type, "suv"%>
+      <%= f.label(:car_type_suv, "SUV") %>
+      <br>
+      <%= f.radio_button :car_type, "Pickup"%>
+      <%= f.label(:car_type_pickup, "Pickup") %>
+      <br>
+    </div>
+    <div class="row">
+      <div class="row center">
+        <strong>Schedule</strong>
+      </div>
+      <div class="input-field col s2">
+        <strong>Monday</strong>
+        <input class="validate check1" id="name1" name="check1" type="checkbox" value="true">
+        <label for="name1">
+          <small>Unavailable</small>
+        </label>
+      </div>
+      <div class="input-field col s2">
+        <strong>Tuesday</strong>
+        <input class="validate check2" id="name2" name="check2" type="checkbox" value="true">
+        <label for="name2">
+          <small>Unavailable</small>
+        </label>
+      </div>
+      <div class="input-field col s2">
+        <strong>Wednesday</strong>
+        <input class="validate check3" id="name3" name="check3" type="checkbox" value="true">
+        <label for="name3">
+          <small>Unavailable</small>
+        </label>
+      </div>
+      <div class="input-field col s2">
+        <strong>Thursday</strong>
+        <input class="validate check4" id="name4" name="check4" type="checkbox" value="true">
+        <label for="name4">
+          <small>Unavailable</small>
+        </label>
+      </div>
+      <div class="input-field col s1">
+        <strong>Friday</strong>
+        <input class="validate check5" id="name5" name="check5" type="checkbox" value="true">
+        <label for="name5">
+          <small>Unavailable</small>
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s2">
+        <%= f.text_field :monday_min, class: "timepicker2 disable1", placeholder: "" %>
+      </div>
+      <div class="input-field col s2">
+        <%= f.text_field :tuesday_min, class: "timepicker2 disable2", placeholder: "" %>
+      </div>
+      <div class="input-field col s2">
+        <%= f.text_field :wednesday_min, class: "timepicker2 disable3", placeholder: "" %>
+      </div>
+      <div class="input-field col s2">
+        <%= f.text_field :thursday_min, class: "timepicker2 disable4", placeholder: "" %>
+      </div>
+      <div class="input-field col s2">
+        <%= f.text_field :friday_min, class: "timepicker2 disable5", placeholder: "" %>
+      </div>
+    </div>
+    <div class="row center">
+
+      <div class="input-field col s2">
+        <%= f.text_field :monday_max, class: "timepicker2 disable1", placeholder: "" %>
+      </div>
+      <div class="input-field col s2">
+        <%= f.text_field :tuesday_max, class: "timepicker2 disable2", placeholder: "" %>
+      </div>
+      <div class="input-field col s2">
+        <%= f.text_field :wednesday_max, class: "timepicker2 disable3", placeholder: "" %>
+      </div>
+      <div class="input-field col s2">
+        <%= f.text_field :thursday_max, class: "timepicker2 disable4", placeholder: "" %>
+      </div>
+      <div class="input-field col s2">
+        <%= f.text_field :friday_max, class: "timepicker2 disable5", placeholder: "" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12 m6">
+        I can accommodate a wheelchair:
+        <br>
+        <%= f.radio_button :accommodate_wheelchair, "true" %>
+        <%= f.label :accommodate_wheelchair_true, "Yes" %>
+        <br>
+        <%= f.radio_button :accommodate_wheelchair, "false" %>
+        <%= f.label :accommodate_wheelchair_false, "No" %>
+      </div>
+      <div class="input-field col s12 m6">
+        I can accommodate an aide:
+        <br>
+        <%= f.radio_button :accommodate_aide, "true" %>
+        <%= f.label :accommodate_aide_true, "Yes" %>
+        <br>
+        <%= f.radio_button :accommodate_aide, "false" %>
+        <%= f.label :accommodate_aide_false, "No" %>
+      </div>
+    </div>
+  </div>
+  <%= f.submit "Submit", class:"btn" %>
+  <% end %>
+</div>
+
+<script>
+// timepicker for driver form
+$('.timepicker2').pickatime({
+  interval: 15,
+  min: [
+    8, 30
+  ],
+  max: [16, 30]
+});
+
+</script>

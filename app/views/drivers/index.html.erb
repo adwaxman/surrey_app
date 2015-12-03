@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col s12">
+    <h3>Driver List</h3>
+  </div>
+</div>
+<div class="row">
+  <div class="col s12">
+    <table>
+      <thead>
+        <tr>
+          <th data-field="id">Name</th>
+          <th data-field="name">Address</th>
+          <th data-field="price">Phone Numbers</th>
+          <th data-field="rides">Rides
+          </th>
+          <th data-field="price">Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @drivers.each do |driver| %>
+        <tr>
+          <td>
+            <%= link_to driver.fname + " " + driver.lname, driver_path(driver.id) %>
+          </td>
+          <td>
+            <%= driver.address_line1 %><br>
+            <%= driver.city %>,
+            <%= driver.state %>,
+            <%= driver.zip %></td>
+          <td>
+            <strong> Home: </strong><%= driver.phone %> <br>
+            <strong> Cell: </strong> <%= driver.cell %>
+          </td>
+          <td>
+            <% driver.rides.each do |rides| %>
+            <%= link_to rides.name, "#" %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to "Update", edit_driver_path(driver.id), class: "btn" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</div>
