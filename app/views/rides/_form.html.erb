@@ -155,8 +155,11 @@
         Add Pickup Location</a>
         <br>
         <br>
-        <% if current_member && current_member.origins.length > 0 %>
+        <% if current_member && current_member.destinations.length > 0 %>
       <a class="btn back-prev-origin-btn">
+          Back</a>
+        <% else %>
+      <a class="btn back-add-origin-btn">
           Back</a>
         <% end %>
     </div>

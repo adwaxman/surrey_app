@@ -62,6 +62,18 @@ $(document).ready(function() {
 
   });
 
+  $('.back-add-origin-btn').click(function() {
+
+    $('.origin-section').hide();
+    $('.dropdown-add-origin').hide()
+    $('.destination-section').show();
+    $('.dropdown-add-destination').show();
+
+
+  })
+
+
+
   $('.trigger-origin-dropdown').click(function() {
 
     $('.submit-previous-origin').hide();
@@ -99,6 +111,11 @@ $(document).ready(function() {
 
     if($('#origin_address_line1').val() !== "" ||         $('#origin_address_line2').val() !== "" ||  $('#origin_city').val() !== "" || $('#origin_zip').val() !== "") {
 
+      $('.dropdown-add-origin').show();
+    }
+    
+    else if (parseInt($('.workaround').html()) === 0) {
+      $('.origin-section').show();
       $('.dropdown-add-origin').show();
     }
 
