@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151201203637) do
+ActiveRecord::Schema.define(version: 20151203180616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,20 +53,20 @@ ActiveRecord::Schema.define(version: 20151201203637) do
     t.string   "zip"
     t.string   "car_type"
     t.boolean  "monday"
-    t.integer  "monday_min"
-    t.integer  "monday_max"
+    t.string   "monday_min"
+    t.string   "monday_max"
     t.boolean  "tuesday"
-    t.integer  "tuesday_min"
-    t.integer  "tuesday_max"
+    t.string   "tuesday_min"
+    t.string   "tuesday_max"
     t.boolean  "wednesday"
-    t.integer  "wednesday_min"
-    t.integer  "wednesday_max"
+    t.string   "wednesday_min"
+    t.string   "wednesday_max"
     t.boolean  "thursday"
-    t.integer  "thursday_min"
-    t.integer  "thursday_max"
+    t.string   "thursday_min"
+    t.string   "thursday_max"
     t.boolean  "friday"
-    t.integer  "friday_min"
-    t.integer  "friday_max"
+    t.string   "friday_min"
+    t.string   "friday_max"
     t.boolean  "unavailable"
     t.boolean  "accommodate_wheelchair"
     t.boolean  "accommodate_aide"

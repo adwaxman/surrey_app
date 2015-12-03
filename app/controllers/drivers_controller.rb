@@ -1,16 +1,15 @@
 class DriversController < ApplicationController
 
+
   def new
     @driver = Driver.new
   end
 
   def create
-    @driver = Driver.new(driver_params)
-    if @driver.save
-      redirect_to root_path
-    else
-      render 'new'
-    end
+    Turboboost.insertErrors = true
+    
+    @driver = Driver.create!(params[driver_params]) # <- trigger exception if model is invalid
+    redirect_to new, notice: 'Driver was successfully created.'
   end
 
   def index
@@ -26,7 +25,6 @@ class DriversController < ApplicationController
     if @driver.update_attributes(driver_params)
       redirect_to drivers_path
     else
-      debugger
       render 'edit'
     end
 

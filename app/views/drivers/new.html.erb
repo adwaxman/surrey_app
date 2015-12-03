@@ -1,14 +1,9 @@
 
+<div class="errors">
 
+</div>
 <div class="row">
-  <%= form_for @driver, :html => {:class => "col s10 offset-s1"} do |f| %>
-  <% if f.object.errors.any? %>
-    <div class="error_messages">
-      <% f.object.errors.full_messages.each do |error| %>
-        <p><%= error %></p>
-    </div>
-    <% end %>
-    <% end %>
+  <%= form_for @driver, :html => {:class => "col s10 offset-s1"}, turboboost: true do |f| %>
   <div class="row">
     <div class="col s12">
       <h3>Driver Sign-up</h3>
@@ -190,5 +185,13 @@
 </div>
 
 <script>
+// timepicker for driver form
+$('.timepicker2').pickatime({
+  interval: 15,
+  min: [
+    8, 30
+  ],
+  max: [16, 30]
+});
 
 </script>

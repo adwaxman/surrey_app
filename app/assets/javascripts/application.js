@@ -21,16 +21,9 @@
 //= require phonevalidator
 //= require drivers
 //= require turbolinks
+//= require turboboost/turboboost
 
 
-// timepicker for driver form
-$('.timepicker2').pickatime({
-  interval: 15,
-  min: [
-    8, 30
-  ],
-  max: [16, 30]
-});
 
 $(document).ready(function() {
   $('select').material_select();
