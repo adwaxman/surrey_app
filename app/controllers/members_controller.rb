@@ -25,14 +25,13 @@ class MembersController < ApplicationController
     if @member.update_attributes(member_params)
       redirect_to members_path
     else
-      debugger
       render 'edit'
     end
 
   end
 
   def show
-
+    @member = Member.find(params[:id])
   end
 
   private

@@ -29,6 +29,12 @@ gem 'gmaps4rails'
 # materialize css
 #gem 'materialize-sass'
 
+#gem 'turboboost'
+
+#gem 'judge'
+#gem 'underscore'
+
+#gem 'html5_validators'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
