@@ -1,0 +1,62 @@
+<div class="row">
+  <%= form_for @admin, :html => {class: 'col s10 offset-s1'} do |f| %>
+
+  <div class="row">
+    <div class="col s12 center">
+      <h3> Create Admin </h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12 m6">
+      <%= f.text_field :fname, class: "validate" %>
+      <%= f.label :fname, "First Name" %>
+    </div>
+    <div class="input-field col s12 m6">
+      <%= f.text_field :lname, class: "validate" %>
+      <%= f.label :lname, "Last Name" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12 m4">
+      <%= f.text_field :username, class: "validate" %>
+      <%= f.label :username, "Username" %>
+    </div>
+    <div class="input-field col s12 m8">
+      <%= f.email_field :email, class: "validate" %>
+      <%= f.label :email, "Email" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12 m6">
+      <%= f.password_field :password, class: "validate" %>
+      <%= f.label :password, "Password" %>
+    </div>
+    <div class="input-field col s12 m6">
+      <%= f.password_field :password_confirmation, class: "validate" %>
+      <%= f.label :password_confirmation, "Password confirmation" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12 m4 offset-m4">
+      <%= f.check_box :super_admin, class: "admin-checkbox" %>
+      <%= f.label :super_admin, "Super Admin?" %>
+    </div>
+    <div class="input-field col s12 m4 super-password" style = "display: none">
+      <%= label_tag :super_admin_password, "password" %>
+      <%= password_field_tag :super_admin_password %>
+    </div>
+      <br>
+      <br>
+  </div>
+
+  <div class="row">
+    <div class="center col s12">
+      <%= f.submit "Submit", class:"btn" %>
+    </div>
+  </div>
+
+
+
+  <% end %>
+</div>

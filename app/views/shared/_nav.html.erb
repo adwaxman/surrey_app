@@ -3,10 +3,13 @@
     <a href="#!" class="brand-logo">Surrey Services</a>
     <ul class="right hide-on-med-and-down">
       <% if session[:member_id] %>
+      <li> <%= current_member.fname + " " + current_member.lname %> </li>
       <li><a href="/logout">Logout</a></li>
+      <% else %>
+      <li><a href="/login">Login</a></li>
       <% end %>
       <li><a href="#"><i class="material-icons">refresh</i></a></li>
-      <li><a href="#"><i class="material-icons">settings</i></a></li>
+      <li><a href="#"><i class="material-icons settings-icon">settings</i></a></li>
     </ul>
   </div>
 </nav>

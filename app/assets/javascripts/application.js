@@ -21,6 +21,7 @@
 //= require phonevalidator
 //= require drivers
 //= require turbolinks
+//= require rotate
 
 
 // timepicker for driver form
@@ -91,3 +92,35 @@ $(document).ready(function() {
 
 
 })
+
+// rotate plug in used for gear in nav bar
+
+$(function() {
+
+  $('.settings-icon').click(function() {
+    $(this).rotate({duration: .7, endDeg: 180});
+  })
+
+});
+
+
+// show and hide super admin password prompt
+
+$(document).ready(function() {
+
+  if ($('.admin-checkbox').is(":checked")) {
+      $('.super-password').show();
+  }
+  
+  $('.admin-checkbox').click(function(){
+    if ($(this).is(":checked")) {
+        $('.super-password').show();
+    }
+    else {
+        $('.super-password').hide();
+    }
+
+
+  });
+
+});

@@ -12,6 +12,14 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   get  'logout', to: 'sessions#destroy'
 
+
+  namespace :admin do
+  resources :sessions, only: [:create, :new]
+  get '/logout', to: 'sessions#destroy', as: :logout
+  resources :mermbers, :drivers, :rides, :origins, :destinations
+
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
