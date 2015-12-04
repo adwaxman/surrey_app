@@ -66,9 +66,34 @@ $(document).ready(function() {
 
   })
 
-  //navigate back to destinations section from origin section.  if a member has filled out any of the new destination section, show that.  if they had pick a previous dest, show the prev dest section. if they have no prior dests, show add new dest section
+  //navigate back to destinations section from previous origin section.  if a member has filled out any of the new destination section, show that.  if they had picked a previous dest, show the prev dest section. if they have no prior dests, show add new dest section
 
-  
+  $('.back-to-destination').click(function() {
+
+    $('.origin-section').hide();
+
+    if($('#destination_address_line1').val() !== "" || $('#destination_address_line2').val() !== "" ||  $('#destination_city').val() !== "" || $('#destination_zip').val() !== "" || $('#destination_name').val() !== "") {
+
+      $('.destination-section').show();
+
+    }
+
+    else if($('#destination_id').val() !== "") {
+
+      $('.destination-section').show();
+      $('.previous-destination').show();
+      $('.new-destination').hide();
+    }
+
+    else {
+
+      $('.destination-section').show();
+      $('.new-destination').show();
+      $('.previous-destination').hide();
+
+    }
+
+  });
 
 
 
