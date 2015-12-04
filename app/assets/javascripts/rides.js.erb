@@ -1,6 +1,15 @@
 $(document).ready(function() {
 
-  if(parseInt($('.workaround').html()) === 0) {
+
+  if(parseInt($('.workaround-d').html()) >= 1) {
+    $('.dropdown-add-destination').hide();
+  }
+
+  if(parseInt($('.workaround-o').html()) >= 1) {
+    $('.dropdown-add-origin').hide();
+  }
+
+  if(parseInt($('.workaround-d').html()) === 0) {
     $('.dropdown-add-destination').show();
   }
 
@@ -113,7 +122,7 @@ $(document).ready(function() {
 
       $('.dropdown-add-origin').show();
     }
-    
+
     else if (parseInt($('.workaround').html()) === 0) {
       $('.origin-section').show();
       $('.dropdown-add-origin').show();

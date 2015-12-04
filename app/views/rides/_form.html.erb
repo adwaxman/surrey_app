@@ -89,6 +89,9 @@
         <% if current_member && current_member.destinations.length > 0 %>
       <a class="btn back-prev-dest-btn">
           Back</a>
+        <% else %>
+      <a class="btn back-add-dest-btn">
+            Back</a>
         <% end %>
     </div>
   </div>
@@ -158,9 +161,6 @@
         <% if current_member && current_member.destinations.length > 0 %>
       <a class="btn back-prev-origin-btn">
           Back</a>
-        <% else %>
-      <a class="btn back-add-origin-btn">
-          Back</a>
         <% end %>
     </div>
   </div>
@@ -215,9 +215,14 @@
 </div>
 
 <% if current_member %>
-<div class="workaround">
+
+<div class="workaround-d">
+  <%= current_member.destinations.length %>
+</div>
+<div class="workaround-o">
   <%= current_member.origins.length %>
 </div>
+
 <% end %>
 
 <% end %>
