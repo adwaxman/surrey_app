@@ -57,6 +57,7 @@ $(document).ready(function() {
       $('.destination-section').hide();
       $('.origin-section').show();
 
+
       if(parseInt($('.workaround-o').html()) > 0) {
         $('.new-origin').hide();
       }
@@ -95,9 +96,103 @@ $(document).ready(function() {
 
   });
 
+  //submit previous origin and go to ride section
 
+  $('.submit-prev-origin-btn').click(function() {
+    if($('#origin_id').val() !== "") {
 
+      $('.origin-section').hide();
+      $('.ride-section').show();
 
+    }
+
+  });
+
+  //trigger new origin section
+
+  $('.new-origin-btn').click(function() {
+
+    $('.previous-origin').hide();
+    $('.new-origin').show();
+
+  });
+
+  //from new origin section: if member has previous origins, go there; else, if a member has filled out any of the new destination section, show that.  if they had picked a previous dest, show the prev dest section. if they have no prior dests, show add new dest section
+
+  $('.back-from-new-origin-btn').click(function(){
+
+    if(parseInt($('.workaround-o').html()) > 0) {
+      $('.origin-section').show();
+      $('.new-origin').hide();
+      $('.previous-origin').show();
+    }
+
+    else if($('#destination_address_line1').val() !== "" || $('#destination_address_line2').val() !== "" ||  $('#destination_city').val() !== "" || $('#destination_zip').val() !== "" || $('#destination_name').val() !== "") {
+
+      $('.destination-section').show();
+      $('.origin-section').hide();
+
+    }
+
+    else if($('#destination_id').val() !== "") {
+
+      $('.destination-section').show();
+      $('.previous-destination').show();
+      $('.new-destination').hide();
+      $('.origin-section').hide();
+
+    }
+
+    else {
+
+      $('.destination-section').show();
+      $('.new-destination').show();
+      $('.previous-destination').hide();
+      $('.origin-section').hide();
+
+    }
+
+  });
+
+  //'submit' new origin and move onto ride section
+
+  $('.submit-new-origin-btn').click(function() {
+
+      $('.origin-section').hide();
+      $('.ride-section').show();
+
+  });
+
+  // back to origin section from ride section: if a member has filled out any of the new origin section, show that.  if they had picked a previous origin, show the prev origin section. if they have no prior origins, show add new origin section
+
+  $('.back-from-ride-btn').click(function() {
+
+    $('.ride-section').hide();
+
+    if($('#origin_address_line1').val() !== "" || $('#origin_address_line2').val() !== "" ||  $('#origin_city').val() !== "" || $('#origin_zip').val() !== "" || $('#origin_name').val() !== "") {
+
+      $('.origin-section').show();
+
+    }
+
+    else if($('#origin_id').val() !== "") {
+
+      $('.origin-section').show();
+      $('.previous-origin').show();
+      $('.new-origin').hide();
+    }
+
+    else {
+
+      $('.origin-section').show();
+      $('.new-origin').show();
+      $('.previous-origin').hide();
+
+    }
+
+  });
+
+  // if issues with navigation after a render due to db rollback => maybe hide/show relevant sections when submit button is it?
 
 
 });
