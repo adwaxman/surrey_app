@@ -1,8 +1,7 @@
 <%= form_tag rides_path, method: :post  do %>
 <div class="destination-section">
-  <h2 class="center destination-section-heading">Where would you like to go?</h2>
-  <% if current_member && current_member.destinations.length >=1 %>
-  <div class="submit-previous-destination">
+  <h2 class="center destination-heading">Where would you like to go?</h2>
+  <div class="previous-destination">
     <div class="row">
       <div class="input-field col s8 offset-s2">
 
@@ -15,17 +14,16 @@
     </div>
     <div class="row">
       <div class="center">
-        <a class="btn prev-dest-btn"> Submit </a>
+        <a class="btn submit-prev-dest-btn"> Submit </a>
       </div>
     </div>
 
     <h3 class="center">OR</h3>
     <div class='center'>
-      <a class='btn trigger-destination-dropdown'>Add a new destination</a>
+      <a class='btn new-dest-btn'>Add a new destination</a>
     </div>
   </div>
-  <% end %>
-  <div class="dropdown-add-destination">
+  <div class="new-destination">
     <h3 class="center">Add new destination</h3>
 
     <div class="row">
@@ -82,25 +80,25 @@
     </div>
 
     <div class="row center">
-      <a class="btn add-destination-btn">
+      <a class="btn submit-new-dest-btn">
         Add Destination</a>
         <br>
         <br>
-        <% if current_member && current_member.destinations.length > 0 %>
-      <a class="btn back-prev-dest-btn">
+
+      <a class="btn back-to-prev-dest-btn back-btn">
           Back</a>
-        <% else %>
-      <a class="btn back-add-dest-btn">
-            Back</a>
-        <% end %>
+
+      <!-- <a class="btn back-add-dest-btn back-btn">
+            Back</a> -->
+
     </div>
   </div>
 </div>
 
 <div class="origin-section">
   <h2 class="center origin-section-heading">Where would you like to be picked up?</h2>
-  <% if current_member && current_member.origins.length >=1 %>
-  <div class="submit-previous-origin">
+
+  <div class="previous-origin">
     <div class="row">
       <div class="input-field col s8 offset-s2">
 
@@ -120,15 +118,15 @@
 
     <h3 class="center">OR</h3>
     <div class='center'>
-      <a class='btn trigger-origin-dropdown'>Add a new pickup location</a>
+      <a class='btn new-origin-btn'>Add a new pickup location</a>
       <br>
       <br>
-      <a class='btn back-to-destination center'>Back</a>
+      <a class='btn back-to-destination back-btn center'>Back</a>
     </div>
 
   </div>
-  <% end %>
-  <div class="dropdown-add-origin">
+
+  <div class="new-origin">
     <h3 class="center">Add new pickup location</h3>
     <div class="row">
       <div class="input-field col s10 offset-s1">
@@ -154,14 +152,14 @@
       </div>
     </div>
     <div class="row center">
-      <a class="btn add-origin-btn">
+      <a class="btn submit-new-origin-btn">
         Add Pickup Location</a>
         <br>
         <br>
-        <% if current_member && current_member.destinations.length > 0 %>
-      <a class="btn back-prev-origin-btn">
+
+      <a class="btn back-prev-origin-btn back-btn">
           Back</a>
-        <% end %>
+
     </div>
   </div>
 </div>
@@ -207,7 +205,7 @@
       <%= submit_tag :submit, class: "btn submit-ride-btn" %>
       <br>
       <br>
-      <a class="btn back-to-origin">
+      <a class="btn back-to-origin back-btn">
           Back</a>
       <br>
       <br>

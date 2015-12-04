@@ -1,5 +1,78 @@
 $(document).ready(function() {
 
+  $('.origin-section').hide();
+  $('.ride-section').hide();
+
+  if(parseInt($('.workaround-d').html()) > 0) {
+    $('.new-destination').hide();
+  }
+  else {
+    $('.previous-destination').hide();
+    $('.back-to-prev-dest-btn').hide();
+  }
+
+
+  //submit previous destination and go to origin section; only display previous origin section if there are origins stored
+
+  $('.submit-prev-dest-btn').click(function() {
+    if($('#destination_id').val() !== "") {
+
+      $('.destination-section').hide();
+      $('.origin-section').show();
+
+      if(parseInt($('.workaround-o').html()) > 0) {
+        $('.new-origin').hide();
+      }
+      else {
+        $('.previous-origin').hide();
+      }
+
+    }
+
+  });
+
+  //trigger new destination section
+
+  $('.new-dest-btn').click(function() {
+
+    $('.previous-destination').hide();
+    $('.new-destination').show();
+
+  });
+
+  //navigate back to select previous destination from new destination
+
+  $('.back-to-prev-dest-btn').click(function(){
+
+    $('.destination-section').show();
+    $('.new-destination').hide();
+    $('.previous-destination').show();
+
+  })
+
+  //'submit' new destination and move onto origin section
+
+  $('.submit-new-dest-btn').click(function() {
+
+      $('.destination-section').hide();
+      $('.origin-section').show();
+
+      if(parseInt($('.workaround-o').html()) > 0) {
+        $('.new-origin').hide();
+      }
+      else {
+        $('.previous-origin').hide();
+      }
+
+  })
+
+  //navigate back to destinations section from origin section.  if a member has filled out any of the new destination section, show that.  if they had pick a previous dest, show the prev dest section. if they have no prior dests, show add new dest section
 
   
+
+
+
+
+
+
 });
