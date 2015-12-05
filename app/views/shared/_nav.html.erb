@@ -9,7 +9,31 @@
       <li><a href="/login">Login</a></li>
       <% end %>
       <li><a href="#"><i class="material-icons">refresh</i></a></li>
-      <li><a href="#"><i class="material-icons settings-icon">settings</i></a></li>
+      <li><a class='dropdown-button' data-activates="admin-dropdown" data-beloworigin="true" data-induration="700"  data-constrainwidth="false"><i class="material-icons settings-icon">settings</i></a></li>
     </ul>
+
+    <% if session[:admin_id] %>
+    <ul id="admin-dropdown" class="dropdown-content">
+      <li><a href="">Today's rides</a></li>
+      <li class="divider"></li>
+      <li><a href="">Members</a></li>
+      <li class="divider"></li>
+      <li><a href="">Drivers</a></li>
+      <li class="divider"></li>
+      <li><a href="/admin/logout">Logout</a></li>
+      <li class="divider"></li>
+    </ul>
+
+    <% else %>
+    <ul id="admin-dropdown" class="dropdown-content">
+      <li><a href="/admin/login">Admin Login</a></li>
+      <li class="divider"></li>
+      <li><a href="/admins/new">Create new admin</a></li>
+    </ul>
+
+    <% end %>
+
+
+    </div>
   </div>
 </nav>

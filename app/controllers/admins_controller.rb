@@ -13,7 +13,7 @@ class AdminsController < ApplicationController
       @admin.save
       session[:admin_id] = @admin.id
       flash[:notice] = "Admin created successfully as " + Admin.find(session[:admin_id]).username
-      redirect_to drivers_path
+      redirect_to root_path
     else
       flash[:alert] = "There was a problem."
       render :new

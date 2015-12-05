@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+
+  namespace :driver do
+  get 'sessions/new'
+  end
+
   root 'home#index'
 
   resources :rides
@@ -13,12 +19,17 @@ Rails.application.routes.draw do
   get  'logout', to: 'sessions#destroy'
 
 
-
   namespace :admin do
-  resources :sessions, only: [:create, :new]
-  get '/logout', to: 'sessions#destroy', as: :logout
-  resources :mermbers, :drivers, :rides, :origins, :destinations
+    resources :members, :drivers, :rides, :origins, :destinations
+    get 'login', to: 'sessions#new'
+    post 'login', to: 'sessions#create'
+    get  'logout', to: 'sessions#destroy'
+  end
 
+  namespace :driver do
+    get 'login', to: 'sessions#new'
+    post 'login', to: 'sessions#create'
+    get  'logout', to: 'sessions#destroy'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
