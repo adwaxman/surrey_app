@@ -72,11 +72,18 @@ class RidesController < ApplicationController
   end
 
   def show
+
     @ride = Ride.find(params[:id])
+
+    # variables for gmaps
     @origin = Origin.find(@ride.origin_id)
     @destination = Destination.find(@ride.destination_id)
     @origin_address = @origin.address_line1 + " " + @origin.address_line2 + " " + @origin.city + " PA," + " " + @origin.zip
     @destination_address = @destination.address_line1 + " " + @destination.address_line2 + " " + @destination.city + " PA," + " " + @destination.zip
+
+    # matching logic
+    @weekday = Date.parse(@ride.pickup_date).strftime("%A").downcase
+    @matches = Driver.where("#{@weekday}": false).where("#{@weekday}_min >= ?", @ride.pickup_time).where("#{@weekday}_max <= ?", @ride.pickup_time)
   end
 
   def destroy
