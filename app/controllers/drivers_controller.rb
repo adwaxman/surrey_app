@@ -7,16 +7,16 @@ class DriversController < ApplicationController
 
   def create
     @driver = Driver.new(driver_params)
-    @driver.monday_min = (convert_time_to_float(@driver.monday_min)).to_f
-    @driver.monday_max = (convert_time_to_float(@driver.monday_max)).to_f
-    @driver.tuesday_min = (convert_time_to_float(@driver.monday_min)).to_f
-    @driver.tuesday_max = (convert_time_to_float(@driver.monday_max)).to_f
-    @driver.wednesday_min = (convert_time_to_float(@driver.monday_min)).to_f
-    @driver.wednesday_max = (convert_time_to_float(@driver.monday_max)).to_f
-    @driver.thursday_min = (convert_time_to_float(@driver.monday_min)).to_f
-    @driver.thursday_max = (convert_time_to_float(@driver.monday_max)).to_f
-    @driver.friday_min = (convert_time_to_float(@driver.monday_min)).to_f
-    @driver.friday_max = (convert_time_to_float(@driver.monday_max)).to_f
+    # @driver.monday_min = Time.parse(@driver.monday_min).strftime("%l:%M %p")
+    # @driver.monday_max = Time.parse(@driver.monday_max).strftime("%l:%M %p")
+    # @driver.tuesday_min = convert_time_to_float(@driver.monday_min)
+    # @driver.tuesday_max = convert_time_to_float(@driver.monday_max)
+    # @driver.wednesday_min = convert_time_to_float(@driver.monday_min)
+    # @driver.wednesday_max = convert_time_to_float(@driver.monday_max)
+    # @driver.thursday_min = convert_time_to_float(@driver.monday_min)
+    # @driver.thursday_max = convert_time_to_float(@driver.monday_max)
+    # @driver.friday_min = convert_time_to_float(@driver.monday_min)
+    # @driver.friday_max = convert_time_to_float(@driver.monday_max)
     if @driver.save
       redirect_to root_path
     else

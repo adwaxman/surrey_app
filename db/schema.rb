@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151206214621) do
+ActiveRecord::Schema.define(version: 20151206233613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,20 +53,10 @@ ActiveRecord::Schema.define(version: 20151206214621) do
     t.string   "zip"
     t.string   "car_type"
     t.boolean  "monday"
-    t.string   "monday_min"
-    t.string   "monday_max"
     t.boolean  "tuesday"
-    t.string   "tuesday_min"
-    t.string   "tuesday_max"
     t.boolean  "wednesday"
-    t.string   "wednesday_min"
-    t.string   "wednesday_max"
     t.boolean  "thursday"
-    t.string   "thursday_min"
-    t.string   "thursday_max"
     t.boolean  "friday"
-    t.string   "friday_min"
-    t.string   "friday_max"
     t.boolean  "unavailable"
     t.boolean  "accommodate_wheelchair"
     t.boolean  "accommodate_aide"
@@ -75,6 +65,16 @@ ActiveRecord::Schema.define(version: 20151206214621) do
     t.datetime "updated_at",             null: false
     t.string   "phone"
     t.string   "cell"
+    t.time     "monday_min"
+    t.time     "monday_max"
+    t.time     "tuesday_min"
+    t.time     "tuesday_max"
+    t.time     "wednesday_min"
+    t.time     "wednesday_max"
+    t.time     "thursday_min"
+    t.time     "thursday_max"
+    t.time     "friday_min"
+    t.time     "friday_max"
   end
 
   create_table "members", force: :cascade do |t|
@@ -139,8 +139,8 @@ ActiveRecord::Schema.define(version: 20151206214621) do
     t.boolean  "request_checked"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.string   "pickup_time"
     t.string   "pickup_date"
+    t.time     "pickup_time"
   end
 
 end

@@ -62,7 +62,6 @@ class RidesController < ApplicationController
     origin_id_to_be_passed = @origin_id ? @origin_id : origin_id_to_be_passed = current_member.origins.last.id
 
     @ride = Ride.new(member_id: member_id, destination_id: destination_id_to_be_passed, origin_id: origin_id_to_be_passed, wheelchair: wheelchair, aide: aide, hearing_impaired: hearing_impaired, vision_impaired: vision_impaired, pickup_date: pickup_date, pickup_time: pickup_time)
-      @ride.pickup_time = convert_time_to_float(@ride.pickup_time)
     if @ride.save
 
       flash[:notice] = "Your ride has been requested!"
