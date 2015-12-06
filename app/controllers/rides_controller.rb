@@ -62,8 +62,9 @@ class RidesController < ApplicationController
     origin_id_to_be_passed = @origin_id ? @origin_id : origin_id_to_be_passed = current_member.origins.last.id
 
     @ride = Ride.new(member_id: member_id, destination_id: destination_id_to_be_passed, origin_id: origin_id_to_be_passed, wheelchair: wheelchair, aide: aide, hearing_impaired: hearing_impaired, vision_impaired: vision_impaired, pickup_date: pickup_date, pickup_time: pickup_time)
-
+      @ride.pickup_time = convert_time_to_float(@ride.pickup_time)
     if @ride.save
+
       flash[:notice] = "Your ride has been requested!"
       redirect_to root_path
     else
@@ -83,12 +84,37 @@ class RidesController < ApplicationController
 
     # matching logic
     @weekday = Date.parse(@ride.pickup_date).strftime("%A").downcase
-    @matches = Driver.where("#{@weekday}": false).where("#{@weekday}_min >= ?", @ride.pickup_time).where("#{@weekday}_max <= ?", @ride.pickup_time)
+    @ride.monday_min = @ride.monday_min.to_f
+    @ride.monday_max = @ride.monday_max.to_f
+
+    @matches = Driver.where("#{@weekday}": false).where("#{@weekday}_min >= ?", @ride.pickup_time.to_f).where("#{@weekday}_max <= ?", @ride.pickup_time.to_f)
   end
 
   def destroy
 
   end
+private
+def convert_time_to_float str
+
+if str[-2..-1] == "PM"
+    pm = true
+end
+
+ string_to_convert = str[0...-3]
+ string_to_convert = string_to_convert.sub(":", ".")
+ # puts string_to_convert
+
+ float = string_to_convert.to_f
+
+ if pm
+     float = float + 12.0
+ end
+
+ return float
+
+
+
+end
 
 
 end
