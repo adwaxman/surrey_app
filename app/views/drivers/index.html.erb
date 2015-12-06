@@ -33,9 +33,9 @@
             <strong> Cell: </strong> <%= driver.cell %>
           </td>
           <td>
-            <% driver.rides.each do |rides| %>
-            <%= link_to rides.name, "#" %>
-            <% end %>
+            <% driver.rides.each do |ride| %>
+            <%= link_to (ride.destination.name + ": " + ride.pickup_date), "#" %>
+            <br>
           </td>
           <td>
             <%= link_to "Update", edit_driver_path(driver.id), class: "btn" %></td>

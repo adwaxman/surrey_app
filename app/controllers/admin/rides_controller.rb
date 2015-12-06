@@ -7,9 +7,13 @@ class Admin::RidesController < ApplicationController
 
     @sorted_open_rides = @open_rides.sort_by {|ride| DateTime.parse(ride.pickup_date)}
 
+
+
   end
 
   def show
+    
+
   end
 
   def new

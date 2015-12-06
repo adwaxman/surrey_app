@@ -33,8 +33,9 @@
             <strong> Cell: </strong> <%= member.cell %>
           </td>
           <td>
-            <% member.rides.each do |rides| %>
-            <%= link_to rides.name, "#" %>
+            <% member.rides.each do |ride| %>
+            <%= link_to (ride.destination.name + ": " + ride.pickup_date), "#" %>
+            <br>
             <% end %>
           </td>
           <td>
