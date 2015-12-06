@@ -12,7 +12,7 @@ def current_member
 end
 
 def rides_today
-  @rides = Ride.all
+  @rides = Ride.all.where.not(driver_id: nil)
   @rides_today = []
   @rides.each do |ride|
     if Date.parse(ride.pickup_date) == Date.today
