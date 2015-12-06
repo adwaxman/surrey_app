@@ -2,10 +2,11 @@
   <div class="col s6">
     <strong>Matching drivers</strong>
     <br>
+    <div class="collection">
+      <% @matches.each do |driver| %>
+      <a class="collection-item" href="#!"><%= driver.fname %> <%= driver.lname %> </a>
+    </div>
 
-    <%= @weekday %><br>
-    <% @matches.each do |driver| %>
-    <%= driver.fname %>
     <% end %>
   </div>
   <div class="col s6">
