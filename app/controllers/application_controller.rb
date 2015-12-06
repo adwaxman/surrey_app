@@ -11,5 +11,15 @@ def current_member
   end
 end
 
+def rides_today
+  @rides = Ride.all
+  @rides_today = []
+  @rides.each do |ride|
+    if Date.parse(ride.pickup_date) == Date.today
+      @rides_today.push(ride)
+    end
+  end
+  return @rides_today
+end
 
 end

@@ -30,6 +30,7 @@ class RidesController < ApplicationController
     aide = params[:aide]
     hearing_impaired = params[:hearing_impaired]
     vision_impaired = params[:vision_impaired]
+    status = "open"
 
     if params[:destination_id] == "" || current_member.destinations.length ==0
       @destination = Destination.new(member_id: member_id, name: destination_name, address_line1: destination_address_line1, address_line2: destination_address_line2, city: destination_city, state: state, zip: destination_zip, destination_type: destination_type, destination_other_type: destination_other_type)
@@ -61,7 +62,7 @@ class RidesController < ApplicationController
 
     origin_id_to_be_passed = @origin_id ? @origin_id : origin_id_to_be_passed = current_member.origins.last.id
 
-    @ride = Ride.new(member_id: member_id, destination_id: destination_id_to_be_passed, origin_id: origin_id_to_be_passed, wheelchair: wheelchair, aide: aide, hearing_impaired: hearing_impaired, vision_impaired: vision_impaired, pickup_date: pickup_date, pickup_time: pickup_time)
+    @ride = Ride.new(member_id: member_id, destination_id: destination_id_to_be_passed, origin_id: origin_id_to_be_passed, wheelchair: wheelchair, aide: aide, hearing_impaired: hearing_impaired, vision_impaired: vision_impaired, pickup_date: pickup_date, pickup_time: pickup_time, status: "open")
 
     if @ride.save
       flash[:notice] = "Your ride has been requested!"

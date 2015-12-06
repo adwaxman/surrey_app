@@ -1,2 +1,27 @@
-<h1>Admin::Rides#index</h1>
-<p>Find me in app/views/admin/rides/index.html.erb</p>
+<div class="row">
+  <div class="col s12">
+    <h3>Rides List</h3>
+  </div>
+</div>
+
+
+<h2>Today's Rides</h2>
+<% @rides_today.each do |ride| %>
+<h4>Pickupdate: <%= ride.pickup_date %>   </h1>
+<h4>Destination: <%= ride.destination.name %>   </h2>
+<br>
+<br>
+<% end %>
+
+<h2>Open Rides</h2>
+
+<% @sorted_open_rides.each do |ride| %>
+<h4>Pickupdate: <%= ride.pickup_date %>   </h1>
+<h4>Destination: <%= ride.destination.name %>   </h2>
+<br>
+<br>
+<% end %>
+
+<h2>Scheduled Rides</h2>
+
+</div>

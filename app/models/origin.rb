@@ -1,7 +1,7 @@
 class Origin < ActiveRecord::Base
 
   belongs_to :member
-  belongs_to :ride
+  has_many :rides
 
   validates_presence_of :address_line1, :city, :zip
 
