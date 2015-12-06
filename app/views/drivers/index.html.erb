@@ -36,6 +36,7 @@
             <% driver.rides.each do |ride| %>
             <%= link_to (ride.destination.name + ": " + ride.pickup_date), "#" %>
             <br>
+            <% end %>
           </td>
           <td>
             <%= link_to "Update", edit_driver_path(driver.id), class: "btn" %></td>
