@@ -1,6 +1,7 @@
 class Driver < ActiveRecord::Base
   has_many :rides
   has_many :members, through: :rides
+  belongs_to :matcher
 
   validates :email, uniqueness: true, presence: true
   validates :password, presence: true, confirmation: true
