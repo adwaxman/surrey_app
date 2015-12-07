@@ -31,6 +31,35 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
+
+  if ($('.disable1').val() == "") {
+
+    $('.disable1').attr('disabled', true);
+
+  }
+
+  if ($('.disable2').val() == "") {
+
+    $('.disable2').attr('disabled', true);
+
+  }
+  if ($('.disable3').val() == "") {
+
+    $('.disable3').attr('disabled', true);
+
+  }
+  if ($('.disable4').val() == "") {
+
+    $('.disable4').attr('disabled', true);
+
+  }
+  if ($('.disable5').val() == "") {
+
+    $('.disable5').attr('disabled', true);
+
+  }
+
+  // disable time inputs if volunteer unavailable
   $('.check1').on('click', function(event) {
 
     if ($(this).is(":checked")) {
@@ -85,12 +114,17 @@ $(document).ready(function() {
 
 })
 
+
+
 // rotate plug in used for gear in nav bar
 
 $(function() {
 
   $('.settings-icon').click(function() {
-    $(this).rotate({duration: .7, endDeg: 180});
+    $(this).rotate({
+      duration: .7,
+      endDeg: 180
+    });
   })
 
 });
@@ -101,15 +135,14 @@ $(function() {
 $(document).ready(function() {
 
   if ($('.admin-checkbox').is(":checked")) {
-      $('.super-password').show();
+    $('.super-password').show();
   }
 
-  $('.admin-checkbox').click(function(){
+  $('.admin-checkbox').click(function() {
     if ($(this).is(":checked")) {
-        $('.super-password').show();
-    }
-    else {
-        $('.super-password').hide();
+      $('.super-password').show();
+    } else {
+      $('.super-password').hide();
     }
 
 

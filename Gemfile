@@ -30,6 +30,7 @@ gem 'gmaps4rails'
 #gem 'materialize-sass'
 
 #gem 'turboboost'
+gem 'nominatim'
 
 #gem 'judge'
 #gem 'underscore'
