@@ -1,33 +1,38 @@
 <div class="row">
-  <div class="col s12">
-  <div id="map" style="height: 400px; width: 400px"></div>
-  <div id="right-panel" style="height: 400px; width: 400px">
+  <div class="col s6">
+    <strong>Matching drivers</strong>
+    <br>
+    <div class="collection">
+      <% @matches.each do |driver| %>
+      <a class="collection-item" href="#!"><%= driver.fname %> <%= driver.lname %> </a>
+    </div>
 
+    <% end %>
   </div>
+  <div class="col s6">
+    <div id="map" style="height: 400px; width: 400px"></div>
+    <div id="right-panel" style="height: 400px; width: 400px"></div>
 
-<script>
-function initMap() {
-  var directionsDisplay = new google.maps.DirectionsRenderer;
-  var directionsService = new google.maps.DirectionsService;
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 7,
-    center: {lat: 0, lng: 0}
-  });
-  directionsDisplay.setMap(map);
-  directionsDisplay.setPanel(document.getElementById('right-panel'));
-  var start = " <%= @origin_address %>"
-  var end = " <%= @destination_address %>"
-  directionsService.route({
-    origin: start,
-    destination: end,
-    travelMode: google.maps.TravelMode.DRIVING
-  }, function(response, status) {
-    if (status === google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(response);
-    } else {
-      window.alert('Directions request failed due to ' + status);
-    }
-  });
-}
-</script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAf6Sqbj7X4LzbwXgljyNuIup1hP4X7Pjk&signed_in=true&callback=initMap"></script>
+    <script>
+      function initMap() {
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var directionsService = new google.maps.DirectionsService;
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 7,
+          center: {
+            lat: 0,
+            lng: 0
+          }
+        });
+        directionsDisplay.setMap(map);
+        directionsDisplay.setPanel(document.getElementById('right-panel'));
+        var start = " <%= @origin_address %>"
+        var end = " <%= @destination_address %>"
+        directionsService.route({
+          origin: start, destination: end, travelMode: google.maps.TravelMode.DRIVING
+        }, function (response, status) {
+          if (status === google.maps.DirectionsStatus.OK) {directionsDisplay.setDirections(response);} else {window.alert('Directions request failed due to ' + status);}
+        });
+      }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAf6Sqbj7X4LzbwXgljyNuIup1hP4X7Pjk&signed_in=true&callback=initMap"></script>

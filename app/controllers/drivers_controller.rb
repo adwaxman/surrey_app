@@ -10,6 +10,7 @@ class DriversController < ApplicationController
     if @driver.save
       redirect_to root_path
     else
+      debugger
       render 'new'
     end
   end
@@ -19,12 +20,30 @@ class DriversController < ApplicationController
   end
 
   def edit
+
     @driver = Driver.find(params[:id])
+
+    # Show time in readable format
+    @driver.monday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p")
+    @driver.monday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p")
+
+    @driver.tuesday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p")
+    @driver.tuesday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p")
+
+    @driver.wednesday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p")
+    @driver.wednesday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p")
+
+    @driver.thursday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p")
+    @driver.thursday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p")
+
+    @driver.friday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p")
+    @driver.friday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p")
   end
 
   def update
     @driver = Driver.find(params[:id])
     if @driver.update_attributes(driver_params)
+
       redirect_to drivers_path
     else
       render 'edit'
@@ -64,5 +83,7 @@ private
 
 
   end
+
+
 
 end

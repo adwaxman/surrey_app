@@ -90,38 +90,28 @@
       </div>
       <div class="input-field col s2">
         <strong>Monday</strong>
-        <input class="validate check1" id="name1" name="check1" type="checkbox" value="true">
-        <label for="name1">
-          <small>Unavailable</small>
-        </label>
+        <%= f.check_box :monday, class: "check1 validate" %>
+        <%= f.label :monday, "Available"%>
       </div>
       <div class="input-field col s2">
         <strong>Tuesday</strong>
-        <input class="validate check2" id="name2" name="check2" type="checkbox" value="true">
-        <label for="name2">
-          <small>Unavailable</small>
-        </label>
+        <%= f.check_box :tuesday, class: "check2 validate"  %>
+        <%= f.label :tuesday, "Available"%>
       </div>
       <div class="input-field col s2">
         <strong>Wednesday</strong>
-        <input class="validate check3" id="name3" name="check3" type="checkbox" value="true">
-        <label for="name3">
-          <small>Unavailable</small>
-        </label>
+        <%= f.check_box :wednesday, class: "check3 validate"  %>
+        <%= f.label :wednesday, "Available"%>
       </div>
       <div class="input-field col s2">
         <strong>Thursday</strong>
-        <input class="validate check4" id="name4" name="check4" type="checkbox" value="true">
-        <label for="name4">
-          <small>Unavailable</small>
-        </label>
+        <%= f.check_box :thursday, class: "check4 validate"  %>
+        <%= f.label :thursday, "Available"%>
       </div>
       <div class="input-field col s1">
         <strong>Friday</strong>
-        <input class="validate check5" id="name5" name="check5" type="checkbox" value="true">
-        <label for="name5">
-          <small>Unavailable</small>
-        </label>
+        <%= f.check_box :friday, class: "check5 validate"  %>
+        <%= f.label :friday, "Available"%>
       </div>
     </div>
     <div class="row">
@@ -129,34 +119,34 @@
         <%= f.text_field :monday_min, class: "timepicker2 disable1", placeholder: "" %>
       </div>
       <div class="input-field col s2">
-        <%= f.text_field :tuesday_min, class: "timepicker2 disable2", placeholder: "" %>
+        <%= f.text_field :tuesday_min, class: "timepicker2 disable2", placeholder: ""%>
       </div>
       <div class="input-field col s2">
-        <%= f.text_field :wednesday_min, class: "timepicker2 disable3", placeholder: "" %>
+        <%= f.text_field :wednesday_min, class: "timepicker2 disable3", placeholder: ""%>
       </div>
       <div class="input-field col s2">
-        <%= f.text_field :thursday_min, class: "timepicker2 disable4", placeholder: "" %>
+        <%= f.text_field :thursday_min, class: "timepicker2 disable4", placeholder: ""%>
       </div>
       <div class="input-field col s2">
-        <%= f.text_field :friday_min, class: "timepicker2 disable5", placeholder: "" %>
+        <%= f.text_field :friday_min, class: "timepicker2 disable5", placeholder: ""%>
       </div>
     </div>
     <div class="row center">
 
       <div class="input-field col s2">
-        <%= f.text_field :monday_max, class: "timepicker2 disable1", placeholder: "" %>
+        <%= f.text_field :monday_max, class: "timepicker2 disable1", placeholder: ""%>
       </div>
       <div class="input-field col s2">
-        <%= f.text_field :tuesday_max, class: "timepicker2 disable2", placeholder: "" %>
+        <%= f.text_field :tuesday_max, class: "timepicker2 disable2", placeholder: ""%>
       </div>
       <div class="input-field col s2">
-        <%= f.text_field :wednesday_max, class: "timepicker2 disable3", placeholder: "" %>
+        <%= f.text_field :wednesday_max, class: "timepicker2 disable3", placeholder: ""%>
       </div>
       <div class="input-field col s2">
-        <%= f.text_field :thursday_max, class: "timepicker2 disable4", placeholder: "" %>
+        <%= f.text_field :thursday_max, class: "timepicker2 disable4", placeholder: ""%>
       </div>
       <div class="input-field col s2">
-        <%= f.text_field :friday_max, class: "timepicker2 disable5", placeholder: "" %>
+        <%= f.text_field :friday_max, class: "timepicker2 disable5", placeholder: ""%>
       </div>
     </div>
     <div class="row">
