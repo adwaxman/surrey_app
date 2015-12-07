@@ -173,11 +173,8 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
-<<<<<<< HEAD
   nominatim
-=======
   jquery-ui-rails
->>>>>>> 3e42ab20a965efc9ac14381137dfb9f8d2388619
   pg
   pry
   pry-byebug

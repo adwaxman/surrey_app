@@ -141,11 +141,9 @@ $(document).ready(function() {
     $('.super-password').show();
   }
 
-<<<<<<< HEAD
+
   $('.admin-checkbox').click(function() {
-=======
-  $('.admin-checkbox').click(function(){
->>>>>>> 3e42ab20a965efc9ac14381137dfb9f8d2388619
+
     if ($(this).is(":checked")) {
       $('.super-password').show();
     } else {
