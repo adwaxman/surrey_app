@@ -11,8 +11,10 @@
 // about supported directives.
 //
 //= require jquery
+
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require jquery-ui
 //= require_tree .
 //= require pickadate
 //= require picker
@@ -22,6 +24,7 @@
 //= require drivers
 //= require turbolinks
 //= require rotate
+
 
 
 
@@ -103,7 +106,7 @@ $(document).ready(function() {
   if ($('.admin-checkbox').is(":checked")) {
       $('.super-password').show();
   }
-  
+
   $('.admin-checkbox').click(function(){
     if ($(this).is(":checked")) {
         $('.super-password').show();

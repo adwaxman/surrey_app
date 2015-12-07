@@ -57,7 +57,7 @@ private
    float = string_to_convert.to_f
 
    if pm
-       float = float + 12.0 unless str[0..1] == "12"
+       float = float + 12.0 unless str[0..1] == "12" 
    end
 
    return float

@@ -18,7 +18,14 @@ class Admin::RidesController < ApplicationController
     @origin_address = @origin.address_line1 + " " + @origin.address_line2 + " " + @origin.city + " PA," + " " + @origin.zip
     @destination_address = @destination.address_line1 + " " + @destination.address_line2 + " " + @destination.city + " PA," + " " + @destination.zip
 
+    @drivers = Driver.all
+    @arr_of_drivers = []
+    @drivers.each do |driver|
+      @arr_of_drivers.push(driver.fname + " " + driver.lname)
+    end
     
+
+
 
   end
 
