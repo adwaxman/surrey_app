@@ -2,22 +2,14 @@
 
 one:
   driver_id: 1
-  ride_id: MyString
-  integer: MyString
+  ride_id: 1
   contact_method: MyString
-  string: MyString
   result: MyString
-  string: MyString
-  admin_id: MyString
-  integer: MyString
+  admin_id: 1
 
 two:
   driver_id: 1
-  ride_id: MyString
-  integer: MyString
+  ride_id: 1
   contact_method: MyString
-  string: MyString
   result: MyString
-  string: MyString
-  admin_id: MyString
-  integer: MyString
+  admin_id: 1

@@ -28,7 +28,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'gmaps4rails'
 # materialize css
 #gem 'materialize-sass'
-
+gem 'jquery-ui-rails'
 #gem 'turboboost'
 gem 'nominatim'
 

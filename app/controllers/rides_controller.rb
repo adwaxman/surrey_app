@@ -91,10 +91,14 @@ class RidesController < ApplicationController
     @origin_address = @origin.address_line1 + " " + @origin.address_line2 + " " + @origin.city + " PA," + " " + @origin.zip
     @destination_address = @destination.address_line1 + " " + @destination.address_line2 + " " + @destination.city + " PA," + " " + @destination.zip
 
+<<<<<<< HEAD
     # matching logic
     @weekday = Date.parse(@ride.pickup_date).strftime("%A").downcase
 
     @matches = Driver.where("#{@weekday}": true).where("#{@weekday}_min <= ?", @ride.pickup_time).where("#{@weekday}_max >= ?", @ride.pickup_time).where(accommodate_wheelchair: @ride.wheelchair).where(accommodate_aide: @ride.aide)
+=======
+
+>>>>>>> 3e42ab20a965efc9ac14381137dfb9f8d2388619
   end
 
   def destroy

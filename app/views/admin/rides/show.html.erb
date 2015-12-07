@@ -50,3 +50,22 @@
     </table>
   </div>
 </div>
+
+
+<script>
+$(function() {
+  var availableTags = [];
+    <% @arr_of_drivers.each do |driver| %>
+    availableTags.push('<%= driver %>');
+    <% end %>
+
+  $( "#tags" ).autocomplete({
+    source: availableTags
+  });
+});
+</script>
+
+<div class="ui-widget">
+<label for="tags">Tags: </label>
+<input id="tags">
+</div>
