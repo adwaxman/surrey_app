@@ -34,50 +34,50 @@ $(document).ready(function() {
   $('.check1').on('click', function(event) {
 
     if ($(this).is(":checked")) {
-      $('.disable1').attr('disabled', true);
+      $('.disable1').attr('disabled', false);
     } else {
       {
-        $('.disable1').attr('disabled', false);
+        $('.disable1').attr('disabled', true);
       }
     }
   });
   $('.check2').on('click', function(event) {
 
     if ($(this).is(":checked")) {
-      $('.disable2').attr('disabled', true);
+      $('.disable2').attr('disabled', false);
     } else {
       {
-        $('.disable2').attr('disabled', false);
+        $('.disable2').attr('disabled', true);
       }
     }
   });
   $('.check3').on('click', function(event) {
 
     if ($(this).is(":checked")) {
-      $('.disable3').attr('disabled', true);
+      $('.disable3').attr('disabled', false);
     } else {
       {
-        $('.disable3').attr('disabled', false);
+        $('.disable3').attr('disabled', true);
       }
     }
   });
   $('.check4').on('click', function(event) {
 
     if ($(this).is(":checked")) {
-      $('.disable4').attr('disabled', true);
+      $('.disable4').attr('disabled', false);
     } else {
       {
-        $('.disable4').attr('disabled', false);
+        $('.disable4').attr('disabled', true);
       }
     }
   });
   $('.check5').on('click', function(event) {
 
     if ($(this).is(":checked")) {
-      $('.disable5').attr('disabled', true);
+      $('.disable5').attr('disabled', false);
     } else {
       {
-        $('.disable5').attr('disabled', false);
+        $('.disable5').attr('disabled', true);
       }
     }
   });
@@ -103,7 +103,7 @@ $(document).ready(function() {
   if ($('.admin-checkbox').is(":checked")) {
       $('.super-password').show();
   }
-  
+
   $('.admin-checkbox').click(function(){
     if ($(this).is(":checked")) {
         $('.super-password').show();

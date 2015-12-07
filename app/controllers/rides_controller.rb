@@ -83,10 +83,8 @@ class RidesController < ApplicationController
 
     # matching logic
     @weekday = Date.parse(@ride.pickup_date).strftime("%A").downcase
-    @ride.monday_min = @ride.monday_min.to_f
-    @ride.monday_max = @ride.monday_max.to_f
 
-    @matches = Driver.where("#{@weekday}": false).where("#{@weekday}_min >= ?", @ride.pickup_time.to_f).where("#{@weekday}_max <= ?", @ride.pickup_time.to_f)
+    @matches = Driver.where("#{@weekday}_min <= ?", @ride.pickup_time).where("#{@weekday}_max >= ?", @ride.pickup_time)
   end
 
   def destroy

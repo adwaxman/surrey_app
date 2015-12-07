@@ -7,16 +7,6 @@ class DriversController < ApplicationController
 
   def create
     @driver = Driver.new(driver_params)
-    # @driver.monday_min = Time.parse(@driver.monday_min).strftime("%l:%M %p")
-    # @driver.monday_max = Time.parse(@driver.monday_max).strftime("%l:%M %p")
-    # @driver.tuesday_min = convert_time_to_float(@driver.monday_min)
-    # @driver.tuesday_max = convert_time_to_float(@driver.monday_max)
-    # @driver.wednesday_min = convert_time_to_float(@driver.monday_min)
-    # @driver.wednesday_max = convert_time_to_float(@driver.monday_max)
-    # @driver.thursday_min = convert_time_to_float(@driver.monday_min)
-    # @driver.thursday_max = convert_time_to_float(@driver.monday_max)
-    # @driver.friday_min = convert_time_to_float(@driver.monday_min)
-    # @driver.friday_max = convert_time_to_float(@driver.monday_max)
     if @driver.save
       redirect_to root_path
     else
@@ -30,32 +20,28 @@ class DriversController < ApplicationController
   end
 
   def edit
-    @driver = Driver.find(params[:id])
-    @driver.monday_min = Time.parse(@driver.monday_min).strftime("%l:%M %p")
-    @driver.monday_min = Time.parse(@driver.monday_min).strftime("%l:%M %p")
-    @driver.tuesday_min = Time.parse(@driver.monday_min).strftime("%l:%M %p")
-    @driver.tuesday_min = Time.parse(@driver.monday_min).strftime("%l:%M %p")
-    @driver.wednesday_min = Time.parse(@driver.monday_min).strftime("%l:%M %p")
-    @driver.wednesday_min = Time.parse(@driver.monday_min).strftime("%l:%M %p")
-    @driver.thursday_min = Time.parse(@driver.monday_min).strftime("%l:%M %p")
-    @driver.thursday_min = Time.parse(@driver.monday_min).strftime("%l:%M %p")
-    @driver.friday_min = Time.parse(@driver.monday_min).strftime("%l:%M %p")
-    @driver.friday_min = Time.parse(@driver.monday_min).strftime("%l:%M %p")
 
+    @driver = Driver.find(params[:id])
+
+    # Show time in readable format
+    @driver.monday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p")
+    @driver.monday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p")
+
+    @driver.tuesday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p")
+    @driver.tuesday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p")
+
+    @driver.wednesday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p")
+    @driver.wednesday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p")
+
+    @driver.thursday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p")
+    @driver.thursday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p")
+
+    @driver.friday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p")
+    @driver.friday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p")
   end
 
   def update
     @driver = Driver.find(params[:id])
-    @driver.monday_min = convert_time_to_float(@driver.monday_min)
-    @driver.monday_max = convert_time_to_float(@driver.monday_max)
-    @driver.tuesday_min = convert_time_to_float(@driver.monday_min)
-    @driver.tuesday_max = convert_time_to_float(@driver.monday_max)
-    @driver.wednesday_min = convert_time_to_float(@driver.monday_min)
-    @driver.wednesday_max = convert_time_to_float(@driver.monday_max)
-    @driver.thursday_min = convert_time_to_float(@driver.monday_min)
-    @driver.thursday_max = convert_time_to_float(@driver.monday_max)
-    @driver.friday_min = convert_time_to_float(@driver.monday_min)
-    @driver.friday_max = convert_time_to_float(@driver.monday_max)
     if @driver.update_attributes(driver_params)
 
       redirect_to drivers_path
