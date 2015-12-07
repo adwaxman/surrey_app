@@ -8,6 +8,7 @@ class DriversController < ApplicationController
   def create
     @driver = Driver.new(driver_params)
     if @driver.save
+      Matcher.create(driver_id: @driver.id)
       redirect_to root_path
     else
       render 'new'
@@ -56,7 +57,7 @@ private
    float = string_to_convert.to_f
 
    if pm
-       float = float + 12.0
+       float = float + 12.0 unless str[0..1] == "12"
    end
 
    return float
