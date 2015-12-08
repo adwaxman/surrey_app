@@ -150,24 +150,17 @@
       </div>
     </div>
     <div class="row">
-      <div class="input-field col s12 m3">
-        I can accommodate a wheelchair:
+
+      <div class="input-field col s12 m6 offset-m3">
+        <p>
+          Please check all that apply:
+        </p>
+        <%= f.check_box :accommodate_wheelchair %>
+        <%= f.label :accommodate_wheelchair, "I can accomodate a wheelchair"  %>
         <br>
-        <%= f.radio_button :accommodate_wheelchair, "true" %>
-        <%= f.label :accommodate_wheelchair_true, "Yes" %>
-        <br>
-        <%= f.radio_button :accommodate_wheelchair, "false" %>
-        <%= f.label :accommodate_wheelchair_false, "No" %>
-      </div>
-      <div class="input-field col s12 m3">
-        I can accommodate an aide:
-        <br>
-        <%= f.radio_button :accommodate_aide, "true" %>
-        <%= f.label :accommodate_aide_true, "Yes" %>
-        <br>
-        <%= f.radio_button :accommodate_aide, "false" %>
-        <%= f.label :accommodate_aide_false, "No" %>
-      </div>
+        <%= f.check_box :accommodate_aide %>
+        <%= f.label :accommodate_aide, "I can accomodate an aide or additional escort" %>
+
     </div>
   </div>
   <%= f.submit "Submit", class:"btn" %>

@@ -13,17 +13,23 @@ class Admin::RidesController < ApplicationController
 
   def show
     @ride = Ride.find(params[:id])
-    @origin = Origin.find(@ride.origin_id)
-    @destination = Destination.find(@ride.destination_id)
-    @origin_address = @origin.address_line1 + " " + @origin.address_line2 + " " + @origin.city + " PA," + " " + @origin.zip
-    @destination_address = @destination.address_line1 + " " + @destination.address_line2 + " " + @destination.city + " PA," + " " + @destination.zip
+    @pickup_time = Time.parse(@ride.pickup_time.to_s).strftime("%l:%M %p")
 
     @drivers = Driver.all
     @arr_of_drivers = []
     @drivers.each do |driver|
       @arr_of_drivers.push(driver.fname + " " + driver.lname)
     end
-    
+
+    @matched_drivers = []
+    @matches = Match.where(ride_id: @ride.id)
+    @matches.each do |match|
+      @matched_drivers.push(Driver.find(match.matcher_id))
+    end
+
+    @outreaches = @ride.outreaches
+
+
 
 
 

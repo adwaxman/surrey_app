@@ -5,6 +5,8 @@ class Ride < ActiveRecord::Base
   belongs_to :destination
   belongs_to :origin
 
+  has_many :outreaches
+
   has_many :matches
   has_many :matchers, through: :matches
 
