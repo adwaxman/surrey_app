@@ -11,9 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20151207193714) do
-
+ActiveRecord::Schema.define(version: 20151208180020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +76,7 @@ ActiveRecord::Schema.define(version: 20151207193714) do
     t.time     "thursday_max"
     t.time     "friday_min"
     t.time     "friday_max"
+    t.text     "county_preference"
   end
 
   create_table "matchers", force: :cascade do |t|
@@ -138,16 +137,7 @@ ActiveRecord::Schema.define(version: 20151207193714) do
     t.boolean  "primary"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-  end
-
-  create_table "outreaches", force: :cascade do |t|
-    t.integer  "driver_id"
-    t.integer  "ride_id"
-    t.string   "contact_method"
-    t.string   "result"
-    t.integer  "admin_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.string   "county"
   end
 
   create_table "rides", force: :cascade do |t|

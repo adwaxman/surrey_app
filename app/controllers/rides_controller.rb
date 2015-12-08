@@ -56,6 +56,14 @@ class RidesController < ApplicationController
 
     if params[:origin_id] == "" || current_member.origins.length ==0
       @origin = Origin.new(member_id: member_id, address_line1: origin_address_line1, address_line2: origin_address_line2, city: origin_city, state: state, zip: origin_zip)
+      @origin_address = Nominatim.search(@origin.address_line1 + " " + @origin.address_line2 + " " + @origin.city + " PA," + " " + @origin.zip).limit(1).address_details(true)
+
+      for @origin_address in @origin_address
+        p @origin_address.display_name
+      end
+
+      @origin.county = @origin_address.address.county
+      debugger
       if @origin.save
       else
         flash[:alert] = "problem 2"
@@ -95,9 +103,10 @@ class RidesController < ApplicationController
     # matching logic
     @weekday = Date.parse(@ride.pickup_date).strftime("%A").downcase
 
-    @matches = Driver.where("#{@weekday}": true).where("#{@weekday}_min <= ?", @ride.pickup_time).where("#{@weekday}_max >= ?", @ride.pickup_time).where(accommodate_wheelchair: @ride.wheelchair).where(accommodate_aide: @ride.aide)
 
+    @matches = Driver.where("#{@weekday}": true).where("#{@weekday}_min <= ?", @ride.pickup_time).where("#{@weekday}_max >= ?", @ride.pickup_time).where(accommodate_wheelchair: @ride.wheelchair).where(accommodate_aide: @ride.aide).where("county_preference ilike '%\n- #{@ride.destination.county}\n%'")
 
+end
   def destroy
 
   end

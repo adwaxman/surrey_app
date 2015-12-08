@@ -9,5 +9,7 @@ class Driver < ActiveRecord::Base
   validates :cell, format: { with: /[(][0-9]{3}[)][ ][0-9]{3}-[0-9]{4}/, message: "is not valid" }
   validates_presence_of :fname, :lname, :address_line1, :city, :state, :zip
 
+  serialize :county_preference
+
 
 end
