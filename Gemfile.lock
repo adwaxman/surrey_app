@@ -173,8 +173,8 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
-  nominatim
   jquery-ui-rails
+  nominatim
   pg
   pry
   pry-byebug

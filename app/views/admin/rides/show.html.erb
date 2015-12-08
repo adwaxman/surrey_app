@@ -1,6 +1,9 @@
 <div class="row">
   <div class="col s12">
-      <h4> Ride number: <%= @ride.id %> </h4>
+    <h4>
+      Ride number:
+      <%= @ride.id %>
+    </h4>
   </div>
 </div>
 
@@ -12,8 +15,10 @@
           <th data-field="date">Date</th>
           <th data-field="time">Time</th>
           <th data-field="member">Member</th>
-          <th data-field="location">Pickup Location </th>
-          <th data-field="destination">Destination </th>
+          <th data-field="location">Pickup Location
+          </th>
+          <th data-field="destination">Destination
+          </th>
           <th data-field="action">Action</th>
         </tr>
       </thead>
@@ -23,7 +28,7 @@
             <%= @ride.pickup_date %>
           </td>
           <td>
-            <%= @ride.pickup_time %>
+            <%= @pickup_time %>
           </td>
           <td>
             <%= @ride.member.fname + " " + @ride.member.lname %>
@@ -35,14 +40,17 @@
             <%= @ride.origin.zip %>
           </td>
           <td>
-            <%= @ride.destination.name %> <br>
+            <%= @ride.destination.name %>
+            <br>
             <%= @ride.destination.address_line1 %><br>
             <%= @ride.destination.city %>,
             <%= @ride.destination.state %>,
             <%= @ride.destination.zip %>
           </td>
           <td>
-            <a class="btn"> Assign Driver </a>
+            <a class="btn">
+              Assign Driver
+            </a>
             <!-- <a href="#" class="btn"> Cancel</a> -->
           </td>
         </tr>
@@ -50,22 +58,85 @@
     </table>
   </div>
 </div>
+<h4>Matched Drivers</h4>
+<div class="row">
+  <div class="col s12">
+    <ul class="collapsible" data-collapsible="expandable">
+      <%  @matched_drivers.each do |driver|  %>
+      <li>
+        <div class="collapsible-header">
+          <%= driver.fname + " " + driver.lname %>
+        </div>
+        <div class="collapsible-body">
+          <div class="row">
+            <div class="col s4">
+              <%= driver.email %>
+            </div>
+            <% if driver.phone %>
+            <div class="col s4">
+              Home: <%= driver.phone %>
+            </div>
+            <% end %>
+            <% if driver.cell %>
+            <div class="col s4">
+              Cell: <%= driver.cell %>
+            </div>
+            <% end %>
+          </div>
+          <div class="row">
+            <div class="col s12">
+                <% if driver.outreaches.where(ride_id: @ride.id).first %>
+                <table>
+                  <thead>
+                    <tr>
+                      <th data-field="date">Date</th>
+                      <th data-field="contact-method">Contact Method</th>
+                      <th data-field="result">Result
+                      </th>
+                      <th data-field="admin">Who outreached?
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <% driver.outreaches.where(ride_id: @ride.id).each do |outreach| %>
+                  <tr>
+                    <td>  <%= outreach.created_at %></td>
+                    <td><%=outreach.contact_method%></td>
+                    <td> <%=outreach.result  %>
+                    </td>
+                    <td> <%=outreach.admin.fname  %> 
+                    </td>
+                  </tr>
 
+                  <% end %>
+                  </tbody>
+                </table>
+                <% end %>
+
+
+            </div>
+          </div>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+
+  </div>
+</div>
+
+<div class="ui-widget">
+  <label for="tags">All Drivers:
+  </label>
+  <input id="tags">
+</div>
 
 <script>
-$(function() {
-  var availableTags = [];
+  $(function () {
+    var availableTags = [];
     <% @arr_of_drivers.each do |driver| %>
     availableTags.push('<%= driver %>');
     <% end %>
 
-  $( "#tags" ).autocomplete({
-    source: availableTags
+    $("#tags").autocomplete({source: availableTags});
   });
-});
 </script>
-
-<div class="ui-widget">
-<label for="tags">Tags: </label>
-<input id="tags">
-</div>

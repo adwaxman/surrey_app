@@ -26,10 +26,10 @@ class RidesController < ApplicationController
 
     pickup_date = params[:pickup_date]
     pickup_time = params[:pickup_time]
-    wheelchair = params[:wheelchair]
-    aide = params[:aide]
-    hearing_impaired = params[:hearing_impaired]
-    vision_impaired = params[:vision_impaired]
+    wheelchair = params[:wheelchair] ? params[:wheelchair] : wheelchair = false
+    aide = params[:aide] ? params[:aide] : aide = false
+    hearing_impaired = params[:hearing_impaired] ? params[:hearing_impaired] : hearing_impaired = false
+    vision_impaired = params[:vision_impaired] ? params[:vision_impaired] : vision_impaired = false
     status = "open"
 
 
@@ -73,7 +73,17 @@ class RidesController < ApplicationController
 
     @ride = Ride.new(member_id: member_id, destination_id: destination_id_to_be_passed, origin_id: origin_id_to_be_passed, wheelchair: wheelchair, aide: aide, hearing_impaired: hearing_impaired, vision_impaired: vision_impaired, pickup_date: pickup_date, pickup_time: pickup_time, status: "open")
     if @ride.save
-
+      @weekday = Date.parse(@ride.pickup_date).strftime("%A").downcase
+      @matches = Driver.where("#{@weekday}": true).where("#{@weekday}_min <= ?", @ride.pickup_time).where("#{@weekday}_max >= ?", @ride.pickup_time)
+      if @ride.wheelchair
+        @matches = @matches.where(accommodate_wheelchair: true)
+      end
+      if @ride.aide
+        @matches = @matches.where(accommodate_aide: true)
+      end
+      @matches.each do |driver|
+        Match.create(ride_id: @ride.id, matcher_id: driver.id )
+      end
       flash[:notice] = "Your ride has been requested!"
       redirect_to root_path
     else
@@ -91,16 +101,20 @@ class RidesController < ApplicationController
     @origin_address = @origin.address_line1 + " " + @origin.address_line2 + " " + @origin.city + " PA," + " " + @origin.zip
     @destination_address = @destination.address_line1 + " " + @destination.address_line2 + " " + @destination.city + " PA," + " " + @destination.zip
 
+    
+    @matched_drivers = []
+    @matches = Match.where(ride_id: @ride.id)
+    @matches.each do |match|
+      @matched_drivers.push(Driver.find(match.matcher_id))
+    end
 
-    # matching logic
-    @weekday = Date.parse(@ride.pickup_date).strftime("%A").downcase
-
-    @matches = Driver.where("#{@weekday}": true).where("#{@weekday}_min <= ?", @ride.pickup_time).where("#{@weekday}_max >= ?", @ride.pickup_time).where(accommodate_wheelchair: @ride.wheelchair).where(accommodate_aide: @ride.aide)
-
+  end
 
   def destroy
 
   end
+
+
 private
 def convert_time_to_float str
 

@@ -3,11 +3,10 @@
     <strong>Matching drivers</strong>
     <br>
     <div class="collection">
-      <% @matches.each do |driver| %>
+      <% @matched_drivers.each do |driver| %>
       <a class="collection-item" href="#!"><%= driver.fname %> <%= driver.lname %> </a>
-    </div>
-
     <% end %>
+    </div>
   </div>
   <div class="col s6">
     <div id="map" style="height: 400px; width: 400px"></div>

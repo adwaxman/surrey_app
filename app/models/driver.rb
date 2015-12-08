@@ -3,6 +3,8 @@ class Driver < ActiveRecord::Base
   has_many :members, through: :rides
   belongs_to :matcher
 
+  has_many :outreaches
+
   validates :email, uniqueness: true, presence: true
   validates :password, presence: true, confirmation: true
   validates :phone, format: { with: /[(][0-9]{3}[)][ ][0-9]{3}-[0-9]{4}/, message: "is not valid" }
