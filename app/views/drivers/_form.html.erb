@@ -1,7 +1,4 @@
-
-<div class="errors">
-
-</div>
+<div class="errors"></div>
 <div class="row">
   <%= form_for @driver, :html => {:class => "col s10 offset-s1"} do |f| %>
   <div class="row">
@@ -151,7 +148,7 @@
     </div>
     <div class="row">
 
-      <div class="input-field col s12 m6 offset-m3">
+      <div class="input-field col s12 m6 offset">
         <p>
           Please check all that apply:
         </p>
@@ -161,20 +158,37 @@
         <%= f.check_box :accommodate_aide %>
         <%= f.label :accommodate_aide, "I can accomodate an aide or additional escort" %>
 
+      </div>
+      <div class="input-field col s12 m6 offset">
+        <p>
+          Please check all that apply:
+        </p>
+        <input name="driver[county_preference][]" type="checkbox" value="Chester County" id="chesco"/>
+        <label for="chesco">Chester County</label>
+        <br>
+        <input name="driver[county_preference][]" type="checkbox" value="Delaware County" id="delco"/>
+        <label for="delco">Delaware County</label>
+        <br>
+        <input name="driver[county_preference][]" type="checkbox" value="Montgomery County" id="montco"/>
+        <label for="montco">Montgomery County</label>
+        <br>
+        <input name="driver[county_preference][]" type="checkbox" value="Philadelphia County" id="philco"/>
+        <label for="philco">Philadelphia County</label>
+        <br>
+
+      </div>
     </div>
+    <%= f.submit "Submit", class:"btn" %>
+    <% end %>
   </div>
-  <%= f.submit "Submit", class:"btn" %>
-  <% end %>
-</div>
 
-<script>
-// timepicker for driver form
-$('.timepicker2').pickatime({
-  interval: 15,
-  min: [
-    8, 30
-  ],
-  max: [16, 30]
-});
-
-</script>
+  <script>
+    // timepicker for driver form
+    $('.timepicker2').pickatime({
+      interval: 15,
+      min: [
+        8, 30
+      ],
+      max: [16, 30]
+    });
+  </script>
