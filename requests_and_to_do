@@ -1,0 +1,33 @@
+1. middle name field
+2. primary number
+3. secondary number
+	for member and ecs
+
+
+
+
+4. confimation page for forms (just redirect to a display page after saving; offer update/delete options; note: would have to delete matches associated with the ride)
+5. add notes table to attach to drivers ("on vacation until," etc...)
+6. add rides notes
+
+6. drivers cannot assign themselves
+7. drivers are either a volunteer or a private driver (boolean private:true)
+8. on admin panel, flag matches that are private drivers
+9. admin ride panel - create ride button leads page with searchable field with list of members --> submit takes you to create ride form where member's locations,etc will be available
+10. add full_name column to admins and members
+11. super admins can view and edit other admins
+12. different color layouts for members, drivers, admin
+13. resetting passwords -- admins retrieve for members/drivers? devise - email?
+14. admins resetting password?
+15. pins for members and drivers to sign up?
+16. FILTERS
+	1. only a super admin can create a new admin account
+	2. drivers and members only see their pages (before actions?)
+
+17. make tweaks now that drivers cannot self-assign
+18. instructions on forms
+19. when drivers log in, they can update their schedule and info and can view their scheduled rides; that's it
+
+BONUS:
+1. drivers get automatically emailed ride info when they are scheduled
+2. javascript validations for forms*****
