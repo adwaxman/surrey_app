@@ -32,7 +32,7 @@ class RidesController < ApplicationController
 
     if params[:destination_id] == '' || current_member.destinations.length == 0
       @destination = Destination.new(member_id: member_id, name: destination_name, address_line1: destination_address_line1, address_line2: destination_address_line2, city: destination_city, state: state, zip: destination_zip, destination_type: destination_type, destination_other_type: destination_other_type)
-      @destination_address = Nominatim.search(@destination.address_line1 + ' ' + @destination.address_line2 + ' ' + @destination.city + ' ' + @destination.zip).address_details(true)
+      @destination_address = Nominatim.search(@destination.address_line1 + ' ' + @destination.address_line2 + ' ' + @destination.city + ' ' + @destination.zip).limit(1).address_details(true)
 
       for @destination_address in @destination_address
         p @destination_address.display_name
