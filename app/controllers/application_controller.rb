@@ -11,6 +11,14 @@ def current_member
   end
 end
 
+def current_admin
+  if session[:admin_id]
+    Admin.find(session[:admin_id])
+  else
+    nil
+  end
+end
+
 def rides_today
   @rides = Ride.all.where.not(driver_id: nil)
   @rides_today = []

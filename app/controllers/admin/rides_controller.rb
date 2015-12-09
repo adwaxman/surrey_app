@@ -28,17 +28,30 @@ class Admin::RidesController < ApplicationController
     end
 
     @outreaches = @ride.outreaches
-
-
-
-
-
   end
 
   def new
   end
 
   def edit
+  end
+
+  def update
+    puts '*' * 35
+    puts params
+    @ride = Ride.find(params[:id])
+    @driver = Driver.where(full_name: params[:driver_full_name]).first
+    if current_admin
+      @ride.update(driver_id: @driver.id, assigned_by: current_admin.fname + " " + current_admin.lname, status: "scheduled")
+      redirect_to admin_ride_path @ride
+    elsif current_driver
+      @ride.update(driver_id: @driver.id, assigned_by: "self", status: "scheduled")
+      redirect_to driver_ride_path @ride
+    else
+      flash[:alert] = "There was a problem"
+      redirect :back
+    end
+
   end
 
 

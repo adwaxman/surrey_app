@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
 
+  namespace :admin do
+  get 'outreaches/new'
+  end
+
   namespace :driver do
   get 'sessions/new'
   end
@@ -20,7 +24,7 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
-    resources :members, :drivers, :rides, :origins, :destinations
+    resources :members, :drivers, :rides, :origins, :destinations, :outreaches
     get 'login', to: 'sessions#new'
     post 'login', to: 'sessions#create'
     get  'logout', to: 'sessions#destroy'

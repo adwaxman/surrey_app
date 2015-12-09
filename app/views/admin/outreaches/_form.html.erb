@@ -1,0 +1,29 @@
+
+<div class="row">
+
+  <%= form_tag admin_outreaches_path, method: :post, class: "col s10 offset-s1" do %>
+
+  <div class="row">
+    <div class="input-field col s12 m6">
+      <%= label_tag :contact_method, "Contact Method" %>
+      <br> <br>
+      <%= select_tag :contact_method, options_for_select([['email', 'email'], ['cell', 'cell'], ['home phone', 'home phone']]), class: "validate browser-default" %>
+    </div>
+    <div class="input-field col s12 m6">
+      <%= label_tag :result, "Result" %>
+      <br> <br>
+      <%= select_tag :result, options_for_select([['left message', 'left message'], ['waiting to hear back', 'waiting to hear back'], ['driver declined', 'driver declined'], ['driver assigned', 'driver assigned']]), class: "validate browser-default" %>
+    </div>
+    <%= hidden_field_tag :ride_id, value=@ride_id %>
+    <%= hidden_field_tag :driver_id, value=@driver_id %>
+    <%= hidden_field_tag :admin_id, value=current_admin.id %>
+  </div>
+
+  <div class="center">
+      <%= submit_tag :submit, class: "btn" %>
+  </div>
+
+  <% end %>
+
+
+</div>

@@ -13,5 +13,13 @@ class Driver < ActiveRecord::Base
 
   serialize :county_preference
 
+  before_save :add_full_name
+
+  def add_full_name
+    @full_name = self.fname + " " + self.lname
+    puts @full_name
+    self.full_name = @full_name
+  end
+
 
 end
