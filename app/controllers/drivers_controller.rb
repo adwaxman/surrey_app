@@ -7,6 +7,7 @@ class DriversController < ApplicationController
 
   def create
     @driver = Driver.new(driver_params)
+    @driver.county_preference = params[:driver][:county_preference]
     if @driver.save
       Matcher.create(driver_id: @driver.id)
       redirect_to root_path
@@ -60,7 +61,7 @@ class DriversController < ApplicationController
 private
 
   def driver_params
-    params.require(:driver).permit(:fname, :lname, :email, :password, :password_confirmation, :address_line1, :address_line2, :city, :state, :zip, :car_type, :monday, :monday_min, :monday_max, :tuesday, :tuesday_min, :tuesday_max, :wednesday, :wednesday_min, :wednesday_max, :thursday, :thursday_min, :thursday_max, :friday, :friday_min, :friday_max, :unavailable, :accommodate_wheelchair, :accommodate_aide, :preferred_contact, :phone, :cell)
+    params.require(:driver).permit(:fname, :lname, :email, :password, :password_confirmation, :address_line1, :address_line2, :city, :state, :zip, :car_type, :monday, :monday_min, :monday_max, :tuesday, :tuesday_min, :tuesday_max, :wednesday, :wednesday_min, :wednesday_max, :thursday, :thursday_min, :thursday_max, :friday, :friday_min, :friday_max, :unavailable, :accommodate_wheelchair, :accommodate_aide, :preferred_contact, :phone, :cell, :county_preference)
   end
 
   def convert_time_to_float str
@@ -76,7 +77,7 @@ private
    float = string_to_convert.to_f
 
    if pm
-       float = float + 12.0 unless str[0..1] == "12" 
+       float = float + 12.0 unless str[0..1] == "12"
    end
 
    return float

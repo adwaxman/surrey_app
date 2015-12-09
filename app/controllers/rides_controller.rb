@@ -32,12 +32,12 @@ class RidesController < ApplicationController
 
     if params[:destination_id] == '' || current_member.destinations.length == 0
       @destination = Destination.new(member_id: member_id, name: destination_name, address_line1: destination_address_line1, address_line2: destination_address_line2, city: destination_city, state: state, zip: destination_zip, destination_type: destination_type, destination_other_type: destination_other_type)
-      @destination_address = Nominatim.search(@destination.address_line1 + ' ' + @destination.address_line2 + ' ' + @destination.city + ' PA,' + ' ' + @destination.zip).limit(1).address_details(true)
+      @destination_address = Nominatim.search(@destination.address_line1 + ' ' + @destination.address_line2 + ' ' + @destination.city + ' ' + @destination.zip).address_details(true)
 
       for @destination_address in @destination_address
         p @destination_address.display_name
       end
-
+      debugger
       @destination.county = @destination_address.address.county
       if @destination.save
       else
@@ -78,7 +78,7 @@ class RidesController < ApplicationController
     @ride = Ride.new(member_id: member_id, destination_id: destination_id_to_be_passed, origin_id: origin_id_to_be_passed, wheelchair: wheelchair, aide: aide, hearing_impaired: hearing_impaired, vision_impaired: vision_impaired, pickup_date: pickup_date, pickup_time: pickup_time, status: 'open')
     if @ride.save
       @weekday = Date.parse(@ride.pickup_date).strftime('%A').downcase
-      @matches = Driver.where("#{@weekday}": true).where("#{@weekday}_min <= ?", @ride.pickup_time).where("#{@weekday}_max >= ?", @ride.pickup_time)
+      @matches = Driver.where("#{@weekday}": true).where("#{@weekday}_min <= ?", @ride.pickup_time).where("#{@weekday}_max >= ?", @ride.pickup_time).where("county_preference ilike '%\n- #{@ride.destination.county}\n%'")
       if @ride.wheelchair
         @matches = @matches.where(accommodate_wheelchair: true)
       end
@@ -86,6 +86,7 @@ class RidesController < ApplicationController
       @matches.each do |driver|
         Match.create(ride_id: @ride.id, matcher_id: driver.id)
       end
+      debugger
       flash[:notice] = 'Your ride has been requested!'
       redirect_to root_path
     else
