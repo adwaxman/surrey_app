@@ -141,16 +141,6 @@ ActiveRecord::Schema.define(version: 20151208231511) do
     t.string   "county"
   end
 
-  create_table "outreaches", force: :cascade do |t|
-    t.integer  "driver_id"
-    t.integer  "ride_id"
-    t.string   "contact_method"
-    t.string   "result"
-    t.integer  "admin_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
   create_table "rides", force: :cascade do |t|
     t.integer  "member_id"
     t.integer  "driver_id"
