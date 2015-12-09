@@ -1,7 +1,7 @@
 <nav>
   <div class="nav-wrapper blue accent-4">
     <a href="#!" class="brand-logo">Surrey Services</a>
-    <ul class="right hide-on-med-and-down">
+    <ul class="right">
       <% if session[:member_id] %>
       <li> <%= current_member.fname + " " + current_member.lname %> </li>
       <li><a href="/logout">Logout</a></li>
@@ -33,6 +33,15 @@
 
     <% end %>
 
+    <% if session[:driver_id] %>
+    <ul  class="right">
+      <a href="/driver/logout">Driver logout</a>
+
+      </ul>
+
+      <% else %>
+
+    <% end %>
 
     </div>
   </div>
