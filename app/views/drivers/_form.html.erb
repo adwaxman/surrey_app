@@ -148,7 +148,7 @@
     </div>
     <div class="row">
 
-      <div class="input-field col s12 m6 offset">
+      <div class="input-field col s12 m3">
         <p>
           Please check all that apply:
         </p>
@@ -159,7 +159,7 @@
         <%= f.label :accommodate_aide, "I can accomodate an aide or additional escort" %>
 
       </div>
-      <div class="input-field col s12 m6 offset">
+      <div class="input-field col s12 m3">
         <p>
           Please check all that apply:
         </p>
@@ -176,6 +176,13 @@
         <label for="philco">Philadelphia County</label>
         <br>
 
+      </div>
+      <div class="input-field col s12 m3">
+        <p>
+          Please check if you are a private driver:
+        </p>
+        <%= f.check_box :private %>
+        <%= f.label :private, "Private" %>
       </div>
     </div>
     <%= f.submit "Submit", class:"btn" %>
