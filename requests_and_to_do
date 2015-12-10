@@ -3,7 +3,7 @@
 3. secondary number
 	for member and ecs
 
-4. confirmation page for forms (just redirect to a display page after saving; offer update/delete options; note: would have to delete matches associated with the ride) - adam
+4. confirmation page for forms (just redirect to a display page after saving; offer update/delete options; note: would have to delete matches associated with the ride) - adam ***DONE***
 5. add notes table to attach to drivers ("on vacation until," etc...) from admin/driver/:id; delete/edit notes -adam
 6. add rides notes and make adding notes available in admin ride new/delete/edit   notes -adam
 
