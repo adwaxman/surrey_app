@@ -3,12 +3,9 @@
 3. secondary number
 	for member and ecs
 
-
-
-
 4. confirmation page for forms (just redirect to a display page after saving; offer update/delete options; note: would have to delete matches associated with the ride) - adam
 5. add notes table to attach to drivers ("on vacation until," etc...) from admin/driver/:id; delete/edit notes -adam
-6. add rides notes and make adding notes available in admin ride new/delete/edit notes -adam
+6. add rides notes and make adding notes available in admin ride new/delete/edit   notes -adam
 
 6. drivers cannot assign themselves/ driver panel - mike
 7. drivers are either a volunteer or a private driver (add boolean private:true to db) - mike
@@ -19,7 +16,7 @@
 12. different color layouts for members, drivers, admin - mike
 13. resetting passwords -- admins retrieve for members/drivers? devise - email?
 14. admins resetting password?
-15. pins for members and drivers to sign up?
+15. pins for members and drivers to sign up? --> admins create members with name email pw, pw gets provided to member- member updates their info; validations need to change (add validations before upate) -mike
 16. FILTERS
 	1. only a super admin can create a new admin account - mike
 	2. drivers and members only see their pages (before actions?) - mike
@@ -36,8 +33,10 @@
 26. Handle validations - look over models
 27. link in dropdown for admin to view archived rides.
 28. display completed rides for a given driver on drivers page in admin panel???
-
-
+29. handle cdns blocked on heroku - https or include local libraries
+30. workaround for Surrey's address not being found by Nominatim - mike
+31. add .where(inactive: false) anywhere drivers or member or (admins)? are collected
+32. prohibit adding location if previous location is selected - adam
 
 BONUS:
 1. drivers get automatically emailed ride info when they are scheduled
