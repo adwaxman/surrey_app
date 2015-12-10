@@ -1,6 +1,11 @@
 <div class="row">
   <div class="col s12">
     <h1>Admin list</h1>
+    <div class="row right">
+      <div class="col s12">
+        <%= link_to "Create Admin", new_admin_path, class: "btn" %>
+      </div>
+    </div>
     <table class="striped">
       <thead>
         <tr>
@@ -20,22 +25,22 @@
             <%= admin.lname %></td>
           <td>
             <%= admin.email %>
-          <td>
-            <% if admin.super_admin %>
-            Yes
-            <% else %>
-            No
-            <% end %>
-          </td>
-          <td>
-            <%= link_to "Edit", edit_admin_admin_path(admin.id), class: "btn" %>
-          </td>
-          <td>
-            <%= link_to "View", admin_admin_path(admin.id), class: "btn" %>
-          </td>
-        </tr>
+            <td>
+              <% if admin.super_admin %>
+              Yes
+              <% else %>
+              No
+              <% end %>
+            </td>
+            <td>
+              <%= link_to "Edit", edit_admin_admin_path(admin.id), class: "btn" %>
+            </td>
+            <td>
+              <%= link_to "View", admin_admin_path(admin.id), class: "btn" %>
+            </td>
+          </tr>
           <% end %>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>

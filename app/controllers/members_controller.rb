@@ -1,4 +1,8 @@
 class MembersController < ApplicationController
+  before_action :member?, only: [:edit]
+  before_action :admin?, only: [:index]
+  before_action :correct_user, only: [:show]
+
   def new
     @member = Member.new
   end
@@ -28,7 +32,6 @@ class MembersController < ApplicationController
     else
       render 'edit'
     end
-
   end
 
   def show
@@ -36,9 +39,28 @@ class MembersController < ApplicationController
   end
 
   private
-    def member_params
-      params.require(:member).permit(:fname, :mi, :lname, :email, :password, :password_confirmation, :phone, :cell, :address_line1, :address_line2, :city, :state, :zip, :primaryEC_fname, :primaryEC_lname, :primaryEC_phone, :primaryEC_cell, :primaryEC_relationship, :secondaryEC_fname, :secondaryEC_lname, :secondaryEC_phone, :secondaryEC_cell, :secondaryEC_relationship, :tertiaryEC_fname, :tertiaryEC_lname, :tertiaryEC_phone, :tertiaryEC_cell, :tertiaryEC_relationship)
-    end
 
+  def member_params
+    params.require(:member).permit(:fname, :mi, :lname, :email, :password, :password_confirmation, :phone, :cell, :address_line1, :address_line2, :city, :state, :zip, :primaryEC_fname, :primaryEC_lname, :primaryEC_phone, :primaryEC_cell, :primaryEC_relationship, :secondaryEC_fname, :secondaryEC_lname, :secondaryEC_phone, :secondaryEC_cell, :secondaryEC_relationship, :tertiaryEC_fname, :tertiaryEC_lname, :tertiaryEC_phone, :tertiaryEC_cell, :tertiaryEC_relationship)
+  end
+
+  def member?
+    unless current_member || current_admin
+      flash[:notice] = 'You must be logged in as a driver or administrator'
+      redirect_to root_path
+    end
+  end
+
+  def admin?
+    unless current_admin
+      flash[:notice] = 'You must be logged in'
+      redirect_to root_path
+    end
+  end
+
+  def correct_user
+    @member = Member.find(params[:id])
+    redirect_to(root_url) unless @member == current_member || current_admin
+  end
 
 end
