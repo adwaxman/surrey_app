@@ -11,7 +11,7 @@
 6. add rides notes and make adding notes available in admin ride new/delete/edit notes -adam
 
 6. drivers cannot assign themselves/ driver panel - mike
-7. drivers are either a volunteer or a private driver (add boolean private:true to db) - mike
+7. drivers are either a volunteer or a private driver (add boolean private:true to db) - mike DONE
 8. on admin panel, flag matches that are private drivers - mike
 9. admin ride panel - create ride button leads page with searchable field with list of members --> submit takes you to create ride form where member's locations,etc will be available - adam
 10. add full_name column to admins and members - adam

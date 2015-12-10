@@ -38,7 +38,12 @@ class RidesController < ApplicationController
         p @destination_address.display_name
       end
       debugger
-      @destination.county = @destination_address.address.county
+      if destination_address = []
+        @destination.county = "All"
+      else
+        @destination.county = @destination_address.address.county
+    end
+    debugger
       if @destination.save
       else
         flash[:alert] = 'problem 1'
