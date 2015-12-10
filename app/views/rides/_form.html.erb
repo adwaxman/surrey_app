@@ -174,13 +174,13 @@
   <div class="row">
     <div class="input-field col s6 offset-s3">
       <%= label_tag :pickup_date, "Click below to select a date", class: "datepicker-label", style: "font-size: 18px" %>
-      <input , class="datepicker" name="pickup_date" placeholder=" " type="date">
+      <input class="datepicker" name="pickup_date" placeholder=" " type="date" id="ride-pickup-date">
     </div>
   </div>
   <div class="row">
     <div class="input-field col s6 offset-s3">
       <%= label_tag :pickup_time, "Click below to select a time", class: "timepicker-label", style: "font-size: 18px" %>
-      <input class="timepicker" name="pickup_time" placeholder=" " type="text">
+      <input class="timepicker" name="pickup_time" placeholder=" " type="text" id="ride-pickup-time">
     </div>
   </div>
   <div class="row">
@@ -188,16 +188,16 @@
       <p>
         Please check all that apply:
       </p>
-      <%= check_box_tag :wheelchair, true %>
+      <%= check_box_tag :wheelchair, true, checked=false, class: "accommodations" %>
       <%= label_tag :wheelchair, "I will have a wheelchair"  %>
       <br>
-      <%= check_box_tag :aide, true %>
+      <%= check_box_tag :aide, true, checked=false, class: "accommodations" %>
       <%= label_tag :aide, "I will have an aide/additional person with me" %>
       <br>
-      <%= check_box_tag :vision_impaired, true%>
+      <%= check_box_tag :vision_impaired, true, checked=false, class: "accommodations"%>
       <%= label_tag :vision_impaired, "My vision is impaired" %>
       <br>
-      <%= check_box_tag :hearing_impaired, true %>
+      <%= check_box_tag :hearing_impaired, true, checked=false, class: "accommodations" %>
       <%= label_tag :hearing_impaired, "My hearing is impaired" %>
     </div>
 
@@ -205,7 +205,7 @@
 
   <div class='row center'>
     <br>
-      <%= submit_tag :submit, class: "btn submit-ride-btn" %>
+      <a class="waves-effect waves-light btn modal-trigger" id="ride-confirm-trigger" href="#modal1">Submit</a>
       <br>
       <br>
       <a class="btn back-from-ride-btn back-btn">
@@ -213,6 +213,50 @@
       <br>
       <br>
   </div>
+
+
+
+   <!-- Modal Structure -->
+   <div id="modal1" class="modal">
+     <div class="modal-content">
+       <div class="row">
+         <h4 class="center">Review your request</h4>
+         <div class="col s4 confirmation-ride-modal confirm-ride-section">
+           <h5>Ride Info: </h5>
+           <p> Date: <span class="confirm-pickup-date"> </span></p>
+           <p> Time: <span class="confirm-pickup-time"> </span></p>
+           <p> Wheelchair: <span id="confirm-wheelchair"></span></p>
+           <p> Aide: <span id="confirm-aide"></span></p>
+           <p> Vision impaired: <span id="confirm-vision"></span></p>
+           <p> Hearing impaired: <span id="confirm-hearing"></span></p>
+         </div>
+         <div class="col s4 confirmation-ride-modal confirm-destination-section">
+           <h5>From:</h5>
+           <p>
+             <span id="confirm-origin-address-line1"></span><br>
+             <span id="confirm-origin-address-line2"></span><br id="conditional-break2">
+             <span id="confirm-origin-city"></span>
+             <span id="confirm-origin-state"></span>
+             <span id="confirm-origin-zip"></span>
+           </p>
+         </div>
+         <div class="col s4 confirmation-ride-modal confirm-origin-section">
+           <h5>To:</h5>
+           <p>
+             <span id="confirm-destination-name"></span><br>
+             <span id="confirm-destination-address-line1"></span><br>
+             <span id="confirm-destination-address-line2"></span><br id="conditional-break">
+             <span id="confirm-destination-city"></span>, <span id="confirm-destination-state"></span> <span id="confirm-destination-zip"></span>
+           </p>
+         </div>
+       </div>
+     </div>
+     <div class="modal-footer">
+       <a href="#!" class="modal-close btn-flat blue-grey lighten-4 ">Edit</a>
+           <%= submit_tag :confirm, class: "submit-ride-action modal-action btn-flat blue-grey lighten-3" %>
+     </div>
+   </div>
+
 </div>
 
 <% if current_member %>
