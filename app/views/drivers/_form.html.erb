@@ -30,11 +30,11 @@
   </div>
   <div class="row">
     <div class="input-field col s12 m6">
-      <%= f.text_field :password, class: "validate" %>
+      <%= f.text_field :password, class: "validate active" %>
       <%= f.label :password, "Password" %>
     </div>
     <div class="input-field col s12 m6">
-      <%= f.text_field :password_confirmation, class: "validate" %>
+      <%= f.text_field :password_confirmation, class: "validate active" %>
       <%= f.label :password_confirmation, "Password confirmation" %>
     </div>
   </div>
@@ -174,6 +174,7 @@
         <br>
         <input name="driver[county_preference][]" type="checkbox" value="Philadelphia County" id="philco"/>
         <label for="philco">Philadelphia County</label>
+        <input type="hidden" name="driver[county_preference][]" value="All">
         <br>
 
       </div>

@@ -34,7 +34,9 @@
           </td>
           <td>
             <% member.rides.each do |ride| %>
+            <% if ride.status == "open" %>
             <%= link_to (ride.destination.name + ": " + ride.pickup_date), "#" %>
+            <% end %>
             <br>
             <% end %>
           </td>

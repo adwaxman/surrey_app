@@ -1,5 +1,5 @@
 class AdminsController < ApplicationController
-
+before_action :super_admin?
   def new
     @admin = Admin.new
   end
@@ -28,6 +28,13 @@ class AdminsController < ApplicationController
 
     def admin_params
       params.require(:admin).permit(:fname, :lname, :username, :email, :password, :password_confirmation, :super_admin)
+    end
+
+    def super_admin?
+      unless current_admin && current_admin.super_admin
+        flash[:notice] = "You must be logged in as an administrator"
+        redirect_to root_path
+      end
     end
 
 end

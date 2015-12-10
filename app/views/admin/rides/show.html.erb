@@ -49,8 +49,10 @@
           </td>
           <td>
             <%= @ride.status %>
-            <% if @ride.status == "scheduled" %> <br>
-               by <%= @ride.assigned_by %>
+            <% if @ride.status == "scheduled" %>
+            <br>
+            by
+            <%= @ride.assigned_by %>
             <% end %>
             <!-- <a href="#" class="btn"> Cancel</a> -->
           </td>
@@ -77,8 +79,6 @@
 
 <% end %>
 
-
-
 <h4>Matched Drivers</h4>
 <div class="row">
   <div class="col s12">
@@ -90,54 +90,70 @@
         </div>
         <div class="collapsible-body">
           <div class="row">
-            <div class="col s4">
+            <div class="col s3">
               <%= driver.email %>
             </div>
             <% if driver.phone %>
-            <div class="col s4">
-              Home: <%= driver.phone %>
+            <div class="col s3">
+              Home:
+              <%= driver.phone %>
             </div>
             <% end %>
             <% if driver.cell %>
-            <div class="col s4">
-              Cell: <%= driver.cell %>
+            <div class="col s3">
+              Cell:
+              <%= driver.cell %>
             </div>
+            <% if driver.private %>
+
+            <div class="col s3">
+              Private
+            </div>
+            <% end %>
+            <% if !driver.private %>
+            <div class="col s3">
+              Volunteer
+            </div>
+            <% end %>
             <% end %>
           </div>
           <div class="row">
             <div class="col s12">
-                <% if driver.outreaches.where(ride_id: @ride.id).first %>
-                <table class="striped">
-                  <thead>
-                    <tr>
-                      <th data-field="date">Date</th>
-                      <th data-field="contact-method">Contact Method</th>
-                      <th data-field="result">Result
-                      </th>
-                      <th data-field="admin">Who outreached?
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
+              <% if driver.outreaches.where(ride_id: @ride.id).first %>
+              <table class="striped">
+                <thead>
+                  <tr>
+                    <th data-field="date">Date</th>
+                    <th data-field="contact-method">Contact Method</th>
+                    <th data-field="result">Result
+                    </th>
+                    <th data-field="admin">Who outreached?
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
                   <% driver.outreaches.where(ride_id: @ride.id).each do |outreach| %>
                   <tr>
-                    <td>  <%= outreach.created_at %></td>
+                    <td>
+                      <%= outreach.created_at %></td>
                     <td><%=outreach.contact_method%></td>
-                    <td> <%=outreach.result  %>
+                    <td>
+                      <%=outreach.result  %>
                     </td>
-                    <td> <%=outreach.admin.fname  %>
+                    <td>
+                      <%=outreach.admin.fname  %>
                     </td>
                   </tr>
 
                   <% end %>
-                  </tbody>
-                </table>
-                <% end %>
-                <%= form_tag new_admin_outreach_path, method: :get  do %>
-                <%= hidden_field_tag :ride_id, value=@ride.id %>
-                <%= hidden_field_tag :driver_id, value=driver.id %>
-                <%= submit_tag "add outreach", class: "btn" %>
-                <% end %>
+                </tbody>
+              </table>
+              <% end %>
+              <%= form_tag new_admin_outreach_path, method: :get  do %>
+              <%= hidden_field_tag :ride_id, value=@ride.id %>
+              <%= hidden_field_tag :driver_id, value=driver.id %>
+              <%= submit_tag "add outreach", class: "btn" %>
+              <% end %>
 
             </div>
           </div>

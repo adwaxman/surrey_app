@@ -1,2 +1,26 @@
-<h1>Admin::Admins#show</h1>
-<p>Find me in app/views/admin/admins/show.html.erb</p>
+<div class="row">
+  <div class="col s12">
+    <table class="striped">
+      <h1>Contact history for <%= @admin.fname %> <%= @admin.lname %></h1>
+     <thead>
+       <tr>
+           <th data-field="id">Name</th>
+           <th data-field="ride">Ride for</th>
+           <th data-field="contact">Contact Method</th>
+           <th data-field="result">Result</th>
+       </tr>
+     </thead>
+
+     <tbody>
+       <% @admin.outreaches.each do |outreach| %>
+       <tr>
+         <td><%= Driver.find(outreach.driver_id).fname %> <%= Driver.find(outreach.driver_id).lname %></td>
+         <td> <%= Member.find(outreach.ride.member_id).fname %> <%= Member.find(outreach.ride.member_id).lname %></td>
+         <td> <%= outreach.contact_method %></td>
+         <td> <%= outreach.result %></td>
+       </tr>
+       <% end %>
+     </tbody>
+   </table>
+  </div>
+</div>

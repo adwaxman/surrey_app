@@ -16,4 +16,12 @@ module ApplicationHelper
     end
   end
 
+  def current_driver
+    if session[:driver_id]
+      Driver.find(session[:driver_id])
+    else
+      nil
+    end
+  end
+
 end

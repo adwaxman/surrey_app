@@ -30,4 +30,12 @@ def rides_today
   return @rides_today
 end
 
+def current_driver
+  if session[:driver_id]
+    Driver.find(session[:driver_id])
+  else
+    nil
+  end
+end
+
 end

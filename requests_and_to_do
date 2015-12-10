@@ -8,18 +8,18 @@
 6. add rides notes and make adding notes available in admin ride new/delete/edit   notes -adam
 
 6. drivers cannot assign themselves/ driver panel - mike
-7. drivers are either a volunteer or a private driver (add boolean private:true to db) - mike
-8. on admin panel, flag matches that are private drivers - mike
+7. drivers are either a volunteer or a private driver (add boolean private:true to db) - mike DONE
+8. on admin panel, flag matches that are private drivers - mike DONE
 9. admin ride panel - create ride button leads page with searchable field with list of members --> submit takes you to create ride form where member's locations,etc will be available - adam
 10. add full_name column to admins and members - adam
-11. super admins can view and edit other admins - mike
+11. super admins can view and edit other admins - mike DONE
 12. different color layouts for members, drivers, admin - mike
 13. resetting passwords -- admins retrieve for members/drivers? devise - email?
 14. admins resetting password?
 15. pins for members and drivers to sign up? --> admins create members with name email pw, pw gets provided to member- member updates their info; validations need to change (add validations before upate) -mike
 16. FILTERS
-	1. only a super admin can create a new admin account - mike
-	2. drivers and members only see their pages (before actions?) - mike
+	1. only a super admin can create a new admin account - mike DONE
+	2. drivers and members only see their pages (before actions?) - mike DONE
 
 17. make tweaks now that drivers cannot self-assign?? may not be necessary
 18. instructions on forms
