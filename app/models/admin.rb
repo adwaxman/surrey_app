@@ -6,4 +6,6 @@ class Admin < ActiveRecord::Base
   validates_presence_of :fname, :lname, :email
   validates :password, confirmation: true, presence: true
 
+  has_many :notes
+
 end

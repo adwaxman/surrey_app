@@ -6,6 +6,7 @@ class Ride < ActiveRecord::Base
   belongs_to :origin
 
   has_many :outreaches
+  has_many :notes
 
   has_many :matches, dependent: :destroy
   has_many :matchers, through: :matches

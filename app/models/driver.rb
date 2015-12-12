@@ -4,6 +4,7 @@ class Driver < ActiveRecord::Base
   belongs_to :matcher
 
   has_many :outreaches
+  has_many :notes
 
   validates :email, uniqueness: true, presence: true
   validates :password, presence: true, confirmation: true
