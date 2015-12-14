@@ -1,4 +1,6 @@
 class Driver < ActiveRecord::Base
+  # bcrypt
+  has_secure_password
   has_many :rides
   has_many :members, through: :rides
   belongs_to :matcher
