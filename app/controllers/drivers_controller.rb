@@ -44,6 +44,8 @@ class DriversController < ApplicationController
 
   def update
     @driver = Driver.find(params[:id])
+    @driver.county_preference = params[:driver][:county_preference]
+    debugger
     if @driver.update_attributes(driver_params)
         @driver.confirmed = true
       redirect_to drivers_path
