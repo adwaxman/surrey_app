@@ -1,2 +1,37 @@
-<h1>Admin::Members#new</h1>
-<p>Find me in app/views/admin/members/new.html.erb</p>
+<div class="row">
+  <%= form_for [:admin, @member], :html => {:class => "col s10 offset-s1"} do |f| %>
+  <div class="row">
+    <h3>Create member</h3>
+    <div class="input-field col s4">
+      <%= f.text_field :fname, class: "validate" %>
+      <%= f.label :fname, "First name" %>
+    </div>
+    <div class="input-field col s2">
+      <%= f.text_field :mi, class: "validate" %>
+      <%= f.label :mi, "Middle initial" %>
+    </div>
+    <div class="input-field col s6">
+      <%= f.text_field :lname, class: "validate" %>
+      <%= f.label :lname, "Last name" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12 m6">
+      <%= f.text_field :email, class: "validate" %>
+      <%= f.label :email, "Email address" %>
+    </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <%= f.text_field :password, class: "validate" %>
+        <%= f.label :password, "Password" %>
+      </div>
+      <div class="input-field col s6">
+        <%= f.text_field :password_confirmation, class: "validate" %>
+        <%= f.label :password_confirmation, "Password confirmation" %>
+      </div>
+    </div>
+
+    <%= f.submit class: "btn" %>
+    <% end %>
+  </div>
