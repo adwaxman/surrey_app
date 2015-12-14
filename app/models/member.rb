@@ -1,4 +1,6 @@
 class Member < ActiveRecord::Base
+  #bycrpt
+  has_secure_password
   # associations
   has_many :rides
   has_many :origins

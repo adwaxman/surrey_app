@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
   def create
     @member = Member.find_by(email: params[:email])
-    if @member && @member.password == params[:password]
+    if @member && @member.authenticate(params[:password])
       session[:member_id] = @member.id
       flash[:notice] = "You have successfully logged in."
       redirect_to new_ride_path
