@@ -4,7 +4,7 @@ class Admin < ActiveRecord::Base
 
   validates_uniqueness_of :username, :email
   validates_presence_of :fname, :lname, :email
-  validates :password, confirmation: true, presence: true
+  validates :password, confirmation: true, presence: true, allow_nil: true
 
   has_many :notes
 
