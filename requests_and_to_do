@@ -34,7 +34,7 @@
 27. link in dropdown for admin to view archived rides.
 28. display completed rides for a given driver on drivers page in admin panel???
 29. handle cdns blocked on heroku - https or include local libraries
-30. workaround for Surrey's address not being found by Nominatim - mike
+30. workaround for Surrey's address not being found by Nominatim - mike DONE
 31. add .where(inactive: false) anywhere drivers or member or (admins)? are collected
 32. prohibit adding location if previous location is selected - adam
 
