@@ -20,4 +20,12 @@ class Member < ActiveRecord::Base
   validates :tertiaryEC_cell, format: { with: /[(][0-9]{3}[)][ ][0-9]{3}-[0-9]{4}/, message: 'is not valid' }, allow_blank: true, on: :update
   validates_presence_of :fname, :lname, :address_line1, :city, :state, :zip, on: :update
 
+  before_save :add_full_name_member
+
+  def add_full_name_member
+    @full_name = self.fname + " " + self.lname
+    self.full_name = @full_name
+  end
+
+
 end
