@@ -46,7 +46,7 @@ class DriversController < ApplicationController
     @driver = Driver.find(params[:id])
     @driver.county_preference = params[:driver][:county_preference]
     if @driver.update_attributes(driver_params)
-
+        @driver.confirmed = true
       redirect_to drivers_path
     else
       render 'edit'

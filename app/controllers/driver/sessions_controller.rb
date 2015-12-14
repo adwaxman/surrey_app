@@ -7,10 +7,10 @@ class Driver::SessionsController < ApplicationController
 
   def create
     @driver = Driver.find_by(email: params[:email])
-    if @driver && @driver.password == params[:password]
+    if @driver && @driver.authenticate(params[:password])
       session[:driver_id] = @driver.id
       flash[:notice] = "You have successfully logged in."
-      redirect_to root_path
+      redirect_to edit_driver_path(current_driver.id)
     else
       flash[:alert] = "There was a problem logging in."
       redirect_to root_path

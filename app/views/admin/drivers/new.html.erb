@@ -1,0 +1,202 @@
+<div class="errors"></div>
+<div class="row">
+  <%= form_for [:admin, @driver], :html => {:class => "col s10 offset-s1"} do |f| %>
+  <div class="row">
+    <div class="col s12">
+      <h3>Create driver</h3>
+    </div>
+    <div class="input-field col s12 m6">
+      <%= f.text_field :fname, class: "validate" %>
+      <%= f.label :fname, "First name" %>
+    </div>
+    <div class="input-field col s12 m6">
+      <%= f.text_field :lname, class: "validate" %>
+      <%= f.label :lname, "Last name" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12 m6">
+      <%= f.text_field :email, class: "validate" %>
+      <%= f.label :email, "Email address" %>
+    </div>
+    <div class="input-field col s12 m3">
+      <%= f.text_field :phone, class: "validate phone" %>
+      <%= f.label :phone, "Home phone number" %>
+    </div>
+    <div class="input-field col s12 m3">
+      <%= f.text_field :cell, class: "validate phone" %>
+      <%= f.label :cell, "Cell phone number" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12 m6">
+      <%= f.text_field :password, class: "validate active" %>
+      <%= f.label :password, "Password" %>
+    </div>
+    <div class="input-field col s12 m6">
+      <%= f.text_field :password_confirmation, class: "validate active" %>
+      <%= f.label :password_confirmation, "Password confirmation" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.text_field :address_line1, class: "validate" %>
+      <%= f.label :address_line1, "Address line 1" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.text_field :address_line2, class: "validate" %>
+      <%= f.label :address_line2, "Address line 2" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6">
+      <%= f.text_field :city, class: "validate" %>
+      <%= f.label :city, "City" %>
+    </div>
+    <div class="input-field col s2">
+      <input class="validate" disabled id="state" type="text" value="PA">
+      <%= f.hidden_field :state, :value => "PA"%>
+    </div>
+    <div class="input-field col s4">
+      <%= f.text_field :zip, class: "validate" %>
+      <%= f.label :zip, "Zip code" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col m6 s12">
+      Car type:
+      <br>
+      <%= f.radio_button :car_type, "two"%>
+      <%= f.label(:car_type_two, "Two door") %>
+      <br>
+      <%= f.radio_button :car_type, "four"%>
+      <%= f.label(:car_type_four, "Four door") %>
+      <br>
+      <%= f.radio_button :car_type, "suv"%>
+      <%= f.label(:car_type_suv, "SUV") %>
+      <br>
+      <%= f.radio_button :car_type, "Pickup"%>
+      <%= f.label(:car_type_pickup, "Pickup") %>
+      <br>
+    </div>
+    <div class="row">
+      <div class="row center">
+        <strong>Schedule</strong>
+      </div>
+      <div class="input-field col s2">
+        <strong>Monday</strong>
+        <%= f.check_box :monday, class: "check1 validate" %>
+        <%= f.label :monday, "Available"%>
+      </div>
+      <div class="input-field col s2">
+        <strong>Tuesday</strong>
+        <%= f.check_box :tuesday, class: "check2 validate"  %>
+        <%= f.label :tuesday, "Available"%>
+      </div>
+      <div class="input-field col s2">
+        <strong>Wednesday</strong>
+        <%= f.check_box :wednesday, class: "check3 validate"  %>
+        <%= f.label :wednesday, "Available"%>
+      </div>
+      <div class="input-field col s2">
+        <strong>Thursday</strong>
+        <%= f.check_box :thursday, class: "check4 validate"  %>
+        <%= f.label :thursday, "Available"%>
+      </div>
+      <div class="input-field col s1">
+        <strong>Friday</strong>
+        <%= f.check_box :friday, class: "check5 validate"  %>
+        <%= f.label :friday, "Available"%>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s2">
+        <%= f.text_field :monday_min, class: "timepicker2 disable1", placeholder: "" %>
+      </div>
+      <div class="input-field col s2">
+        <%= f.text_field :tuesday_min, class: "timepicker2 disable2", placeholder: ""%>
+      </div>
+      <div class="input-field col s2">
+        <%= f.text_field :wednesday_min, class: "timepicker2 disable3", placeholder: ""%>
+      </div>
+      <div class="input-field col s2">
+        <%= f.text_field :thursday_min, class: "timepicker2 disable4", placeholder: ""%>
+      </div>
+      <div class="input-field col s2">
+        <%= f.text_field :friday_min, class: "timepicker2 disable5", placeholder: ""%>
+      </div>
+    </div>
+    <div class="row center">
+
+      <div class="input-field col s2">
+        <%= f.text_field :monday_max, class: "timepicker2 disable1", placeholder: ""%>
+      </div>
+      <div class="input-field col s2">
+        <%= f.text_field :tuesday_max, class: "timepicker2 disable2", placeholder: ""%>
+      </div>
+      <div class="input-field col s2">
+        <%= f.text_field :wednesday_max, class: "timepicker2 disable3", placeholder: ""%>
+      </div>
+      <div class="input-field col s2">
+        <%= f.text_field :thursday_max, class: "timepicker2 disable4", placeholder: ""%>
+      </div>
+      <div class="input-field col s2">
+        <%= f.text_field :friday_max, class: "timepicker2 disable5", placeholder: ""%>
+      </div>
+    </div>
+    <div class="row">
+
+      <div class="input-field col s12 m3">
+        <p>
+          Please check all that apply:
+        </p>
+        <%= f.check_box :accommodate_wheelchair %>
+        <%= f.label :accommodate_wheelchair, "I can accomodate a wheelchair"  %>
+        <br>
+        <%= f.check_box :accommodate_aide %>
+        <%= f.label :accommodate_aide, "I can accomodate an aide or additional escort" %>
+
+      </div>
+      <div class="input-field col s12 m3">
+        <p>
+          Please check all that apply:
+        </p>
+        <input name="driver[county_preference][]" type="checkbox" value="Chester County" id="chesco"/>
+        <label for="chesco">Chester County</label>
+        <br>
+        <input name="driver[county_preference][]" type="checkbox" value="Delaware County" id="delco"/>
+        <label for="delco">Delaware County</label>
+        <br>
+        <input name="driver[county_preference][]" type="checkbox" value="Montgomery County" id="montco"/>
+        <label for="montco">Montgomery County</label>
+        <br>
+        <input name="driver[county_preference][]" type="checkbox" value="Philadelphia County" id="philco"/>
+        <label for="philco">Philadelphia County</label>
+        <input type="hidden" name="driver[county_preference][]" value="All">
+        <br>
+
+      </div>
+      <div class="input-field col s12 m3">
+        <p>
+          Please check if you are a private driver:
+        </p>
+        <%= f.check_box :private %>
+        <%= f.label :private, "Private" %>
+      </div>
+    </div>
+    <%= f.submit "Submit", class:"btn" %>
+    <% end %>
+  </div>
+
+  <script>
+    // timepicker for driver form
+    $('.timepicker2').pickatime({
+      interval: 15,
+      min: [
+        8, 30
+      ],
+      max: [16, 30]
+    });
+  </script>

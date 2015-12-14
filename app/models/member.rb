@@ -1,4 +1,6 @@
 class Member < ActiveRecord::Base
+  #bycrpt
+  has_secure_password
   # associations
   has_many :rides
   has_many :origins
@@ -6,8 +8,8 @@ class Member < ActiveRecord::Base
   has_many :drivers, through: :rides
   # validations
   validates :email, uniqueness: true, presence: true, on: :create
-  validates :password, presence: true, confirmation: true, on: :update
   validates_presence_of :fname, :lname, on: :create
+  validates :password, presence: true, confirmation: true, on: :update, allow_nil: true
   validates :phone, format: { with: /[(][0-9]{3}[)][ ][0-9]{3}-[0-9]{4}/, message: 'is not valid' }, on: :update
   validates :cell, format: { with: /[(][0-9]{3}[)][ ][0-9]{3}-[0-9]{4}/, message: 'is not valid' }, on: :update
   validates :primaryEC_phone, format: { with: /[(][0-9]{3}[)][ ][0-9]{3}-[0-9]{4}/, message: 'is not valid' }, allow_blank: true, on: :update

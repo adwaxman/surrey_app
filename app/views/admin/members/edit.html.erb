@@ -1,2 +1,124 @@
-<h1>Admin::Members#edit</h1>
-<p>Find me in app/views/admin/members/edit.html.erb</p>
+<div class="row">
+  <%= form_for [:admin, @member], :html => {:class => "col s10 offset-s1"} do |f| %>
+  <div class="row">
+    <h3>Your information</h3>
+    <div class="input-field col s4">
+      <%= f.text_field :fname, class: "validate" %>
+      <%= f.label :fname, "First name" %>
+    </div>
+    <div class="input-field col s2">
+      <%= f.text_field :mi, class: "validate" %>
+      <%= f.label :mi, "Middle initial" %>
+    </div>
+    <div class="input-field col s6">
+      <%= f.text_field :lname, class: "validate" %>
+      <%= f.label :lname, "Last name" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12 m6">
+      <%= f.text_field :email, class: "validate", disabled: true %>
+      <%= f.label :email, "Email address" %>
+    </div>
+      <div class="input-field col s12 m3">
+        <%= f.text_field :phone, class: "validate phone" %>
+        <%= f.label :phone, "Home phone number" %>
+      </div>
+      <div class="input-field col s12 m3">
+        <%= f.text_field :cell, class: "validate phone" %>
+        <%= f.label :cell, "Cell phone number" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <%= f.text_field :password, class: "validate" %>
+        <%= f.label :password, "Password" %>
+      </div>
+      <div class="input-field col s6">
+        <%= f.text_field :password_confirmation, class: "validate" %>
+        <%= f.label :password_confirmation, "Password confirmation" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.text_field :address_line1, class: "validate" %>
+        <%= f.label :address_line1, "Address line 1" %>
+      </div>
+      <div class="input-field col s12">
+        <%= f.text_field :address_line2, class:"validate" %>
+        <%= f.label :address_line2, "Address line 2" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <%= f.text_field :city, class: "validate" %>
+        <%= f.label :city, "City" %>
+      </div>
+      <div class="input-field col s2">
+        <input class="validate" disabled id="state" type="text" value="PA" value="PA">
+        <%= f.hidden_field :state, :value => "PA"%>
+      </div>
+      <div class="input-field col s4">
+        <%= f.text_field :zip, class: "validate" %>
+        <%= f.label :zip, "Zip code" %>
+      </div>
+    </div>
+    <h3>Primary emergency contact information</h3>
+    <div class="row">
+      <div class="input-field col s6">
+        <%= f.text_field :primaryEC_fname, class: "validate" %>
+        <%= f.label :primaryEC_fname, "First name" %>
+      </div>
+      <div class="input-field col s6">
+        <%= f.text_field :primaryEC_lname, class: "validate" %>
+        <%= f.label :primaryEC_lname, "Last name" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12 m6">
+        <%= f.text_field :primaryEC_phone, class: "validate phone" %>
+        <%= f.label :primaryEC_phone, "Home phone number" %>
+      </div>
+      <div class="input-field col s12 m6">
+        <%= f.text_field :primaryEC_cell, class: "validate phone" %>
+        <%= f.label :primaryEC_cell, "Cell phone number" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.text_field :primaryEC_relationship, class: "validate" %>
+        <%= f.label :primaryEC_relationship, "Relationship to member" %>
+      </div>
+    </div>
+
+    <h3>Seconday emergency contact information</h3>
+    <div class="row">
+      <div class="input-field col s6">
+        <%= f.text_field :secondaryEC_fname, class: "validate" %>
+        <%= f.label :secondaryEC_fname, "First name" %>
+      </div>
+      <div class="input-field col s6">
+        <%= f.text_field :secondaryEC_lname, class: "validate" %>
+        <%= f.label :secondaryEC_lname, "Last name" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12 m6">
+        <%= f.text_field :secondaryEC_phone, class: "validate phone" %>
+        <%= f.label :secondaryEC_phone, "Home phone number" %>
+      </div>
+      <div class="input-field col s12 m6">
+        <%= f.text_field :secondaryEC_cell, class: "validate phone" %>
+        <%= f.label :secondaryEC_cell, "Cell phone number" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.text_field :secondaryEC_relationship, class: "validate" %>
+        <%= f.label :secondaryEC_relationship, "Relationship to member" %>
+      </div>
+    </div>
+
+    <%= f.submit class: "btn" %>
+    <% end %>
+  </div>
