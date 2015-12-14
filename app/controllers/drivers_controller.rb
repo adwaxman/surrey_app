@@ -44,6 +44,7 @@ class DriversController < ApplicationController
 
   def update
     @driver = Driver.find(params[:id])
+    @driver.county_preference = params[:driver][:county_preference]
     if @driver.update_attributes(driver_params)
 
       redirect_to drivers_path
@@ -55,6 +56,44 @@ class DriversController < ApplicationController
 
   def show
     @driver = Driver.find(params[:id])
+
+    # Show time in readable format
+    @monday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p")
+    @monday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p")
+
+    @tuesday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p")
+    @tuesday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p")
+
+    @wednesday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p")
+    @wednesday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p")
+
+    @thursday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p")
+    @thursday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p")
+
+    @friday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p")
+    @friday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p")
+
+    @counties = @driver.county_preference
+    @upper = @counties.length-1
+
+    @scheduled_rides = @driver.rides
+
+    # @rides = Rides.all
+    # @arr_of_drivers = []
+    # @drivers.each do |driver|
+    #   @arr_of_drivers.push(driver.fname + " " + driver.lname)
+    # end
+    #
+    # @matched_drivers = []
+    # @matches = Match.where(ride_id: @ride.id)
+    # @matches.each do |match|
+    #   @matched_drivers.push(Driver.find(match.matcher_id))
+    # end
+    #
+    # @outreaches = @ride.outreaches
+    # @notes = @ride.notes
+
+
 
   end
 

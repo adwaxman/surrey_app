@@ -1,10 +1,105 @@
 <div class="row">
-  <div class="col s10 offset-s1">
-    <ul class="collection">
-      <li class="collection-item"><strong> Name: </strong> <%= @driver.fname %> <%= @driver.lname %> </li>
-      <li class="collection-item"><strong> Email: </strong> <%= @driver.email %> </li>
-      <li class="collection-item">Alvin</li>
-      <li class="collection-item">Alvin</li>
-    </ul>
+  <div class="col s12">
+    <table class="striped">
+      <thead>
+        <tr>
+          <th data-field="name">Name</th>
+          <th data-field="address">Address</th>
+          <th data-field="phone">Phone Numbers</th>
+          <th data-field="email">Email</th>
+          <th data-field="driver-type">Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <%= @driver.full_name %>
+          </td>
+          <td>
+            <%= @driver.address_line1 %><br>
+            <%= @driver.city %>,
+            <%= @driver.state %>,
+            <%= @driver.zip %></td>
+          <td>
+            <strong> Home: </strong><%= @driver.phone %> <br>
+            <strong> Cell: </strong> <%= @driver.cell %>
+          </td>
+          <td>
+            <%= @driver.email %>
+          </td>
+          <td>
+            <% if @driver.private %>
+            Private
+            <% else %>
+            Volunteer
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col s12">
+    <table class="striped">
+      <thead>
+        <tr>
+          <th data-field="availability">Availability</th>
+          <th data-field="car-type">Car Type</th>
+          <th data-field="wheelchair">Wheelchair?</th>
+          <th data-field="aide">Aide?</th>
+          <th data-field="county-preference">Counties</th>
+          <th data-field="action">Action</th>
+
+        </tr>
+
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <% if @driver.monday %>
+            Monday: <%= @monday_min %> - <%= @monday_max %> <br>
+            <% end %>
+            <% if @driver.tuesday %>
+            Tuesday: <%= @tuesday_min %> - <%= @tuesday_max %> <br>
+            <% end %>
+            <% if @driver.wednesday %>
+            Wednesday: <%= @wednesday_min %> - <%= @wednesday_max %> <br>
+            <% end %>
+            <% if @driver.thursday %>
+            Thursday: <%= @thursday_min %> - <%= @thursday_max %> <br>
+            <% end %>
+            <% if @driver.friday %>
+            Friday: <%= @friday_min %> - <%= @friday_max %> <br>
+            <% end %>
+          </td>
+          <td>
+            <%= @driver.car_type %>
+          </td>
+          <td>
+            <% if @driver.accommodate_wheelchair %>
+              Yes
+            <% else %>
+              No
+            <% end %>
+          </td>
+          <td>
+            <% if @driver.accommodate_aide %>
+              Yes
+            <% else %>
+              No
+            <% end %>
+          </td>
+          <td>
+            <% for i in 0...@upper  %>
+            <%= @counties[i] %> <br>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to "Update", edit_driver_path(@driver.id), class: "btn" %></td>
+        </tr>
+      </tbody>
+    </table>
+
   </div>
 </div>

@@ -28,6 +28,8 @@ class Admin::RidesController < ApplicationController
     end
 
     @outreaches = @ride.outreaches
+    @notes = @ride.notes
+
   end
 
   def new
@@ -42,6 +44,7 @@ class Admin::RidesController < ApplicationController
     @ride = Ride.find(params[:id])
     @driver = Driver.where(full_name: params[:driver_full_name]).first
     if current_admin
+      debugger
       @ride.update(driver_id: @driver.id, assigned_by: current_admin.fname + " " + current_admin.lname, status: "scheduled")
       redirect_to admin_ride_path @ride
     elsif current_driver

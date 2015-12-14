@@ -5,7 +5,7 @@
 
 4. confirmation page for forms (just redirect to a display page after saving; offer update/delete options; note: would have to delete matches associated with the ride) - adam ***DONE***
 5. add notes table to attach to drivers ("on vacation until," etc...) from admin/driver/:id; delete/edit notes -adam
-6. add rides notes and make adding notes available in admin ride new/delete/ed it   notes -adam
+6. add rides notes and make adding notes available in admin ride show   notes -adam ***DONE***
 
 6. drivers cannot assign themselves/ driver panel - mike
 7. drivers are either a volunteer or a private driver (add boolean private:true to db) - mike DONE
@@ -37,8 +37,11 @@
 30. workaround for Surrey's address not being found by Nominatim - mike
 31. add .where(inactive: false) anywhere drivers or member or (admins)? are collected
 32. prohibit adding location if previous location is selected - adam
+33. check open rides against a new driver upon creation
 
 BONUS:
 1. drivers get automatically emailed ride info when they are scheduled
 2. javascript validations for forms*****
 3. Search completed drives by member or driver
+
+4. archived notes
