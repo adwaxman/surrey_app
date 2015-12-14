@@ -3,7 +3,7 @@
   <%= form_for @driver, :html => {:class => "col s10 offset-s1"} do |f| %>
   <div class="row">
     <div class="col s12">
-      <h3>Driver Sign-up</h3>
+      <h3>Edit driver</h3>
     </div>
     <div class="input-field col s12 m6">
       <%= f.text_field :fname, class: "validate" %>
@@ -162,7 +162,7 @@
       <div class="input-field col s12 m3">
         <p>
           Please check all that apply:
-        </p>
+        </p>6
         <% if @driver.county_preference.include? "Chester County" %>
         <input id="chesco" name="driver[county_preference][]" type="checkbox" value="Chester County" checked = "true"/>
         <label for="chesco">Chester County</label>
