@@ -39,7 +39,7 @@ class RidesController < ApplicationController
         p @destination_address.display_name
       end
       debugger
-      if @destination_address.nil?
+      if @destination_address.nil? || !@destination_address.respond_to?(:address)
         @destination.county = "All"
       else
         @destination.county = @destination_address.address.county
