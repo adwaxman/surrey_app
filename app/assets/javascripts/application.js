@@ -31,6 +31,13 @@
 $(document).ready(function() {
   $('select').material_select();
 
+  $('.timepicker').pickatime({
+    interval: 15,
+    min: [
+      6, 0
+    ],
+    max: [18, 0]
+  });
 });
 
 $(document).ready(function() {

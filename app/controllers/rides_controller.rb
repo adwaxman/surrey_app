@@ -1,4 +1,6 @@
 class RidesController < ApplicationController
+before_action :logged_in?
+
   def new
     redirect_to edit_member_path(current_member.id) unless current_member.confirmed
   end
@@ -113,18 +115,7 @@ class RidesController < ApplicationController
   end
 
   private
-
-  def convert_time_to_float(str)
-    pm = true if str[-2..-1] == 'PM'
-
-    string_to_convert = str[0...-3]
-    string_to_convert = string_to_convert.sub(':', '.')
-    # puts string_to_convert
-
-    float = string_to_convert.to_f
-
-    float += 12.0 if pm
-
-    float
+  def logged_in?
+    redirect_to login_path unless current_member
   end
 end

@@ -272,11 +272,15 @@
 
 <% end %>
 <script>
-  $('.timepicker').pickatime({
-    interval: 15,
-    min: [
-      6, 0
-    ],
-    max: [18, 0]
+
+  $('.timepicker').on('click', function(event) {
+    $('.timepicker').pickatime({
+      interval: 15,
+      min: [
+        6, 0
+      ],
+      max: [18, 0]
+    });
   });
+
 </script>
