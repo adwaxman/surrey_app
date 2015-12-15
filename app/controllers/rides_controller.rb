@@ -87,7 +87,7 @@ before_action :logged_in?
       @matches.each do |driver|
         Match.create(ride_id: @ride.id, matcher_id: driver.id)
       end
-      debugger
+      
       flash[:notice] = 'Your ride has been requested!'
       redirect_to root_path
     else
