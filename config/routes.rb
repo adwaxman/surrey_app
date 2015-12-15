@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
+  get 'home/index'
+  end
+
+  namespace :admin do
   get 'outreaches/new'
   end
 
@@ -28,6 +32,7 @@ Rails.application.routes.draw do
     get 'login', to: 'sessions#new'
     post 'login', to: 'sessions#create'
     get  'logout', to: 'sessions#destroy'
+    root 'home#index'
   end
 
   namespace :driver do
