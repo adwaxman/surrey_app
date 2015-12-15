@@ -15,7 +15,8 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery-ui
-
+//= require rotate
+//= require rides
 //= require pickadate
 //= require picker
 //= require picker.date
@@ -23,8 +24,7 @@
 //= require phonevalidator
 //= require drivers
 //= require turbolinks
-//= require rotate
-//= require rides
+
 //= require_tree .
 
 
