@@ -4,7 +4,7 @@
 	for member and ecs
 
 4. confirmation page for forms (just redirect to a display page after saving; offer update/delete options; note: would have to delete matches associated with the ride) - adam ***DONE***
-5. add notes table to attach to drivers ("on vacation until," etc...) from admin/driver/:id; delete/edit notes -adam
+5. add notes table to attach to drivers ("on vacation until," etc...) from admin/driver/:id; delete/edit notes -adam  ***DONE***
 6. add rides notes and make adding notes available in admin ride show   notes -adam ***DONE***
 
 6. drivers cannot assign themselves/ driver panel - mike
@@ -24,7 +24,7 @@
 17. make tweaks now that drivers cannot self-assign?? may not be necessary
 18. instructions on forms
 19. when drivers log in, they can update their schedule and info and can view their scheduled rides; that's it -adam
-20. admin change driver assigned to a ride - remember to update the assinged_by as well; OR add changed_by column -adam
+20. admin change driver assigned to a ride - remember to update the assinged_by as well; OR add changed_by column -adam ***DONE**
 21. timepicker js debugging -- find new timepicker?? DONE
 22. error reporting on forms --
 23. copy driver sign up over to admin namespace and take out "I's", etc
@@ -35,12 +35,13 @@
 28. display completed rides for a given driver on drivers page in admin panel???
 29. handle cdns blocked on heroku - https or include local libraries DONE
 30. workaround for Surrey's address not being found by Nominatim - mike DONE
-31. add .where(inactive: false) anywhere drivers or member or (admins)? are collected
+31. add .where(inactive: false) anywhere drivers or member or (admins)? are collected; also add .where(cofirmed/completed: true)
 32. prohibit adding location if previous location is selected - adam
 33. check open rides against a new driver upon creation
 34. add ride duration to form and db
 35. add preferred_contact method to drivers form
 36. add scheduled rides to admin/rides view
+37. check all links and fix broken ones
 
 BONUS:
 1. drivers get automatically emailed ride info when they are scheduled
