@@ -1,3 +1,5 @@
+<h2 class="center"> <%= @driver.full_name %></h2>
+
 <div class="row">
   <div class="col s12">
     <table class="striped">
@@ -98,6 +100,171 @@
           <td>
             <%= link_to "Update", edit_driver_path(@driver.id), class: "btn" %></td>
         </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+<h4>Notes</h4>
+
+<div class="row">
+  <div class="col s12">
+    <table class="striped">
+      <thead>
+        <tr>
+          <th data-field="note">Note</th>
+          <th data-field="created">Date Created</th>
+          <th data-field="created-by">Created By</th>
+          <th data-field="delete">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @notes.each do |note| %>
+        <tr>
+          <td>
+            <%= note.body %>
+          </td>
+          <td>
+            <%= note.created_at %>
+          </td>
+          <td>
+            <%= note.admin.full_name %>
+          </td>
+          <td>
+            <%= link_to "<i class='material-icons'>delete</i>".html_safe, note_path(note), method: :delete %>
+            <a href=></a>
+          </td>
+
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="add-driver-note-section">
+  <%= form_tag notes_path, method: :post  do %>
+  <div class="row">
+    <div class="col s12 m6 offset-m3" style="height: 100px">
+      <%= text_area_tag 'body', nil, style: "height: 100px;", placeholder: "Add note here..." %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12 center">
+      <%= hidden_field_tag :driver_id, @driver.id %>
+      <%= submit_tag "Add Note", class: "btn" %>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<div class="row">
+  <div class="col s12">
+    <h4>Scheduled Rides(<%= @assigned_rides.length %>)</h2>
+    <table class="striped">
+      <thead>
+        <tr>
+          <th data-field="date">Date</th>
+          <th data-field="time">Time</th>
+          <th data-field="member">Member</th>
+          <th data-field="location">Pickup Location </th>
+          <th data-field="destination">Destination </th>
+          <th data-field="action">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @assigned_rides.each do |ride| %>
+        <tr>
+          <td>
+            <a href="/admin/rides/<%=ride.id%>"><%= Date.parse(ride.pickup_date).strftime('%a %b %d, %Y') %></a>
+          </td>
+          <td>
+            <%= Time.parse(ride.pickup_time.to_s).strftime("%l:%M %p") %>
+          </td>
+          <td>
+            <%= ride.member.fname + " " + ride.member.lname %>
+          </td>
+          <td>
+            <%= ride.origin.address_line1 %><br>
+            <%= ride.origin.city %>,
+            <%= ride.origin.state %>,
+            <%= ride.origin.zip %>
+          </td>
+          <td>
+            <%= ride.destination.name %> <br>
+            <%= ride.destination.address_line1 %><br>
+            <%= ride.destination.city %>,
+            <%= ride.destination.state %>,
+            <%= ride.destination.zip %>
+          </td>
+          <td>
+            <%= form_tag admin_unassign_path, method: :post  do %>
+              <%= hidden_field_tag :driver_id, @driver.id %>
+              <%= hidden_field_tag :ride_id, ride.id %>
+              <%= submit_tag "Unassign", class: "btn" %>
+            <% end %>
+          </td>
+        </tr>
+
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col s12">
+    <h4>Matched Rides(<%= @matched_rides.length %>)</h2>
+    <table class="striped">
+      <thead>
+        <tr>
+          <th data-field="date">Date</th>
+          <th data-field="time">Time</th>
+          <th data-field="member">Member</th>
+          <th data-field="location">Pickup Location </th>
+          <th data-field="destination">Destination </th>
+          <th data-field="action">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @matched_rides.each do |ride| %>
+        <tr>
+          <td>
+            <a href="/admin/rides/<%=ride.id%>"><%= Date.parse(ride.pickup_date).strftime('%a %b %d, %Y') %></a>
+          </td>
+          <td>
+            <%= Time.parse(ride.pickup_time.to_s).strftime("%l:%M %p") %>
+          </td>
+          <td>
+            <%= ride.member.fname + " " + ride.member.lname %>
+          </td>
+          <td>
+            <%= ride.origin.address_line1 %><br>
+            <%= ride.origin.city %>,
+            <%= ride.origin.state %>,
+            <%= ride.origin.zip %>
+          </td>
+          <td>
+            <%= ride.destination.name %> <br>
+            <%= ride.destination.address_line1 %><br>
+            <%= ride.destination.city %>,
+            <%= ride.destination.state %>,
+            <%= ride.destination.zip %>
+          </td>
+          <td>
+          <%= form_tag admin_assign_path, method: :post  do %>
+            <%= hidden_field_tag :driver_id, @driver.id %>
+            <%= hidden_field_tag :ride_id, ride.id %>
+            <%= submit_tag "Assign", class: "btn" %>
+          <% end %>
+          </td>
+        </tr>
+
+        <% end %>
       </tbody>
     </table>
 

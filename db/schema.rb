@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20151214163254) do
 
   # These are extensions that must be enabled in order to support this database
@@ -130,11 +129,8 @@ ActiveRecord::Schema.define(version: 20151214163254) do
     t.string   "primaryEC_cell"
     t.string   "secondaryEC_cell"
     t.string   "tertiaryEC_cell"
-<<<<<<< HEAD
     t.string   "full_name"
-=======
     t.boolean  "confirmed"
->>>>>>> fd374e3d03954b913eed53157b57fb515430d79e
   end
 
   create_table "notes", force: :cascade do |t|

@@ -13,6 +13,7 @@ class Admin::RidesController < ApplicationController
 
   def show
     @ride = Ride.find(params[:id])
+    @pickup_date = Date.parse(@ride.pickup_date).strftime('%a %b %d, %Y')
     @pickup_time = Time.parse(@ride.pickup_time.to_s).strftime("%l:%M %p")
 
     @drivers = Driver.all
@@ -57,6 +58,19 @@ class Admin::RidesController < ApplicationController
 
   end
 
+  def assign
+    @ride = Ride.find(params[:ride_id])
+    @driver = Driver.find(params[:driver_id])
+    @ride.update(driver_id: @driver.id, assigned_by: current_admin.full_name, status: "scheduled")
+    redirect_to driver_path @driver
+  end
 
+  def unassign
+    @ride = Ride.find(params[:ride_id])
+    @driver = Driver.find(params[:driver_id])
+    @ride.update(driver_id: nil, assigned_by: current_admin.full_name, status: "open")
+    redirect_to driver_path @driver
+
+  end
 
 end

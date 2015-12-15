@@ -28,13 +28,13 @@
       <tbody>
         <tr>
           <td>
-            <%= @ride.pickup_date %>
+            <%= @pickup_date%>
           </td>
           <td>
             <%= @pickup_time %>
           </td>
           <td>
-            <%= @ride.member.fname + " " + @ride.member.lname %>
+            <%= link_to "#{@ride.member.full_name}", member_path(@ride.member) %>
           </td>
           <% if @ride.driver %>
           <td> <%= @ride.driver.full_name %></td>
@@ -150,7 +150,7 @@
       <%  @matched_drivers.each do |driver|  %>
       <li>
         <div class="collapsible-header">
-          <%= driver.fname + " " + driver.lname %>
+          <strong><%= driver.full_name %></strong> (Prefers <%= driver.preferred_contact %>)
         </div>
         <div class="collapsible-body">
           <div class="row">

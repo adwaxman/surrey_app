@@ -1,8 +1,6 @@
 class Admin::NotesController < ApplicationController
 
   def create
-    puts "******************************************"
-    puts params
     admin_id = current_admin.id
     ride_id = params[:ride_id]
     body = params[:body]

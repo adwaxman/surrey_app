@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :drivers
   resources :destinations
   resources :admins
+  resources :notes
 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
@@ -28,6 +29,8 @@ Rails.application.routes.draw do
     get 'login', to: 'sessions#new'
     post 'login', to: 'sessions#create'
     get  'logout', to: 'sessions#destroy'
+    post 'assign', to: 'rides#assign'
+    post 'unassign', to: 'rides#unassign'
   end
 
   namespace :driver do

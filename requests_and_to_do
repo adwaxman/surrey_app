@@ -38,6 +38,9 @@
 31. add .where(inactive: false) anywhere drivers or member or (admins)? are collected
 32. prohibit adding location if previous location is selected - adam
 33. check open rides against a new driver upon creation
+34. add ride duration to form and db
+35. add preferred_contact method to drivers form
+36. add scheduled rides to admin/rides view
 
 BONUS:
 1. drivers get automatically emailed ride info when they are scheduled

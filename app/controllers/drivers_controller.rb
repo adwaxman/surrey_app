@@ -46,7 +46,7 @@ class DriversController < ApplicationController
     @driver = Driver.find(params[:id])
     @driver.county_preference = params[:driver][:county_preference]
     if @driver.update_attributes(driver_params)
-        @driver.confirmed = true
+
       redirect_to drivers_path
     else
       render 'edit'
@@ -76,22 +76,11 @@ class DriversController < ApplicationController
     @counties = @driver.county_preference
     @upper = @counties.length-1
 
-    @scheduled_rides = @driver.rides
+    @assigned_rides = @driver.rides.sort_by {|ride| DateTime.parse(ride.pickup_date)}
+    @matched_rides = Matcher.find(@driver.id).rides.where(status: "open").sort_by {|ride| DateTime.parse(ride.pickup_date)}
 
-    # @rides = Rides.all
-    # @arr_of_drivers = []
-    # @drivers.each do |driver|
-    #   @arr_of_drivers.push(driver.fname + " " + driver.lname)
-    # end
-    #
-    # @matched_drivers = []
-    # @matches = Match.where(ride_id: @ride.id)
-    # @matches.each do |match|
-    #   @matched_drivers.push(Driver.find(match.matcher_id))
-    # end
-    #
-    # @outreaches = @ride.outreaches
-    # @notes = @ride.notes
+    @outreaches = @driver.outreaches
+    @notes = @driver.notes
 
 
 
