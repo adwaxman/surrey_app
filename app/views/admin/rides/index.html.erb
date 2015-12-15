@@ -6,7 +6,7 @@
 
 <div class="row">
   <div class="col s12">
-    <h4>Open Rides(<%= @open_rides.length %>)</h2>
+    <h4>Open Rides (<%= @open_rides.length %>)</h2>
     <table class="striped">
       <thead>
         <tr>
@@ -22,10 +22,10 @@
         <% @sorted_open_rides.each do |ride| %>
         <tr>
           <td>
-            <%= ride.pickup_date %>
+            <a href="/admin/rides/<%=ride.id%>"><%= Date.parse(ride.pickup_date).strftime('%a %b %d, %Y') %></a>
           </td>
           <td>
-            <%= ride.pickup_time %>
+            <%= Time.parse(ride.pickup_time.to_s).strftime("%l:%M %p") %>
           </td>
           <td>
             <%= ride.member.fname + " " + ride.member.lname %>
@@ -58,7 +58,7 @@
 
 <div class="row">
   <div class="col s12">
-    <h4>Today's Rides</h2>
+    <h4>Today's Rides (<%=@rides_today.length%>)</h2>
     <table class="striped">
       <thead>
         <tr>
@@ -76,7 +76,8 @@
         <% @rides_today.each do |ride| %>
         <tr>
           <td>
-            <%= ride.pickup_time %>
+            <a href="/admin/rides/<%=ride.id%>"><%= Time.parse(ride.pickup_time.to_s).strftime("%l:%M %p") %></a>
+
           </td>
           <td>
             <%= ride.member.fname + " " + ride.member.lname %>
