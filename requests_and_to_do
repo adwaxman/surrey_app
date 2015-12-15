@@ -16,7 +16,7 @@
 12. different color layouts for members, drivers, admin - mike
 13. resetting passwords -- admins retrieve for members/drivers? devise - email?
 14. admins resetting password?
-15. pins for members and drivers to sign up? --> admins create members with name email pw, pw gets provided to member- member updates their info; validations need to change (add validations before upate) -mike
+15. pins for members and drivers to sign up? --> admins create members with name email pw, pw gets provided to member- member updates their info; validations need to change (add validations before upate) -mike DONE
 16. FILTERS
 	1. only a super admin can create a new admin account - mike DONE
 	2. drivers and members only see their pages (before actions?) - mike DONE
@@ -25,7 +25,7 @@
 18. instructions on forms
 19. when drivers log in, they can update their schedule and info and can view their scheduled rides; that's it -adam
 20. admin change driver assigned to a ride - remember to update the assinged_by as well; OR add changed_by column -adam
-21. timepicker js debugging -- find new timepicker??
+21. timepicker js debugging -- find new timepicker?? DONE
 22. error reporting on forms --
 23. copy driver sign up over to admin namespace and take out "I's", etc
 24. add inactive columns for admins drivers members
@@ -33,8 +33,8 @@
 26. Handle validations - look over models
 27. link in dropdown for admin to view archived rides.
 28. display completed rides for a given driver on drivers page in admin panel???
-29. handle cdns blocked on heroku - https or include local libraries
-30. workaround for Surrey's address not being found by Nominatim - mike
+29. handle cdns blocked on heroku - https or include local libraries DONE
+30. workaround for Surrey's address not being found by Nominatim - mike DONE
 31. add .where(inactive: false) anywhere drivers or member or (admins)? are collected
 32. prohibit adding location if previous location is selected - adam
 33. check open rides against a new driver upon creation
