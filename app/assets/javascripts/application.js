@@ -15,7 +15,7 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery-ui
-//= require_tree .
+
 //= require pickadate
 //= require picker
 //= require picker.date
@@ -24,6 +24,8 @@
 //= require drivers
 //= require turbolinks
 //= require rotate
+//= require rides
+//= require_tree .
 
 
 
