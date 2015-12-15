@@ -129,8 +129,8 @@ ActiveRecord::Schema.define(version: 20151214163254) do
     t.string   "primaryEC_cell"
     t.string   "secondaryEC_cell"
     t.string   "tertiaryEC_cell"
-    t.string   "full_name"
     t.boolean  "confirmed"
+    t.string   "full_name"
   end
 
   create_table "notes", force: :cascade do |t|
