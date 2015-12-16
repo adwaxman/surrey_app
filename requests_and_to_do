@@ -37,7 +37,7 @@
 30. workaround for Surrey's address not being found by Nominatim - mike DONE
 31. add .where(inactive: false) anywhere drivers or member or (admins)? are collected; also add .where(cofirmed/completed: true)
 32. prohibit adding location if previous location is selected - adam
-33. check open rides against a new driver upon creation
+33. check open rides against a new driver upon creation -adam ***DONE***
 34. add ride duration to form and db
 35. add preferred_contact method to drivers form
 36. add scheduled rides to admin/rides view
