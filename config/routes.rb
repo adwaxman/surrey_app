@@ -36,6 +36,10 @@ Rails.application.routes.draw do
     post 'assign', to: 'rides#assign'
     post 'unassign', to: 'rides#unassign'
 
+    get 'select', to: 'rides#select'
+    # post 'select', to: 'rides#new'
+    post 'rides/new', to: 'rides#new'
+
     root 'home#index'
 
   end

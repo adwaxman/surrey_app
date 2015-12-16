@@ -6,9 +6,6 @@ before_action :logged_in?
   end
 
   def create
-    puts '*' * 35
-    puts params
-
     member_id = current_member.id
     destination_name = params[:destination_name]
     destination_address_line1 = params[:destination_address_line1]
@@ -87,9 +84,10 @@ before_action :logged_in?
       @matches.each do |driver|
         Match.create(ride_id: @ride.id, matcher_id: driver.id)
       end
-      
+
       flash[:notice] = 'Your ride has been requested!'
       redirect_to root_path
+
     else
       render :new
     end

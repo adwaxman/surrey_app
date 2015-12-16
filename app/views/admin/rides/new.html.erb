@@ -1,2 +1,284 @@
-<h1>Admin::Rides#new</h1>
-<p>Find me in app/views/admin/rides/new.html.erb</p>
+<%= form_tag admin_rides_path, method: :post  do %>
+<div class="destination-section">
+  <h2 class="center destination-heading">Where is the member going?</h2>
+  <div class="previous-destination">
+    <div class="row">
+      <div class="input-field col s8 offset-s2">
+
+        <h5 class="center">
+          Select from a previous destination below
+        </h5>
+        <%= select_tag :destination_id,
+            options_from_collection_for_select(@member.destinations, :id, :name), class: 'validate browser-default', prompt: "Select a previous destination..."%>
+      </div>
+    </div>
+    <div class="row">
+      <div class="center">
+        <a class="btn submit-prev-dest-btn"> Submit </a>
+      </div>
+    </div>
+
+    <h3 class="center">OR</h3>
+    <div class='center'>
+      <a class='btn new-dest-btn'>Add a new destination</a>
+    </div>
+  </div>
+  <div class="new-destination">
+    <h3 class="center">Add new destination</h3>
+
+    <div class="row">
+      <div class="input-field col s10 offset-s1">
+        <%= text_field_tag :destination_name, nil, class:'validate' %>
+        <%= label_tag :destination_name, 'Name' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s10 offset-s1">
+        <%= text_field_tag :destination_address_line1, nil, class: "validate" %>
+        <%= label_tag :destination_address_line1, "Address line 1" %>
+      </div>
+      <div class="input-field col s10 offset-s1">
+        <%= text_field_tag :destination_address_line2, nil, class:"validate" %>
+        <%= label_tag :destination_address_line2, "Address line 2" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s5 offset-s1">
+        <%= text_field_tag :destination_city, nil, class: "validate" %>
+        <%= label_tag :destination_city, "City" %>
+      </div>
+      <div class="input-field col s2">
+        <%= select_tag :destination_state, options_for_select([['PA', 1], ['NJ', 2], ['DE', 3]]), class: "validate browser-default" %>
+      </div>
+      <div class="input-field col s3">
+        <%= text_field_tag :destination_zip, nil, class: "validate" %>
+        <%= label_tag :destination_zip, "Zip code" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s4 offset-s4">
+        <p>
+          Reason:
+        </p>
+        <%= radio_button_tag :destination_type, "doctor", false, class: 'with-gap' %>
+        <%= label_tag(:destination_type_doctor, "Doctor's appointment") %>
+        <br>
+        <%= radio_button_tag :destination_type, "grocery", false, class: 'with-gap' %>
+        <%= label_tag(:destination_type_grocery, "Grocery store") %>
+        <br>
+        <%= radio_button_tag :destination_type, "salon", false, class: 'with-gap' %>
+        <%= label_tag(:destination_type_salon, "Hair salon") %>
+        <br>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s4 offset-s4">
+        <%= label_tag :destination_other_type, "Click below to list another reason"  %>
+        <%= text_field_tag :destination__other_type, nil, placeholder: ' ' %>
+      </div>
+    </div>
+
+    <div class="row center">
+      <a class="btn submit-new-dest-btn">
+        Add Destination</a>
+        <br>
+        <br>
+
+      <a class="btn back-to-prev-dest-btn back-btn">
+          Back</a>
+
+      <!-- <a class="btn back-add-dest-btn back-btn">
+            Back</a> -->
+
+    </div>
+  </div>
+</div>
+
+<div class="origin-section">
+  <h2 class="center origin-section-heading">Where will the member be picked up?</h2>
+
+  <div class="previous-origin">
+    <div class="row">
+      <div class="input-field col s8 offset-s2">
+
+        <h5 class="center">
+          Select a previous pickup location below
+        </h5>
+        <%= select_tag :origin_id,
+              options_from_collection_for_select(@member.origins, :id, :address_line1), class: 'validate browser-default', prompt: "Select a previous pickup location..."%>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="center">
+        <a class="btn submit-prev-origin-btn">Submit</a>
+      </div>
+    </div>
+
+    <h3 class="center">OR</h3>
+    <div class='center'>
+      <a class='btn new-origin-btn'>Add a new pickup location</a>
+      <br>
+      <br>
+      <a class='btn back-to-destination back-btn center'>Back</a>
+
+      <!-- <a class="btn rename??? back-btn">
+            Back</a> -->
+    </div>
+
+  </div>
+
+  <div class="new-origin">
+    <h3 class="center">Add new pickup location</h3>
+    <div class="row">
+      <div class="input-field col s10 offset-s1">
+        <%= text_field_tag :origin_address_line1, nil, class: "validate" %>
+        <%= label_tag :origin_address_line1, "Address line 1" %>
+      </div>
+      <div class="input-field col s10 offset-s1">
+        <%= text_field_tag :origin_address_line2, nil, class:"validate" %>
+        <%= label_tag :origin_address_line2, "Address line 2" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s5 offset-s1">
+        <%= text_field_tag :origin_city, nil, class: "validate" %>
+        <%= label_tag :origin_city, "City" %>
+      </div>
+      <div class="input-field col s2">
+        <%= select_tag :origin_state, options_for_select([['PA', 1], ['NJ', 2], ['DE', 3]]), class: "validate browser-default" %>
+      </div>
+      <div class="input-field col s3">
+        <%= text_field_tag :origin_zip, nil, class: "validate" %>
+        <%= label_tag :origin_zip, "Zip code" %>
+      </div>
+    </div>
+    <div class="row center">
+      <a class="btn submit-new-origin-btn">
+        Add Pickup Location</a>
+        <br>
+        <br>
+
+      <a class="btn back-from-new-origin-btn back-btn">
+          Back</a>
+
+    </div>
+  </div>
+</div>
+
+<br>
+<br>
+
+<div class="ride-section">
+  <div class="row">
+    <div class="col s6 offset-s3">
+      <%= label_tag :pickup_date, "Click below to select a date", class: "datepicker-label", style: "font-size: 18px" %>
+      <input class="datepicker" name="pickup_date" placeholder=" " type="date" id="ride-pickup-date">
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6 offset-s3">
+      <%= label_tag :pickup_time, "Click below to select a time", class: "timepicker-label", style: "font-size: 18px" %>
+      <input class="timepicker" name="pickup_time" placeholder=" " type="text" id="ride-pickup-time">
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6 offset-s3">
+      <p>
+        Please check all that apply:
+      </p>
+      <%= check_box_tag :wheelchair, true, checked=false, class: "accommodations" %>
+      <%= label_tag :wheelchair, "Member will have a wheelchair"  %>
+      <br>
+      <%= check_box_tag :aide, true, checked=false, class: "accommodations" %>
+      <%= label_tag :aide, "Member will have an aide/additional person" %>
+      <br>
+      <%= check_box_tag :vision_impaired, true, checked=false, class: "accommodations"%>
+      <%= label_tag :vision_impaired, "Member's vision is impaired" %>
+      <br>
+      <%= check_box_tag :hearing_impaired, true, checked=false, class: "accommodations" %>
+      <%= label_tag :hearing_impaired, "Member's hearing is impaired" %>
+    </div>
+
+  </div>
+
+  <div class='row center'>
+    <br>
+      <a class="waves-effect waves-light btn modal-trigger" id="ride-confirm-trigger" href="#modal1">Submit</a>
+      <br>
+      <br>
+      <a class="btn back-from-ride-btn back-btn">
+          Back</a>
+      <br>
+      <br>
+  </div>
+
+
+
+   <!-- Modal Structure -->
+   <div id="modal1" class="modal">
+     <div class="modal-content">
+       <div class="row">
+         <h4 class="center">Review your request</h4>
+         <div class="col s4 confirmation-ride-modal confirm-ride-section">
+           <h5>Ride Info: </h5>
+           <p> Date: <span class="confirm-pickup-date"> </span></p>
+           <p> Time: <span class="confirm-pickup-time"> </span></p>
+           <p> Wheelchair: <span id="confirm-wheelchair"></span></p>
+           <p> Aide: <span id="confirm-aide"></span></p>
+           <p> Vision impaired: <span id="confirm-vision"></span></p>
+           <p> Hearing impaired: <span id="confirm-hearing"></span></p>
+         </div>
+         <div class="col s4 confirmation-ride-modal confirm-destination-section">
+           <h5>From:</h5>
+           <p>
+             <span id="confirm-origin-address-line1"></span><br>
+             <span id="confirm-origin-address-line2"></span><br id="conditional-break2">
+             <span id="confirm-origin-city"></span>
+             <span id="confirm-origin-state"></span>
+             <span id="confirm-origin-zip"></span>
+           </p>
+         </div>
+         <div class="col s4 confirmation-ride-modal confirm-origin-section">
+           <h5>To:</h5>
+           <p>
+             <span id="confirm-destination-name"></span><br>
+             <span id="confirm-destination-address-line1"></span><br>
+             <span id="confirm-destination-address-line2"></span><br id="conditional-break">
+             <span id="confirm-destination-city"></span>, <span id="confirm-destination-state"></span> <span id="confirm-destination-zip"></span>
+           </p>
+         </div>
+       </div>
+     </div>
+     <%= hidden_field_tag :member_id, @member.id %>
+     <div class="modal-footer">
+       <a href="#!" class="modal-close btn-flat blue-grey lighten-4 ">Edit</a>
+           <%= submit_tag :confirm, class: "submit-ride-action modal-action btn-flat blue-grey lighten-3" %>
+     </div>
+   </div>
+
+</div>
+
+<div class="workaround-d">
+  <%= @member.destinations.length %>
+</div>
+<div class="workaround-o">
+  <%= @member.origins.length %>
+</div>
+
+<% end %>
+
+<script>
+
+  $('.timepicker').on('click', function(event) {
+    $('.timepicker').pickatime({
+      interval: 15,
+      min: [
+        6, 0
+      ],
+      max: [18, 0]
+    });
+  });
+
+</script>

@@ -23,7 +23,7 @@ class Member < ActiveRecord::Base
   before_save :add_full_name_member
 
   def add_full_name_member
-    @full_name = self.fname + " " + self.lname
+    @full_name = self.fname + " " + self.mi + " " + self.lname
     self.full_name = @full_name
   end
 
