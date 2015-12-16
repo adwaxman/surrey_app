@@ -20,6 +20,6 @@ class Driver::SessionsController < ApplicationController
   def destroy
     session[:driver_id] = nil
     flash[:notice] = "You have been logged out."
-    redirect_to login_path
+    redirect_to root_path
   end
 end
