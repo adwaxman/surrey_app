@@ -150,7 +150,9 @@
       <%  @matched_drivers.each do |driver|  %>
       <li>
         <div class="collapsible-header">
-          <strong><%= driver.full_name %></strong> (Prefers <%= driver.preferred_contact %>)
+          <%= link_to "<strong>#{driver.full_name}</strong>".html_safe, driver_path(driver) %> (Prefers)
+            <i class="fa fa-chevron-circle-down right"></i>
+
         </div>
         <div class="collapsible-body">
           <div class="row">
