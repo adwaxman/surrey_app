@@ -5,6 +5,7 @@ class Admin::DriversController < ApplicationController
   def create
     @driver = Driver.new(driver_params)
     @driver.county_preference = params[:driver][:county_preference]
+    @driver.active = true
     if @driver.save
       Matcher.create(driver_id: @driver.id)
       redirect_to root_path

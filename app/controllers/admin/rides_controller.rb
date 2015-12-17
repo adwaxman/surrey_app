@@ -102,6 +102,7 @@ class Admin::RidesController < ApplicationController
 
     pickup_date = params[:pickup_date]
     pickup_time = params[:pickup_time]
+    duration = params[:duration]
     wheelchair = params[:wheelchair] ? params[:wheelchair] : wheelchair = false
     aide = params[:aide] ? params[:aide] : aide = false
     hearing_impaired = params[:hearing_impaired] ? params[:hearing_impaired] : hearing_impaired = false
@@ -151,7 +152,7 @@ class Admin::RidesController < ApplicationController
 
     origin_id_to_be_passed = @origin_id ? @origin_id : origin_id_to_be_passed = @member.origins.last.id
 
-    @ride = Ride.new(member_id: member_id, destination_id: destination_id_to_be_passed, origin_id: origin_id_to_be_passed, wheelchair: wheelchair, aide: aide, hearing_impaired: hearing_impaired, vision_impaired: vision_impaired, pickup_date: pickup_date, pickup_time: pickup_time, status: 'open')
+    @ride = Ride.new(member_id: member_id, destination_id: destination_id_to_be_passed, origin_id: origin_id_to_be_passed, wheelchair: wheelchair, aide: aide, hearing_impaired: hearing_impaired, vision_impaired: vision_impaired, pickup_date: pickup_date, pickup_time: pickup_time, status: 'open', duration: duration)
     if @ride.save
       @weekday = Date.parse(@ride.pickup_date).strftime('%A').downcase
       @matches = Driver.where("#{@weekday}": true).where("#{@weekday}_min <= ?", @ride.pickup_time).where("#{@weekday}_max >= ?", @ride.pickup_time).where("county_preference ilike '%\n- #{@ride.destination.county}\n%'")

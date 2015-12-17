@@ -4,21 +4,21 @@
   - 72 hours rule; what about requesting a ride on a friday?
   DRIVER
   - max time must be later than min time for weekdays
-2. active status for members and drivers, completed status and notes for rides - adam
+2. active status for members and drivers - adam ***DONE***
 3. anywhere there is a collection of members or drivers or rides, filter out inactives, archived, or incomplete - adam
 4. sendgrid for emails to drivers upon assignment of rides - adam
 5. check all links and refreshes, esp after errors/render - both
-6. add note for drivers or members who forget their password to call surrey services - adam
+6. add note for drivers or members who forget their password to call surrey services - adam ***DONE***
 7. polish forms with instructions - mike
 8. driver panel needs some love - mike
   - view schedueld rides with map originating from their home addres to pickup location to Destination
   - schedueld rides display info for ride including emergency contact
   - partial driver create by admin --> driver logs in and updates
-9. link in dropdown for admin to view archived rides. allow to view archived rides - adam
-
-11. add ride duration to form and db - adam
-    - display info everywhere it's relevant
+9. link in dropdown for admin to view archived rides. allow to view archived rides and notes - adam
+10. completed status and notes for rides, allow admin to make these changes - adam
+11. add ride duration to form and db - adam  ***DONE***
+    - display info everywhere it's relevant ***DONE***
 12. add preferred_contact method to drivers form - mike
 13. add scheduled rides to admin/rides view - adam
 14. general polish - both
-15. clear all sessions at logout - mike
+15. clear all other sessions at login - mike

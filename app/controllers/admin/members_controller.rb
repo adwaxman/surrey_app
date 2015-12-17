@@ -13,6 +13,7 @@ class Admin::MembersController < ApplicationController
   def create
     @member = Member.new(member_params)
     if @member.save
+      @member.update(active: true)
       redirect_to root_path
     else
       render 'new'

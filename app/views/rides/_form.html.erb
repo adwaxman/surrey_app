@@ -184,6 +184,18 @@
     </div>
   </div>
   <div class="row">
+    <div class="input-field">
+      <div class=" col s1 offset-s3 center">
+        Duration
+      </div>
+      <div class="col s4">
+        <%= select_tag :duration, options_for_select([['1 hour', '1 hour'], ['1.5 hours', '1.5 hours'], ['2 hours', '2 hours'], ['2.5 hours', '2.5 hours'], ['3 hours', '3 hours'], ['3.5 hours', '3.5 hours'],['4 hours', '4 hours'], ['4+ hours', '4+ hours'] ]), class: "validate browser-default" %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
     <div class="input-field col s6 offset-s3">
       <p>
         Please check all that apply:
@@ -225,6 +237,7 @@
            <h5>Ride Info: </h5>
            <p> Date: <span class="confirm-pickup-date"> </span></p>
            <p> Time: <span class="confirm-pickup-time"> </span></p>
+           <p> Duration: <span id="confirm-duration"></span></p>
            <p> Wheelchair: <span id="confirm-wheelchair"></span></p>
            <p> Aide: <span id="confirm-aide"></span></p>
            <p> Vision impaired: <span id="confirm-vision"></span></p>

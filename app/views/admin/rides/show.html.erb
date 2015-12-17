@@ -14,6 +14,7 @@
         <tr>
           <th data-field="date">Date</th>
           <th data-field="time">Time</th>
+          <th data-field="duration">Duration</th>
           <th data-field="member">Member</th>
           <% if @ride.driver %>
           <th data-field="driver">Driver</th>
@@ -32,6 +33,9 @@
           </td>
           <td>
             <%= @pickup_time %>
+          </td>
+          <td>
+            <%= @ride.duration %>
           </td>
           <td>
             <%= link_to "#{@ride.member.full_name}", member_path(@ride.member) %>
