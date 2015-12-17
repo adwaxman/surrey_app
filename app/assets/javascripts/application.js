@@ -16,7 +16,7 @@
 
 //= require jquery.turbolinks
 
-//= require jquery-ui
+
 //= require rotate
 //= require rides
 //= require pickadate
@@ -81,6 +81,7 @@ $(document).ready(function() {
     } else {
       {
         $('.disable1').attr('disabled', true);
+        $('.disable1').val("");
       }
     }
   });
@@ -91,6 +92,7 @@ $(document).ready(function() {
     } else {
       {
         $('.disable2').attr('disabled', true);
+        $('.disable2').val("");
       }
     }
   });
@@ -101,6 +103,7 @@ $(document).ready(function() {
     } else {
       {
         $('.disable3').attr('disabled', true);
+        $('.disable3').val("");
       }
     }
   });
@@ -111,6 +114,7 @@ $(document).ready(function() {
     } else {
       {
         $('.disable4').attr('disabled', true);
+        $('.disable4').val("");
       }
     }
   });
@@ -121,9 +125,36 @@ $(document).ready(function() {
     } else {
       {
         $('.disable5').attr('disabled', true);
+        $('.disable5').val("");
       }
     }
   });
+$('input').change(function(event) {
+  if (Date.parse("1-1-2000 " + $('.monday_min').val()) > Date.parse("1-1-2000 " + $('.monday_max').val())) {
+    alert("End time on Monday cannot be earlier than start time");
+  }
+});
+$('input').change(function(event) {
+  if (Date.parse("1-1-2000 " + $('.tuesday_min').val()) > Date.parse("1-1-2000 " + $('.tuesday_max').val())) {
+    alert("End time on Tuesday cannot be earlier than start time");
+  }
+});
+$('input').change(function(event) {
+  if (Date.parse("1-1-2000 " + $('.wednesday_min').val()) > Date.parse("1-1-2000 " + $('.wednesday_max').val())) {
+    alert("End time on Wednesday cannot be earlier than start time");
+  }
+});
+$('input').change(function(event) {
+  if (Date.parse("1-1-2000 " + $('.thursday_min').val()) > Date.parse("1-1-2000 " + $('.thursday_max').val())) {
+    alert("End time on Thursday cannot be earlier than start time");
+  }
+});
+$('input').change(function(event) {
+  if (Date.parse("1-1-2000 " + $('.friday_min').val()) > Date.parse("1-1-2000 " + $('.friday_max').val())) {
+    alert("End time on Friday cannot be earlier than start time");
+  }
+});
+
 
 
 })

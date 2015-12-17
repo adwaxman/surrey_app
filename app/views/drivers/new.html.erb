@@ -68,6 +68,7 @@
     <div class="input-field col m6 s12">
       Car type:
       <br>
+      <br>
       <%= f.radio_button :car_type, "Two door"%>
       <%= f.label(:car_type_two_door, "Two door") %>
       <br>
@@ -86,64 +87,64 @@
         <strong>Schedule</strong>
       </div>
       <div class="input-field col s2">
-        <strong>Monday</strong>
+        <strong>Monday</strong><br><br>
         <%= f.check_box :monday, class: "check1 validate" %>
         <%= f.label :monday, "Available"%>
       </div>
       <div class="input-field col s2">
-        <strong>Tuesday</strong>
+        <strong>Tuesday</strong><br><br>
         <%= f.check_box :tuesday, class: "check2 validate"  %>
         <%= f.label :tuesday, "Available"%>
       </div>
       <div class="input-field col s2">
-        <strong>Wednesday</strong>
+        <strong>Wednesday</strong><br><br>
         <%= f.check_box :wednesday, class: "check3 validate"  %>
         <%= f.label :wednesday, "Available"%>
       </div>
       <div class="input-field col s2">
-        <strong>Thursday</strong>
+        <strong>Thursday</strong><br><br>
         <%= f.check_box :thursday, class: "check4 validate"  %>
         <%= f.label :thursday, "Available"%>
       </div>
       <div class="input-field col s1">
-        <strong>Friday</strong>
+        <strong>Friday</strong><br><br>
         <%= f.check_box :friday, class: "check5 validate"  %>
         <%= f.label :friday, "Available"%>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s2">
-        <%= f.text_field :monday_min, class: "timepicker2 disable1", placeholder: "" %>
+        <%= f.text_field :monday_min, class: "timepicker2 disable1 monday_min", placeholder: "" %>
       </div>
       <div class="input-field col s2">
-        <%= f.text_field :tuesday_min, class: "timepicker2 disable2", placeholder: ""%>
+        <%= f.text_field :tuesday_min, class: "timepicker2 disable2 tuesday_min", placeholder: ""%>
       </div>
       <div class="input-field col s2">
-        <%= f.text_field :wednesday_min, class: "timepicker2 disable3", placeholder: ""%>
+        <%= f.text_field :wednesday_min, class: "timepicker2 disable3 wednesday_min", placeholder: ""%>
       </div>
       <div class="input-field col s2">
-        <%= f.text_field :thursday_min, class: "timepicker2 disable4", placeholder: ""%>
+        <%= f.text_field :thursday_min, class: "timepicker2 disable4 thursday_min", placeholder: ""%>
       </div>
       <div class="input-field col s2">
-        <%= f.text_field :friday_min, class: "timepicker2 disable5", placeholder: ""%>
+        <%= f.text_field :friday_min, class: "timepicker2 disable5 friday_min", placeholder: ""%>
       </div>
     </div>
     <div class="row center">
 
       <div class="input-field col s2">
-        <%= f.text_field :monday_max, class: "timepicker2 disable1", placeholder: ""%>
+        <%= f.text_field :monday_max, class: "timepicker2 disable1 monday_max", placeholder: ""%>
       </div>
       <div class="input-field col s2">
-        <%= f.text_field :tuesday_max, class: "timepicker2 disable2", placeholder: ""%>
+        <%= f.text_field :tuesday_max, class: "timepicker2 disable2 tuesday_max", placeholder: ""%>
       </div>
       <div class="input-field col s2">
-        <%= f.text_field :wednesday_max, class: "timepicker2 disable3", placeholder: ""%>
+        <%= f.text_field :wednesday_max, class: "timepicker2 disable3 wednesday_max", placeholder: ""%>
       </div>
       <div class="input-field col s2">
-        <%= f.text_field :thursday_max, class: "timepicker2 disable4", placeholder: ""%>
+        <%= f.text_field :thursday_max, class: "timepicker2 disable4 thursday_max", placeholder: ""%>
       </div>
       <div class="input-field col s2">
-        <%= f.text_field :friday_max, class: "timepicker2 disable5", placeholder: ""%>
+        <%= f.text_field :friday_max, class: "timepicker2 disable5 friday_max", placeholder: ""%>
       </div>
     </div>
     <div class="row">
@@ -184,6 +185,20 @@
         </p>
         <%= f.check_box :private %>
         <%= f.label :private, "Private" %>
+        <p>
+          Please indicate your prefered contact method:
+          </p>
+          <%= f.radio_button :prefered_contact, "Cell Phone"%>
+          <%= f.label(:prefered_contact_cell_phone, "Cell Phone") %>
+
+          <%= f.radio_button :prefered_contact, "Home Phone"%>
+          <%= f.label(:prefered_contact_home_phone, "Home Phone") %>
+
+
+          <%= f.radio_button :prefered_contact, "Email"%>
+          <%= f.label(:prefered_contact_email, "Email") %>
+
+
       </div>
     </div>
     <%= f.submit "Submit", class:"btn" %>
@@ -191,6 +206,54 @@
   </div>
 
   <script>
+  $(document).ready(function() {
+
+    $.validator.setDefaults({
+     errorClass: 'invalid',
+     validClass: "valid",
+     errorPlacement: function (error, element) {
+         $(element)
+             .closest("form")
+             .find("label[for='" + element.attr("id") + "']")
+             .attr('data-error', error.text());
+     },
+     submitHandler: function (form) {
+         console.log('form ok');
+     }
+ });
+
+       $("#new_driver").validate({
+
+         rules: {
+           "driver[password]": {
+             required: true,
+             min: 6
+           },
+           "driver[password_confirmation]": {
+             required: true,
+             min: 6
+           },
+           "driver[address_line1]": {
+             required: true
+           },
+           "driver[city]": {
+             required: true
+           },
+           "driver[zip]": {
+             required: true
+           }
+         },
+         messages: {
+             "driver[password]": "Please enter a password",
+             "driver[password_confirmation]": "Please enter a password confirmation",
+             "driver[address_line1]": "Please enter a valid email address",
+             "driver[city]": "Please enter the name of the city you live in",
+             "driver[zip]": "Please enter a valid zip code",
+          }
+
+        });
+
+  });
     // timepicker for driver form
     $('.timepicker2').pickatime({
       interval: 15,
@@ -200,3 +263,18 @@
       max: [16, 30]
     });
   </script>
+  <style media="screen">
+  label {
+   width: 100%;
+  }
+  .input-field label {
+      /*display: block;*/
+      /*font-size: 0.8rem;*/
+      margin: 1rem;
+      -webkit-transform: translateY(-140%);
+      -moz-transform: translateY(-140%);
+      -ms-transform: translateY(-140%);
+      -o-transform: translateY(-140%);
+      transform: translateY(-140%);
+  }
+  </style>

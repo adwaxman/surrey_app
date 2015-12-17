@@ -9,6 +9,8 @@ class Driver::SessionsController < ApplicationController
     @driver = Driver.find_by(email: params[:email])
     if @driver && @driver.authenticate(params[:password])
       session[:driver_id] = @driver.id
+      session[:admin_id] = nil
+      session[:member_id] = nil
       flash[:notice] = "You have successfully logged in."
       redirect_to edit_driver_path(current_driver.id)
     else
