@@ -112,8 +112,27 @@ class DriversController < ApplicationController
     @outreaches = @driver.outreaches
     @notes = @driver.notes
 
+  end
 
+  def inactive
+    @driver = Driver.find(params[:driver_id])
+    if @driver.update(active: false)
+      redirect_to driver_path @driver
+    else
+      flash[:alert] = "There was a problem."
+      redirect :back
+    end
+  end
 
+  def reactivate
+    @driver = Driver.find(params[:driver_id])
+    if @driver.update(active: true)
+      flash[:alert] = "Driver has been reactivated"
+      redirect_to driver_path @driver
+    else
+      flash[:alert] = "There was a problem."
+      redirect :back
+    end
   end
 
 private

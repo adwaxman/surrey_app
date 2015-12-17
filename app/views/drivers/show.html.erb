@@ -1,5 +1,58 @@
-<h2 class="center"> <%= @driver.full_name %></h2>
+<div class="row">
+  <div class="col s8 valign wrapper">
+    <h3 class="center">
+      <%= @driver.full_name %> <% if !@driver.active %> <em>(Inactive)</em> <% end %></h3>
+  </div>
+  <% if @driver.active %>
+  <div class="col s3">
 
+    <%= form_tag drivers_inactive_path, method: :post do %>
+    <%= hidden_field_tag :driver_id, value=@driver.id %>
+    <a class="btn modal-trigger right red" href="#modal1">Make Inactive</a>
+
+    <!-- Modal Structure -->
+    <div class="modal" id="modal1">
+      <div class="modal-content">
+        <p class="center">
+          Are you sure you want to deactivate
+          <%= @driver.full_name %>?
+        </p>
+      </div>
+      <div class="modal-footer">
+        <a class="modal-close btn-flat blue-grey lighten-4 " href="#!">No</a>
+        <%= submit_tag "Confirm", class: 'btn modal-action' %>
+      </div>
+    </div>
+
+    <% end %>
+  </div>
+  <% else %>
+  <div class="col s3">
+
+    <%= form_tag drivers_reactivate_path, method: :post do %>
+    <%= hidden_field_tag :driver_id, value=@driver.id %>
+    <a class="btn modal-trigger right blue" href="#modal1">Reactivate</a>
+
+    <!-- Modal Structure -->
+    <div class="modal" id="modal1">
+      <div class="modal-content">
+        <p class="center">
+          Are you sure you want to reactivate
+          <%= @driver.full_name %>?
+        </p>
+      </div>
+      <div class="modal-footer">
+        <a class="modal-close btn-flat blue-grey lighten-4 " href="#!">No</a>
+        <%= submit_tag "Confirm", class: 'btn modal-action' %>
+      </div>
+    </div>
+
+    <% end %>
+  </div>
+
+  <% end %>
+
+</div>
 <div class="row">
   <div class="col s12">
     <table class="striped">
@@ -23,8 +76,14 @@
             <%= @driver.state %>,
             <%= @driver.zip %></td>
           <td>
-            <strong> Home: </strong><%= @driver.phone %> <br>
-            <strong> Cell: </strong> <%= @driver.cell %>
+            <strong>
+              Home:
+            </strong><%= @driver.phone %>
+            <br>
+            <strong>
+              Cell:
+            </strong>
+            <%= @driver.cell %>
           </td>
           <td>
             <%= @driver.email %>
@@ -60,19 +119,39 @@
         <tr>
           <td>
             <% if @driver.monday %>
-            Monday: <%= @monday_min %> - <%= @monday_max %> <br>
+            Monday:
+            <%= @monday_min %>
+            -
+            <%= @monday_max %>
+            <br>
             <% end %>
             <% if @driver.tuesday %>
-            Tuesday: <%= @tuesday_min %> - <%= @tuesday_max %> <br>
+            Tuesday:
+            <%= @tuesday_min %>
+            -
+            <%= @tuesday_max %>
+            <br>
             <% end %>
             <% if @driver.wednesday %>
-            Wednesday: <%= @wednesday_min %> - <%= @wednesday_max %> <br>
+            Wednesday:
+            <%= @wednesday_min %>
+            -
+            <%= @wednesday_max %>
+            <br>
             <% end %>
             <% if @driver.thursday %>
-            Thursday: <%= @thursday_min %> - <%= @thursday_max %> <br>
+            Thursday:
+            <%= @thursday_min %>
+            -
+            <%= @thursday_max %>
+            <br>
             <% end %>
             <% if @driver.friday %>
-            Friday: <%= @friday_min %> - <%= @friday_max %> <br>
+            Friday:
+            <%= @friday_min %>
+            -
+            <%= @friday_max %>
+            <br>
             <% end %>
           </td>
           <td>
@@ -80,21 +159,22 @@
           </td>
           <td>
             <% if @driver.accommodate_wheelchair %>
-              Yes
+            Yes
             <% else %>
-              No
+            No
             <% end %>
           </td>
           <td>
             <% if @driver.accommodate_aide %>
-              Yes
+            Yes
             <% else %>
-              No
+            No
             <% end %>
           </td>
           <td>
             <% for i in 0...@upper  %>
-            <%= @counties[i] %> <br>
+            <%= @counties[i] %>
+            <br>
             <% end %>
           </td>
           <td>
@@ -168,8 +248,10 @@
           <th data-field="date">Date</th>
           <th data-field="time">Time</th>
           <th data-field="member">Member</th>
-          <th data-field="location">Pickup Location </th>
-          <th data-field="destination">Destination </th>
+          <th data-field="location">Pickup Location
+          </th>
+          <th data-field="destination">Destination
+          </th>
           <th data-field="action">Action</th>
         </tr>
       </thead>
@@ -192,7 +274,8 @@
             <%= ride.origin.zip %>
           </td>
           <td>
-            <%= ride.destination.name %> <br>
+            <%= ride.destination.name %>
+            <br>
             <%= ride.destination.address_line1 %><br>
             <%= ride.destination.city %>,
             <%= ride.destination.state %>,
@@ -200,9 +283,9 @@
           </td>
           <td>
             <%= form_tag admin_unassign_path, method: :post  do %>
-              <%= hidden_field_tag :driver_id, @driver.id %>
-              <%= hidden_field_tag :ride_id, ride.id %>
-              <%= submit_tag "Unassign", class: "btn" %>
+            <%= hidden_field_tag :driver_id, @driver.id %>
+            <%= hidden_field_tag :ride_id, ride.id %>
+            <%= submit_tag "Unassign", class: "btn" %>
             <% end %>
           </td>
         </tr>
@@ -214,8 +297,6 @@
   </div>
 </div>
 
-
-
 <div class="row">
   <div class="col s12">
     <h4>Matched Rides(<%= @matched_rides.length %>)</h2>
@@ -225,8 +306,10 @@
           <th data-field="date">Date</th>
           <th data-field="time">Time</th>
           <th data-field="member">Member</th>
-          <th data-field="location">Pickup Location </th>
-          <th data-field="destination">Destination </th>
+          <th data-field="location">Pickup Location
+          </th>
+          <th data-field="destination">Destination
+          </th>
           <th data-field="action">Action</th>
         </tr>
       </thead>
@@ -249,18 +332,19 @@
             <%= ride.origin.zip %>
           </td>
           <td>
-            <%= ride.destination.name %> <br>
+            <%= ride.destination.name %>
+            <br>
             <%= ride.destination.address_line1 %><br>
             <%= ride.destination.city %>,
             <%= ride.destination.state %>,
             <%= ride.destination.zip %>
           </td>
           <td>
-          <%= form_tag admin_assign_path, method: :post  do %>
+            <%= form_tag admin_assign_path, method: :post  do %>
             <%= hidden_field_tag :driver_id, @driver.id %>
             <%= hidden_field_tag :ride_id, ride.id %>
             <%= submit_tag "Assign", class: "btn" %>
-          <% end %>
+            <% end %>
           </td>
         </tr>
 
