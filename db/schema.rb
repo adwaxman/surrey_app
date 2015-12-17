@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151217175906) do
+ActiveRecord::Schema.define(version: 20151217195727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 20151217175906) do
     t.boolean  "private"
     t.boolean  "confirmed"
     t.boolean  "active"
+    t.string   "prefered_contact"
   end
 
   create_table "matchers", force: :cascade do |t|

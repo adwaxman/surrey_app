@@ -18,7 +18,7 @@
 10. completed status and notes for rides, allow admin to make these changes - adam
 11. add ride duration to form and db - adam  ***DONE***
     - display info everywhere it's relevant ***DONE***
-12. add preferred_contact method to drivers form - mike
+12. add preferred_contact method to drivers form - mike ***DONE ***
 13. add scheduled rides to admin/rides view - adam
 14. general polish - both
 15. clear all other sessions at login - mike ***DONE***

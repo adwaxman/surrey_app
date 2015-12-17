@@ -204,6 +204,19 @@
         </p>
         <%= f.check_box :private %>
         <%= f.label :private, "Private" %>
+
+        <p>
+          Please indicate your prefered contact method:
+          </p>
+          <%= f.radio_button :prefered_contact, "Cell Phone"%>
+          <%= f.label(:prefered_contact_cell_phone, "Cell Phone") %>
+
+          <%= f.radio_button :prefered_contact, "Home Phone"%>
+          <%= f.label(:prefered_contact_home_phone, "Home Phone") %>
+
+
+          <%= f.radio_button :prefered_contact, "Email"%>
+          <%= f.label(:prefered_contact_email, "Email") %>
       </div>
     </div>
     <%= f.submit "Submit", class:"btn" %>
