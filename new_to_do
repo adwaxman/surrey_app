@@ -2,6 +2,7 @@
   RIDE
   - prohibit adding location if previous location is selected; same for dest
   - 72 hours rule; what about requesting a ride on a friday?
+  - requests on thursdays can be for as early as tuesday the following week
   DRIVER
   - max time must be later than min time for weekdays *** DONE ***
 2. active status for members and drivers - adam ***DONE***
@@ -25,3 +26,4 @@
 13. add scheduled rides to admin/rides view - adam
 14. general polish - both
 15. clear all other sessions at login - mike ***DONE***
+16. create member show and restrict to admin - mike

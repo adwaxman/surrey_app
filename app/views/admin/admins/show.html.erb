@@ -15,7 +15,24 @@
 
     <%= form_tag admin_admins_inactive_path, method: :post do %>
       <%= hidden_field_tag :admin_id, value=@admin.id %>
-      <%= submit_tag "Make Inactive", class: 'btn' %>
+
+
+      <a class="btn modal-trigger" href="#modal1">Make Inactive</a>
+
+      <!-- Modal Structure -->
+      <div id="modal1" class="modal">
+        <div class="modal-content">
+          <p class="center">
+            Are you sure you want to deactivate <%= @admin.full_name %>?
+          </p>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close btn-flat blue-grey lighten-4 ">No</a>
+          <%= submit_tag "Confirm", class: 'btn modal-action' %>
+        </div>
+      </div>
+
+
     <% end %>
 
   </div>
