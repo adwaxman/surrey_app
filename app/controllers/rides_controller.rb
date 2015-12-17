@@ -115,6 +115,6 @@ before_action :logged_in?
 
   private
   def logged_in?
-    redirect_to login_path unless current_member
+    redirect_to login_path unless current_member || current_member
   end
 end
