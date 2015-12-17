@@ -32,7 +32,7 @@ gem 'gmaps4rails'
 #gem 'turboboost'
 gem 'nominatim'
 
-gem 'jquery-validation-rails'
+#gem 'jquery-validation-rails'
 #gem 'judge'
 #gem 'underscore'
 

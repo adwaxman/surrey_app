@@ -1,7 +1,9 @@
 <div class="row">
   <%= form_for @member, :html => {:class => "form col s10 offset-s1"} do |f| %>
   <div class="row">
+
     <h3>Your information</h3>
+
     <div class="input-field col s4">
       <%= f.text_field :fname, class: "validate fname", disabled: true %>
       <%= f.label :fname, "First name" %>
@@ -42,7 +44,7 @@
   <div class="row">
     <div class="input-field col s12">
       <%= f.text_field :address_line1, class: "validate address_line1" %>
-      <%= f.label :address_line1, "Address line 1" %>
+      <%= f.label :address_line1, "Address line 1" %><br><br>
     </div>
     <div class="input-field col s12">
       <%= f.text_field :address_line2, class:"validate address_line2" %>
@@ -146,6 +148,20 @@
 
  $(document).ready(function() {
 
+   $.validator.setDefaults({
+    errorClass: 'invalid',
+    validClass: "valid",
+    errorPlacement: function (error, element) {
+        $(element)
+            .closest("form")
+            .find("label[for='" + element.attr("id") + "']")
+            .attr('data-error', error.text());
+    },
+    submitHandler: function (form) {
+        console.log('form ok');
+    }
+});
+
       $("#new_member").validate({
 
         rules: {
@@ -174,26 +190,25 @@
           },
           "member[primaryEC_phone]": {
             required: true
+          },
+          "member[primaryEC_relationship]": {
+            required: true
           }
         },
         messages: {
             "member[password]": "Please enter a password",
             "member[password_confirmation]": "Please enter a password confirmation",
-            "member[address_line1]": "Please enter a valid email address",
+            "member[address_line1]": "Please enter a valid address",
             "member[city]": "Please enter the name of the city you live in",
             "member[zip]": "Please enter a valid zip code",
             "member[primaryEC_fname]": "Please enter your emergency contacts first name",
             "member[primaryEC_lname]": "Please enter your emergency contacts last name",
-            "member[primaryEC_phone]": "Please enter your emergency contacts phone number"
-         },
+            "member[primaryEC_phone]": "Please enter your emergency contacts phone number",
+            "member[primaryEC_relationship]": "Please enter your emergency contacts phone number",
 
-        errorPlacement: function(error, element) {
-        $('#modal1').openModal();
-         error.appendTo( $(".modal-content") );
-       },
+         }
 
-       });
-
+ });
  });
 
 
@@ -226,5 +241,17 @@
 
 </script>
 <style>
-  label.error { display: block; float: none; color: red; padding-left: 11.5em; vertical-align: top; font-size: 16px;}
+label {
+ width: 100%;
+}
+.input-field label {
+    /*display: block;*/
+    /*font-size: 0.8rem;*/
+    margin: 1rem;
+    -webkit-transform: translateY(-140%);
+    -moz-transform: translateY(-140%);
+    -ms-transform: translateY(-140%);
+    -o-transform: translateY(-140%);
+    transform: translateY(-140%);
+}
 </style>

@@ -206,11 +206,62 @@
         <%= f.label :private, "Private" %>
       </div>
     </div>
-    <%= f.submit "Submit", class:"btn" %>
+    <%= f.submit, class:"btn" %>
     <% end %>
   </div>
 
-  <script>
+  <script type="text/javascript">
+
+
+   $(document).ready(function() {
+
+     $.validator.setDefaults({
+      errorClass: 'invalid',
+      validClass: "valid",
+      errorPlacement: function (error, element) {
+          $(element)
+              .closest("form")
+              .find("label[for='" + element.attr("id") + "']")
+              .attr('data-error', error.text());
+      },
+      submitHandler: function (form) {
+          console.log('form ok');
+      }
+  });
+
+        $("#new_driver").validate({
+
+          rules: {
+            "driver[password]": {
+              required: true,
+              min: 6
+            },
+            "driver[password_confirmation]": {
+              required: true,
+              min: 6
+            },
+            "driver[address_line1]": {
+              required: true
+            },
+            "driver[city]": {
+              required: true
+            },
+            "driver[zip]": {
+              required: true
+            },
+          },
+          messages: {
+              "driver[password]": "Please enter a password",
+              "driver[password_confirmation]": "Please enter a password confirmation",
+              "driver[address_line1]": "Please enter a valid email address",
+              "driver[city]": "Please enter the name of the city you live in",
+              "driver[zip]": "Please enter a valid zip code",
+           }
+
+         });
+
+
+
     // timepicker for driver form
     $('.timepicker2').pickatime({
       interval: 15,
@@ -219,4 +270,5 @@
       ],
       max: [16, 30]
     });
+       });
   </script>
