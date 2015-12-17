@@ -27,6 +27,11 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   get  'logout', to: 'sessions#destroy'
 
+  post 'drivers/inactive', to: 'drivers#inactive'
+  post 'members/inactive', to: 'members#inactive'
+  post 'drivers/reactivate', to: 'drivers#reactivate'
+  post 'members/reactivate', to: 'members#reactivate'
+
 
   namespace :admin do
     resources :members, :drivers, :rides, :origins, :destinations, :outreaches, :admins, :notes
