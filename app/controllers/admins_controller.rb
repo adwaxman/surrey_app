@@ -6,12 +6,12 @@ before_action :super_admin?
 
   def create
     @admin = Admin.new(admin_params)
+    @admin.active = true
     if params[:admin][:super_admin] == "1" && params[:super_admin_password] != "password"
       flash[:alert] = "Invalid superadmin password"
       render :new
     elsif
       @admin.save
-      session[:admin_id] = @admin.id
       flash[:notice] = "Admin created successfully as " + Admin.find(session[:admin_id]).username
       redirect_to root_path
     else

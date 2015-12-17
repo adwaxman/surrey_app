@@ -5,6 +5,9 @@
   DRIVER
   - max time must be later than min time for weekdays
 2. active status for members and drivers - adam ***DONE***
+  - super admins can deactivate admins - ***DONE***
+  - admins can deactivate and reactivate members
+  - admins can deactivate and reactivate drivers
 3. anywhere there is a collection of members or drivers or rides, filter out inactives, archived, or incomplete - adam
 4. sendgrid for emails to drivers upon assignment of rides - adam
 5. check all links and refreshes, esp after errors/render - both
@@ -22,3 +25,4 @@
 13. add scheduled rides to admin/rides view - adam
 14. general polish - both
 15. clear all other sessions at login - mike
+16. allow superadmin to make admins members and drivers inactive

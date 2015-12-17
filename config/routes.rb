@@ -40,7 +40,10 @@ Rails.application.routes.draw do
     # post 'select', to: 'rides#new'
     post 'rides/new', to: 'rides#new'
 
+    post 'admins/inactive', to: 'admins#inactive'
+
     root 'home#index'
+
 
   end
 

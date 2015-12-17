@@ -24,6 +24,16 @@ class Admin::AdminsController < ApplicationController
     end
   end
 
+  def inactive
+    @admin = Admin.find(params[:admin_id])
+    if @admin.update(active: false)
+      redirect_to admin_admin_path @admin
+    else
+      flash[:alert] = "There was a problem."
+      redirect :back
+    end
+  end
+
   private
 
   def super_admin?
