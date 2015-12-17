@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col s12">
+    <h3 class="center">
+      Create a Ride
+    </h3>
+  </div>
+</div>
+<div class="row">
+  <div class="col s12 m8 offset-m2">
+    <div class="card blue-grey lighten-1">
+      <div class="card-content white-text">
+
+        <h5 class="center">Select the member requesting the ride</h5>
+      </div>
+      <div class="card-action">
+        <div class="row">
+          <div class="col s12">
+            <%= form_tag admin_rides_new_path, method: :post do %>
+            <div class="ui-widget">
+              <label class="black-text" for="tags" name="member_full_name">Search Members
+              </label>
+              <input class="center" id="tags" name="member_full_name" size="35">
+            </div>
+          </div>
+          </div
+          <div class="row">
+            <div class="s12">
+              <div class="center">
+                  <%= submit_tag :submit, class: "btn blue-grey lighten-3" %>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+$(function () {
+  var availableTags = [];
+  <% @arr_of_members.each do |member| %>
+  availableTags.push('<%= member %>');
+  <% end %>
+
+  $("#tags").autocomplete({source: availableTags});
+});
+</script>

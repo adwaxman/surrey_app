@@ -1,0 +1,17 @@
+1. finish JS validations
+2. active status for members and drivers, completed status and notes for rides
+3. anywhere there is a collection of members or drivers or rides, filter out inactives, archived, or incomplete
+4. sendgrid for emails
+5. check all links and refreshes, esp after errors/render
+6. add note for drivers or members who forget their password to call surrey services
+7. polish forms with instructions
+8. driver panel needs some love
+  - view schedueld rides with map originating from their home addres to pickup location to Destination
+  - partial driver create by admin --> driver logs in and updates
+9. link in dropdown for admin to view archived rides.
+10. prohibit adding location if previous location is selected
+11. add ride duration to form and db
+    - display info everywhere it's relevant
+12. add preferred_contact method to drivers form
+13. add scheduled rides to admin/rides view
+14. general polish
