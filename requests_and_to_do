@@ -7,7 +7,7 @@
 5. add notes table to attach to drivers ("on vacation until," etc...) from admin/driver/:id; delete/edit notes -adam  ***DONE***
 6. add rides notes and make adding notes available in admin ride show   notes -adam ***DONE***
 
-6. drivers cannot assign themselves/ driver panel - mike
+6. drivers cannot assign themselves/ driver panel - mike DONE
 7. drivers are either a volunteer or a private driver (add boolean private:true to db) - mike DONE
 8. on admin panel, flag matches that are private drivers - mike DONE
 9. admin ride panel - create ride button leads to page with searchable field with list of members --> submit takes you to create ride form where member's locations,etc will be available - adam

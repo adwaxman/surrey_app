@@ -1,124 +1,230 @@
 <div class="row">
-  <%= form_for @member, :html => {:class => "col s10 offset-s1"} do |f| %>
+  <%= form_for @member, :html => {:class => "form col s10 offset-s1"} do |f| %>
   <div class="row">
     <h3>Your information</h3>
     <div class="input-field col s4">
-      <%= f.text_field :fname, class: "validate", disabled: true %>
+      <%= f.text_field :fname, class: "validate fname", disabled: true %>
       <%= f.label :fname, "First name" %>
     </div>
     <div class="input-field col s2">
-      <%= f.text_field :mi, class: "validate", disabled: true %>
+      <%= f.text_field :mi, class: "validate mi", disabled: true %>
       <%= f.label :mi, "Middle initial" %>
     </div>
     <div class="input-field col s6">
-      <%= f.text_field :lname, class: "validate", disabled: true %>
+      <%= f.text_field :lname, class: "validate lname", disabled: true %>
       <%= f.label :lname, "Last name" %>
     </div>
   </div>
   <div class="row">
     <div class="input-field col s12 m6">
-      <%= f.text_field :email, class: "validate", disabled: true %>
+      <%= f.text_field :email, class: "validate email", disabled: true %>
       <%= f.label :email, "Email address" %>
     </div>
-      <div class="input-field col s12 m3">
-        <%= f.text_field :phone, class: "validate phone" %>
-        <%= f.label :phone, "Home phone number" %>
-      </div>
-      <div class="input-field col s12 m3">
-        <%= f.text_field :cell, class: "validate phone" %>
-        <%= f.label :cell, "Cell phone number" %>
-      </div>
+    <div class="input-field col s12 m3">
+      <%= f.text_field :phone, class: "validate phone" %>
+      <%= f.label :phone, "Home phone number" %>
     </div>
-    <div class="row">
-      <div class="input-field col s6">
-        <%= f.text_field :password, class: "validate" %>
-        <%= f.label :password, "Password" %>
-      </div>
-      <div class="input-field col s6">
-        <%= f.text_field :password_confirmation, class: "validate" %>
-        <%= f.label :password_confirmation, "Password confirmation" %>
-      </div>
+    <div class="input-field col s12 m3">
+      <%= f.text_field :cell, class: "validate phone" %>
+      <%= f.label :cell, "Cell phone number" %>
     </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <%= f.text_field :address_line1, class: "validate" %>
-        <%= f.label :address_line1, "Address line 1" %>
-      </div>
-      <div class="input-field col s12">
-        <%= f.text_field :address_line2, class:"validate" %>
-        <%= f.label :address_line2, "Address line 2" %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s6">
-        <%= f.text_field :city, class: "validate" %>
-        <%= f.label :city, "City" %>
-      </div>
-      <div class="input-field col s2">
-        <input class="validate" disabled id="state" type="text" value="PA" value="PA">
-        <%= f.hidden_field :state, :value => "PA"%>
-      </div>
-      <div class="input-field col s4">
-        <%= f.text_field :zip, class: "validate" %>
-        <%= f.label :zip, "Zip code" %>
-      </div>
-    </div>
-    <h3>Primary emergency contact information</h3>
-    <div class="row">
-      <div class="input-field col s6">
-        <%= f.text_field :primaryEC_fname, class: "validate" %>
-        <%= f.label :primaryEC_fname, "First name" %>
-      </div>
-      <div class="input-field col s6">
-        <%= f.text_field :primaryEC_lname, class: "validate" %>
-        <%= f.label :primaryEC_lname, "Last name" %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12 m6">
-        <%= f.text_field :primaryEC_phone, class: "validate phone" %>
-        <%= f.label :primaryEC_phone, "Home phone number" %>
-      </div>
-      <div class="input-field col s12 m6">
-        <%= f.text_field :primaryEC_cell, class: "validate phone" %>
-        <%= f.label :primaryEC_cell, "Cell phone number" %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <%= f.text_field :primaryEC_relationship, class: "validate" %>
-        <%= f.label :primaryEC_relationship, "Relationship to member" %>
-      </div>
-    </div>
-
-    <h3>Seconday emergency contact information</h3>
-    <div class="row">
-      <div class="input-field col s6">
-        <%= f.text_field :secondaryEC_fname, class: "validate" %>
-        <%= f.label :secondaryEC_fname, "First name" %>
-      </div>
-      <div class="input-field col s6">
-        <%= f.text_field :secondaryEC_lname, class: "validate" %>
-        <%= f.label :secondaryEC_lname, "Last name" %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12 m6">
-        <%= f.text_field :secondaryEC_phone, class: "validate phone" %>
-        <%= f.label :secondaryEC_phone, "Home phone number" %>
-      </div>
-      <div class="input-field col s12 m6">
-        <%= f.text_field :secondaryEC_cell, class: "validate phone" %>
-        <%= f.label :secondaryEC_cell, "Cell phone number" %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <%= f.text_field :secondaryEC_relationship, class: "validate" %>
-        <%= f.label :secondaryEC_relationship, "Relationship to member" %>
-      </div>
-    </div>
-
-    <%= f.submit class: "btn" %>
-    <% end %>
   </div>
+  <div class="row">
+    <div class="input-field col s6">
+      <%= f.text_field :password, class: "validate password" %>
+      <%= f.label :password, "Password" %>
+    </div>
+    <div class="input-field col s6">
+      <%= f.text_field :password_confirmation, class: "validate password_confirmation" %>
+      <%= f.label :password_confirmation, "Password confirmation" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.text_field :address_line1, class: "validate address_line1" %>
+      <%= f.label :address_line1, "Address line 1" %>
+    </div>
+    <div class="input-field col s12">
+      <%= f.text_field :address_line2, class:"validate address_line2" %>
+      <%= f.label :address_line2, "Address line 2" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6">
+      <%= f.text_field :city, class: "validate city" %>
+      <%= f.label :city, "City" %>
+    </div>
+    <div class="input-field col s2">
+      <input class="validate" disabled id="state" type="text" value="PA" value="PA">
+      <%= f.hidden_field :state, :value => "PA"%>
+    </div>
+    <div class="input-field col s4">
+      <%= f.text_field :zip, class: "validate zip" %>
+      <%= f.label :zip, "Zip code" %>
+    </div>
+  </div>
+  <h3>Primary emergency contact information</h3>
+  <div class="row">
+    <div class="input-field col s6">
+      <%= f.text_field :primaryEC_fname, class: "validate primaryEC_fname" %>
+      <%= f.label :primaryEC_fname, "First name" %>
+    </div>
+    <div class="input-field col s6">
+      <%= f.text_field :primaryEC_lname, class: "validate primaryEC_lname" %>
+      <%= f.label :primaryEC_lname, "Last name" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12 m6">
+      <%= f.text_field :primaryEC_phone, class: "validate phone primaryEC_phone" %>
+      <%= f.label :primaryEC_phone, "Home phone number" %>
+    </div>
+    <div class="input-field col s12 m6">
+      <%= f.text_field :primaryEC_cell, class: "validate phone primaryEC_cell" %>
+      <%= f.label :primaryEC_cell, "Cell phone number" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.text_field :primaryEC_relationship, class: "validate primaryEC_relationship" %>
+      <%= f.label :primaryEC_relationship, "Relationship to member" %>
+    </div>
+  </div>
+
+  <h3>Seconday emergency contact information</h3>
+  <div class="row">
+    <div class="input-field col s6">
+      <%= f.text_field :secondaryEC_fname, class: "validate secondaryEC_fname" %>
+      <%= f.label :secondaryEC_fname, "First name" %>
+    </div>
+    <div class="input-field col s6">
+      <%= f.text_field :secondaryEC_lname, class: "validate secondaryEC_lname" %>
+      <%= f.label :secondaryEC_lname, "Last name" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12 m6">
+      <%= f.text_field :secondaryEC_phone, class: "validate phone secondaryEC_phone" %>
+      <%= f.label :secondaryEC_phone, "Home phone number" %>
+    </div>
+    <div class="input-field col s12 m6">
+      <%= f.text_field :secondaryEC_cell, class: "validate phone secondaryEC_cell" %>
+      <%= f.label :secondaryEC_cell, "Cell phone number" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.text_field :secondaryEC_relationship, class: "validate secondaryEC_relationship" %>
+      <%= f.label :secondaryEC_relationship, "Relationship to member" %>
+    </div>
+  </div>
+
+</div>
+
+<!-- Modal Trigger -->
+<%= f.submit class: "btn", class: "submit" %>
+
+<a class="checkme waves-effect waves-light btn" href="#modal1">Modal</a>
+
+<!-- Modal Structure -->
+<div class="modal modal-fixed-footer" id="modal1">
+  <div class="modal-content">
+    <div class="errors">
+
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-action modal-close waves-effect waves-green btn-flat " href="#!">
+    </a>
+  </div>
+</div>
+
+<% end %>
+
+<script type="text/javascript">
+
+
+ $(document).ready(function() {
+
+      $("#new_member").validate({
+
+        rules: {
+          "member[password]": {
+            required: true,
+            min: 6
+          },
+          "member[password_confirmation]": {
+            required: true,
+            min: 6
+          },
+          "member[address_line1]": {
+            required: true
+          },
+          "member[city]": {
+            required: true
+          },
+          "member[zip]": {
+            required: true
+          },
+          "member[primaryEC_fname]": {
+            required: true
+          },
+          "member[primaryEC_lname]": {
+            required: true
+          },
+          "member[primaryEC_phone]": {
+            required: true
+          }
+        },
+        messages: {
+            "member[password]": "Please enter a password",
+            "member[password_confirmation]": "Please enter a password confirmation",
+            "member[address_line1]": "Please enter a valid email address",
+            "member[city]": "Please enter the name of the city you live in",
+            "member[zip]": "Please enter a valid zip code",
+            "member[primaryEC_fname]": "Please enter your emergency contacts first name",
+            "member[primaryEC_lname]": "Please enter your emergency contacts last name",
+            "member[primaryEC_phone]": "Please enter your emergency contacts phone number"
+         },
+
+        errorPlacement: function(error, element) {
+        $('#modal1').openModal();
+         error.appendTo( $(".modal-content") );
+       },
+
+       });
+
+ });
+
+
+// $('.checkme').on('click', function (event) {
+//   var password = $('.password').val();
+//   var password_confirmation = $('.password_confirmation').val();
+//   var address_line1 = $('.address_line1').val();
+//   var address_line2 = $('.address_line2').val();
+//   var city = $('.city').val();
+//   var zip = $('.zip').val();
+//   var primaryEC_fname = $('.primaryEC_fname').val();
+//   var primaryEC_lname = $('.primaryEC_lname').val();
+//   var primaryEC_phone = $('.primaryEC_phone').val();
+//   var primaryEC_cell = $('.primaryEC_cell').val();
+//   var primaryEC_relationship = $('.primaryEC_relationship').val();
+//   var secondaryEC_fname = $('.secondaryEC_fname').val();
+//   var secondaryEC_lname = $('.secondaryEC_lname').val();
+//   var secondaryEC_phone = $('.secondaryEC_phone').val();
+//   var secondaryEC_cell = $('.secondaryEC_cell').val();
+//   var secondaryEC_relationship = $('.secondaryEC_relationship').val();
+//
+//   if (password == password_confirmation) {
+//     $('#modal1').openModal();
+//   }
+//   else {
+//     console.log("no");
+//   }
+//
+// });
+
+</script>
+<style>
+  label.error { display: block; float: none; color: red; padding-left: 11.5em; vertical-align: top; font-size: 16px;}
+</style>
