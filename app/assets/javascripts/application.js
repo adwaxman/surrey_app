@@ -129,9 +129,29 @@ $(document).ready(function() {
       }
     }
   });
-$('.monday_max').on('change', function(event) {
+$('input').change(function(event) {
   if (Date.parse("1-1-2000 " + $('.monday_min').val()) > Date.parse("1-1-2000 " + $('.monday_max').val())) {
-    alert("wrong");
+    alert("End time on Monday cannot be earlier than start time");
+  }
+});
+$('input').change(function(event) {
+  if (Date.parse("1-1-2000 " + $('.tuesday_min').val()) > Date.parse("1-1-2000 " + $('.tuesday_max').val())) {
+    alert("End time on Tuesday cannot be earlier than start time");
+  }
+});
+$('input').change(function(event) {
+  if (Date.parse("1-1-2000 " + $('.wednesday_min').val()) > Date.parse("1-1-2000 " + $('.wednesday_max').val())) {
+    alert("End time on Wednesday cannot be earlier than start time");
+  }
+});
+$('input').change(function(event) {
+  if (Date.parse("1-1-2000 " + $('.thursday_min').val()) > Date.parse("1-1-2000 " + $('.thursday_max').val())) {
+    alert("End time on Thursday cannot be earlier than start time");
+  }
+});
+$('input').change(function(event) {
+  if (Date.parse("1-1-2000 " + $('.friday_min').val()) > Date.parse("1-1-2000 " + $('.friday_max').val())) {
+    alert("End time on Friday cannot be earlier than start time");
   }
 });
 

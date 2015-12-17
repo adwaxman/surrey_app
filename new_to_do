@@ -3,7 +3,7 @@
   - prohibit adding location if previous location is selected; same for dest
   - 72 hours rule; what about requesting a ride on a friday?
   DRIVER
-  - max time must be later than min time for weekdays
+  - max time must be later than min time for weekdays *** DONE ***
 2. active status for members and drivers - adam ***DONE***
 3. anywhere there is a collection of members or drivers or rides, filter out inactives, archived, or incomplete - adam
 4. sendgrid for emails to drivers upon assignment of rides - adam
@@ -21,4 +21,4 @@
 12. add preferred_contact method to drivers form - mike
 13. add scheduled rides to admin/rides view - adam
 14. general polish - both
-15. clear all other sessions at login - mike
+15. clear all other sessions at login - mike ***DONE***
