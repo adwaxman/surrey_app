@@ -1,9 +1,61 @@
 <div class="row">
-  <div class="col s12">
-    <h1>
+  <div class="col s8">
+    <h3>
       Member information
-    </h1>
+    </h3>
   </div>
+  <% if @member.active %>
+  <div class="col s3">
+
+    <%= form_tag members_inactive_path, method: :post do %>
+    <%= hidden_field_tag :member_id, value=@member.id %>
+    <a class="btn modal-trigger right red" href="#modal1">Make Inactive</a>
+
+    <!-- Modal Structure -->
+    <div class="modal" id="modal1">
+      <div class="modal-content">
+        <p class="center">
+          Are you sure you want to deactivate
+          <%= @member.full_name %>?
+        </p>
+      </div>
+      <div class="modal-footer">
+        <a class="modal-close btn-flat blue-grey lighten-4 " href="#!">No</a>
+        <%= submit_tag "Confirm", class: 'btn modal-action' %>
+      </div>
+    </div>
+
+    <% end %>
+  </div>
+  <% else %>
+  <div class="col s3">
+
+    <%= form_tag members_reactivate_path, method: :post do %>
+    <%= hidden_field_tag :member_id, value=@member.id %>
+    <a class="btn modal-trigger right blue" href="#modal1">Reactivate</a>
+
+    <!-- Modal Structure -->
+    <div class="modal" id="modal1">
+      <div class="modal-content">
+        <p class="center">
+          Are you sure you want to reactivate
+          <%= @member.full_name %>?
+        </p>
+      </div>
+      <div class="modal-footer">
+        <a class="modal-close btn-flat blue-grey lighten-4 " href="#!">No</a>
+        <%= submit_tag "Confirm", class: 'btn modal-action' %>
+      </div>
+    </div>
+
+    <% end %>
+  </div>
+
+  <% end %>
+
+</div>
+
+<div class=row>
   <div class="col s12">
     <table>
       <thead>
@@ -30,7 +82,7 @@
             <%= @member.zip %>
           </td>
           <td>
-            Email:<%= @member.email  %><br>
+            Email: <%= @member.email  %><br>
             Home phone:
             <%= @member.phone %><br>
             <% if @member.cell %>Cell phone:
@@ -63,8 +115,8 @@
       <thead>
         <tr>
           <th data-field="id">Name</th>
-          <th data-field="name">Pick up location</th>
           <th data-field="date">Date</th>
+          <th data-field="name">Pick up location</th>
           <th data-field="destination">Destination</th>
           <th data-field="duration">Estimated duration</th>
           <th data-field="status">Status</th>
@@ -76,9 +128,9 @@
         <tr>
           <td>
             <%= ride.destination.name %></td>
-            <td><%= Date.parse(ride.pickup_date).strftime('%a %b %d, %Y') %>
-              <%= Time.parse(ride.pickup_time.to_s).strftime("%l:%M %p") %>
-            </td>
+          <td><%= Date.parse(ride.pickup_date).strftime('%a %b %d, %Y') %>
+            <%= Time.parse(ride.pickup_time.to_s).strftime("%l:%M %p") %>
+          </td>
           <td>
             <%= ride.origin.address_line1 %><br>
             <%= ride.origin.address_line2%>
@@ -97,7 +149,7 @@
             <%= ride.duration %>
           </td>
           <td>
-            <%= ride.status %>
+            <%= link_to "#{ride.status}", admin_ride_path(ride.id) %>
           </td>
         </tr>
         <% end %>
