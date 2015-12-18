@@ -38,8 +38,16 @@ $(document).ready(function() {
 
   $('.new-dest-btn').click(function() {
 
-    $('.previous-destination').hide();
-    $('.new-destination').show();
+    if ($('#destination_id').val() !== "") {
+      $('#prev-dest-modal').openModal();
+    }
+
+    else {
+
+      $('.previous-destination').hide();
+      $('.new-destination').show();
+
+    }
 
   });
 
@@ -57,6 +65,35 @@ $(document).ready(function() {
 
   $('.submit-new-dest-btn').click(function() {
 
+    if ($('#destination_address_line1').val() === "" || $('#destination_name').val() === "" || $('#destination_city').val() === "" || $('#destination_zip').val() === "") {
+
+      $("#dest-name-error").html("")
+      $("#dest-address-line1-error").html("")
+      $("#dest-city-error").html("")
+      $("#dest-zip-error").html("")
+
+      if ($('#destination_name').val() === "") {
+          $("#dest-name-error").html("Please provide a name for the destination. (Example: Shoprite, Dr. Smith's office)")
+      }
+
+      if ($('#destination_address_line1').val() === "") {
+          $("#dest-address-line1-error").html("Please provide an address.")
+      }
+
+      if ($('#destination_city').val() === "") {
+          $("#dest-city-error").html("Please provide a city")
+      }
+
+      if ($('#destination_zip').val() === "") {
+          $("#dest-zip-error").html("Please provide a zip code")
+      }
+
+      $('#new-dest-modal').openModal();
+
+    }
+
+    else {
+
       $('.destination-section').hide();
       $('.origin-section').show();
 
@@ -67,6 +104,8 @@ $(document).ready(function() {
       else {
         $('.previous-origin').hide();
       }
+
+    }
 
   })
 
@@ -115,8 +154,14 @@ $(document).ready(function() {
 
   $('.new-origin-btn').click(function() {
 
-    $('.previous-origin').hide();
-    $('.new-origin').show();
+    if ($('#origin_id').val() !== "") {
+      $('#prev-origin-modal').openModal();
+    }
+
+    else {
+      $('.previous-origin').hide();
+      $('.new-origin').show();
+    }
 
   });
 
@@ -161,8 +206,36 @@ $(document).ready(function() {
 
   $('.submit-new-origin-btn').click(function() {
 
+    if ($('#origin_address_line1').val() === "" || $('#origin_city').val() === "" || $('#origin_zip').val() === "") {
+
+      $("#origin-address-line1-error").html("")
+      $("#origin-city-error").html("")
+      $("#origin-zip-error").html("")
+
+
+      if ($('#origin_address_line1').val() === "") {
+          $("#origin-address-line1-error").html("Please provide an address.")
+      }
+
+      if ($('#origin_city').val() === "") {
+          $("#origin-city-error").html("Please provide a city")
+      }
+
+      if ($('#origin_zip').val() === "") {
+          $("#origin-zip-error").html("Please provide a zip code")
+      }
+
+      $('#new-origin-modal').openModal();
+
+    }
+
+
+    else {
+
       $('.origin-section').hide();
       $('.ride-section').show();
+
+    }
 
   });
 
@@ -195,7 +268,7 @@ $(document).ready(function() {
 
   });
 
-  // if issues with navigation after a render due to db rollback => maybe hide/show relevant sections when submit button is it?
+
 
 
 

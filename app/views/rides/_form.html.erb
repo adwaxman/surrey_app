@@ -1,5 +1,15 @@
-<%= form_tag rides_path, method: :post  do %>
+<%= form_tag rides_path, method: :post, id: "new_ride"  do %>
 <div class="destination-section">
+
+  <div id="prev-dest-modal" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <p id="prev-dest-error">Please unselect your previous destination if you would like to add a new one. </p>
+    </div>
+    <div class="modal-footer">
+      <a  class="modal-action modal-close btn-flat ">OK</a>
+    </div>
+  </div>
+
   <h2 class="center destination-heading">Where would you like to go?</h2>
   <div class="previous-destination">
     <div class="row">
@@ -25,6 +35,20 @@
   </div>
   <div class="new-destination">
     <h3 class="center">Add new destination</h3>
+
+    <div id="new-dest-modal" class="modal modal-fixed-footer">
+      <div class="modal-content">
+        <p id="dest-name-error"></p>
+        <p id="dest-address-line1-error"></p>
+        <p id="dest-address-line2-error"></p>
+        <p id="dest-city-error"></p>
+        <p id="dest-zip-error"></p>
+      </div>
+      <div class="modal-footer">
+        <a  class="modal-action modal-close btn-flat ">OK</a>
+      </div>
+    </div>
+
 
     <div class="row">
       <div class="input-field col s10 offset-s1">
@@ -98,6 +122,15 @@
 <div class="origin-section">
   <h2 class="center origin-section-heading">Where would you like to be picked up?</h2>
 
+  <div id="prev-origin-modal" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <p id="prev-origin-error">Please unselect your previous pickup location if you would like to add a new one. </p>
+    </div>
+    <div class="modal-footer">
+      <a  class="modal-action modal-close btn-flat ">OK</a>
+    </div>
+  </div>
+
   <div class="previous-origin">
     <div class="row">
       <div class="input-field col s8 offset-s2">
@@ -131,6 +164,19 @@
 
   <div class="new-origin">
     <h3 class="center">Add new pickup location</h3>
+
+    <div id="new-origin-modal" class="modal modal-fixed-footer">
+      <div class="modal-content">
+        <p id="origin-address-line1-error"></p>
+        <p id="origin-city-error"></p>
+        <p id="origin-zip-error"></p>
+      </div>
+      <div class="modal-footer">
+        <a  class="modal-action modal-close btn-flat ">OK</a>
+      </div>
+    </div>
+
+
     <div class="row">
       <div class="input-field col s10 offset-s1">
         <%= text_field_tag :origin_address_line1, nil, class: "validate" %>
@@ -286,6 +332,47 @@
 <% end %>
 <script>
 
+$(document).ready(function() {
+
+
+
+    $.validator.setDefaults({
+     errorClass: 'invalid',
+     validClass: "valid",
+     errorPlacement: function (error, element) {
+         $(element)
+             .closest("form")
+             .find("label[for='" + element.attr("id") + "']")
+             .attr('data-error', error.text());
+     },
+     submitHandler: function (form) {
+         console.log('form ok');
+     }
+ });
+
+       $("#new_ride").validate({
+
+         rules: {
+           "pickup_date": {
+             required: true,
+           },
+           "pickup_time": {
+             required: true,
+           },
+           "duration": {
+             required: true
+           },
+         },
+         messages: {
+             "pickup_date": "Please select the date you need a ride",
+             "pickup_time": "Please select the time you would like to be picked up",
+             "duration": "Please enter the expected duration of your ride",
+          }
+
+        });
+
+
+
   $('.timepicker').on('click', function(event) {
     $('.timepicker').pickatime({
       interval: 15,
@@ -295,5 +382,7 @@
       max: [18, 0]
     });
   });
+
+});
 
 </script>
