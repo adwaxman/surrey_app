@@ -56,6 +56,7 @@ Rails.application.routes.draw do
     get 'login', to: 'sessions#new'
     post 'login', to: 'sessions#create'
     get  'logout', to: 'sessions#destroy'
+    get 'driverpanel/:id', to: 'drivers#show'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
