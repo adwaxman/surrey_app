@@ -19,7 +19,7 @@
   - schedueld rides display info for ride including emergency contact
   - partial driver create by admin --> driver logs in and updates
 9. link in dropdown for admin to view archived rides. allow to view archived rides and notes - adam
-10. completed status and notes for rides, allow admin to make these changes - adam
+10. completed status and notes for rides, allow admin to make these changes - adam ***DONE***
 11. add ride duration to form and db - adam  ***DONE***
     - display info everywhere it's relevant ***DONE***
 12. add preferred_contact method to drivers form - mike ***DONE ***

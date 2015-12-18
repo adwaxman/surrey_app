@@ -44,10 +44,13 @@ Rails.application.routes.draw do
     get 'select', to: 'rides#select'
     # post 'select', to: 'rides#new'
     post 'rides/new', to: 'rides#new'
+    post 'rides/complete', to: 'rides#complete'
 
     post 'admins/inactive', to: 'admins#inactive'
 
     root 'home#index'
+
+
 
 
   end

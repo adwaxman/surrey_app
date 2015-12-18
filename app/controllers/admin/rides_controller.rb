@@ -172,6 +172,16 @@ class Admin::RidesController < ApplicationController
     end
   end
 
+  def complete
+    @ride = Ride.find(params[:ride_id])
+    if params[:completion_notes] != ""
+      @ride.update(completion_notes: params[:completion_notes], status: "complete")
+    else
+      @ride.update(status: "complete")
+    end
+    redirect_to admin_rides_path
+  end
+
 
 
 end

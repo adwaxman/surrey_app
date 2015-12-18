@@ -20,7 +20,7 @@ def current_admin
 end
 
 def rides_today
-  @rides = Ride.all.where.not(driver_id: nil)
+  @rides = Ride.all.where.not(driver_id: nil).where(status: "scheduled")
   @rides_today = []
   @rides.each do |ride|
     if Date.parse(ride.pickup_date) == Date.today

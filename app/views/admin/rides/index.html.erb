@@ -13,8 +13,10 @@
           <th data-field="date">Date</th>
           <th data-field="time">Time</th>
           <th data-field="member">Member</th>
-          <th data-field="location">Pickup Location </th>
-          <th data-field="destination">Destination </th>
+          <th data-field="location">Pickup Location
+          </th>
+          <th data-field="destination">Destination
+          </th>
           <th data-field="action">Action</th>
         </tr>
       </thead>
@@ -37,15 +39,15 @@
             <%= ride.origin.zip %>
           </td>
           <td>
-            <%= ride.destination.name %> <br>
+            <%= ride.destination.name %>
+            <br>
             <%= ride.destination.address_line1 %><br>
             <%= ride.destination.city %>,
             <%= ride.destination.state %>,
             <%= ride.destination.zip %>
           </td>
           <td>
-            <a href=  <%= "rides/#{ride.id}" %> class="btn"> Assign </a>
-            <!-- <a href="#" class="btn"> Cancel</a> -->
+            <%= link_to "Assign", admin_ride_path(ride), class: "btn" %>
           </td>
         </tr>
 
@@ -65,9 +67,12 @@
           <th data-field="time">Time</th>
           <th data-field="member">Member</th>
           <th data-field="driver">Driver</th>
-          <th data-field="location">Pickup Location </th>
-          <th data-field="destination">Destination </th>
-          <th data-field="emergency-contact"> Emergency Contact
+          <th data-field="location">Pickup Location
+          </th>
+          <th data-field="destination">Destination
+          </th>
+          <th data-field="emergency-contact">
+            Emergency Contact
           </th>
           <th data-field="action">Action</th>
         </tr>
@@ -92,18 +97,32 @@
             <%= ride.origin.zip %>
           </td>
           <td>
-            <%= ride.destination.name %> <br>
+            <%= ride.destination.name %>
+            <br>
             <%= ride.destination.address_line1 %><br>
             <%= ride.destination.city %>,
             <%= ride.destination.state %>,
             <%= ride.destination.zip %>
           </td>
           <td>
-            <%= ride.member.primaryEC_fname + " " + ride.member.primaryEC_lname %> <br>
+            <%= ride.member.primaryEC_fname + " " + ride.member.primaryEC_lname %>
+            <br>
             <%= ride.member.primaryEC_phone %>
           </td>
           <td>
-            <a class="btn" style="overflow: auto"> Completed?</a>
+            <%= link_to "Completed?", "#modal-ride-complete#{ride.id}", class: "btn modal-trigger" %>
+            <!-- Modal Structure -->
+            <div class="modal" id="modal-ride-complete<%=ride.id%>">
+              <%= form_tag admin_rides_complete_path, method: :post do %>
+              <div class="modal-content">
+                <%= text_area_tag :completion_notes, nil, placeholder: "Add a note here or simply click submit to mark the ride as complete...", class: "browser-default", style: "height: 100px" %>
+                <%= hidden_field_tag :ride_id, value="#{ride.id}" %>
+              </div>
+              <div class="modal-footer">
+                <%= submit_tag "Mark as complete", class: "modal-action modal-close btn-flat" %>
+              </div>
+              <% end %>
+            </div>
           </td>
         </tr>
 
@@ -124,9 +143,12 @@
           <th data-field="time">Time</th>
           <th data-field="member">Member</th>
           <th data-field="driver">Driver</th>
-          <th data-field="location">Pickup Location </th>
-          <th data-field="destination">Destination </th>
-          <th data-field="emergency-contact"> Emergency Contact
+          <th data-field="location">Pickup Location
+          </th>
+          <th data-field="destination">Destination
+          </th>
+          <th data-field="emergency-contact">
+            Emergency Contact
           </th>
         </tr>
       </thead>
@@ -135,7 +157,7 @@
         <tr>
           <td>
 
-              <a href="/admin/rides/<%=ride.id%>"><%= Date.parse(ride.pickup_date).strftime('%a %b %d, %Y') %></a>
+            <a href="/admin/rides/<%=ride.id%>"><%= Date.parse(ride.pickup_date).strftime('%a %b %d, %Y') %></a>
 
           </td>
 
@@ -156,14 +178,16 @@
             <%= ride.origin.zip %>
           </td>
           <td>
-            <%= ride.destination.name %> <br>
+            <%= ride.destination.name %>
+            <br>
             <%= ride.destination.address_line1 %><br>
             <%= ride.destination.city %>,
             <%= ride.destination.state %>,
             <%= ride.destination.zip %>
           </td>
           <td>
-            <%= ride.member.primaryEC_fname + " " + ride.member.primaryEC_lname %> <br>
+            <%= ride.member.primaryEC_fname + " " + ride.member.primaryEC_lname %>
+            <br>
             <%= ride.member.primaryEC_phone %>
           </td>
         </tr>
