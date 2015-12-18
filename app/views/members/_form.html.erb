@@ -156,9 +156,6 @@
             .closest("form")
             .find("label[for='" + element.attr("id") + "']")
             .attr('data-error', error.text());
-    },
-    submitHandler: function (form) {
-        console.log('form ok');
     }
 });
 
@@ -166,12 +163,10 @@
 
         rules: {
           "member[password]": {
-            required: true,
-            min: 6
+            required: true
           },
           "member[password_confirmation]": {
-            required: true,
-            min: 6
+            required: true
           },
           "member[address_line1]": {
             required: true
@@ -210,34 +205,6 @@
 
  });
  });
-
-
-// $('.checkme').on('click', function (event) {
-//   var password = $('.password').val();
-//   var password_confirmation = $('.password_confirmation').val();
-//   var address_line1 = $('.address_line1').val();
-//   var address_line2 = $('.address_line2').val();
-//   var city = $('.city').val();
-//   var zip = $('.zip').val();
-//   var primaryEC_fname = $('.primaryEC_fname').val();
-//   var primaryEC_lname = $('.primaryEC_lname').val();
-//   var primaryEC_phone = $('.primaryEC_phone').val();
-//   var primaryEC_cell = $('.primaryEC_cell').val();
-//   var primaryEC_relationship = $('.primaryEC_relationship').val();
-//   var secondaryEC_fname = $('.secondaryEC_fname').val();
-//   var secondaryEC_lname = $('.secondaryEC_lname').val();
-//   var secondaryEC_phone = $('.secondaryEC_phone').val();
-//   var secondaryEC_cell = $('.secondaryEC_cell').val();
-//   var secondaryEC_relationship = $('.secondaryEC_relationship').val();
-//
-//   if (password == password_confirmation) {
-//     $('#modal1').openModal();
-//   }
-//   else {
-//     console.log("no");
-//   }
-//
-// });
 
 </script>
 <style>

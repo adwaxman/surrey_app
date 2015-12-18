@@ -9,6 +9,7 @@ class DriversController < ApplicationController
   def create
     @driver = Driver.new(driver_params)
     @driver.county_preference = params[:driver][:county_preference]
+    @driver.county_preference.push("All")
     if @driver.save
       Matcher.create(driver_id: @driver.id)
       @open_rides = Ride.all.where(status:"open")
@@ -56,28 +57,29 @@ class DriversController < ApplicationController
     @driver = Driver.find(params[:id])
 
     # Show time in readable format
-    @driver.monday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p")
-    @driver.monday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p")
+    @driver.monday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p") if @driver.monday_min
+    @driver.monday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p") if @driver.monday_max
 
-    @driver.tuesday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p")
-    @driver.tuesday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p")
+    @driver.tuesday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p") if @driver.tuesday_min
+    @driver.tuesday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p") if @driver.tuesday_max
 
-    @driver.wednesday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p")
-    @driver.wednesday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p")
+    @driver.wednesday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p") if @driver.wednesday_min
+    @driver.wednesday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p") if @driver.wednesday_max
 
-    @driver.thursday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p")
-    @driver.thursday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p")
+    @driver.thursday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p") if @driver.thursday_min
+    @driver.thursday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p") if @driver.thursday_max
 
-    @driver.friday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p")
-    @driver.friday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p")
+    @driver.friday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p") if @driver.friday_min
+    @driver.friday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p") if @driver.friday_max
   end
 
   def update
     @driver = Driver.find(params[:id])
     @driver.county_preference = params[:driver][:county_preference]
     if @driver.update_attributes(driver_params)
+      @driver.update(confirmed: true)
 
-      redirect_to drivers_path
+      redirect_to driver_driverpanel_path(current_driver.id)
     else
       render 'edit'
     end
