@@ -1,0 +1,123 @@
+<div class="row">
+  <div class="col s12">
+    <div class="row">
+      <div class="col s12">
+        <h1>Driver Panel</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <h3>My schedule</h3>
+        <table>
+          <thead>
+            <tr>
+              <th data-field="monday">Monday</th>
+              <th data-field="tuesday">Tuesday</th>
+              <th data-field="wednesday">Wednesday</th>
+              <th data-field="thursday">Thursday</th>
+              <th data-field="friday">Friday</th>
+
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>
+                <% if @driver.monday %>
+                <%= @monday_min %>
+                -
+                <%= @monday_max %>
+                <% else %>
+                Off
+                <% end %>
+              </td>
+              <td>
+                <% if @driver.tuesday %>
+                <%= @tuesday_min %>
+                -
+                <%= @tuesday_max %>
+                <% else %>
+                Off
+                <% end %>
+              </td>
+              <td>
+                <% if @driver.wednesday %>
+                <%= @wednesday_min %>
+                -
+                <%= @wednesday_max %>
+                <% else %>
+                Off
+                <% end %>
+              </td>
+              <td>
+                <% if @driver.thursday %>
+                <%= @thursday_min %>
+                -
+                <%= @thursday_max %>
+                <% else %>
+                Off
+                <% end %>
+              </td>
+              <td>
+                <% if @driver.friday %>
+                <%= @friday_min %>
+                -
+                <%= @friday_max %>
+                <% else %>
+                Off
+                <% end %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <h3>My Rides</h3>
+        <table class="striped">
+          <thead>
+            <tr>
+              <th data-field="id">Member</th>
+              <th data-field="name">Pick up location</th>
+              <th data-field="date">Date</th>
+              <th data-field="destination">Destination</th>
+              <th data-field="duration">Estimated duration</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @driver.rides.each do |ride| %>
+            <tr>
+              <td>
+                <%= ride.member.fname %> <%= ride.member.lname %>
+              </td>
+              <td>
+                <%= link_to Date.parse(ride.pickup_date).strftime('%a %b %d, %Y'), ride_path(ride.id) %><br>
+                <%= link_to Time.parse(ride.pickup_time.to_s).strftime("%l:%M %p"), "#" %>
+              </td>
+              <td>
+                <%= ride.origin.address_line1 %><br>
+                <%= ride.origin.address_line2%>
+                <% if !ride.origin.address_line2 == "" %><br><% end %>
+                <%= ride.origin.city %>, PA
+                <%= ride.origin.zip %>
+              </td>
+              <td>
+                <%= ride.destination.address_line1 %><br>
+                <%= ride.destination.address_line2%>
+                <% if !ride.destination.address_line2 == "" %><br><% end %>
+                <%= ride.destination.city %>, PA
+                <%= ride.destination.zip %>
+              </td>
+              <td>
+                <%= ride.duration %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

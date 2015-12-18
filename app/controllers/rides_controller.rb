@@ -1,5 +1,5 @@
 class RidesController < ApplicationController
-before_action :logged_in?
+before_action :logged_in?, except: [:show]
 
   def new
     redirect_to edit_member_path(current_member.id) unless current_member.confirmed

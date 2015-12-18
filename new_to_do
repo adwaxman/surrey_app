@@ -26,5 +26,5 @@
 13. add scheduled rides to admin/rides view - adam
 14. general polish - both
 15. clear all other sessions at login - mike ***DONE***
-16. create member show and restrict to admin - mike
+16. create member show and restrict to admin - mike ***DONE***
 17. autocomplete search by full name for members and drivers -> then scrolls you down to your search; create classes using full_name which the search will match to
