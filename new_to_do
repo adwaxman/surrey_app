@@ -9,7 +9,7 @@
   - super admins can deactivate admins - ***DONE***
   - admins can deactivate and reactivate members ***DONE***
   - admins can deactivate and reactivate drivers ***DONE***
-3. anywhere there is a collection of members or drivers or rides, filter out inactives, archived, or incomplete - adam
+3. anywhere there is a collection of members or drivers or rides, filter out inactives, archived, or incomplete - adam ***DONE***
 4. sendgrid for emails to drivers upon assignment of rides - adam
 5. check all links and refreshes, esp after errors/render; make sure appropriate views are restricted to admins - both
 6. add note for drivers or members who forget their password to call surrey services - adam ***DONE***
@@ -23,7 +23,7 @@
 11. add ride duration to form and db - adam  ***DONE***
     - display info everywhere it's relevant ***DONE***
 12. add preferred_contact method to drivers form - mike ***DONE ***
-13. add scheduled rides to admin/rides view - adam
+13. add scheduled rides to admin/rides view - adam ***DONE***
 14. general polish - both
 15. clear all other sessions at login - mike ***DONE***
 16. create member show and restrict to admin - mike ***DONE***

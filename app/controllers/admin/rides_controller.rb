@@ -2,7 +2,7 @@ class Admin::RidesController < ApplicationController
   def index
     @rides = Ride.all
     @open_rides = @rides.where(status: 'open')
-    @scheduled_rides = @rides.where(status: 'scheduled')
+    @scheduled_rides = @rides.where(status: 'scheduled').sort_by {|ride| DateTime.parse(ride.pickup_date)}
     @rides_today = rides_today
 
     @sorted_open_rides = @open_rides.sort_by {|ride| DateTime.parse(ride.pickup_date)}
@@ -16,7 +16,7 @@ class Admin::RidesController < ApplicationController
     @pickup_date = Date.parse(@ride.pickup_date).strftime('%a %b %d, %Y')
     @pickup_time = Time.parse(@ride.pickup_time.to_s).strftime("%l:%M %p")
 
-    @drivers = Driver.all
+    @drivers = Driver.all.where(active: true).where(confirmed: true)
     @arr_of_drivers = []
     @drivers.each do |driver|
       @arr_of_drivers.push(driver.fname + " " + driver.lname)
@@ -75,7 +75,7 @@ class Admin::RidesController < ApplicationController
   end
 
   def select
-    @members = Member.all
+    @members = Member.all.where(active: true).where(confirmed: true)
     @arr_of_members = []
     @members.each do |member|
       @arr_of_members.push(member.full_name)
@@ -155,7 +155,7 @@ class Admin::RidesController < ApplicationController
     @ride = Ride.new(member_id: member_id, destination_id: destination_id_to_be_passed, origin_id: origin_id_to_be_passed, wheelchair: wheelchair, aide: aide, hearing_impaired: hearing_impaired, vision_impaired: vision_impaired, pickup_date: pickup_date, pickup_time: pickup_time, status: 'open', duration: duration)
     if @ride.save
       @weekday = Date.parse(@ride.pickup_date).strftime('%A').downcase
-      @matches = Driver.where("#{@weekday}": true).where("#{@weekday}_min <= ?", @ride.pickup_time).where("#{@weekday}_max >= ?", @ride.pickup_time).where("county_preference ilike '%\n- #{@ride.destination.county}\n%'")
+      @matches = Driver.where("#{@weekday}": true).where("#{@weekday}_min <= ?", @ride.pickup_time).where("#{@weekday}_max >= ?", @ride.pickup_time).where("county_preference ilike '%\n- #{@ride.destination.county}\n%'").where(active: true)
       if @ride.wheelchair
         @matches = @matches.where(accommodate_wheelchair: true)
       end
