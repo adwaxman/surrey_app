@@ -12,7 +12,7 @@ class Driver::SessionsController < ApplicationController
       session[:admin_id] = nil
       session[:member_id] = nil
       flash[:notice] = "You have successfully logged in."
-      redirect_to edit_driver_path(current_driver.id)
+      redirect_to driver_driverpanel_path(current_driver.id)
     else
       flash[:alert] = "There was a problem logging in. If you have forgotten your login information, please call Surrey Services at 610-647-6404"
       redirect_to root_path

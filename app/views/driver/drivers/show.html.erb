@@ -78,7 +78,7 @@
         <table class="striped">
           <thead>
             <tr>
-              <th data-field="id">Name</th>
+              <th data-field="id">Member</th>
               <th data-field="name">Pick up location</th>
               <th data-field="date">Date</th>
               <th data-field="destination">Destination</th>
@@ -90,9 +90,11 @@
             <% @driver.rides.each do |ride| %>
             <tr>
               <td>
-                <%= link_to ride.destination.name, "#" %></td>
-              <td><%= Date.parse(ride.pickup_date).strftime('%a %b %d, %Y') %>
-                <%= Time.parse(ride.pickup_time.to_s).strftime("%l:%M %p") %>
+                <%= ride.member.fname %> <%= ride.member.lname %>
+              </td>
+              <td>
+                <%= link_to Date.parse(ride.pickup_date).strftime('%a %b %d, %Y'), ride_path(ride.id) %><br>
+                <%= link_to Time.parse(ride.pickup_time.to_s).strftime("%l:%M %p"), "#" %>
               </td>
               <td>
                 <%= ride.origin.address_line1 %><br>
