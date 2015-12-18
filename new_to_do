@@ -7,11 +7,11 @@
   - max time must be later than min time for weekdays *** DONE ***
 2. active status for members and drivers - adam ***DONE***
   - super admins can deactivate admins - ***DONE***
-  - admins can deactivate and reactivate members
-  - admins can deactivate and reactivate drivers
+  - admins can deactivate and reactivate members ***DONE***
+  - admins can deactivate and reactivate drivers ***DONE***
 3. anywhere there is a collection of members or drivers or rides, filter out inactives, archived, or incomplete - adam
 4. sendgrid for emails to drivers upon assignment of rides - adam
-5. check all links and refreshes, esp after errors/render - both
+5. check all links and refreshes, esp after errors/render; make sure appropriate views are restricted to admins - both
 6. add note for drivers or members who forget their password to call surrey services - adam ***DONE***
 7. polish forms with instructions - mike
 8. driver panel needs some love - mike

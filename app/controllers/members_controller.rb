@@ -40,6 +40,27 @@ class MembersController < ApplicationController
     @member = Member.find(params[:id])
   end
 
+  def inactive
+    @member = Member.find(params[:member_id])
+    if @member.update(active: false)
+      redirect_to member_path @member
+    else
+      flash[:alert] = "There was a problem."
+      redirect :back
+    end
+  end
+
+  def reactivate
+    @member = Member.find(params[:member_id])
+    if @member.update(active: true)
+      flash[:alert] = "Member has been reactivated"
+      redirect_to member_path @member
+    else
+      flash[:alert] = "There was a problem."
+      redirect :back
+    end
+  end
+
   private
 
   def member_params
