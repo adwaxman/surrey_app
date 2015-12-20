@@ -218,9 +218,22 @@
 
 <div class="ride-section">
   <div class="row">
+
+    <div id="ride-modal" class="modal modal-fixed-footer">
+      <div class="modal-content">
+        <p id="weekend-error"></p>
+        <p id="advance-error"></p>
+
+      </div>
+      <div class="modal-footer">
+        <a  class="modal-action modal-close btn-flat ">OK</a>
+      </div>
+    </div>
+
     <div class="input-field col s6 offset-s3">
       <%= label_tag :pickup_date, "Click below to select a date", class: "datepicker-label", style: "font-size: 18px" %>
-      <input class="datepicker" name="pickup_date" placeholder=" " type="date" id="ride-pickup-date">
+      <!-- <input class="datepicker" name="pickup_date" placeholder=" " type="date" id="ride-pickup-date"> -->
+      <input type="text" id="datepicker" class="ride-pickup-date" name="pickup_date" placeholder= " ">
     </div>
   </div>
   <div class="row">
@@ -258,6 +271,8 @@
     </div>
 
   </div>
+
+
 
   <div class='row center'>
     <br>
@@ -330,15 +345,7 @@
 
 $(document).ready(function() {
 
-  $('#ride-pickup-date').change(function() {
-      var weekday = new Date($('#ride-pickup-date').val()).getDay()
-      if (weekday === 0 || weekday === 6) {
-            alert("You cannot request a ride for a Saturday or Sunday");
-            $('#ride-pickup-date').val('');
-      }
 
-
-  });
 
 
 
@@ -389,4 +396,10 @@ $(document).ready(function() {
 
 });
 
+</script>
+
+<script>
+$(function() {
+  $( "#datepicker" ).datepicker();
+});
 </script>
