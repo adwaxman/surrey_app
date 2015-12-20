@@ -1,6 +1,6 @@
 <div class="errors"></div>
 <div class="row">
-  <%= form_for @driver, :html => {:class => "col s10 offset-s1"} do |f| %>
+  <%= form_for @driver, :html => {:class => "form col s10 offset-s1"} do |f| %>
   <div class="row">
     <div class="col s12">
       <h3>Driver Sign-up</h3>
@@ -232,3 +232,77 @@
       max: [16, 30]
     });
   </script>
+
+  <script>
+  $(document).ready(function() {
+
+    $.validator.setDefaults({
+     errorClass: 'invalid',
+     validClass: "valid",
+     errorPlacement: function (error, element) {
+         $(element)
+             .closest("form")
+             .find("label[for='" + element.attr("id") + "']")
+             .attr('data-error', error.text());
+     },
+     submitHandler: function (form) {
+         console.log('form ok');
+     }
+ });
+
+       $(".form").validate({
+
+         rules: {
+           "driver[password]": {
+             required: true,
+             min: 6
+           },
+           "driver[password_confirmation]": {
+             required: true,
+             min: 6
+           },
+           "driver[address_line1]": {
+             required: true
+           },
+           "driver[city]": {
+             required: true
+           },
+           "driver[zip]": {
+             required: true
+           }
+         },
+         messages: {
+             "driver[password]": "Please enter a password",
+             "driver[password_confirmation]": "Please enter a password confirmation",
+             "driver[address_line1]": "Please enter a valid email address",
+             "driver[city]": "Please enter the name of the city you live in",
+             "driver[zip]": "Please enter a valid zip code",
+          }
+
+        });
+
+  });
+    // timepicker for driver form
+    $('.timepicker2').pickatime({
+      interval: 15,
+      min: [
+        8, 30
+      ],
+      max: [16, 30]
+    });
+  </script>
+  <style media="screen">
+  label {
+   width: 100%;
+  }
+  .input-field label {
+      /*display: block;*/
+      /*font-size: 0.8rem;*/
+      margin: 1rem;
+      -webkit-transform: translateY(-140%);
+      -moz-transform: translateY(-140%);
+      -ms-transform: translateY(-140%);
+      -o-transform: translateY(-140%);
+      transform: translateY(-140%);
+  }
+  </style>
