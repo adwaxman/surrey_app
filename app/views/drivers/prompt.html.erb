@@ -1,0 +1,141 @@
+
+<% if @driver.active %>
+<div class="row">
+  <div class=" col s12">
+    <h5>
+      <%= @driver.full_name %>'s profile is incomplete.  Either update <%= @driver.fname %>'s' information or make <%= @driver.fname %> inactive.
+    </h5>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col s12">
+    <table class="striped">
+      <thead>
+        <tr>
+          <th data-field="name">Name</th>
+          <th data-field="phone">Phone Numbers</th>
+          <th data-field="email">Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <%= @driver.full_name %>
+          </td>
+          <td>
+            <strong>
+              Home:
+            </strong><%= @driver.phone %>
+            <br>
+            <strong>
+              Cell:
+            </strong>
+            <%= @driver.cell %>
+          </td>
+          <td>
+            <%= @driver.email %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col s6">
+    <%= form_tag drivers_inactive_path, method: :post do %>
+    <%= hidden_field_tag :driver_id, value=@driver.id %>
+    <a class="btn modal-trigger right red" href="#modal1">Make Inactive</a>
+
+    <!-- Modal Structure -->
+    <div class="modal" id="modal1">
+      <div class="modal-content">
+        <p class="center">
+          Are you sure you want to deactivate
+          <%= @driver.full_name %>?
+        </p>
+      </div>
+      <div class="modal-footer">
+        <a class="modal-close btn-flat blue-grey lighten-4 " href="#!">No</a>
+        <%= submit_tag "Confirm", class: 'btn modal-action' %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <div class="col s6">
+    <%= link_to "Update", edit_driver_path(@driver.id), class: "btn" %>
+
+  </div>
+</div>
+
+<% else %>
+
+<div class="row">
+  <div class=" col s12">
+    <h5>
+      <%= @driver.full_name %>'s is inactive.  You can reactivate <%= @driver.fname %> below.
+    </h5>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col s12">
+    <table class="striped">
+      <thead>
+        <tr>
+          <th data-field="name">Name</th>
+          <th data-field="phone">Phone Numbers</th>
+          <th data-field="email">Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <%= @driver.full_name %>
+          </td>
+          <td>
+            <strong>
+              Home:
+            </strong><%= @driver.phone %>
+            <br>
+            <strong>
+              Cell:
+            </strong>
+            <%= @driver.cell %>
+          </td>
+          <td>
+            <%= @driver.email %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col s6">
+  <%= form_tag drivers_reactivate_path, method: :post do %>
+  <%= hidden_field_tag :driver_id, value=@driver.id %>
+  <a class="btn modal-trigger right blue" href="#modal1">Reactivate</a>
+
+  <!-- Modal Structure -->
+  <div class="modal" id="modal1">
+    <div class="modal-content">
+      <p class="center">
+        Are you sure you want to reactivate
+        <%= @driver.full_name %>?
+      </p>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close btn-flat blue-grey lighten-4 " href="#!">No</a>
+      <%= submit_tag "Confirm", class: 'btn modal-action' %>
+    </div>
+  </div>
+
+  <% end %>
+  </div>
+
+</div>
+
+<% end %>

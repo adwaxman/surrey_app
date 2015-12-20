@@ -78,8 +78,11 @@ class DriversController < ApplicationController
     @driver.county_preference = params[:driver][:county_preference]
     if @driver.update_attributes(driver_params)
       @driver.update(confirmed: true)
-
-      redirect_to driver_driverpanel_path(current_driver.id)
+      if current_driver
+        redirect_to driver_driverpanel_path(@driver.id)
+      elsif current_admin
+        redirect_to driver_path(@driver)
+      end
     else
       render 'edit'
     end
@@ -124,9 +127,16 @@ class DriversController < ApplicationController
 
   end
 
+  def prompt
+    @driver = Driver.find(params[:id])
+  end
+
   def inactive
     @driver = Driver.find(params[:driver_id])
-    if @driver.update(active: false)
+    if @driver.confirmed == nil
+      @driver.update(active: false, address_line1: "placeholder", city: "placeholder", state: "PA", zip: "placeholder")
+      redirect_to driver_path @driver
+    elsif @driver.update(active:false)
       redirect_to driver_path @driver
     else
       flash[:alert] = "There was a problem."
