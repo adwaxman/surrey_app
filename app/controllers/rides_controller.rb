@@ -96,6 +96,7 @@ before_action :logged_in?, except: [:show]
 
   def show
     @ride = Ride.find(params[:id])
+    @member = @ride.member
 
     # variables for gmaps
     @origin = Origin.find(@ride.origin_id)
