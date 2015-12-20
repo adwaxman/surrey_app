@@ -95,7 +95,7 @@
               </td>
               <td>
                 <%= link_to Date.parse(ride.pickup_date).strftime('%a %b %d, %Y'), ride_path(ride.id) %><br>
-                <%= link_to Time.parse(ride.pickup_time.to_s).strftime("%l:%M %p"), "#" %>
+                <%= link_to Time.parse(ride.pickup_time.to_s).strftime("%l:%M %p"), ride_path(ride.id) %>
               </td>
               <td>
                 <%= ride.origin.address_line1 %><br>
