@@ -1,4 +1,3 @@
-<div class="errors"></div>
 <div class="row">
   <%= form_for [:admin, @driver], :html => {:class => "col s10 offset-s1"} do |f| %>
   <div class="row">
@@ -38,18 +37,7 @@
       <%= f.label :password_confirmation, "Password confirmation" %>
     </div>
   </div>
+  <%= f.submit "Submit", class:"btn" %>
 </div>
-<%= f.submit "Submit", class:"btn" %>
 <% end %>
 </div>
-
-<script>
-// timepicker for driver form
-$('.timepicker2').pickatime({
-  interval: 15,
-  min: [
-    8, 30
-  ],
-  max: [16, 30]
-});
-</script>
