@@ -14,7 +14,7 @@ class Admin::MembersController < ApplicationController
     @member = Member.new(member_params)
     if @member.save
       @member.update(active: true)
-      redirect_to root_path
+      redirect_to member_path (@member)
     else
       render 'new'
     end
