@@ -1,37 +1,149 @@
 <div class="row">
-  <div class="col s6">
-    <strong>Matching drivers</strong>
-    <br>
-    <div class="collection">
-      <% @matched_drivers.each do |driver| %>
-      <a class="collection-item" href="#!"><%= driver.fname %> <%= driver.lname %> </a>
-    <% end %>
-    </div>
+  <div class="col s12">
+    <h1 class="center">Ride Information</h1>
   </div>
   <div class="col s6">
-    <div id="map" style="height: 400px; width: 400px;"></div>
-    <div id="right-panel" style="width: 400px; overflow: auto;"></div>
+    <div class="row">
+      <div class="col s12">
+        <div class="section">
+          <h5>Member Information:</h3>
+          <ul>
+            <li>
+              <strong>Name:</strong>
+              <%= @member.full_name %>
+            </li>
+            <li>
+              <strong>Address:</strong>
+              <%= @member.address_line1 %>
+            </strong>
+          </li>
+          <% if @member.address_line2 %>
+          <li>
+            <%= @member.address_line2 %></li>
+          <% end %>
+          <li>
+            <%= @member.city %>,
+            <%= @member.state %>
+            <%= @member.zip %>
+          </li>
+        </ul>
+      </div>
+      <div class="divider"></div>
+      <div class="section">
+        <h5>Considerations:</h3>
+        <ul>
+          <li>
+            <strong>Member has wheelchair:</strong>
+            <% if @ride.wheelchair %>
+            Yes
+            <% else %>
+            No
+            <% end %>
+          </li>
+          <li>
+            <strong>Member has aide:</strong>
+            <% if @ride.aide %>
+            Yes
+            <% else %>
+            No
+            <% end %>
+          </li>
+          <li>
+            <strong>Member is vision impaired</strong>:
+            <% if @ride.vision_impaired %>
+            Yes
+            <% else %>
+            No
+            <% end %>
+          </li>
+          <li>
+            <strong>Member is hearing impaired:</strong>
+            <% if @ride.hearing_impaired %>
+            Yes
+            <% else %>
+            No
+            <% end %>
+          </li>
+        </ul>
+      </div>
+      <div class="divider"></div>
+      <div class="section">
+        <h5>Emergency Contact:</h3>
+        <ul>
+          <li>
+            <strong>Name:
+            </strong><%= @member.primaryEC_fname + " " + @member.primaryEC_lname %></li>
+          <li>
+            <strong>Home Phone Number:</strong>
+            <%= @member.primaryEC_phone %>
+          </li>
+          <li>
+            <strong>Cell Phone Number:</strong>
+            <% if @member.primaryEC_cell %>
+            <%= @member.primaryEC_cell %>
+            <% else %>
+            None listed
+            <% end %>
+          </li>
+          <li>
+            <strong>Relationship to member:</strong>
+            <%= @member.primaryEC_relationship  %>
+          </li>
+        </ul>
+        <div class="divider"></div>
+        <div class="section">
+          <h5>Secondary Emergency Contact:</h3>
+          <ul>
+            <li>
+              <strong>Name:
+              </strong> <%= @member.secondaryEC_fname + " " + @member.secondaryEC_lname %></li>
+            <li>
+              <strong>Home Phone Number:</strong>
+              <%= @member.secondaryEC_phone %>
+            </li>
+            <li><%= @member.secondaryEC_phone %>
+              <strong>Cell Phone Number:</strong>
+              <% if @member.secondaryEC_cell %>
+              <%= @member.secondaryEC_cell %>
+              <% else %>
+              None listed
+              <% end %>
+            </li>
+            <li>
+              <strong>Relationship to member:</strong>
+              <%= @member.secondaryEC_relationship  %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col s6">
+  <h5>Directions</h5>
+  <div id="map" style="height: 400px; width: 400px;"></div>
+  <div id="right-panel" style="width: 400px; overflow: auto;"></div>
 
-    <script>
-      function initMap() {
-        var directionsDisplay = new google.maps.DirectionsRenderer;
-        var directionsService = new google.maps.DirectionsService;
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 7,
-          center: {
-            lat: 0,
-            lng: 0
-          }
-        });
-        directionsDisplay.setMap(map);
-        directionsDisplay.setPanel(document.getElementById('right-panel'));
-        var start = " <%= @origin_address %>"
-        var end = " <%= @destination_address %>"
-        directionsService.route({
-          origin: start, destination: end, travelMode: google.maps.TravelMode.DRIVING
-        }, function (response, status) {
-          if (status === google.maps.DirectionsStatus.OK) {directionsDisplay.setDirections(response);} else {window.alert('Directions request failed due to ' + status);}
-        });
-      }
-    </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAf6Sqbj7X4LzbwXgljyNuIup1hP4X7Pjk&signed_in=true&callback=initMap"></script>
+  <script>
+    function initMap() {
+      var directionsDisplay = new google.maps.DirectionsRenderer;
+      var directionsService = new google.maps.DirectionsService;
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 7,
+        center: {
+          lat: 0,
+          lng: 0
+        }
+      });
+      directionsDisplay.setMap(map);
+      directionsDisplay.setPanel(document.getElementById('right-panel'));
+      var start = " <%= @origin_address %>"
+      var end = " <%= @destination_address %>"
+      directionsService.route({
+        origin: start, destination: end, travelMode: google.maps.TravelMode.DRIVING
+      }, function (response, status) {
+        if (status === google.maps.DirectionsStatus.OK) {directionsDisplay.setDirections(response);} else {window.alert('Directions request failed due to ' + status);}
+      });
+    }
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAf6Sqbj7X4LzbwXgljyNuIup1hP4X7Pjk&signed_in=true&callback=initMap"></script>
