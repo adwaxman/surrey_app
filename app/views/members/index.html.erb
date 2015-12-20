@@ -20,7 +20,9 @@
       <tbody>
         <% @members.each do |member| %>
         <tr>
-          <td> <%= link_to member.full_name, member_path(member) %> </td>
+          <td> <%= link_to member.full_name, member_path(member) %> <% if !member.active %> <em>(inactive)<em> <% end %>  
+
+          </td>
           <td>
             <%= member.address_line1 %><br>
             <%= member.city %>,

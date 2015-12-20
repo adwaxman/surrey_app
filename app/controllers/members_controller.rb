@@ -19,7 +19,7 @@ class MembersController < ApplicationController
   end
 
   def index
-    @members = Member.all
+    @members = Member.all.sort_by {|member| member.lname.downcase}
   end
 
   def edit
