@@ -38,4 +38,9 @@ def current_driver
   end
 end
 
+def date_workaround str
+    newString = str[6..10] + "/" + str[0..1] + "/" + str[3..4]
+    return newString
+end
+
 end
