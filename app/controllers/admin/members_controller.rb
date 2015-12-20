@@ -27,6 +27,7 @@ class Admin::MembersController < ApplicationController
   def update
     @member = Member.find(params[:id])
     if @member.update_attributes(member_params)
+      @member.update(confirmed: true)
       Origin.create(member_id: @member.id, address_line1: @member.address_line1, address_line2: @member.address_line2, city: @member.city, state: @member.state, zip: @member.zip, primary: true)
       redirect_to members_path
     else
