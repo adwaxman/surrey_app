@@ -330,6 +330,16 @@
 
 $(document).ready(function() {
 
+  $('#ride-pickup-date').change(function() {
+      var weekday = new Date($('#ride-pickup-date').val()).getDay()
+      if (weekday === 0 || weekday === 6) {
+            alert("You cannot request a ride for a Saturday or Sunday");
+            $('#ride-pickup-date').val('');
+      }
+
+
+  });
+
 
 
     $.validator.setDefaults({
