@@ -220,9 +220,22 @@
   <h6 class="center red-text">***Rides must be requested at least 3 business days in advance***</h6>
   <br>
   <div class="row">
+
+    <div id="ride-modal" class="modal modal-fixed-footer">
+      <div class="modal-content">
+        <p id="weekend-error"></p>
+        <p id="advance-error"></p>
+
+      </div>
+      <div class="modal-footer">
+        <a  class="modal-action modal-close btn-flat ">OK</a>
+      </div>
+    </div>
+
     <div class="input-field col s6 offset-s3">
       <%= label_tag :pickup_date, "Click below to select a date", class: "datepicker-label", style: "font-size: 18px" %>
-      <input class="datepicker" name="pickup_date" placeholder=" " type="date" id="ride-pickup-date">
+      <!-- <input class="datepicker" name="pickup_date" placeholder=" " type="date" id="ride-pickup-date"> -->
+      <input type="text" id="datepicker" class="ride-pickup-date" name="pickup_date" placeholder= " ">
     </div>
   </div>
   <div class="row">
@@ -385,4 +398,10 @@ $(document).ready(function() {
 
 });
 
+</script>
+
+<script>
+$(function() {
+  $( "#datepicker" ).datepicker();
+});
 </script>

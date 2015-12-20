@@ -22,7 +22,7 @@ before_action :logged_in?, except: [:show]
     state = 'PA'
     origin_zip = params[:origin_zip]
 
-    pickup_date = params[:pickup_date]
+    pickup_date = date_workaround(params[:pickup_date])
     pickup_time = params[:pickup_time]
     duration = params[:duration]
     wheelchair = params[:wheelchair] ? params[:wheelchair] : wheelchair = false
