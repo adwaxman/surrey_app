@@ -39,7 +39,7 @@ class Admin::DriversController < ApplicationController
       @matches.each do |ride|
         Match.create(matcher_id: @driver.id, ride_id: ride.id)
       end
-      redirect_to root_path
+      redirect_to driver_path @driver
     else
       render 'new'
     end

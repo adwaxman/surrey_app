@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   post 'members/inactive', to: 'members#inactive'
   post 'drivers/reactivate', to: 'drivers#reactivate'
   post 'members/reactivate', to: 'members#reactivate'
+  get 'drivers/prompt/:id', to: 'drivers#prompt', as: 'driver_prompt'
 
 
   namespace :admin do

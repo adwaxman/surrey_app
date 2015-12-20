@@ -89,30 +89,38 @@ class DriversController < ApplicationController
   def show
     @driver = Driver.find(params[:id])
 
-    # Show time in readable format
-    @monday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p")
-    @monday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p")
+    if @driver.confirmed.nil?
+      # redirect to landing page and prompt to update or make inactive
+      redirect_to driver_prompt_path @driver
 
-    @tuesday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p")
-    @tuesday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p")
+    else
 
-    @wednesday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p")
-    @wednesday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p")
+      # Show time in readable format
+      @monday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p")
+      @monday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p")
 
-    @thursday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p")
-    @thursday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p")
+      @tuesday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p")
+      @tuesday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p")
 
-    @friday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p")
-    @friday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p")
+      @wednesday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p")
+      @wednesday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p")
 
-    @counties = @driver.county_preference
-    @upper = @counties.length-1
+      @thursday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p")
+      @thursday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p")
 
-    @assigned_rides = @driver.rides.sort_by {|ride| DateTime.parse(ride.pickup_date)}
-    @matched_rides = Matcher.find(@driver.id).rides.where(status: "open").sort_by {|ride| DateTime.parse(ride.pickup_date)}
+      @friday_min = Time.parse(@driver.monday_min.to_s).strftime("%l:%M %p")
+      @friday_max = Time.parse(@driver.monday_max.to_s).strftime("%l:%M %p")
 
-    @outreaches = @driver.outreaches
-    @notes = @driver.notes
+      @counties = @driver.county_preference
+      @upper = @counties.length-1
+
+      @assigned_rides = @driver.rides.sort_by {|ride| DateTime.parse(ride.pickup_date)}
+      @matched_rides = Matcher.find(@driver.id).rides.where(status: "open").sort_by {|ride| DateTime.parse(ride.pickup_date)}
+
+      @outreaches = @driver.outreaches
+      @notes = @driver.notes
+
+    end
 
   end
 
