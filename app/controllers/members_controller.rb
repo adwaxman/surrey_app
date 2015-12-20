@@ -9,9 +9,10 @@ class MembersController < ApplicationController
 
   def create
     @member = Member.new(member_params)
+    @member.active = true
       if @member.save
-      Origin.create(member_id: @member.id, address_line1: @member.address_line1, address_line2: @member.address_line2, city: @member.city, state: @member.state, zip: @member.zip, primary: true)
-      redirect_to root_path
+        Origin.create(member_id: @member.id, address_line1: @member.address_line1, address_line2: @member.address_line2, city: @member.city, state: @member.state, zip: @member.zip, primary: true)
+        redirect_to root_path
     else
       render 'new'
     end
@@ -42,7 +43,10 @@ class MembersController < ApplicationController
 
   def inactive
     @member = Member.find(params[:member_id])
-    if @member.update(active: false)
+    if @member.confirmed == nil
+      @member.update(active: false, phone: "(555) 555-5555", cell: "(555) 555-5555", address_line1: "placeholder", city: "placeholder", state: "PA", zip: "placeholder")
+      redirect_to member_path @member
+    elsif @member.update(active: false)
       redirect_to member_path @member
     else
       flash[:alert] = "There was a problem."

@@ -12,8 +12,8 @@ class Admin::MembersController < ApplicationController
 
   def create
     @member = Member.new(member_params)
+    @member.active = true
     if @member.save
-      @member.update(active: true)
       redirect_to member_path (@member)
     else
       render 'new'
@@ -28,7 +28,7 @@ class Admin::MembersController < ApplicationController
     @member = Member.find(params[:id])
     if @member.update_attributes(member_params)
       Origin.create(member_id: @member.id, address_line1: @member.address_line1, address_line2: @member.address_line2, city: @member.city, state: @member.state, zip: @member.zip, primary: true)
-      redirect_to members_path
+      redirect_to member_path @member
     else
       render 'edit'
     end
