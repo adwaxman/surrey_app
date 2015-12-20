@@ -244,9 +244,6 @@
              .closest("form")
              .find("label[for='" + element.attr("id") + "']")
              .attr('data-error', error.text());
-     },
-     submitHandler: function (form) {
-         console.log('form ok');
      }
  });
 
@@ -254,12 +251,10 @@
 
          rules: {
            "driver[password]": {
-             required: true,
-             min: 6
+             required: true
            },
            "driver[password_confirmation]": {
-             required: true,
-             min: 6
+             required: true
            },
            "driver[address_line1]": {
              required: true
