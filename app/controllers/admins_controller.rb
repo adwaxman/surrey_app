@@ -12,7 +12,7 @@ before_action :super_admin?
       render :new
     elsif
       @admin.save
-      flash[:notice] = "Admin created successfully as " + Admin.find(session[:admin_id]).username
+      flash[:notice] = @admin.full_name + " is now an admin."
       redirect_to root_path
     else
       flash[:alert] = "There was a problem."
