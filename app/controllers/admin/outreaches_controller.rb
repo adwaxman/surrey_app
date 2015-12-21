@@ -1,4 +1,5 @@
 class Admin::OutreachesController < ApplicationController
+  before_action :admin?
 
   def new
     @ride_id = params[:ride_id]
@@ -21,6 +22,11 @@ class Admin::OutreachesController < ApplicationController
       redirect :back
     end
 
+  end
+
+  private
+  def admin?
+    redirect_to admin_login_path unless current_admin
   end
 
 end

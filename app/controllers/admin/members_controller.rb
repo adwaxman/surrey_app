@@ -1,4 +1,5 @@
 class Admin::MembersController < ApplicationController
+  before_action :admin?
   def index
   end
 
@@ -35,6 +36,9 @@ class Admin::MembersController < ApplicationController
     end
   end
   private
+  def admin?
+    redirect_to admin_login_path unless current_admin
+  end
 
   def member_params
     params.require(:member).permit(:fname, :mi, :lname, :email, :password, :password_confirmation, :phone, :cell, :address_line1, :address_line2, :city, :state, :zip, :primaryEC_fname, :primaryEC_lname, :primaryEC_phone, :primaryEC_cell, :primaryEC_relationship, :secondaryEC_fname, :secondaryEC_lname, :secondaryEC_phone, :secondaryEC_cell, :secondaryEC_relationship, :tertiaryEC_fname, :tertiaryEC_lname, :tertiaryEC_phone, :tertiaryEC_cell, :tertiaryEC_relationship)

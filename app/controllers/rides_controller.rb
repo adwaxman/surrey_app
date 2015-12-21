@@ -116,6 +116,6 @@ before_action :logged_in?, except: [:show]
 
   private
   def logged_in?
-    redirect_to login_path unless current_member || current_member
+    redirect_to login_path unless current_member || current_admin
   end
 end

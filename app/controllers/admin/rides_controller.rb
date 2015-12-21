@@ -1,25 +1,23 @@
 class Admin::RidesController < ApplicationController
+  before_action :admin?
   def index
     @rides = Ride.all
     @open_rides = @rides.where(status: 'open')
-    @scheduled_rides = @rides.where(status: 'scheduled').sort_by {|ride| DateTime.parse(ride.pickup_date)}
+    @scheduled_rides = @rides.where(status: 'scheduled').sort_by { |ride| DateTime.parse(ride.pickup_date) }
     @rides_today = rides_today
 
-    @sorted_open_rides = @open_rides.sort_by {|ride| DateTime.parse(ride.pickup_date)}
-
-
-
+    @sorted_open_rides = @open_rides.sort_by { |ride| DateTime.parse(ride.pickup_date) }
   end
 
   def show
     @ride = Ride.find(params[:id])
     @pickup_date = Date.parse(@ride.pickup_date).strftime('%a %b %d, %Y')
-    @pickup_time = Time.parse(@ride.pickup_time.to_s).strftime("%l:%M %p")
+    @pickup_time = Time.parse(@ride.pickup_time.to_s).strftime('%l:%M %p')
 
     @drivers = Driver.all.where(active: true).where(confirmed: true)
     @arr_of_drivers = []
     @drivers.each do |driver|
-      @arr_of_drivers.push(driver.fname + " " + driver.lname)
+      @arr_of_drivers.push(driver.fname + ' ' + driver.lname)
     end
 
     @matched_drivers = []
@@ -30,12 +28,10 @@ class Admin::RidesController < ApplicationController
 
     @outreaches = @ride.outreaches
     @notes = @ride.notes
-
   end
 
   def new
     @member = Member.where(full_name: params[:member_full_name]).first
-
   end
 
   def edit
@@ -48,29 +44,28 @@ class Admin::RidesController < ApplicationController
     @driver = Driver.where(full_name: params[:driver_full_name]).first
     if current_admin
       debugger
-      @ride.update(driver_id: @driver.id, assigned_by: current_admin.fname + " " + current_admin.lname, status: "scheduled")
+      @ride.update(driver_id: @driver.id, assigned_by: current_admin.fname + ' ' + current_admin.lname, status: 'scheduled')
       redirect_to admin_ride_path @ride
     elsif current_driver
-      @ride.update(driver_id: @driver.id, assigned_by: "self", status: "scheduled")
+      @ride.update(driver_id: @driver.id, assigned_by: 'self', status: 'scheduled')
       redirect_to driver_ride_path @ride
     else
-      flash[:alert] = "There was a problem"
+      flash[:alert] = 'There was a problem'
       redirect :back
     end
-
   end
 
   def assign
     @ride = Ride.find(params[:ride_id])
     @driver = Driver.find(params[:driver_id])
-    @ride.update(driver_id: @driver.id, assigned_by: current_admin.full_name, status: "scheduled")
+    @ride.update(driver_id: @driver.id, assigned_by: current_admin.full_name, status: 'scheduled')
     redirect_to driver_path @driver
   end
 
   def unassign
     @ride = Ride.find(params[:ride_id])
     @driver = Driver.find(params[:driver_id])
-    @ride.update(driver_id: nil, assigned_by: current_admin.full_name, status: "open")
+    @ride.update(driver_id: nil, assigned_by: current_admin.full_name, status: 'open')
     redirect_to driver_path @driver
   end
 
@@ -118,7 +113,7 @@ class Admin::RidesController < ApplicationController
       end
 
       if @destination_address.nil? || !@destination_address.respond_to?(:address)
-        @destination.county = "All"
+        @destination.county = 'All'
       else
         @destination.county = @destination_address.address.county
     end
@@ -174,14 +169,17 @@ class Admin::RidesController < ApplicationController
 
   def complete
     @ride = Ride.find(params[:ride_id])
-    if params[:completion_notes] != ""
-      @ride.update(completion_notes: params[:completion_notes], status: "complete")
+    if params[:completion_notes] != ''
+      @ride.update(completion_notes: params[:completion_notes], status: 'complete')
     else
-      @ride.update(status: "complete")
+      @ride.update(status: 'complete')
     end
     redirect_to admin_rides_path
   end
 
+  private
 
-
+  def admin?
+    redirect_to admin_login_path unless current_admin
+  end
 end
