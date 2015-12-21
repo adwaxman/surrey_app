@@ -1,6 +1,6 @@
 class DriversController < ApplicationController
-  before_action :driver? except: [:show]
-  before_action :admin? only: [:show]
+  before_action :driver?, except: [:show]
+  before_action :admin?, only: [:show]
 
 
   def new
