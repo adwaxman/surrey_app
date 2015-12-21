@@ -1,4 +1,5 @@
 class Driver::DriversController < ApplicationController
+  before_action :driver?
   def show
     if current_driver.confirmed.nil?
       redirect_to edit_driver_path(current_driver.id)
@@ -21,4 +22,12 @@ class Driver::DriversController < ApplicationController
       @friday_max = Time.parse(@driver.monday_max.to_s).strftime('%l:%M %p')
   end
   end
+
+private
+def driver?
+  unless current_driver || current_admin
+    flash[:notice] = "You must be logged in as a driver or administrator"
+    redirect_to root_path
+  end
+end
 end
