@@ -38,13 +38,11 @@ before_action :logged_in?, except: [:show]
       for @destination_address in @destination_address
         p @destination_address.display_name
       end
-      debugger
       if @destination_address.nil? || !@destination_address.respond_to?(:address)
         @destination.county = "All"
       else
         @destination.county = @destination_address.address.county
     end
-    debugger
       if @destination.save
       else
         flash[:alert] = 'problem 1'
