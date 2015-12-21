@@ -18,8 +18,13 @@
         <p>Click below to login to your account and set your schedule.</p>
       </div>
       <div class="card-action center">
-        <a class="waves-effect waves-light btn-large white-text" href="/driver/login">
-          <i class="fa fa-car fa-1x left"></i>Click here</a>
+        <% if current_driver %>
+          <a class="waves-effect waves-light btn-large white-text" href=<%="/driver/driverpanel/#{current_driver.id}"%>>
+            <i class="fa fa-car fa-1x left"></i>Click here</a>
+        <% else %>
+          <a class="waves-effect waves-light btn-large white-text" href="driver/login">
+            <i class="fa fa-car fa-1x left"></i>Click here</a>
+          <% end %>
       </div>
     </div>
   </div>

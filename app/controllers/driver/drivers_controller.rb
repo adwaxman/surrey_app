@@ -20,6 +20,9 @@ class Driver::DriversController < ApplicationController
 
       @friday_min = Time.parse(@driver.monday_min.to_s).strftime('%l:%M %p')
       @friday_max = Time.parse(@driver.monday_max.to_s).strftime('%l:%M %p')
+
+      @rides = @driver.rides.where(status: "scheduled")
+
   end
   end
 
@@ -27,7 +30,7 @@ private
 def driver?
   unless current_driver || current_admin
     flash[:notice] = "You must be logged in as a driver or administrator"
-    redirect_to root_path
+    redirect_to driver_login_path
   end
 end
 end
