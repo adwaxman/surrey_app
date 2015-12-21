@@ -1,0 +1,118 @@
+<div class="row">
+  <div class="col s12">
+    <h4>
+      Ride number:
+      <%= @ride.id %><em> (complete)</em>
+    </h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s12">
+    <table class="striped">
+      <thead>
+        <tr>
+          <th data-field="date">Date</th>
+          <th data-field="time">Time</th>
+          <th data-field="duration">Duration</th>
+          <th data-field="member">Member</th>
+          <th data-field="driver">Driver</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <%= @pickup_date%>
+          </td>
+          <td>
+            <%= @pickup_time %>
+          </td>
+          <td>
+            <%= @ride.duration %>
+          </td>
+          <td>
+            <%= link_to "#{@ride.member.full_name}", member_path(@ride.member) %>
+          </td>
+          <td>
+            <%= link_to "#{@ride.driver.full_name}", driver_path(@ride.driver) %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s12">
+    <table class="striped">
+      <thead>
+        <tr>
+          <th data-field="location">Pickup Location
+          </th>
+          <th data-field="destination">Destination
+          </th>
+          <th data-field="status">Status</th>
+          <th data-field="completion-notes">Completion Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <%= @ride.origin.address_line1 %><br>
+            <%= @ride.origin.city %>,
+            <%= @ride.origin.state %>,
+            <%= @ride.origin.zip %>
+          </td>
+          <td>
+            <%= @ride.destination.name %>
+            <br>
+            <%= @ride.destination.address_line1 %><br>
+            <%= @ride.destination.city %>,
+            <%= @ride.destination.state %>,
+            <%= @ride.destination.zip %>
+          </td>
+          <td>
+            <%= @ride.status %>
+          </td>
+          <td>
+            <% if @ride.completion_notes %>
+            <%= @ride.completion_notes %>
+            <% else %>
+            None
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<h5>Notes</h5>
+
+<div class="row">
+  <div class="col s12">
+    <table class="striped">
+      <thead>
+        <tr>
+          <th data-field="note">Note</th>
+          <th data-field="created">Date Created</th>
+          <th data-field="created-by">Created By</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @notes.each do |note| %>
+        <tr>
+          <td>
+            <%= note.body %>
+          </td>
+          <td>
+            <%= note.created_at %>
+          </td>
+          <td>
+            <%= note.admin.full_name %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

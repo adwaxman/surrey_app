@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col s12">
+    <h3>Archived Rides (<%=@archived_rides.length%>)</h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s12">
+    <table class="striped">
+      <thead>
+        <tr>
+          <th data-field="date">Date</th>
+          <th data-field="time">Time</th>
+          <th data-field="member">Member</th>
+          <th data-field="driver">Driver</th>
+          <th data-field="location">Pickup Location
+          </th>
+          <th data-field="destination">Destination
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @archived_rides.each do |ride| %>
+        <tr>
+          <td>
+
+            <a href="/admin/rides/past/<%=ride.id%>"><%= Date.parse(ride.pickup_date).strftime('%a %b %d, %Y') %></a>
+
+          </td>
+
+          <td>
+            <%= Time.parse(ride.pickup_time.to_s).strftime("%l:%M %p") %>
+
+          </td>
+          <td>
+            <%= link_to ride.member.full_name, member_path(ride.member) %>
+          </td>
+          <td>
+            <%= link_to ride.driver.full_name, driver_path(ride.driver) %>
+          </td>
+          <td>
+            <%= ride.origin.address_line1 %><br>
+            <%= ride.origin.city %>,
+            <%= ride.origin.state %>,
+            <%= ride.origin.zip %>
+          </td>
+          <td>
+            <%= ride.destination.name %>
+            <br>
+            <%= ride.destination.address_line1 %><br>
+            <%= ride.destination.city %>,
+            <%= ride.destination.state %>,
+            <%= ride.destination.zip %>
+          </td>
+        </tr>
+
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>

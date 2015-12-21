@@ -51,6 +51,8 @@ Rails.application.routes.draw do
 
     root 'home#index'
 
+    get 'archived', to: 'rides#archived'
+    get 'rides/past/:id', to: 'rides#past', as: 'past_ride'
 
 
 

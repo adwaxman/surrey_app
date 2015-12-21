@@ -1,5 +1,6 @@
 class Admin::RidesController < ApplicationController
   before_action :admin?
+
   def index
     @rides = Ride.all
     @open_rides = @rides.where(status: 'open')
@@ -176,6 +177,19 @@ class Admin::RidesController < ApplicationController
     end
     redirect_to admin_rides_path
   end
+
+  def archived
+    @archived_rides = Ride.where(status: 'complete').sort_by { |ride| DateTime.parse(ride.pickup_date) }
+  end
+
+  def past
+    @ride = Ride.find(params[:id])
+    @pickup_date = Date.parse(@ride.pickup_date).strftime('%a %b %d, %Y')
+    @pickup_time = Time.parse(@ride.pickup_time.to_s).strftime('%l:%M %p')
+    @notes = @ride.notes
+  end
+
+
 
   private
 
