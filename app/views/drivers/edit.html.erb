@@ -224,7 +224,7 @@
     <%= f.submit "Submit", class:"btn" %>
     <% end %>
   </div>
-
+<input type="hidden" name="name" class="workaround" value="<%= @driver.confirmed %>">
   <script>
     // timepicker for driver form
     $('.timepicker2').pickatime({
@@ -254,7 +254,14 @@
 
          rules: {
            "driver[password]": {
-             required: true
+             required: function() {
+               if ($('.workaround').val() == "true"){
+                 return false;
+               }
+               else{
+                 return true;
+               }
+               }
            },
            "driver[password_confirmation]": {
              required: true
