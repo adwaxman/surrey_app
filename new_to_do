@@ -48,6 +48,6 @@
 9. add autocomplete with all drivers at top of admin drivers index that links to driver's page - adam
 10. send email to driver when an admin assigns a driver to a ride. email should include date, time, pickup location, destination, special considerations, EC info and a link to log into the application -adam
 11. send email to Mary (and others?) when ride is requested -adam
-12. style flash notices and alerts (make bigger) - mike
+12. style flash notices and alerts (make bigger) - mike ***DONE***
 13. add more options to outreach results?
 14. general polsih (padding, ...) - both
