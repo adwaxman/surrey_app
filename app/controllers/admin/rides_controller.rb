@@ -156,6 +156,8 @@ class Admin::RidesController < ApplicationController
         Match.create(ride_id: @ride.id, matcher_id: driver.id)
       end
 
+      StaffNotifier.new_ride_request(@ride.member, @ride).deliver
+
       flash[:notice] = 'Ride request has been requested successfully. Check below for matched drivers.'
       redirect_to admin_ride_path @ride
 

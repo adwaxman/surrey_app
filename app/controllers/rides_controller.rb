@@ -85,6 +85,8 @@ before_action :logged_in?, except: [:show]
         Match.create(ride_id: @ride.id, matcher_id: driver.id)
       end
 
+      StaffNotifier.new_ride_request(current_member, @ride).deliver
+
       flash[:notice] = 'Your ride has been requested!'
       redirect_to root_path
 
