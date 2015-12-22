@@ -80,6 +80,7 @@ before_action :logged_in?, except: [:show]
         @matches = @matches.where(accommodate_wheelchair: true)
       end
       @matches = @matches.where(accommodate_aide: true) if @ride.aide
+      @matches = @matches.where(accommodate_pet: true) if @ride.pet
       @matches.each do |driver|
         Match.create(ride_id: @ride.id, matcher_id: driver.id)
       end

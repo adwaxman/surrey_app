@@ -56,7 +56,7 @@ class Admin::DriversController < ApplicationController
 
   private
 
-  sdef admin?
+  def admin?
     redirect_to admin_login_path unless current_admin
   end
 
