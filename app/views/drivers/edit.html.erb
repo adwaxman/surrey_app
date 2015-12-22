@@ -264,7 +264,14 @@
                }
            },
            "driver[password_confirmation]": {
-             required: true
+             required: function() {
+               if ($('.workaround').val() == "true"){
+                 return false;
+               }
+               else{
+                 return true;
+               }
+               }
            },
            "driver[address_line1]": {
              required: true
