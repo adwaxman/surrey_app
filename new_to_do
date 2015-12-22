@@ -18,7 +18,7 @@
   - view schedueld rides with map originating from their home addres to pickup location to Destination
   - schedueld rides display info for ride including emergency contact
   - partial driver create by admin --> driver logs in and updates
-9. link in dropdown for admin to view archived rides. allow to view archived rides and notes - adam 
+9. link in dropdown for admin to view archived rides. allow to view archived rides and notes - adam
 10. completed status and notes for rides, allow admin to make these changes - adam ***DONE***
 11. add ride duration to form and db - adam  ***DONE***
     - display info everywhere it's relevant ***DONE***
@@ -28,3 +28,23 @@
 15. clear all other sessions at login - mike ***DONE***
 16. create member show and restrict to admin - mike ***DONE***
 17. autocomplete search by full name for members and drivers -> then scrolls you down to your search; create classes using full_name which the search will match to - mike
+
+
+
+
+
+
+12/22:
+
+1. remove date restrictions from admin ride format
+2. add pet/service animal accommodations to driver and rides form
+3. add columns for #2 on drivers and rides table.
+4. Display #2 where appropriate
+5. click thru admin panel as a non-super admin and fix any bugs and improve flow
+6. allow all times on admin rides from
+7. restrict member rides form times to match driver availability; add note that members can call for anything outside of range
+8. add autocomplete with all members at top of admin members index that links to member's page
+9. add autocomplete with all drivers at top of admin drivers index that links to driver's page
+10. send email to driver when an admin assigns a driver to a ride. email should include date, time, pickup location, destination, special considerations, EC info and a link to log into the application
+11. send email to Mary (and others?) when ride is requested
+12. style flash notices and alerts (make bigger)

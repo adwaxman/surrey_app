@@ -26,7 +26,7 @@
 //= require phonevalidator
 //= require drivers
 //= require turbolinks
-
+//= require jquery-readyselector
 //= require_tree .
 
 
