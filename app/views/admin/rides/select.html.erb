@@ -18,9 +18,9 @@
 
             <%= form_tag admin_rides_new_path, method: :post do %>
             <div class="ui-widget center">
-              <label class="black-text" for="tags" name="member_full_name">Search Members
+              <label class="black-text" for="all_members" name="member_full_name">Search Members
               </label>
-              <input class="center" id="tags" name="member_full_name" size="35">
+              <input class="center" id="all_members" name="member_full_name" size="35">
             </div>
             <br>
 
@@ -45,6 +45,6 @@
     availableTags.push('<%= member %>');
     <% end %>
 
-    $("#tags").autocomplete({source: availableTags});
+    $("#all_members").autocomplete({source: availableTags});
   });
 </script>
