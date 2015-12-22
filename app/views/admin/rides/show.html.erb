@@ -110,7 +110,7 @@
             <%= note.body %>
           </td>
           <td>
-            <%= note.created_at %>
+            <%= DateTime.parse(note.created_at.to_s).strftime("%a %b %d %l:%M %p") %>
           </td>
           <td>
             <%= note.admin.full_name %>
@@ -211,7 +211,7 @@
                       <%=outreach.result  %>
                     </td>
                     <td>
-                      <%=outreach.admin.fname  %>
+                      <%=outreach.admin.full_name  %>
                     </td>
                   </tr>
 

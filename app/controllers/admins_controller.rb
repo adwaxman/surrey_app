@@ -32,8 +32,8 @@ before_action :super_admin?
 
     def super_admin?
       unless current_admin && current_admin.super_admin
-        flash[:notice] = "You must be logged in as an administrator"
-        redirect_to root_path
+        flash[:notice] = "You do not have access to this page"
+        redirect_to :back
       end
     end
 

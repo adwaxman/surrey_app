@@ -20,7 +20,7 @@
       <tbody>
         <% @members.each do |member| %>
         <tr>
-          <td> <%= link_to member.full_name, member_path(member) %> <% if !member.active %> <em>(inactive)<em> <% end %>  
+          <td> <%= link_to member.full_name, member_path(member) %> <% if !member.active %> <em>(inactive)<em> <% end %>
 
           </td>
           <td>
@@ -35,7 +35,7 @@
           <td>
             <% member.rides.each do |ride| %>
             <% if ride.status == "open" || ride.status == 'scheduled' %>
-            <%= link_to (ride.destination.name + ": " + Date.parse(ride.pickup_date.to_s).strftime("%b %d, %Y")), "#" %>
+            <%= link_to (ride.destination.name + ": " + Date.parse(ride.pickup_date.to_s).strftime("%b %d, %Y")), admin_ride_path(ride) %>
             <br>
             <% end %>
 
