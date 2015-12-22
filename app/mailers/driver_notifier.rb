@@ -1,10 +1,11 @@
 class DriverNotifier < ApplicationMailer
   default from: 'adwaxman@gmail.com'
 
-  # send a signup email to the user, pass in the user object that   contains the user's email address
-  def send_ride_details(driver)
-    @driver = user
+  def send_ride_details(driver, ride)
+    @driver = driver
+    @ride = ride
+    @member = ride.member
     mail(to: @driver.email,
-         subject: "Details for ride on #{Ride.last.pickup_date}")
+         subject: "Details for ride on #{ride.pickup_date}")
   end
 end
