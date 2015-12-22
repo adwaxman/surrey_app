@@ -36,15 +36,18 @@
 
 12/22:
 
-1. remove date restrictions from admin ride format
-2. add pet/service animal accommodations to driver and rides form
-3. add columns for #2 on drivers and rides table.
-4. Display #2 where appropriate
-5. click thru admin panel as a non-super admin and fix any bugs and improve flow
-6. allow all times on admin rides from
-7. restrict member rides form times to match driver availability; add note that members can call for anything outside of range
-8. add autocomplete with all members at top of admin members index that links to member's page
-9. add autocomplete with all drivers at top of admin drivers index that links to driver's page
-10. send email to driver when an admin assigns a driver to a ride. email should include date, time, pickup location, destination, special considerations, EC info and a link to log into the application
-11. send email to Mary (and others?) when ride is requested
-12. style flash notices and alerts (make bigger)
+1. remove date restrictions from admin ride format -adam ***DONE***
+2. add pet/service animal accommodations to driver and rides form - mike
+3. add columns for #2 on drivers and rides table. - mike
+4. Display #2 where appropriate - mike
+5. click thru admin panel as a non-super admin and fix any bugs and improve flow - together
+6. allow all times on admin rides from - adam
+7. restrict member rides form times to match driver availability; add note that members can call for anything outside of range - adam
+  -  add message to call if requesting ride outside time range
+8. add autocomplete with all members at top of admin members index that links to member's page - adam
+9. add autocomplete with all drivers at top of admin drivers index that links to driver's page - adam
+10. send email to driver when an admin assigns a driver to a ride. email should include date, time, pickup location, destination, special considerations, EC info and a link to log into the application -adam
+11. send email to Mary (and others?) when ride is requested -adam
+12. style flash notices and alerts (make bigger) - mike
+13. add more options to outreach results?
+14. general polsih (padding, ...) - both
