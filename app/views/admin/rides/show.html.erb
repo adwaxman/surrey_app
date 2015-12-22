@@ -86,10 +86,18 @@
   <div class="s3">
     <%= submit_tag "Assign Driver", class: "btn" %>
   </div>
+
+
+<% end %><br>
+
+<%= form_tag admin_rides_cancel_path, method: :post do %>
+  <div class="col s3 offset-s6">
+    <input type="hidden" name="id" value="<%= @ride.id %>">
+    <%= submit_tag "Cancel ride", class: "btn" %>
+  </div>
 </div>
 
 <% end %>
-
 <h4>Notes</h4>
 
 <div class="row">
