@@ -20,6 +20,11 @@ class MembersController < ApplicationController
 
   def index
     @members = Member.all.sort_by {|member| member.lname.downcase}
+
+    @arr_of_members = []
+    @members.each do |member|
+      @arr_of_members.push(member.full_name)
+    end
   end
 
   def edit
@@ -63,6 +68,11 @@ class MembersController < ApplicationController
       flash[:alert] = "There was a problem."
       redirect :back
     end
+  end
+
+  def search
+    @member = Member.find_by(full_name: params[:member_full_name])
+    redirect_to member_path @member
   end
 
   private
