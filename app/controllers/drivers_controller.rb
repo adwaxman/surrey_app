@@ -50,7 +50,12 @@ class DriversController < ApplicationController
   end
 
   def index
-    @drivers = Driver.all
+    @drivers = Driver.all.sort_by {|driver| driver.lname.downcase}
+
+    @arr_of_drivers = []
+    @drivers.each do |driver|
+      @arr_of_drivers.push(driver.full_name)
+    end
   end
 
   def edit
@@ -154,6 +159,11 @@ class DriversController < ApplicationController
       flash[:alert] = "There was a problem."
       redirect :back
     end
+  end
+
+  def search
+    @driver = Driver.find_by(full_name: params[:driver_full_name])
+    redirect_to driver_path @driver
   end
 
 private

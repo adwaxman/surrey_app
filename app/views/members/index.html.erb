@@ -3,6 +3,25 @@
     <h3>Member List</h3>
   </div>
 </div>
+
+<%= form_tag members_search_path, method: :post do %>
+
+<div class="row">
+  <div class="col s5 offset-s1">
+    <div class="ui-widget">
+      <label for="search_members" name="member_full_name">Find Member
+      </label>
+      <input id="search_members" name="member_full_name">
+    </div>
+  </div>
+  <div class="s3">
+    <%= submit_tag "Submit", class: "btn" %>
+  </div>
+</div>
+
+<% end %>
+
+
 <div class="row">
   <div class="col s12">
     <table class="striped">
@@ -50,3 +69,14 @@
   </div>
 
 </div>
+
+<script>
+  $(function () {
+    var availableTags = [];
+    <% @arr_of_members.each do |member| %>
+    availableTags.push('<%= member %>');
+    <% end %>
+
+    $("#search_members").autocomplete({source: availableTags});
+  });
+</script>

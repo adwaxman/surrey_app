@@ -43,12 +43,12 @@
 5. click thru admin panel as a non-super admin and fix any bugs and improve flow - together
 6. allow all times on admin rides from - adam ***DONE***
 7. restrict member rides form times to match driver availability; add note that members can call for anything outside of range - adam ***DONE***
-8. add autocomplete with all members at top of admin members index that links to member's page - adam
-9. add autocomplete with all drivers at top of admin drivers index that links to driver's page - adam
+8. add autocomplete with all members at top of admin members index that links to member's page - adam ***DONE***
+9. add autocomplete with all drivers at top of admin drivers index that links to driver's page - adam ***DONE***
 10. send email to driver when an admin assigns a driver to a ride. email should include date, time, pickup location, destination, special considerations, EC info and a link to log into the application -adam
 11. send email to Mary (and others?) when ride is requested -adam
 12. style flash notices and alerts (make bigger) - mike ***DONE***
 13. add more options to outreach results?
 14. general polsih (padding, ...) - both
-15. format date from date time where needed in admin panel
+15. format date from date time where needed in admin panel ***DONE***
 16. add canceled status. add button to cancel ride.  add canceled rides to archived view

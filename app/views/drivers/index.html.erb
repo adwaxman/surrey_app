@@ -3,6 +3,23 @@
     <h3>Driver List</h3>
   </div>
 </div>
+
+<%= form_tag drivers_search_path, method: :post do %>
+
+<div class="row">
+  <div class="col s5 offset-s1">
+    <div class="ui-widget">
+      <label for="search_drivers" name="driver_full_name">Find Driver
+      </label>
+      <input id="search_drivers" name="driver_full_name">
+    </div>
+  </div>
+  <div class="s3">
+    <%= submit_tag "Submit", class: "btn" %>
+  </div>
+</div>
+
+<% end %>
 <div class="row">
   <div class="col s12">
     <table class="striped">
@@ -47,3 +64,14 @@
   </div>
 
 </div>
+
+<script>
+  $(function () {
+    var availableTags = [];
+    <% @arr_of_drivers.each do |driver| %>
+    availableTags.push('<%= driver %>');
+    <% end %>
+
+    $("#search_drivers").autocomplete({source: availableTags});
+  });
+</script>
