@@ -32,17 +32,17 @@
 
 
 
-$(document).ready(function() {
-  $('select').material_select();
-
-  $('.timepicker').pickatime({
-    interval: 15,
-    min: [
-      6, 0
-    ],
-    max: [18, 0]
-  });
-});
+// $(document).ready(function() {
+//   $('select').material_select();
+//
+//   $('.timepicker').pickatime({
+//     interval: 15,
+//     min: [
+//       6, 0
+//     ],
+//     max: [18, 0]
+//   });
+// });
 
 $(document).ready(function() {
 
@@ -199,6 +199,24 @@ $(document).ready(function() {
       $('.super-password').hide();
     }
 
+
+  });
+
+});
+
+// force timepicker to close after a change is made to the input
+
+$(document).ready(function() {
+
+  $('input.timepicker').change(function() {
+
+    $('.picker--time').close(this);
+
+  });
+
+  $('input.timepicker2').change(function() {
+
+    $('.picker--time').close(this);
 
   });
 

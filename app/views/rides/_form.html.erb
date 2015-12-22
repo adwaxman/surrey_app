@@ -217,8 +217,11 @@
 <br>
 
 <div class="ride-section">
-  <h6 class="center red-text">***Rides must be requested at least 3 business days in advance***</h6>
-  <br>
+  <div class="row">
+    <div class="col s6 offset-s3">
+      <h6 class="center red-text">*Rides must be requested at least 3 business days in advance</h6>
+    </div>
+  </div>
   <div class="row">
 
     <div id="ride-modal" class="modal modal-fixed-footer">
@@ -238,6 +241,12 @@
       <input type="text" id="datepicker" class="ride-pickup-date" name="pickup_date" placeholder= " ">
     </div>
   </div>
+  <div class="row">
+    <div class="col s6 offset-s3">
+      <h6 class="center red-text">*If you would like to request a time outside of the range below, please call Surrey Services at 610-647-6404</h6>
+    </div>
+  </div>
+
   <div class="row">
     <div class="input-field col s6 offset-s3">
       <%= label_tag :pickup_time, "Click below to select a time", class: "timepicker-label", style: "font-size: 18px" %>
@@ -389,10 +398,8 @@ $(document).ready(function() {
   $('.timepicker').on('click', function(event) {
     $('.timepicker').pickatime({
       interval: 15,
-      min: [
-        6, 0
-      ],
-      max: [18, 0]
+      min: [8, 30],
+      max: [16, 30]
     });
   });
 

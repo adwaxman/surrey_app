@@ -41,9 +41,8 @@
 3. add columns for #2 on drivers and rides table. - mike
 4. Display #2 where appropriate - mike
 5. click thru admin panel as a non-super admin and fix any bugs and improve flow - together
-6. allow all times on admin rides from - adam
-7. restrict member rides form times to match driver availability; add note that members can call for anything outside of range - adam
-  -  add message to call if requesting ride outside time range
+6. allow all times on admin rides from - adam ***DONE***
+7. restrict member rides form times to match driver availability; add note that members can call for anything outside of range - adam ***DONE***
 8. add autocomplete with all members at top of admin members index that links to member's page - adam
 9. add autocomplete with all drivers at top of admin drivers index that links to driver's page - adam
 10. send email to driver when an admin assigns a driver to a ride. email should include date, time, pickup location, destination, special considerations, EC info and a link to log into the application -adam
@@ -51,3 +50,4 @@
 12. style flash notices and alerts (make bigger) - mike
 13. add more options to outreach results?
 14. general polsih (padding, ...) - both
+15. format date from date time where needed in admin panel
