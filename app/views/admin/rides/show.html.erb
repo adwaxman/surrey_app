@@ -78,9 +78,9 @@
 <div class="row">
   <div class="col s5 offset-s1">
     <div class="ui-widget">
-      <label for="tags" name="driver_full_name">Search Drivers
+      <label for="all_drivers" name="driver_full_name">Search Drivers
       </label>
-      <input id="tags" name="driver_full_name">
+      <input id="all_drivers" name="driver_full_name">
     </div>
   </div>
   <div class="s3">
@@ -110,7 +110,7 @@
             <%= note.body %>
           </td>
           <td>
-            <%= note.created_at %>
+            <%= DateTime.parse(note.created_at.to_s).strftime("%a %b %d %l:%M %p") %>
           </td>
           <td>
             <%= note.admin.full_name %>
@@ -154,7 +154,7 @@
       <%  @matched_drivers.each do |driver|  %>
       <li>
         <div class="collapsible-header">
-          <%= link_to "<strong>#{driver.full_name}</strong>".html_safe, driver_path(driver) %> (Prefers <%= driver.preferred_contact %>)   
+          <%= link_to "<strong>#{driver.full_name}</strong>".html_safe, driver_path(driver) %> (Prefers <%= driver.preferred_contact %>)
             <i class="fa fa-chevron-circle-down right"></i>
 
         </div>
@@ -211,7 +211,7 @@
                       <%=outreach.result  %>
                     </td>
                     <td>
-                      <%=outreach.admin.fname  %>
+                      <%=outreach.admin.full_name  %>
                     </td>
                   </tr>
 
@@ -243,6 +243,6 @@
     availableTags.push('<%= driver %>');
     <% end %>
 
-    $("#tags").autocomplete({source: availableTags});
+    $("#all_drivers").autocomplete({source: availableTags});
   });
 </script>

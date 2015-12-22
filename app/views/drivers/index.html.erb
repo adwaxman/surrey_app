@@ -34,7 +34,7 @@
           </td>
           <td>
             <% driver.rides.each do |ride| %>
-            <%= link_to (ride.destination.name + ": " + ride.pickup_date), "#" %>
+            <%= link_to (ride.destination.name + ": " + Date.parse(ride.pickup_date).strftime('%a %b %d, %Y')), admin_ride_path(ride) %>
             <br>
             <% end %>
           </td>
