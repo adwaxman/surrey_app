@@ -37,8 +37,8 @@
 12/22:
 
 1. remove date restrictions from admin ride format -adam ***DONE***
-2. add pet/service animal accommodations to driver and rides form - mike
-3. add columns for #2 on drivers and rides table. - mike
+2. add pet/service animal accommodations to driver and rides form - mike ***DONE***
+3. add columns for #2 on drivers and rides table. - mike ***DONE***
 4. Display #2 where appropriate - mike
 5. click thru admin panel as a non-super admin and fix any bugs and improve flow - together
 6. allow all times on admin rides from - adam ***DONE***
