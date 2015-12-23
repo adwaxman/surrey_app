@@ -41,7 +41,8 @@
             <%= link_to "#{@ride.member.full_name}", member_path(@ride.member) %>
           </td>
           <% if @ride.driver %>
-          <td> <%= link_to "#{@ride.driver.full_name}", driver_path(@ride.driver) %></td>
+          <td>
+            <%= link_to "#{@ride.driver.full_name}", driver_path(@ride.driver) %></td>
           <% end %>
           <td>
             <%= @ride.origin.address_line1 %><br>
@@ -72,7 +73,6 @@
   </div>
 </div>
 
-
 <%= form_tag admin_ride_path, method: :put do %>
 
 <div class="row">
@@ -87,17 +87,13 @@
     <%= submit_tag "Assign Driver", class: "btn" %>
   </div>
 
-
-<% end %><br>
-
-<%= form_tag admin_rides_cancel_path, method: :post do %>
+  <% end %><br>
+  <!-- Modal Trigger -->
   <div class="col s3 offset-s6">
-    <input type="hidden" name="id" value="<%= @ride.id %>">
-    <%= submit_tag "Cancel ride", class: "btn" %>
+    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Cancel ride</a>
   </div>
 </div>
 
-<% end %>
 <h4>Notes</h4>
 
 <div class="row">
@@ -150,11 +146,6 @@
   <% end %>
 </div>
 
-
-
-
-
-
 <h4>Matched Drivers</h4>
 <div class="row">
   <div class="col s12">
@@ -162,8 +153,10 @@
       <%  @matched_drivers.each do |driver|  %>
       <li>
         <div class="collapsible-header">
-          <%= link_to "<strong>#{driver.full_name}</strong>".html_safe, driver_path(driver) %> (Prefers <%= driver.preferred_contact %>)
-            <i class="fa fa-chevron-circle-down right"></i>
+          <%= link_to "<strong>#{driver.full_name}</strong>".html_safe, driver_path(driver) %>
+          (Prefers
+          <%= driver.prefered_contact %>)
+          <i class="fa fa-chevron-circle-down right"></i>
 
         </div>
         <div class="collapsible-body">
@@ -243,14 +236,29 @@
   </div>
 </div>
 
+<div class="modal" id="modal1" style="display:none;">
+  <div class="modal-content">
+    <h4>Are you sure?</h4>
+    <p>
 
-<script>
-  $(function () {
-    var availableTags = [];
-    <% @arr_of_drivers.each do |driver| %>
-    availableTags.push('<%= driver %>');
+    </p>
+  </div>
+  <div class="modal-footer">
+    <%= form_tag admin_rides_cancel_path, method: :post do %>
+      <input name="id" type="hidden" value="<%= @ride.id %>">
+    <%= submit_tag "Yes", class: "modal-action modal-close waves-effect waves-green btn-flat" %>
     <% end %>
+    <a class=" modal-action modal-close waves-effect waves-green btn-flat" href="#!">No</a>
+    </div>
+  </div>
 
-    $("#all_drivers").autocomplete({source: availableTags});
-  });
-</script>
+  <script>
+    $(function () {
+      var availableTags = [];
+      <% @arr_of_drivers.each do |driver| %>
+      availableTags.push('<%= driver %>');
+      <% end %>
+
+      $("#all_drivers").autocomplete({source: availableTags});
+    });
+  </script>
