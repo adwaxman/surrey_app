@@ -74,6 +74,12 @@ class Admin::RidesController < ApplicationController
     end
   end
 
+  def cancel
+    @ride = Ride.find(params[:id])
+    @ride.update(status: "canceled")
+    redirect_to :back
+  end
+
   def create
     @member = Member.find(params[:member_id])
     member_id = @member.id
