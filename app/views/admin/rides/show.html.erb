@@ -244,47 +244,26 @@
   <div class="modal-content">
     <h4>Are you sure?</h4>
     <p>
-
-<<<<<<< HEAD
     </p>
   </div>
   <div class="modal-footer">
     <%= form_tag admin_rides_cancel_path, method: :post do %>
       <input name="id" type="hidden" value="<%= @ride.id %>">
     <%= submit_tag "Yes", class: "modal-action modal-close waves-effect waves-green btn-flat" %>
-=======
-<script>
-
-
-  $(function () {
-    var availableTags = [];
-    <% @arr_of_drivers.each do |driver| %>
-    availableTags.push('<%= driver %>');
->>>>>>> 6c944f17b5c678c6f80b6f4993a831823edd44a9
-    <% end %>
     <a class=" modal-action modal-close waves-effect waves-green btn-flat" href="#!">No</a>
-    </div>
-  </div>
+ <% end %>
+ </div>
 
-  <script>
-    $(function () {
-      var availableTags = [];
-      <% @arr_of_drivers.each do |driver| %>
-      availableTags.push('<%= driver %>');
-      <% end %>
-
-<<<<<<< HEAD
-      $("#all_drivers").autocomplete({source: availableTags});
-    });
-  </script>
-=======
-    $("#all_drivers").autocomplete({source: availableTags});
-  });
-
-  var arrOfDrivers = [];
-  <% @arr_of_drivers.each do |driver| %>
-  arrOfDrivers.push('<%= driver %>');
-  <% end %>
-
-</script>
->>>>>>> 6c944f17b5c678c6f80b6f4993a831823edd44a9
+ <script>
+   $(function () {
+     var availableTags = [];
+     <% @arr_of_drivers.each do |driver| %>
+     availableTags.push('<%= driver %>');
+     <% end %>
+     $("#all_drivers").autocomplete({source: availableTags});
+   });
+   var arrOfDrivers = [];
+   <% @arr_of_drivers.each do |driver| %>
+   arrOfDrivers.push('<%= driver %>');
+   <% end %>
+ </script>
