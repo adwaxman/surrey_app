@@ -188,6 +188,10 @@ class Admin::RidesController < ApplicationController
     @archived_rides = Ride.where(status: 'complete').sort_by { |ride| DateTime.parse(ride.pickup_date) }
   end
 
+  def canceled
+    @canceled_rides = Ride.where(status: 'canceled').sort_by { |ride| DateTime.parse(ride.pickup_date) }
+  end
+
   def past
     @ride = Ride.find(params[:id])
     @pickup_date = Date.parse(@ride.pickup_date).strftime('%a %b %d, %Y')

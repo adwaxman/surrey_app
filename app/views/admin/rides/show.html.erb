@@ -89,7 +89,7 @@
 
 
 <% end %><br>
-
+<% if @ride.status != "canceled" %>
 <%= form_tag admin_rides_cancel_path, method: :post do %>
   <div class="col s3 offset-s6">
     <input type="hidden" name="id" value="<%= @ride.id %>">
@@ -97,6 +97,7 @@
   </div>
 </div>
 
+<% end %>
 <% end %>
 <h4>Notes</h4>
 
