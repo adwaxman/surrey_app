@@ -294,6 +294,13 @@ $(document).ready(function() {
       $('#confirm-aide').html("No");
     }
 
+    if($('#pet:checked').length === 1 ) {
+      $('#confirm-pet').html("Yes");
+    }
+    else {
+      $('#confirm-pet').html("No");
+    }
+
     if($('#vision_impaired:checked').length === 1 ) {
       $('#confirm-vision').html("Yes");
     }
