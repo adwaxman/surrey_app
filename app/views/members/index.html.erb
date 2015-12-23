@@ -15,7 +15,7 @@
     </div>
   </div>
   <div class="s3">
-    <%= submit_tag "Submit", class: "btn" %>
+    <%= submit_tag "Submit", class: "btn find-member-btn" %>
   </div>
 </div>
 
@@ -79,4 +79,10 @@
 
     $("#search_members").autocomplete({source: availableTags});
   });
+
+  var arrOfMembers = [];
+  <% @arr_of_members.each do |member| %>
+  arrOfMembers.push('<%= member %>');
+  <% end %>
+  
 </script>

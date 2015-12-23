@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col s6">
-    <h3>Archived Rides (<%=@archived_rides.length%>)</h3>
+    <h3>Canceled Rides (<%=@canceled_rides.length%>)</h3>
   </div>
   <div class="col s6">
-    <%= link_to "View Canceled Rides", admin_canceled_path, class: 'btn' %>
+    <%= link_to "View Archived Rides", admin_archived_path, class: 'btn' %>
   </div>
 </div>
 
@@ -23,7 +23,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @archived_rides.each do |ride| %>
+        <% @canceled_rides.each do |ride| %>
         <tr>
           <td>
 
