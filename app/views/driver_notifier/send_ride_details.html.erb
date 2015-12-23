@@ -1,4 +1,95 @@
+<div>
+    <p>
+      <%= @driver.fname %>,
+    </p>
+    <p>
+      Thank you for volunteering.  You can find the details for this ride below:
+    </p>
+</div>
+<div>
+  <h4>Member Information:</h4>
+  <p>
+    <%= @member.full_name %>
+  </p>
+  <p>
+    <%= @member.address_line1 %> <br>
+    <% if @member.address_line2 != ""%>
+    <%= @member.address_line2 %> <br>
+    <% end %>
+    <%= @member.city %>, <%= @member.state %> <%= @member.zip %>
+  </p>
+  <p>
+    Phone: <%= @member.phone %>  <% if @member.cell %> <br> Cell: <%= @member.cell %> <%end%>
+  </p>
+</div>
+<div>
+  <h4>Emergency Contact Information:</h4>
+  <p>
+    <%= @member.primaryEC_fname + " " + @member.primaryEC_lname %>
+  </p>
+  <p>
+    Relationship to member: <%= @member.primaryEC_relationship %>
+  </p>
+  <p>
+    Phone: <%= @member.primaryEC_phone %>  <% if @member.primaryEC_cell %><br> Cell: <%= @member.primaryEC_cell%> <%end%>
+  </p>
+</div>
 
-    <h1>Driver: <%= @driver.full_name %></h1>
-    <h1>Member: <%= @member.full_name %></h1>
-    <h1>Date: <%= @ride.pickup_date%></h1>
+
+<% if @member.secondaryEC_fname != "" %>
+<div>
+  <h4>Secondary Emergency Contact Information:</h4>
+  <p>
+    <%= @member.secondaryEC_fname + " " + @member.secondaryEC_lname %>
+  </p>
+  <p>
+    Relationship to member: <%= @member.secondaryEC_relationship %>
+  </p>
+  <p>
+    Phone: <%= @member.secondaryEC_phone %>  <% if @member.secondaryEC_cell %> Cell: <%= @member.secondaryEC_cell%> <%end%>
+  </p>
+</div>
+<% end %>
+
+<div>
+  <h4>Ride Details</h4>
+  <p>
+    <%= @pickup_date %> at <%= @pickup_time %>
+  </p>
+  <p>
+    Duration: About <%= @ride.duration %>
+  </p>
+  <p>
+    Pickup location: <br>
+      <%= @origin.address_line1 %> <br>
+      <% if @origin.address_line2 != "" %>
+      <%= @origin.address_line2 %> <br>
+      <% end %>
+      <%= @origin.city %>, <%= @origin.state %> <%= @origin.zip %>
+  </p>
+  <p>
+    Destination:
+      <%= @destination.name %> <br>
+      <%= @destination.address_line1 %><br>
+      <% if @destination.address_line2 != ""%>
+      <%= @destination.address_line2 %><br>
+      <% end %>
+      <%= @destination.city %>, <%= @destination.state %> <%= @destination.zip %>
+  </p>
+
+  <p>
+    Special considerations: <br> <%= @special_considerations %>
+  </p>
+
+</div>
+
+<p>
+  <a href="#">Click here to login and see directions for this ride.</a>
+</p>
+
+<p>
+  Thanks,
+</p>
+<p>
+  Surrey Services
+</p>

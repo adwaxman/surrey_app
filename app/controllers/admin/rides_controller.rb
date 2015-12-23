@@ -103,6 +103,7 @@ class Admin::RidesController < ApplicationController
     duration = params[:duration]
     wheelchair = params[:wheelchair] ? params[:wheelchair] : wheelchair = false
     aide = params[:aide] ? params[:aide] : aide = false
+    pet = params[:pet] ? params[:pet] : pet = false
     hearing_impaired = params[:hearing_impaired] ? params[:hearing_impaired] : hearing_impaired = false
     vision_impaired = params[:vision_impaired] ? params[:vision_impaired] : vision_impaired = false
     status = 'open'
@@ -150,7 +151,7 @@ class Admin::RidesController < ApplicationController
 
     origin_id_to_be_passed = @origin_id ? @origin_id : origin_id_to_be_passed = @member.origins.last.id
 
-    @ride = Ride.new(member_id: member_id, destination_id: destination_id_to_be_passed, origin_id: origin_id_to_be_passed, wheelchair: wheelchair, aide: aide, hearing_impaired: hearing_impaired, vision_impaired: vision_impaired, pickup_date: pickup_date, pickup_time: pickup_time, status: 'open', duration: duration)
+    @ride = Ride.new(member_id: member_id, destination_id: destination_id_to_be_passed, origin_id: origin_id_to_be_passed, wheelchair: wheelchair, aide: aide, hearing_impaired: hearing_impaired, vision_impaired: vision_impaired, pickup_date: pickup_date, pickup_time: pickup_time, status: 'open', duration: duration, pet: pet)
     if @ride.save
       @weekday = Date.parse(@ride.pickup_date).strftime('%A').downcase
       @matches = Driver.where("#{@weekday}": true).where("#{@weekday}_min <= ?", @ride.pickup_time).where("#{@weekday}_max >= ?", @ride.pickup_time).where("county_preference ilike '%\n- #{@ride.destination.county}\n%'").where(active: true)
@@ -158,6 +159,7 @@ class Admin::RidesController < ApplicationController
         @matches = @matches.where(accommodate_wheelchair: true)
       end
       @matches = @matches.where(accommodate_aide: true) if @ride.aide
+      @matches = @matches.where(accommodate_pet: true) if @ride.pet
       @matches.each do |driver|
         Match.create(ride_id: @ride.id, matcher_id: driver.id)
       end
