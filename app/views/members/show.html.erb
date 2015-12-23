@@ -133,8 +133,9 @@
         <tr>
           <td>
             <%= ride.destination.name %></td>
-          <td><%= Date.parse(ride.pickup_date).strftime('%a %b %d, %Y') %>
-            <%= Time.parse(ride.pickup_time.to_s).strftime("%l:%M %p") %>
+          <td>
+            <%= link_to Date.parse(ride.pickup_date).strftime('%a %b %d, %Y'), admin_ride_path(ride) %>
+            <%= link_to Time.parse(ride.pickup_time.to_s).strftime("%l:%M %p"), admin_ride_path(ride) %>
           </td>
           <td>
             <%= ride.origin.address_line1 %><br>
