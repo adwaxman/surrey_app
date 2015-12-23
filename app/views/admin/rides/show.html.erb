@@ -84,7 +84,7 @@
     </div>
   </div>
   <div class="s3">
-    <%= submit_tag "Assign Driver", class: "btn" %>
+    <%= submit_tag "Assign Driver", class: "btn search-assign-btn" %>
   </div>
 
 
@@ -246,6 +246,8 @@
 
 
 <script>
+
+
   $(function () {
     var availableTags = [];
     <% @arr_of_drivers.each do |driver| %>
@@ -254,4 +256,10 @@
 
     $("#all_drivers").autocomplete({source: availableTags});
   });
+
+  var arrOfDrivers = [];
+  <% @arr_of_drivers.each do |driver| %>
+  arrOfDrivers.push('<%= driver %>');
+  <% end %>
+
 </script>

@@ -27,7 +27,7 @@
 
 
             <div class="center">
-              <%= submit_tag :submit, class: "btn blue-grey lighten-3" %>
+              <%= submit_tag :submit, class: "btn blue-grey lighten-3 select-member-btn" %>
             </div>
             <% end %>
 
@@ -47,4 +47,10 @@
 
     $("#all_members").autocomplete({source: availableTags});
   });
+
+  var arrOfMembers = [];
+  <% @arr_of_members.each do |member| %>
+  arrOfMembers.push('<%= member %>');
+  <% end %>
+
 </script>

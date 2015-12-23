@@ -155,6 +155,31 @@ $('input').change(function(event) {
   }
 });
 
+// prevent submission of of autocomplete forms if invalid input
+$('.search-assign-btn').click(function(e) {
+    if (arrOfDrivers.indexOf($('#all_drivers').val()) === -1) {
+      e.preventDefault();
+    }
+});
+
+$('.select-member-btn').click(function(e) {
+    if (arrOfMembers.indexOf($('#all_members').val()) === -1) {
+      e.preventDefault();
+    }
+});
+
+$('.find-driver-btn').click(function(e) {
+    if (arrOfDrivers.indexOf($('#search_drivers').val()) === -1) {
+      e.preventDefault();
+    }
+});
+
+$('.find-member-btn').click(function(e) {
+    if (arrOfMembers.indexOf($('#search_members').val()) === -1) {
+      e.preventDefault();
+    }
+});
+
 
 
 })
