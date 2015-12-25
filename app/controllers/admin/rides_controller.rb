@@ -27,8 +27,11 @@ class Admin::RidesController < ApplicationController
       @matched_drivers.push(Driver.find(match.matcher_id))
     end
 
+    @matched_drivers = @matched_drivers.sort_by { |driver| driver.lname }
+
     @outreaches = @ride.outreaches
     @notes = @ride.notes
+    @sorted_outreaches = @outreaches.sort_by {|outreach| outreach.driver.lname}
   end
 
   def new
