@@ -3,7 +3,7 @@ class Admin::OutreachesController < ApplicationController
 
   def new
     @ride_id = params[:ride_id]
-    @driver_id = params[:driver_id]
+    @driver_id = params[:driver_id] ? params[:driver_id] : @driver_id = Driver.find_by(full_name: params[:driver_full_name2]).id
   end
 
   def create

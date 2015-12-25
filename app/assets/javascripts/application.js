@@ -180,6 +180,12 @@ $('.find-member-btn').click(function(e) {
     }
 });
 
+$('.nonmatch-outreach-btn').click(function(e) {
+    if (arrOfDrivers.indexOf($('#all_drivers2').val()) === -1) {
+      e.preventDefault();
+    }
+});
+
 
 
 })
