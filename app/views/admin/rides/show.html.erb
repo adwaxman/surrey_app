@@ -150,143 +150,152 @@
   <% end %>
 </div>
 
-<h4>Matched Drivers</h4>
-<div class="row">
-  <div class="col s12">
-    <ul class="collapsible" data-collapsible="expandable">
-      <%  @matched_drivers.each do |driver|  %>
-      <li>
-        <div class="collapsible-header">
-          <%= link_to "<strong>#{driver.full_name}</strong>".html_safe, driver_path(driver) %>
-          (Prefers
-          <%= driver.prefered_contact %>)
-          <i class="fa fa-chevron-circle-down right"></i>
+<h4>Outreach</h4>
 
-        </div>
-        <div class="collapsible-body">
-          <div class="row">
-            <div class="col s3">
-              <%= driver.email %>
-            </div>
-            <% if driver.phone %>
-            <div class="col s3">
-              Home:
-              <%= driver.phone %>
-            </div>
-            <% end %>
-            <% if driver.cell %>
-            <div class="col s3">
-              Cell:
-              <%= driver.cell %>
-            </div>
-            <% if driver.private %>
-
-            <div class="col s3">
-              Private
-            </div>
-            <% end %>
-            <% if !driver.private %>
-            <div class="col s3">
-              Volunteer
-            </div>
-            <% end %>
-            <% end %>
-          </div>
-          <div class="row">
-            <div class="col s12">
-              <% if driver.outreaches.where(ride_id: @ride.id).first %>
-              <table class="striped">
-                <thead>
-                  <tr>
-                    <th data-field="date">Date</th>
-                    <th data-field="contact-method">Contact Method</th>
-                    <th data-field="result">Result
-                    </th>
-                    <th data-field="admin">Who outreached?
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <% driver.outreaches.where(ride_id: @ride.id).each do |outreach| %>
-                  <tr>
-                    <td>
-                      <%= DateTime.parse(outreach.created_at.to_s).strftime("%a %b %d, %Y %I:%M %p") %></td>
-                    <td><%=outreach.contact_method%></td>
-                    <td>
-                      <%=outreach.result  %>
-                    </td>
-                    <td>
-                      <%=outreach.admin.full_name  %>
-                    </td>
-                  </tr>
-
-                  <% end %>
-                </tbody>
-              </table>
-              <% end %>
-              <%= form_tag new_admin_outreach_path, method: :get  do %>
-              <%= hidden_field_tag :ride_id, value=@ride.id %>
-              <%= hidden_field_tag :driver_id, value=driver.id %>
-              <%= submit_tag "add outreach", class: "btn" %>
-              <% end %>
-
-            </div>
-          </div>
-        </div>
-      </li>
-      <% end %>
-    </ul>
-
-  </div>
-</div>
-
-<h4>All Outreach <span style="font-size: 20px">(inlcuding non-matched drivers)</span></h4>
 <ul class="collapsible" data-collapsible="expandable">
   <li>
     <div class="collapsible-header">
       <i class="fa fa-chevron-circle-down right"></i>
-
+      <strong>Matched Drivers</strong> (<%=@matched_drivers.length%>)
     </div>
     <div class="collapsible-body">
-      <% if @outreaches.first %>
-      <table class="striped">
-        <thead>
-          <tr>
-            <th data-field="driver">Driver</th>
-            <th data-field="date">Date</th>
-            <th data-field="contact-method">Contact Method</th>
-            <th data-field="result">Result
-            </th>
-            <th data-field="admin">Who outreached?
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @sorted_outreaches.each do |outreach| %>
-          <tr>
-            <td>
-              <%= outreach.driver.full_name %>
-            </td>
-            <td>
-              <%= DateTime.parse(outreach.created_at.to_s).strftime("%a %b %d, %Y %I:%M %p") %></td>
-            <td><%=outreach.contact_method%></td>
-            <td>
-              <%=outreach.result  %>
-            </td>
-            <td>
-              <%=outreach.admin.full_name  %>
-            </td>
-          </tr>
+      <div class="row">
+        <div class="col s12">
+          <ul class="collapsible" data-collapsible="expandable">
+            <%  @matched_drivers.each do |driver|  %>
+            <li>
+              <div class="collapsible-header">
+                <%= link_to "<strong>#{driver.full_name}</strong>".html_safe, driver_path(driver) %>
+                (Prefers
+                <%= driver.prefered_contact %>)
+                <i class="fa fa-chevron-circle-down right"></i>
 
-          <% end %>
-        </tbody>
-      </table>
-      <% end %>
+              </div>
+              <div class="collapsible-body">
+                <div class="row">
+                  <div class="col s3">
+                    <%= driver.email %>
+                  </div>
+                  <% if driver.phone %>
+                  <div class="col s3">
+                    Home:
+                    <%= driver.phone %>
+                  </div>
+                  <% end %>
+                  <% if driver.cell %>
+                  <div class="col s3">
+                    Cell:
+                    <%= driver.cell %>
+                  </div>
+                  <% if driver.private %>
 
+                  <div class="col s3">
+                    Private
+                  </div>
+                  <% end %>
+                  <% if !driver.private %>
+                  <div class="col s3">
+                    Volunteer
+                  </div>
+                  <% end %>
+                  <% end %>
+                </div>
+                <div class="row">
+                  <div class="col s12">
+                    <% if driver.outreaches.where(ride_id: @ride.id).first %>
+                    <table class="striped">
+                      <thead>
+                        <tr>
+                          <th data-field="date">Date</th>
+                          <th data-field="contact-method">Contact Method</th>
+                          <th data-field="result">Result
+                          </th>
+                          <th data-field="admin">Who outreached?
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% driver.outreaches.where(ride_id: @ride.id).each do |outreach| %>
+                        <tr>
+                          <td>
+                            <%= DateTime.parse(outreach.created_at.to_s).strftime("%a %b %d, %Y %I:%M %p") %></td>
+                          <td><%=outreach.contact_method%></td>
+                          <td>
+                            <%=outreach.result  %>
+                          </td>
+                          <td>
+                            <%=outreach.admin.full_name  %>
+                          </td>
+                        </tr>
+
+                        <% end %>
+                      </tbody>
+                    </table>
+                    <% end %>
+                    <%= form_tag new_admin_outreach_path, method: :get  do %>
+                    <%= hidden_field_tag :ride_id, value=@ride.id %>
+                    <%= hidden_field_tag :driver_id, value=driver.id %>
+                    <%= submit_tag "add outreach", class: "btn" %>
+                    <% end %>
+
+                  </div>
+                </div>
+              </div>
+            </li>
+            <% end %>
+          </ul>
+
+        </div>
+      </div>
 
     </div>
   </li>
+  <li>
+    <div class="collapsible-header"> <strong>All Outreach </strong> (including non-matched drivers)
+      <i class="fa fa-chevron-circle-down right"></i>
+    </div>
+      <div class="collapsible-body">
+            <% if @outreaches.first %>
+            <table class="striped">
+              <thead>
+                <tr>
+                  <th data-field="driver">Driver</th>
+                  <th data-field="date">Date</th>
+                  <th data-field="contact-method">Contact Method</th>
+                  <th data-field="result">Result
+                  </th>
+                  <th data-field="admin">Who outreached?
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @sorted_outreaches.each do |outreach| %>
+                <tr>
+                  <td>
+                    <%= outreach.driver.full_name %>
+                  </td>
+                  <td>
+                    <%= DateTime.parse(outreach.created_at.to_s).strftime("%a %b %d, %Y %I:%M %p") %></td>
+                  <td><%=outreach.contact_method%></td>
+                  <td>
+                    <%=outreach.result  %>
+                  </td>
+                  <td>
+                    <%=outreach.admin.full_name  %>
+                  </td>
+                </tr>
+
+                <% end %>
+              </tbody>
+            </table>
+            <% end %>
+            <!-- put form here -->
+          </div>
+
+  </li>
 </ul>
+
+
 
 <!-- add form to add outreach for any driver (including nonmatched drivers) -->
 
