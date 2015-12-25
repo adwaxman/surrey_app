@@ -5,7 +5,7 @@ class Admin::RidesController < ApplicationController
     @rides = Ride.all
     @open_rides = @rides.where(status: 'open')
     @scheduled_rides = @rides.where(status: 'scheduled').sort_by { |ride| DateTime.parse(ride.pickup_date) }
-    @rides_today = rides_today
+    @rides_today_or_earlier = rides_today_or_earlier.sort_by { |ride| DateTime.parse(ride.pickup_date)}
 
     @sorted_open_rides = @open_rides.sort_by { |ride| DateTime.parse(ride.pickup_date) }
   end

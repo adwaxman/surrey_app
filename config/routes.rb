@@ -46,7 +46,6 @@ Rails.application.routes.draw do
     post 'rides/cancel', to: 'rides#cancel'
     get 'canceled', to: 'rides#canceled'
     get 'select', to: 'rides#select'
-    # post 'unmatched', to: 'outreaches#unmatched'
 
     post 'rides/new', to: 'rides#new'
     post 'rides/complete', to: 'rides#complete'

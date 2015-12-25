@@ -60,10 +60,11 @@
 
 <div class="row">
   <div class="col s12">
-    <h4>Today's Rides (<%=@rides_today.length%>)</h2>
+    <h4>Today's and Previous Rides (<%=@rides_today_or_earlier.length%>)</h2>
     <table class="striped">
       <thead>
         <tr>
+          <th data-field="date">Date</th>
           <th data-field="time">Time</th>
           <th data-field="member">Member</th>
           <th data-field="driver">Driver</th>
@@ -78,8 +79,15 @@
         </tr>
       </thead>
       <tbody>
-        <% @rides_today.each do |ride| %>
+        <% @rides_today_or_earlier.each do |ride| %>
         <tr>
+          <td>
+            <% if Date.parse(ride.pickup_date.to_s) == Date.today %>
+            Today
+            <% else %>
+            <a href="/admin/rides/<%=ride.id%>"><%= Date.parse(ride.pickup_date).strftime('%a %b %d, %Y') %>
+            <% end %>
+          </td>
           <td>
             <a href="/admin/rides/<%=ride.id%>"><%= Time.parse(ride.pickup_time.to_s).strftime("%l:%M %p") %></a>
 
