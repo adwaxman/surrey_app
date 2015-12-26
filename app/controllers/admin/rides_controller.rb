@@ -127,7 +127,7 @@ class Admin::RidesController < ApplicationController
 
       if @destination.save
       else
-        flash[:alert] = 'problem 1'
+        flash[:alert] = 'There was a problem saving the destination.  Please try again.'
         render :new
         return
       end
@@ -141,7 +141,7 @@ class Admin::RidesController < ApplicationController
 
       if @origin.save
       else
-        flash[:alert] = 'problem 2'
+        flash[:alert] = 'There was a problem saving your pickup location.  Please try again.'
         render :new
         return
       end
