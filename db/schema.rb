@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151230173354) do
+ActiveRecord::Schema.define(version: 20151230173712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -192,7 +192,7 @@ ActiveRecord::Schema.define(version: 20151230173354) do
     t.boolean  "pet"
   end
 
-  create_table "settings_tables", force: :cascade do |t|
+  create_table "settings", force: :cascade do |t|
     t.text   "message"
     t.string "background"
   end
