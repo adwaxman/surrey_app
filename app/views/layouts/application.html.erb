@@ -16,7 +16,7 @@
 
     <%= csrf_meta_tags %>
   </head>
-  <body class="blue lighten-4 <%= controller_path %> <%= action_name %>">
+  <body class="<%= Setting.find(1).background %> <%= controller_path %> <%= action_name %>">
     <% if session[:admin_id] %>
     <%= render 'shared/admin_nav' %>
     <% elsif session[:member_id] %>
