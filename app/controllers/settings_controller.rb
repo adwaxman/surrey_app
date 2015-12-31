@@ -15,6 +15,6 @@ class SettingsController < ApplicationController
   private
 
   def setting_params
-    params.require(:setting).permit(:message, :background)
+    params.require(:setting).permit(:message, :background, :title)
   end
 end
