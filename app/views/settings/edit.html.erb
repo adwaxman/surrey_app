@@ -4,18 +4,49 @@
 
     <h3>Your information</h3>
 
-    <div class="input-field col s4">
-      <%= f.text_field :message, class: "validate fname" %>
-      <%= f.label :message, "First name" %>
+    <div class="input-field col s12">
+      <%= f.text_field :title, class: "validate" %>
+      <%= f.label :title, "Title" %>
     </div>
-    <div class="input-field col s2">
-      <%= f.text_field :background, class: "validate mi" %>
-      <%= f.label :background, "Middle initial" %>
+
+    <div class="input-field col s12">
+      <%= f.text_field :message, class: "validate" %>
+      <%= f.label :message, "Message" %>
     </div>
-<%= f.submit class: "btn" %>
-</div>
+    <div class="input-field col s12">
+      <%= f.text_field :background, class: "validate background" %>
+      <%= f.label :background, "Background color" %>
+    </div>
+    <div class="input-field col s12">
+      <%= f.text_field :container, class: "validate" %>
+      <%= f.label :container, "Container color" %>
+    </div>
+    <div class="input-field col s12">
+      <%= f.text_field :nav, class: "validate" %>
+      <%= f.label :nav, "Nav color" %>
+    </div>
+    <div class="input-field col s12">
+      <%= f.text_field :cardt, class: "validate" %>
+      <%= f.label :cardt, "Card text color" %>
+    </div>
+    <div class="input-field col s12">
+      <%= f.text_field :cardbuttontext, class: "validate" %>
+      <%= f.label :cardbuttontext, "Card button text color" %>
+    </div>
+    <div class="input-field col s12">
+      <%= f.text_field :cardpanel, class: "validate" %>
+      <%= f.label :cardpanel, "Card panel color" %>
+    </div>
+    <%= f.submit class: "btn" %> <button type="button" name="button" class="btn button">Test</button>
+  </div>
+
+  <% end %>
 
 
 
-
-<% end %>
+<script type="text/javascript">
+  $(.background).on(change, function(event) {
+    var background =
+    $(body).addClass("className")
+  })
+</script>

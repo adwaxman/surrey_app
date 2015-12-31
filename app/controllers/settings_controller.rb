@@ -6,7 +6,8 @@ class SettingsController < ApplicationController
   def update
     @setting = Setting.find(params[:id])
     if @setting.update_attributes(setting_params)
-      redirect_to admin_url
+      flash[:alert] = "Your changes are in effect."
+      redirect_to root_path
     else
       render 'edit'
     end
@@ -15,6 +16,6 @@ class SettingsController < ApplicationController
   private
 
   def setting_params
-    params.require(:setting).permit(:message, :background, :title)
+    params.require(:setting).permit(:message, :background, :title, :nav, :container, :cardt, :cardbuttontext, :cardpanel)
   end
 end

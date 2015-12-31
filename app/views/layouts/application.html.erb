@@ -26,7 +26,7 @@
     <% else %>
     <%= render 'shared/nav' %>
     <% end %>
-    <div class="container indigo lighten-5 z-depth-3">
+    <div class="container <%= Setting.find(1).container %> z-depth-3">
       <span class="flash_notice">
         <% if flash[:notice] %>
         <p>
