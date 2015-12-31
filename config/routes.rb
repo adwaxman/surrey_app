@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   post 'drivers/search', to: 'drivers#search'
   post 'members/search', to: 'members#search'
 
+  resources :settings
 
   namespace :admin do
     resources :members, :drivers, :rides, :origins, :destinations, :outreaches, :admins, :notes

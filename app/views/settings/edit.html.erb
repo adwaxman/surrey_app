@@ -1,0 +1,21 @@
+<div class="row">
+  <%= form_for @setting, :html => {:class => "form col s10 offset-s1"} do |f| %>
+  <div class="row">
+
+    <h3>Your information</h3>
+
+    <div class="input-field col s4">
+      <%= f.text_field :message, class: "validate fname" %>
+      <%= f.label :message, "First name" %>
+    </div>
+    <div class="input-field col s2">
+      <%= f.text_field :background, class: "validate mi" %>
+      <%= f.label :background, "Middle initial" %>
+    </div>
+<%= f.submit class: "btn" %>
+</div>
+
+
+
+
+<% end %>
