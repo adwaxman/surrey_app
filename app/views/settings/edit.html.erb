@@ -8,7 +8,6 @@
       <%= f.text_field :title, class: "validate" %>
       <%= f.label :title, "Title" %>
     </div>
-
     <div class="input-field col s12">
       <%= f.text_field :message, class: "validate" %>
       <%= f.label :message, "Message" %>
@@ -41,12 +40,15 @@
   </div>
 
   <% end %>
+<script>
+$(document).ready(function() {
 
+$('.button').click(function(event) {
+  console.log('test');
+  var background = $('.background').val();
+  $('body').addClass(background);
+  console.log(background);
+});
 
-
-<script type="text/javascript">
-  $(.background).on(change, function(event) {
-    var background =
-    $(body).addClass("className")
-  })
+});
 </script>
