@@ -17,23 +17,23 @@
       <%= f.label :background, "Background color" %>
     </div>
     <div class="input-field col s12">
-      <%= f.text_field :container, class: "validate" %>
+      <%= f.text_field :container, class: "validate container" %>
       <%= f.label :container, "Container color" %>
     </div>
     <div class="input-field col s12">
-      <%= f.text_field :nav, class: "validate" %>
+      <%= f.text_field :nav, class: "validate nav" %>
       <%= f.label :nav, "Nav color" %>
     </div>
     <div class="input-field col s12">
-      <%= f.text_field :cardt, class: "validate" %>
+      <%= f.text_field :cardt, class: "validate cardt" %>
       <%= f.label :cardt, "Card text color" %>
     </div>
     <div class="input-field col s12">
-      <%= f.text_field :cardbuttontext, class: "validate" %>
+      <%= f.text_field :cardbuttontext, class: "validate cardbuttontext" %>
       <%= f.label :cardbuttontext, "Card button text color" %>
     </div>
     <div class="input-field col s12">
-      <%= f.text_field :cardpanel, class: "validate" %>
+      <%= f.text_field :cardpanel, class: "validate cardpanel" %>
       <%= f.label :cardpanel, "Card panel color" %>
     </div>
     <%= f.submit class: "btn" %> <button type="button" name="button" class="btn button">Test</button>
@@ -42,12 +42,36 @@
   <% end %>
 <script>
 $(document).ready(function() {
-
-$('.button').click(function(event) {
-  console.log('test');
+  // Get current input value to clear on button press
+  var prevBackground = $('.background').val();
+  var prevContainer = $('.container').val();
+  var prevNav = $('.nav').val();
+  var prevCardt = $('.cardt').val();
+  var prevCardbuttontext = $('.cardbuttontext').val();
+  var prevCardpanel = $('.cardpanel').val();
+  // Clear previous value and assign new class value
+  $('.button').click(function(event) {
+  // change background color
   var background = $('.background').val();
+  var container = $('.container').val();
+  var nav = $('.nav').val();
+  var cardt = $('.cardt').val();
+  var cardbuttontext = $('.cardbuttontext').val();
+  var cardpanel = $('.cardpanel').val();
+
+
+  $('body').removeClass(prevBackground)
   $('body').addClass(background);
-  console.log(background);
+  $('.container').removeClass(prevContainer)
+  $('.container').addClass(container);
+  $('.nav-wrapper').removeClass(prevNav)
+  $('.nav-wrapper').addClass(nav);
+  $('body').removeClass(prevBackground)
+  $('body').addClass(background);
+  $('body').removeClass(prevBackground)
+  $('body').addClass(background);
+  $('body').removeClass(prevBackground)
+  $('body').addClass(background);
 });
 
 });
