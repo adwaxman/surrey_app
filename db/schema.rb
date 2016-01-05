@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151227025854) do
+ActiveRecord::Schema.define(version: 20151231181414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -190,6 +190,17 @@ ActiveRecord::Schema.define(version: 20151227025854) do
     t.string   "assigned_by"
     t.string   "duration"
     t.boolean  "pet"
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.text   "message"
+    t.string "background"
+    t.string "title"
+    t.string "nav"
+    t.string "container"
+    t.string "cardt"
+    t.string "cardbuttontext"
+    t.string "cardpanel"
   end
 
 end
