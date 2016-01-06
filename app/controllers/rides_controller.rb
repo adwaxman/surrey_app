@@ -1,8 +1,12 @@
 class RidesController < ApplicationController
 before_action :logged_in?, except: [:show]
-
   def new
+    if current_admin
+      redirect_to root_path
+      flash[:alert] = "Please use admin panel"
+    else
     redirect_to edit_member_path(current_member.id) unless current_member.confirmed
+    end
   end
 
   def create
