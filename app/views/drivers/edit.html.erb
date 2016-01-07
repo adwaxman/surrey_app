@@ -235,18 +235,8 @@
     <% end %>
   </div>
 <input type="hidden" name="name" class="workaround" value="<%= @driver.confirmed %>">
-  <script>
-    // timepicker for driver form
-    $('.timepicker2').pickatime({
-      interval: 15,
-      min: [
-        8, 30
-      ],
-      max: [16, 30]
-    });
-  </script>
 
-  <script>
+<script>
   $(document).ready(function() {
 
     $.validator.setDefaults({
@@ -303,15 +293,16 @@
 
         });
 
+        // timepicker for driver form
+        $('.timepicker2').pickatime({
+          interval: 15,
+          min: [
+            8, 30
+          ],
+          max: [16, 30]
+        });
   });
-    // timepicker for driver form
-    $('.timepicker2').pickatime({
-      interval: 15,
-      min: [
-        8, 30
-      ],
-      max: [16, 30]
-    });
+
   </script>
   <style media="screen">
   label {
