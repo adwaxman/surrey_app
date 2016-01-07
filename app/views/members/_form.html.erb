@@ -2,7 +2,16 @@
   <%= form_for @member, :html => {:class => "form col s10 offset-s1"} do |f| %>
   <div class="row">
 
-    <h3>Your information</h3>
+    <h3 class="center">Your information</h3>
+    <div class="row">
+      <div class="col s6 offset-s3">
+        <div class="card-panel teal">
+          <h4 class="white-text center">Instructions</h4>
+          <span class="white-text">Please fill out each field on the form below. You can not change your name or email address. If this is necesssary pleace contact surrey services.
+          </span>
+        </div>
+      </div>
+    </div>
 
     <div class="input-field col s4">
       <%= f.text_field :fname, class: "validate fname", disabled: true %>
@@ -120,11 +129,10 @@
       <%= f.label :secondaryEC_relationship, "Relationship to member" %>
     </div>
   </div>
-<%= f.submit class: "btn" %>
+  <%= f.submit class: "btn" %>
 </div>
 
 <!-- Modal Trigger -->
-
 
 <% end %>
 
@@ -132,87 +140,79 @@
 
 <script type="text/javascript">
 
+  $(document).ready(function () {
 
- $(document).ready(function() {
+    $.validator.setDefaults({
+      errorClass: 'invalid',
+      validClass: "valid",
+      errorPlacement: function (error, element) {
+        $(element).closest("form").find("label[for='" + element.attr("id") + "']").attr('data-error', error.text());
+      }
+    });
 
-   $.validator.setDefaults({
-    errorClass: 'invalid',
-    validClass: "valid",
-    errorPlacement: function (error, element) {
-        $(element)
-            .closest("form")
-            .find("label[for='" + element.attr("id") + "']")
-            .attr('data-error', error.text());
-    }
-});
+    $(".form").validate({
 
-      $(".form").validate({
-
-        rules: {
-          "member[password]": {
-            required: function() {
-              if ($('.workaround').val() == "true"){
-                return false;
-              }
-              else{
-                return true;
-              }
-              }
-          },
-          "member[password_confirmation]": {
-            required: function() {
-              if ($('.workaround').val() == "true"){
-                return false;
-              }
-              else{
-                return true;
-              }
-              }
-          },
-          "member[address_line1]": {
-            required: true
-          },
-          "member[city]": {
-            required: true
-          },
-          "member[zip]": {
-            required: true
-          },
-          "member[primaryEC_fname]": {
-            required: true
-          },
-          "member[primaryEC_lname]": {
-            required: true
-          },
-          "member[primaryEC_phone]": {
-            required: true
-          },
-          "member[primaryEC_relationship]": {
-            required: true
+      rules: {
+        "member[password]": {
+          required: function () {
+            if ($('.workaround').val() == "true") {
+              return false;
+            } else {
+              return true;
+            }
           }
         },
-        messages: {
-            "member[password]": "Please enter a password",
-            "member[password_confirmation]": "Please enter a password confirmation",
-            "member[address_line1]": "Please enter a valid address",
-            "member[city]": "Please enter the name of the city you live in",
-            "member[zip]": "Please enter a valid zip code",
-            "member[primaryEC_fname]": "Please enter your emergency contacts first name",
-            "member[primaryEC_lname]": "Please enter your emergency contacts last name",
-            "member[primaryEC_phone]": "Please enter your emergency contacts phone number",
-            "member[primaryEC_relationship]": "Please enter your emergency contacts phone number",
+        "member[password_confirmation]": {
+          required: function () {
+            if ($('.workaround').val() == "true") {
+              return false;
+            } else {
+              return true;
+            }
+          }
+        },
+        "member[address_line1]": {
+          required: true
+        },
+        "member[city]": {
+          required: true
+        },
+        "member[zip]": {
+          required: true
+        },
+        "member[primaryEC_fname]": {
+          required: true
+        },
+        "member[primaryEC_lname]": {
+          required: true
+        },
+        "member[primaryEC_phone]": {
+          required: true
+        },
+        "member[primaryEC_relationship]": {
+          required: true
+        }
+      },
+      messages: {
+        "member[password]": "Please enter a password",
+        "member[password_confirmation]": "Please enter a password confirmation",
+        "member[address_line1]": "Please enter a valid address",
+        "member[city]": "Please enter the name of the city you live in",
+        "member[zip]": "Please enter a valid zip code",
+        "member[primaryEC_fname]": "Please enter your emergency contacts first name",
+        "member[primaryEC_lname]": "Please enter your emergency contacts last name",
+        "member[primaryEC_phone]": "Please enter your emergency contacts phone number",
+        "member[primaryEC_relationship]": "Please enter your emergency contacts phone number"
+      }
 
-         }
-
- });
- });
-
+    });
+  });
 </script>
 <style>
-label {
- width: 100%;
-}
-.input-field label {
+  label {
+    width: 100%;
+  }
+  .input-field label {
     /*display: block;*/
     /*font-size: 0.8rem;*/
     margin: 1rem;
@@ -221,5 +221,6 @@ label {
     -ms-transform: translateY(-140%);
     -o-transform: translateY(-140%);
     transform: translateY(-140%);
-}
+  }
+
 </style>

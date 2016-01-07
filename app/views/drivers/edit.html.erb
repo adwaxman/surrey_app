@@ -3,7 +3,16 @@
   <%= form_for @driver, :html => {:class => "form col s10 offset-s1"} do |f| %>
   <div class="row">
     <div class="col s12">
-      <h3>Driver Sign-up</h3>
+      <h3 class="center">Driver Sign-up</h3><br>
+      <div class="row">
+  <div class="col s6 offset-s3">
+    <div class="card-panel teal">
+      <h4 class="white-text center">Instructions</h4>
+      <span class="white-text">Please fill out each field on the form below. You can not change your name or email address. If this is necesssary pleace contact surrey services.
+      </span>
+    </div>
+  </div>
+</div>
     </div>
     <div class="input-field col s12 m6">
       <%= f.text_field :fname, class: "validate", disabled: "true" %>
