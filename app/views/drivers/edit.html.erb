@@ -6,17 +6,17 @@
       <h3>Driver Sign-up</h3>
     </div>
     <div class="input-field col s12 m6">
-      <%= f.text_field :fname, class: "validate" %>
+      <%= f.text_field :fname, class: "validate", disabled: "true" %>
       <%= f.label :fname, "First name" %>
     </div>
     <div class="input-field col s12 m6">
-      <%= f.text_field :lname, class: "validate" %>
+      <%= f.text_field :lname, class: "validate", disabled: "true" %>
       <%= f.label :lname, "Last name" %>
     </div>
   </div>
   <div class="row">
     <div class="input-field col s12 m6">
-      <%= f.text_field :email, class: "validate" %>
+      <%= f.text_field :email, class: "validate", disabled: "true" %>
       <%= f.label :email, "Email address" %>
     </div>
     <div class="input-field col s12 m3">
@@ -81,74 +81,75 @@
       <%= f.label(:car_type_pickup, "Pickup") %>
       <br>
     </div>
-    <div class="row">
       <div class="row center">
+        <div class="col s12">
         <strong>Schedule</strong>
+        </div>
       </div>
-      <div class="input-field col s2">
-        <strong>Monday</strong>
+      <div class="input-field col s2 offset-s1">
+        <strong>Monday</strong> <br><br>
         <%= f.check_box :monday, class: "check1 validate" %>
         <%= f.label :monday, "Available"%>
       </div>
       <div class="input-field col s2">
-        <strong>Tuesday</strong>
+        <strong>Tuesday</strong> <br><br>
         <%= f.check_box :tuesday, class: "check2 validate"  %>
         <%= f.label :tuesday, "Available"%>
       </div>
       <div class="input-field col s2">
-        <strong>Wednesday</strong>
+        <strong>Wednesday</strong> <br><br>
         <%= f.check_box :wednesday, class: "check3 validate"  %>
         <%= f.label :wednesday, "Available"%>
       </div>
       <div class="input-field col s2">
-        <strong>Thursday</strong>
+        <strong>Thursday</strong> <br><br>
         <%= f.check_box :thursday, class: "check4 validate"  %>
         <%= f.label :thursday, "Available"%>
       </div>
       <div class="input-field col s1">
-        <strong>Friday</strong>
+        <strong>Friday</strong> <br><br>
         <%= f.check_box :friday, class: "check5 validate"  %>
         <%= f.label :friday, "Available"%>
       </div>
     </div>
-    <div class="row">
-      <div class="input-field col s2">
+    <div class="row center">
+      <div class="input-field col s2 offset-s1"><strong>From</strong><br>
         <%= f.text_field :monday_min, class: "timepicker2 disable1", placeholder: "" %>
       </div>
-      <div class="input-field col s2">
+      <div class="input-field col s2"><strong>From</strong><br>
         <%= f.text_field :tuesday_min, class: "timepicker2 disable2", placeholder: ""%>
       </div>
-      <div class="input-field col s2">
+      <div class="input-field col s2"><strong>From</strong><br>
         <%= f.text_field :wednesday_min, class: "timepicker2 disable3", placeholder: ""%>
       </div>
-      <div class="input-field col s2">
+      <div class="input-field col s2"><strong>From</strong><br>
         <%= f.text_field :thursday_min, class: "timepicker2 disable4", placeholder: ""%>
       </div>
-      <div class="input-field col s2">
+      <div class="input-field col s2"><strong>From</strong><br>
         <%= f.text_field :friday_min, class: "timepicker2 disable5", placeholder: ""%>
       </div>
     </div>
     <div class="row center">
 
-      <div class="input-field col s2">
+      <div class="input-field col s2 offset-s1"><strong>Until</strong><br>
         <%= f.text_field :monday_max, class: "timepicker2 disable1", placeholder: ""%>
       </div>
-      <div class="input-field col s2">
+      <div class="input-field col s2"><strong>Until</strong><br>
         <%= f.text_field :tuesday_max, class: "timepicker2 disable2", placeholder: ""%>
       </div>
-      <div class="input-field col s2">
+      <div class="input-field col s2"><strong>Until</strong><br>
         <%= f.text_field :wednesday_max, class: "timepicker2 disable3", placeholder: ""%>
       </div>
-      <div class="input-field col s2">
+      <div class="input-field col s2"><strong>Until</strong><br>
         <%= f.text_field :thursday_max, class: "timepicker2 disable4", placeholder: ""%>
       </div>
-      <div class="input-field col s2">
+      <div class="input-field col s2"><strong>Until</strong><br>
         <%= f.text_field :friday_max, class: "timepicker2 disable5", placeholder: ""%>
       </div>
     </div>
     <div class="row">
 
-      <div class="input-field col s12 m3">
+      <div class="input-field col s12 m4">
         <p>
           Please check all that apply:
         </p>
@@ -162,7 +163,7 @@
         <%= f.label :accommodate_pet, "I can accomodate a service animal" %>
 
       </div>
-      <div class="input-field col s12 m3">
+      <div class="input-field col s12 m4">
         <p>
           Please check all that apply:
         </p>
@@ -201,7 +202,7 @@
         <br>
 
       </div>
-      <div class="input-field col s12 m3">
+      <div class="input-field col s12 m4">
         <p>
           Please check if you are a private driver:
         </p>
