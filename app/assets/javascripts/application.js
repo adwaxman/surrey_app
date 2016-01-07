@@ -17,13 +17,8 @@
 //= require jquery.turbolinks
 
 
-//= require rotate
+
 //= require rides
-//= require pickadate
-//= require picker
-//= require picker.date
-//= require picker.time
-//= require phonevalidator
 //= require drivers
 //= require turbolinks
 //= require jquery-readyselector
