@@ -124,37 +124,37 @@
     </div>
     <div class="row center">
       <div class="input-field col s2 offset-s1"><strong>From</strong><br>
-        <%= f.text_field :monday_min, class: "timepicker2 disable1", placeholder: "" %>
+        <%= f.text_field :monday_min, class: "timepicker2 disable1 monday_min", placeholder: "" %>
       </div>
       <div class="input-field col s2"><strong>From</strong><br>
-        <%= f.text_field :tuesday_min, class: "timepicker2 disable2", placeholder: ""%>
+        <%= f.text_field :tuesday_min, class: "timepicker2 disable2 tuesday_min", placeholder: ""%>
       </div>
       <div class="input-field col s2"><strong>From</strong><br>
-        <%= f.text_field :wednesday_min, class: "timepicker2 disable3", placeholder: ""%>
+        <%= f.text_field :wednesday_min, class: "timepicker2 disable3 wednesday_min", placeholder: ""%>
       </div>
       <div class="input-field col s2"><strong>From</strong><br>
-        <%= f.text_field :thursday_min, class: "timepicker2 disable4", placeholder: ""%>
+        <%= f.text_field :thursday_min, class: "timepicker2 disable4 thursday_min", placeholder: ""%>
       </div>
       <div class="input-field col s2"><strong>From</strong><br>
-        <%= f.text_field :friday_min, class: "timepicker2 disable5", placeholder: ""%>
+        <%= f.text_field :friday_min, class: "timepicker2 disable5 friday_min", placeholder: ""%>
       </div>
     </div>
     <div class="row center">
 
       <div class="input-field col s2 offset-s1"><strong>Until</strong><br>
-        <%= f.text_field :monday_max, class: "timepicker2 disable1", placeholder: ""%>
+        <%= f.text_field :monday_max, class: "timepicker2 disable1 monday_max", placeholder: ""%>
       </div>
       <div class="input-field col s2"><strong>Until</strong><br>
-        <%= f.text_field :tuesday_max, class: "timepicker2 disable2", placeholder: ""%>
+        <%= f.text_field :tuesday_max, class: "timepicker2 disable2 tuesday_max", placeholder: ""%>
       </div>
       <div class="input-field col s2"><strong>Until</strong><br>
-        <%= f.text_field :wednesday_max, class: "timepicker2 disable3", placeholder: ""%>
+        <%= f.text_field :wednesday_max, class: "timepicker2 disable3 wednesday_max", placeholder: ""%>
       </div>
       <div class="input-field col s2"><strong>Until</strong><br>
-        <%= f.text_field :thursday_max, class: "timepicker2 disable4", placeholder: ""%>
+        <%= f.text_field :thursday_max, class: "timepicker2 disable4 thursday_max", placeholder: ""%>
       </div>
       <div class="input-field col s2"><strong>Until</strong><br>
-        <%= f.text_field :friday_max, class: "timepicker2 disable5", placeholder: ""%>
+        <%= f.text_field :friday_max, class: "timepicker2 disable5 friday_max", placeholder: ""%>
       </div>
     </div>
     <div class="row">
@@ -238,71 +238,6 @@
 <input type="hidden" name="name" class="workaround" value="<%= @driver.confirmed %>">
 
 <script>
-  $(document).ready(function() {
-
-    $.validator.setDefaults({
-     errorClass: 'invalid',
-     validClass: "valid",
-     errorPlacement: function (error, element) {
-         $(element)
-             .closest("form")
-             .find("label[for='" + element.attr("id") + "']")
-             .attr('data-error', error.text());
-     }
- });
-
-       $(".form").validate({
-
-         rules: {
-           "driver[password]": {
-             required: function() {
-               if ($('.workaround').val() == "true"){
-                 return false;
-               }
-               else{
-                 return true;
-               }
-               }
-           },
-           "driver[password_confirmation]": {
-             required: function() {
-               if ($('.workaround').val() == "true"){
-                 return false;
-               }
-               else{
-                 return true;
-               }
-               }
-           },
-           "driver[address_line1]": {
-             required: true
-           },
-           "driver[city]": {
-             required: true
-           },
-           "driver[zip]": {
-             required: true
-           }
-         },
-         messages: {
-             "driver[password]": "Please enter a password",
-             "driver[password_confirmation]": "Please enter a password confirmation",
-             "driver[address_line1]": "Please enter a valid email address",
-             "driver[city]": "Please enter the name of the city you live in",
-             "driver[zip]": "Please enter a valid zip code",
-          }
-
-        });
-
-        // timepicker for driver form
-        $('.timepicker2').pickatime({
-          interval: 15,
-          min: [
-            8, 30
-          ],
-          max: [16, 30]
-        });
-  });
 
   </script>
   <style media="screen">

@@ -1,4 +1,29 @@
 $(document).ready(function() {
+  $('input').change(function(event) {
+    if (Date.parse("1-1-2000 " + $('.monday_min').val()) > Date.parse("1-1-2000 " + $('.monday_max').val())) {
+      alert("End time on Monday cannot be earlier than start time");
+    }
+  });
+  $('input').change(function(event) {
+    if (Date.parse("1-1-2000 " + $('.tuesday_min').val()) > Date.parse("1-1-2000 " + $('.tuesday_max').val())) {
+      alert("End time on Tuesday cannot be earlier than start time");
+    }
+  });
+  $('input').change(function(event) {
+    if (Date.parse("1-1-2000 " + $('.wednesday_min').val()) > Date.parse("1-1-2000 " + $('.wednesday_max').val())) {
+      alert("End time on Wednesday cannot be earlier than start time");
+    }
+  });
+  $('input').change(function(event) {
+    if (Date.parse("1-1-2000 " + $('.thursday_min').val()) > Date.parse("1-1-2000 " + $('.thursday_max').val())) {
+      alert("End time on Thursday cannot be earlier than start time");
+    }
+  });
+  $('input').change(function(event) {
+    if (Date.parse("1-1-2000 " + $('.friday_min').val()) > Date.parse("1-1-2000 " + $('.friday_max').val())) {
+      alert("End time on Friday cannot be earlier than start time");
+    }
+  });
 
   if ($('.disable1').val() == "") {
 
@@ -83,29 +108,66 @@ $(document).ready(function() {
       }
     }
   });
-$('input').change(function(event) {
-  if (Date.parse("1-1-2000 " + $('.monday_min').val()) > Date.parse("1-1-2000 " + $('.monday_max').val())) {
-    alert("End time on Monday cannot be earlier than start time");
-  }
+    $.validator.setDefaults({
+     errorClass: 'invalid',
+     validClass: "valid",
+     errorPlacement: function (error, element) {
+         $(element)
+             .closest("form")
+             .find("label[for='" + element.attr("id") + "']")
+             .attr('data-error', error.text());
+     }
+ });
+
+       $(".form").validate({
+
+         rules: {
+           "driver[password]": {
+             required: function() {
+               if ($('.workaround').val() == "true"){
+                 return false;
+               }
+               else{
+                 return true;
+               }
+               }
+           },
+           "driver[password_confirmation]": {
+             required: function() {
+               if ($('.workaround').val() == "true"){
+                 return false;
+               }
+               else{
+                 return true;
+               }
+               }
+           },
+           "driver[address_line1]": {
+             required: true
+           },
+           "driver[city]": {
+             required: true
+           },
+           "driver[zip]": {
+             required: true
+           }
+         },
+         messages: {
+             "driver[password]": "Please enter a password",
+             "driver[password_confirmation]": "Please enter a password confirmation",
+             "driver[address_line1]": "Please enter a valid email address",
+             "driver[city]": "Please enter the name of the city you live in",
+             "driver[zip]": "Please enter a valid zip code",
+          }
+
+        });
+
+        // timepicker for driver form
+        $('.timepicker2').pickatime({
+          interval: 15,
+          min: [
+            8, 30
+          ],
+          max: [16, 30]
+        });
 });
-$('input').change(function(event) {
-  if (Date.parse("1-1-2000 " + $('.tuesday_min').val()) > Date.parse("1-1-2000 " + $('.tuesday_max').val())) {
-    alert("End time on Tuesday cannot be earlier than start time");
-  }
-});
-$('input').change(function(event) {
-  if (Date.parse("1-1-2000 " + $('.wednesday_min').val()) > Date.parse("1-1-2000 " + $('.wednesday_max').val())) {
-    alert("End time on Wednesday cannot be earlier than start time");
-  }
-});
-$('input').change(function(event) {
-  if (Date.parse("1-1-2000 " + $('.thursday_min').val()) > Date.parse("1-1-2000 " + $('.thursday_max').val())) {
-    alert("End time on Thursday cannot be earlier than start time");
-  }
-});
-$('input').change(function(event) {
-  if (Date.parse("1-1-2000 " + $('.friday_min').val()) > Date.parse("1-1-2000 " + $('.friday_max').val())) {
-    alert("End time on Friday cannot be earlier than start time");
-  }
-});
-})

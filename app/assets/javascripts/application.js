@@ -22,49 +22,39 @@
 
 
 
- $(document).ready(function() {
-//   $('select').material_select();
-//
-//   $('.timepicker').pickatime({
-//     interval: 15,
-//     min: [
-//       6, 0
-//     ],
-//     max: [18, 0]
-//   });
-// });
+$(document).ready(function() {
 
 
-// prevent submission of of autocomplete forms if invalid input
-$('.search-assign-btn').click(function(e) {
+  // prevent submission of of autocomplete forms if invalid input
+  $('.search-assign-btn').click(function(e) {
     if (arrOfDrivers.indexOf($('#all_drivers').val()) === -1) {
       e.preventDefault();
     }
-});
+  });
 
-$('.select-member-btn').click(function(e) {
+  $('.select-member-btn').click(function(e) {
     if (arrOfMembers.indexOf($('#all_members').val()) === -1) {
       e.preventDefault();
     }
-});
+  });
 
-$('.find-driver-btn').click(function(e) {
+  $('.find-driver-btn').click(function(e) {
     if (arrOfDrivers.indexOf($('#search_drivers').val()) === -1) {
       e.preventDefault();
     }
-});
+  });
 
-$('.find-member-btn').click(function(e) {
+  $('.find-member-btn').click(function(e) {
     if (arrOfMembers.indexOf($('#search_members').val()) === -1) {
       e.preventDefault();
     }
-});
+  });
 
-$('.nonmatch-outreach-btn').click(function(e) {
+  $('.nonmatch-outreach-btn').click(function(e) {
     if (arrOfDrivers.indexOf($('#all_drivers2').val()) === -1) {
       e.preventDefault();
     }
-});
+  });
 
 
 
@@ -87,7 +77,7 @@ $(function() {
 
 //initalize materialize modal
 
-$(document).ready(function(){
+$(document).ready(function() {
   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
   $('.modal-trigger').leanModal();
 });
@@ -121,13 +111,13 @@ $(document).ready(function() {
 
   $('input.timepicker').change(function() {
 
-    $('.picker--time').close(this);
+    $('.timepicker').close(this);
 
   });
 
   $('input.timepicker2').change(function() {
 
-    $('.picker--time').close(this);
+    $('.timepicker').close(this);
 
   });
 

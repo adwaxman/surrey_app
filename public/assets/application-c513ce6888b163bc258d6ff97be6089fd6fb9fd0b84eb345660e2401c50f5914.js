@@ -11270,6 +11270,54 @@ $(document).ready(function() {
   });
 
 
+      $.validator.setDefaults({
+       errorClass: 'invalid',
+       validClass: "valid",
+       errorPlacement: function (error, element) {
+           $(element)
+               .closest("form")
+               .find("label[for='" + element.attr("id") + "']")
+               .attr('data-error', error.text());
+       },
+
+   });
+
+         $("#new_ride").validate({
+
+           rules: {
+             "pickup_date": {
+               required: true,
+             },
+             "pickup_time": {
+               required: true,
+             },
+             "duration": {
+               required: true
+             },
+           },
+           messages: {
+               "pickup_date": "Please select the date you need a ride",
+               "pickup_time": "Please select the time you would like to be picked up",
+               "duration": "Please enter the expected duration of your ride",
+            }
+
+          });
+
+
+
+    $('.timepicker').on('click', function(event) {
+      $('.timepicker').pickatime({
+        interval: 15,
+        min: [8, 30],
+        max: [16, 30]
+      });
+    });
+
+  });
+
+  $(function() {
+    $( "#datepicker" ).datepicker();
+
 
 });
 $(document).ready(function() {
@@ -11357,6 +11405,8 @@ $(document).ready(function() {
       }
     }
   });
+  })
+
 $('input').change(function(event) {
   if (Date.parse("1-1-2000 " + $('.monday_min').val()) > Date.parse("1-1-2000 " + $('.monday_max').val())) {
     alert("End time on Monday cannot be earlier than start time");
@@ -11382,8 +11432,6 @@ $('input').change(function(event) {
     alert("End time on Friday cannot be earlier than start time");
   }
 });
-})
-;
 (function() {
   var CSRFToken, Click, ComponentUrl, EVENTS, Link, ProgressBar, browserIsntBuggy, browserSupportsCustomEvents, browserSupportsPushState, browserSupportsTurbolinks, bypassOnLoadPopstate, cacheCurrentPage, cacheSize, changePage, clone, constrainPageCacheTo, createDocument, crossOriginRedirect, currentState, enableProgressBar, enableTransitionCache, executeScriptTags, extractTitleAndBody, fetch, fetchHistory, fetchReplacement, historyStateIsDefined, initializeTurbolinks, installDocumentReadyPageEventTriggers, installHistoryChangeHandler, installJqueryAjaxSuccessPageUpdateTrigger, loadedAssets, manuallyTriggerHashChangeForFirefox, pageCache, pageChangePrevented, pagesCached, popCookie, processResponse, progressBar, recallScrollPosition, ref, referer, reflectNewUrl, reflectRedirectedUrl, rememberCurrentState, rememberCurrentUrl, rememberReferer, removeNoscriptTags, requestMethodIsSafe, resetScrollPosition, setAutofocusElement, transitionCacheEnabled, transitionCacheFor, triggerEvent, visit, xhr,
     indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; },
@@ -12281,10 +12329,6 @@ $('.rides.new').ready(function() {
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 ;
-$('.datepicker').pickadate({
-  selectMonths: true, // Creates a dropdown to control month
-  selectYears: 15 // Creates a dropdown of 15 years to control year
-});
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -12309,49 +12353,39 @@ $('.datepicker').pickadate({
 
 
 
- $(document).ready(function() {
-//   $('select').material_select();
-//
-//   $('.timepicker').pickatime({
-//     interval: 15,
-//     min: [
-//       6, 0
-//     ],
-//     max: [18, 0]
-//   });
-// });
+$(document).ready(function() {
 
 
-// prevent submission of of autocomplete forms if invalid input
-$('.search-assign-btn').click(function(e) {
+  // prevent submission of of autocomplete forms if invalid input
+  $('.search-assign-btn').click(function(e) {
     if (arrOfDrivers.indexOf($('#all_drivers').val()) === -1) {
       e.preventDefault();
     }
-});
+  });
 
-$('.select-member-btn').click(function(e) {
+  $('.select-member-btn').click(function(e) {
     if (arrOfMembers.indexOf($('#all_members').val()) === -1) {
       e.preventDefault();
     }
-});
+  });
 
-$('.find-driver-btn').click(function(e) {
+  $('.find-driver-btn').click(function(e) {
     if (arrOfDrivers.indexOf($('#search_drivers').val()) === -1) {
       e.preventDefault();
     }
-});
+  });
 
-$('.find-member-btn').click(function(e) {
+  $('.find-member-btn').click(function(e) {
     if (arrOfMembers.indexOf($('#search_members').val()) === -1) {
       e.preventDefault();
     }
-});
+  });
 
-$('.nonmatch-outreach-btn').click(function(e) {
+  $('.nonmatch-outreach-btn').click(function(e) {
     if (arrOfDrivers.indexOf($('#all_drivers2').val()) === -1) {
       e.preventDefault();
     }
-});
+  });
 
 
 
@@ -12374,7 +12408,7 @@ $(function() {
 
 //initalize materialize modal
 
-$(document).ready(function(){
+$(document).ready(function() {
   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
   $('.modal-trigger').leanModal();
 });

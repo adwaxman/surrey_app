@@ -358,5 +358,53 @@ $(document).ready(function() {
   });
 
 
+      $.validator.setDefaults({
+       errorClass: 'invalid',
+       validClass: "valid",
+       errorPlacement: function (error, element) {
+           $(element)
+               .closest("form")
+               .find("label[for='" + element.attr("id") + "']")
+               .attr('data-error', error.text());
+       },
+
+   });
+
+         $("#new_ride").validate({
+
+           rules: {
+             "pickup_date": {
+               required: true,
+             },
+             "pickup_time": {
+               required: true,
+             },
+             "duration": {
+               required: true
+             },
+           },
+           messages: {
+               "pickup_date": "Please select the date you need a ride",
+               "pickup_time": "Please select the time you would like to be picked up",
+               "duration": "Please enter the expected duration of your ride",
+            }
+
+          });
+
+
+
+    $('.timepicker').on('click', function(event) {
+      $('.timepicker').pickatime({
+        interval: 15,
+        min: [8, 30],
+        max: [16, 30]
+      });
+    });
+
+  });
+
+  $(function() {
+    $( "#datepicker" ).datepicker();
+
 
 });
