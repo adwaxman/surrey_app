@@ -4,10 +4,11 @@
 
   <div id="prev-dest-modal" class="modal modal-fixed-footer">
     <div class="modal-content">
-      <p id="prev-dest-error">Please unselect the previous destination if you would like to add a new one. </p>
+      <p id="prev-dest-error">Please unselect the previous destination if you would like to add a new one.
+      </p>
     </div>
     <div class="modal-footer">
-      <a  class="modal-action modal-close btn-flat ">OK</a>
+      <a class="modal-action modal-close btn-flat ">OK</a>
     </div>
   </div>
 
@@ -25,7 +26,9 @@
     </div>
     <div class="row">
       <div class="center">
-        <a class="btn submit-prev-dest-btn"> Submit </a>
+        <a class="btn submit-prev-dest-btn">
+          Submit
+        </a>
       </div>
     </div>
 
@@ -46,10 +49,9 @@
         <p id="dest-zip-error"></p>
       </div>
       <div class="modal-footer">
-        <a  class="modal-action modal-close btn-flat ">OK</a>
+        <a class="modal-action modal-close btn-flat ">OK</a>
       </div>
     </div>
-
 
     <div class="row">
       <div class="input-field col s10 offset-s1">
@@ -107,11 +109,11 @@
     <div class="row center">
       <a class="btn submit-new-dest-btn">
         Add Destination</a>
-        <br>
-        <br>
+      <br>
+      <br>
 
       <a class="btn back-to-prev-dest-btn back-btn">
-          Back</a>
+        Back</a>
 
       <!-- <a class="btn back-add-dest-btn back-btn">
             Back</a> -->
@@ -125,10 +127,11 @@
 
   <div id="prev-origin-modal" class="modal modal-fixed-footer">
     <div class="modal-content">
-      <p id="prev-origin-error">Please unselect the previous pickup location if you would like to add a new one. </p>
+      <p id="prev-origin-error">Please unselect the previous pickup location if you would like to add a new one.
+      </p>
     </div>
     <div class="modal-footer">
-      <a  class="modal-action modal-close btn-flat ">OK</a>
+      <a class="modal-action modal-close btn-flat ">OK</a>
     </div>
   </div>
 
@@ -173,10 +176,9 @@
         <p id="origin-zip-error"></p>
       </div>
       <div class="modal-footer">
-        <a  class="modal-action modal-close btn-flat ">OK</a>
+        <a class="modal-action modal-close btn-flat ">OK</a>
       </div>
     </div>
-
 
     <div class="row">
       <div class="input-field col s10 offset-s1">
@@ -204,11 +206,11 @@
     <div class="row center">
       <a class="btn submit-new-origin-btn">
         Add Pickup Location</a>
-        <br>
-        <br>
+      <br>
+      <br>
 
       <a class="btn back-from-new-origin-btn back-btn">
-          Back</a>
+        Back</a>
 
     </div>
   </div>
@@ -227,14 +229,14 @@
 
       </div>
       <div class="modal-footer">
-        <a  class="modal-action modal-close btn-flat ">OK</a>
+        <a class="modal-action modal-close btn-flat ">OK</a>
       </div>
     </div>
 
     <div class="input-field col s6 offset-s3">
       <%= label_tag :pickup_date, "Click below to select a date", class: "datepicker-label", style: "font-size: 18px" %>
       <!-- <input class="datepicker" name="pickup_date" placeholder=" " type="date" id="ride-pickup-date"> -->
-      <input type="text" id="datepicker" class="ride-pickup-date" name="pickup_date" placeholder= " ">
+      <input type="text" id="datepicker" class="ride-pickup-date" name="pickup_date" placeholder=" ">
     </div>
   </div>
   <div class="row">
@@ -249,7 +251,8 @@
         Duration
       </div>
       <div class="col s4">
-        <%= select_tag :duration, options_for_select([['1 hour', '1 hour'], ['1.5 hours', '1.5 hours'], ['2 hours', '2 hours'], ['2.5 hours', '2.5 hours'], ['3 hours', '3 hours'], ['3.5 hours', '3.5 hours'],['4 hours', '4 hours'], ['4+ hours', '4+ hours'] ]), class: "validate browser-default" %>
+        <%= select_tag :duration, options_for_select([['1 hour', '1 hour'], ['1.5 hours', '1.5 hours'], ['2 hours', '2 hours'], ['2.5 hours', '2.5 hours'], ['3 hours', '3 hours'], ['3.5 hours', '3.5 hours'],['4 hours', '4 hours'], ['4+ hours', '4+ hours']
+        ]), class: "validate browser-default" %>
       </div>
     </div>
   </div>
@@ -276,63 +279,86 @@
 
   </div>
 
-
-
   <div class='row center'>
     <br>
-      <a class="waves-effect waves-light btn modal-trigger" id="ride-confirm-trigger" href="#modal1">Submit</a>
-      <br>
-      <br>
-      <a class="btn back-from-ride-btn back-btn">
-          Back</a>
-      <br>
-      <br>
+    <a class="waves-effect waves-light btn modal-trigger" id="ride-confirm-trigger" href="#modal1">Submit</a>
+    <br>
+    <br>
+    <a class="btn back-from-ride-btn back-btn">
+      Back</a>
+    <br>
+    <br>
   </div>
 
-
-
-   <!-- Modal Structure -->
-   <div id="modal1" class="modal">
-     <div class="modal-content">
-       <div class="row">
-         <div class="col s4 confirmation-ride-modal confirm-ride-section">
-           <h5>Ride Info: </h5>
-           <p> Date: <span class="confirm-pickup-date"> </span></p>
-           <p> Time: <span class="confirm-pickup-time"> </span></p>
-           <p> Duration: <span id="confirm-duration"></span></p>
-           <p> Wheelchair: <span id="confirm-wheelchair"></span></p>
-           <p> Aide: <span id="confirm-aide"></span></p>
-           <p> Pet/Service Animal: <span id="confirm-pet"></span></p>
-           <p> Vision impaired: <span id="confirm-vision"></span></p>
-           <p> Hearing impaired: <span id="confirm-hearing"></span></p>
-         </div>
-         <div class="col s4 confirmation-ride-modal confirm-destination-section">
-           <h5>From:</h5>
-           <p>
-             <span id="confirm-origin-address-line1"></span><br>
-             <span id="confirm-origin-address-line2"></span><br id="conditional-break2">
-             <span id="confirm-origin-city"></span>
-             <span id="confirm-origin-state"></span>
-             <span id="confirm-origin-zip"></span>
-           </p>
-         </div>
-         <div class="col s4 confirmation-ride-modal confirm-origin-section">
-           <h5>To:</h5>
-           <p>
-             <span id="confirm-destination-name"></span><br>
-             <span id="confirm-destination-address-line1"></span><br>
-             <span id="confirm-destination-address-line2"></span><br id="conditional-break">
-             <span id="confirm-destination-city"></span>, <span id="confirm-destination-state"></span> <span id="confirm-destination-zip"></span>
-           </p>
-         </div>
-       </div>
-     </div>
-     <%= hidden_field_tag :member_id, @member.id %>
-     <div class="modal-footer">
-       <a href="#!" class="modal-close btn-flat blue-grey lighten-4 ">Edit</a>
-           <%= submit_tag :confirm, class: "submit-ride-action modal-action btn-flat blue-grey lighten-3" %>
-     </div>
-   </div>
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <div class="row">
+        <div class="col s4 confirmation-ride-modal confirm-ride-section">
+          <h5>Ride Info:
+          </h5>
+          <p>
+            Date:
+            <span class="confirm-pickup-date"></span>
+          </p>
+          <p>
+            Time:
+            <span class="confirm-pickup-time"></span>
+          </p>
+          <p>
+            Duration:
+            <span id="confirm-duration"></span>
+          </p>
+          <p>
+            Wheelchair:
+            <span id="confirm-wheelchair"></span>
+          </p>
+          <p>
+            Aide:
+            <span id="confirm-aide"></span>
+          </p>
+          <p>
+            Pet/Service Animal:
+            <span id="confirm-pet"></span>
+          </p>
+          <p>
+            Vision impaired:
+            <span id="confirm-vision"></span>
+          </p>
+          <p>
+            Hearing impaired:
+            <span id="confirm-hearing"></span>
+          </p>
+        </div>
+        <div class="col s4 confirmation-ride-modal confirm-destination-section">
+          <h5>From:</h5>
+          <p>
+            <span id="confirm-origin-address-line1"></span><br>
+            <span id="confirm-origin-address-line2"></span><br id="conditional-break2">
+            <span id="confirm-origin-city"></span>
+            <span id="confirm-origin-state"></span>
+            <span id="confirm-origin-zip"></span>
+          </p>
+        </div>
+        <div class="col s4 confirmation-ride-modal confirm-origin-section">
+          <h5>To:</h5>
+          <p>
+            <span id="confirm-destination-name"></span><br>
+            <span id="confirm-destination-address-line1"></span><br>
+            <span id="confirm-destination-address-line2"></span><br id="conditional-break">
+            <span id="confirm-destination-city"></span>,
+            <span id="confirm-destination-state"></span>
+            <span id="confirm-destination-zip"></span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <%= hidden_field_tag :member_id, @member.id %>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close btn-flat blue-grey lighten-4 ">Edit</a>
+      <%= submit_tag :confirm, class: "submit-ride-action modal-action btn-flat blue-grey lighten-3" %>
+    </div>
+  </div>
 
 </div>
 
@@ -347,61 +373,50 @@
 
 <script>
 
-$(document).ready(function() {
-
-
-
-
+  $(document).ready(function () {
 
     $.validator.setDefaults({
-     errorClass: 'invalid',
-     validClass: "valid",
-     errorPlacement: function (error, element) {
-         $(element)
-             .closest("form")
-             .find("label[for='" + element.attr("id") + "']")
-             .attr('data-error', error.text());
-     },
+      errorClass: 'invalid',
+      validClass: "valid",
+      errorPlacement: function (error, element) {
+        $(element).closest("form").find("label[for='" + element.attr("id") + "']").attr('data-error', error.text());
+      }
+    });
 
- });
+    $("#new_ride").validate({
 
-       $("#new_ride").validate({
+      rules: {
+        "pickup_date": {
+          required: true
+        },
+        "pickup_time": {
+          required: true
+        },
+        "duration": {
+          required: true
+        }
+      },
+      messages: {
+        "pickup_date": "Please select the date the member needs a ride",
+        "pickup_time": "Please select the time the member would like to be picked up",
+        "duration": "Please enter the expected duration of the ride"
+      }
 
-         rules: {
-           "pickup_date": {
-             required: true,
-           },
-           "pickup_time": {
-             required: true,
-           },
-           "duration": {
-             required: true
-           },
-         },
-         messages: {
-             "pickup_date": "Please select the date the member needs a ride",
-             "pickup_time": "Please select the time the member would like to be picked up",
-             "duration": "Please enter the expected duration of the ride",
-          }
-
-        });
-
-
-
+    });
 
     $('.timepicker').pickatime({
       interval: 15,
-      min: [ 0, 0],
+      min: [
+        0, 0
+      ],
       max: [23, 45]
     });
 
-
-});
-
+  });
 </script>
 
 <script>
-$(function() {
-  $( "#datepicker" ).datepicker();
-});
+  $(function () {
+    $("#datepicker").datepicker();
+  });
 </script>

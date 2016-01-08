@@ -1,75 +1,79 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <% @appname = "surrey on the go" %>
-  <title><%= @appname.titleize %> | <%= @title.titleize unless @title.nil? %> </title>
-  <!--Import Google Icon Font-->
-  <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!--Import materialize.css-->
-  <link charset="utf-8" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css" media="screen" rel="stylesheet" title="no title">
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-  <!--Let browser know website is optimized for mobile-->
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <link rel="stylesheet" href="https://s3.amazonaws.com/surreyapp/ourstyle.css">
-  <link rel="stylesheet" href="https://s3.amazonaws.com/surreyapp/default.css" media="screen" title="no title" charset="utf-8">
-  <link rel="stylesheet" href="https://s3.amazonaws.com/surreyapp/default.date.css" media="screen" title="no title" charset="utf-8">
-  <link rel="stylesheet" href="https://s3.amazonaws.com/surreyapp/default.time.css" media="screen" title="no title" charset="utf-8">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <head>
+    <% @appname = "surrey on the go" %>
+    <title>
+      <%= @appname.titleize %>
+      |
+      <%= @title.titleize unless @title.nil? %>
+    </title>
+    <!--Import Google Icon Font-->
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link charset="utf-8" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css" media="screen" rel="stylesheet" title="no title">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <!--Let browser know website is optimized for mobile-->
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link rel="stylesheet" href="https://s3.amazonaws.com/surreyapp/ourstyle.css">
+    <link rel="stylesheet" href="https://s3.amazonaws.com/surreyapp/default.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="https://s3.amazonaws.com/surreyapp/default.date.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="https://s3.amazonaws.com/surreyapp/default.time.css" media="screen" title="no title" charset="utf-8">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-      <link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
-      <script charset="utf-8" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.js"></script>
+    <link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
+    <script charset="utf-8" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.js"></script>
 
-      <%= csrf_meta_tags %>
-</head>
+    <%= csrf_meta_tags %>
+  </head>
 
-<body class="blue lighten-4 <%= controller_path %> <%= action_name %>">
-  <% if session[:admin_id] %>
+  <body class="blue lighten-4 <%= controller_path %> <%= action_name %>">
+    <% if session[:admin_id] %>
     <%= render 'shared/admin_nav' %>
-      <% elsif session[:member_id] %>
-        <%= render 'shared/member_nav' %>
-          <% elsif session[:driver_id] %>
-            <%= render 'shared/driver_nav' %>
-              <% else %>
-                <%= render 'shared/nav' %>
-                  <% end %>
-                    <div class="container indigo lighten-5 z-depth-3">
-                      <span class="flash_notice">
-                        <% if flash[:notice] %>
-                          <p>
-                            <%= flash[:notice] %>
-                          </p>
-                          <% end %>
-                            <% if flash[:alert] %>
-                              <p>
-                                <%= flash[:alert] %>
-                              </p>
-                              <% end %>
-                      </span>
-                      <%= yield %>
-                    </div>
+    <% elsif session[:member_id] %>
+    <%= render 'shared/member_nav' %>
+    <% elsif session[:driver_id] %>
+    <%= render 'shared/driver_nav' %>
+  <% else %>
+    <%= render 'shared/nav' %>
+    <% end %>
+    <div class="container indigo lighten-5 z-depth-3">
+      <span class="flash_notice">
+        <% if flash[:notice] %>
+        <p>
+          <%= flash[:notice] %>
+        </p>
+        <% end %>
+        <% if flash[:alert] %>
+        <p>
+          <%= flash[:alert] %>
+        </p>
+        <% end %>
+      </span>
+      <%= yield %>
+    </div>
 
-                    <!--Import jQuery before materialize.js-->
-                    <script src="//code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
-                    <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.min.js"></script>
-                    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-                    <script src="//cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/picker.time.js" type="text/javascript"></script>
-                    <script charset="utf-8" src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.js"></script>
-                    <!-- <script src="https://s3.amazonaws.com/surreyapp/ourapp.js" charset="utf-8"></script> -->
-                    <script src="//s3.amazonaws.com/surreyapp/vendor.js" charset="utf-8"></script>
+    <!--Import jQuery before materialize.js-->
+    <script src="//code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/picker.time.js" type="text/javascript"></script>
+    <script charset="utf-8" src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.js"></script>
+    <!-- <script src="https://s3.amazonaws.com/surreyapp/ourapp.js" charset="utf-8"></script> -->
+    <script src="//s3.amazonaws.com/surreyapp/vendor.js" charset="utf-8"></script>
 
-                    <script type="text/javascript">
-                      $('.datepicker').pickadate({
-                        selectMonths: true, // Creates a dropdown to control month
-                        selectYears: 15 // Creates a dropdown of 15 years to control year
-                      });
-                      $(document).ready(function() {
-                        setTimeout(function() {
-                          $('.flash_notice').remove();
-                        }, 5000);
-                      })
-                    </script>
+    <script type="text/javascript">
+      $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 15 // Creates a dropdown of 15 years to control year
+      });
+      $(document).ready(function () {
+        setTimeout(function () {
+          $('.flash_notice').remove();
+        }, 5000);
+      })
+    </script>
 
-</body>
+  </body>
 
 </html>
