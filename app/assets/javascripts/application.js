@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require jquery.turbolinks
 //= require rides
+//= require drivers
 //= require turbolinks
 //= require jquery-readyselector
 //= require_tree .
@@ -34,116 +35,6 @@
 //   });
 // });
 
-$(document).ready(function() {
-
-  if ($('.disable1').val() == "") {
-
-    $('.disable1').attr('disabled', true);
-
-  }
-
-  if ($('.disable2').val() == "") {
-
-    $('.disable2').attr('disabled', true);
-
-  }
-  if ($('.disable3').val() == "") {
-
-    $('.disable3').attr('disabled', true);
-
-  }
-  if ($('.disable4').val() == "") {
-
-    $('.disable4').attr('disabled', true);
-
-  }
-  if ($('.disable5').val() == "") {
-
-    $('.disable5').attr('disabled', true);
-
-  }
-
-  // disable time inputs if volunteer unavailable
-  $('.check1').on('click', function(event) {
-
-    if ($(this).is(":checked")) {
-      $('.disable1').attr('disabled', false);
-    } else {
-      {
-        $('.disable1').attr('disabled', true);
-        $('.disable1').val("");
-      }
-    }
-  });
-  $('.check2').on('click', function(event) {
-
-    if ($(this).is(":checked")) {
-      $('.disable2').attr('disabled', false);
-    } else {
-      {
-        $('.disable2').attr('disabled', true);
-        $('.disable2').val("");
-      }
-    }
-  });
-  $('.check3').on('click', function(event) {
-
-    if ($(this).is(":checked")) {
-      $('.disable3').attr('disabled', false);
-    } else {
-      {
-        $('.disable3').attr('disabled', true);
-        $('.disable3').val("");
-      }
-    }
-  });
-  $('.check4').on('click', function(event) {
-
-    if ($(this).is(":checked")) {
-      $('.disable4').attr('disabled', false);
-    } else {
-      {
-        $('.disable4').attr('disabled', true);
-        $('.disable4').val("");
-      }
-    }
-  });
-  $('.check5').on('click', function(event) {
-
-    if ($(this).is(":checked")) {
-      $('.disable5').attr('disabled', false);
-    } else {
-      {
-        $('.disable5').attr('disabled', true);
-        $('.disable5').val("");
-      }
-    }
-  });
-$('input').change(function(event) {
-  if (Date.parse("1-1-2000 " + $('.monday_min').val()) > Date.parse("1-1-2000 " + $('.monday_max').val())) {
-    alert("End time on Monday cannot be earlier than start time");
-  }
-});
-$('input').change(function(event) {
-  if (Date.parse("1-1-2000 " + $('.tuesday_min').val()) > Date.parse("1-1-2000 " + $('.tuesday_max').val())) {
-    alert("End time on Tuesday cannot be earlier than start time");
-  }
-});
-$('input').change(function(event) {
-  if (Date.parse("1-1-2000 " + $('.wednesday_min').val()) > Date.parse("1-1-2000 " + $('.wednesday_max').val())) {
-    alert("End time on Wednesday cannot be earlier than start time");
-  }
-});
-$('input').change(function(event) {
-  if (Date.parse("1-1-2000 " + $('.thursday_min').val()) > Date.parse("1-1-2000 " + $('.thursday_max').val())) {
-    alert("End time on Thursday cannot be earlier than start time");
-  }
-});
-$('input').change(function(event) {
-  if (Date.parse("1-1-2000 " + $('.friday_min').val()) > Date.parse("1-1-2000 " + $('.friday_max').val())) {
-    alert("End time on Friday cannot be earlier than start time");
-  }
-});
 
 // prevent submission of of autocomplete forms if invalid input
 $('.search-assign-btn').click(function(e) {
