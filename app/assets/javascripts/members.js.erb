@@ -1,0 +1,55 @@
+
+
+   $(document).ready(function() {
+
+     $.validator.setDefaults({
+      errorClass: 'invalid',
+      validClass: "valid",
+      errorPlacement: function (error, element) {
+          $(element)
+              .closest("form")
+              .find("label[for='" + element.attr("id") + "']")
+              .attr('data-error', error.text());
+      }
+  });
+
+        $(".form").validate({
+
+          rules: {
+            "member[address_line1]": {
+              required: true
+            },
+            "member[city]": {
+              required: true
+            },
+            "member[zip]": {
+              required: true
+            },
+            "member[primaryEC_fname]": {
+              required: true
+            },
+            "member[primaryEC_lname]": {
+              required: true
+            },
+            "member[primaryEC_phone]": {
+              required: true
+            },
+            "member[primaryEC_relationship]": {
+              required: true
+            }
+          },
+          messages: {
+              "member[password]": "Please enter a password",
+              "member[password_confirmation]": "Please enter a password confirmation",
+              "member[address_line1]": "Please enter a valid address",
+              "member[city]": "Please enter the name of the city you live in",
+              "member[zip]": "Please enter a valid zip code",
+              "member[primaryEC_fname]": "Please enter your emergency contacts first name",
+              "member[primaryEC_lname]": "Please enter your emergency contacts last name",
+              "member[primaryEC_phone]": "Please enter your emergency contacts phone number",
+              "member[primaryEC_relationship]": "Please enter your emergency contacts phone number",
+
+           }
+
+   });
+   });
