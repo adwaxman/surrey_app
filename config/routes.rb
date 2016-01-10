@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  get 'demo', to: 'demo#home'
+
   resources :rides
   resources :origins
   resources :members
