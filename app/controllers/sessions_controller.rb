@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
       flash[:notice] = "You have successfully logged in."
       redirect_to new_ride_path
       else
-      flash[:alert] = "There was a problem logging in. If you have forgotten your login information, please call Surrey Services at 610-647-6404"
+      flash[:alert] = "There was a problem logging in. If you have forgotten your login information, please call Surrey Services at 555-555-5555"
       redirect_to login_path
     end
   end
