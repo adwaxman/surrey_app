@@ -18,6 +18,7 @@
 //= require drivers
 //= require turbolinks
 //= require jquery-readyselector
+//= require date_restrictions
 //= require_tree .
 
 

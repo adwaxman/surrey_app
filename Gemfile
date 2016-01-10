@@ -28,6 +28,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'gmaps4rails'
 # materialize css
 #gem 'materialize-sass'
+gem 'seed_dump'
 
 #gem 'turboboost'
 gem 'nominatim'
