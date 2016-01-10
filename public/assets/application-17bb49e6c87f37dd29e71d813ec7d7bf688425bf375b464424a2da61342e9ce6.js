@@ -11321,6 +11321,31 @@ $(document).ready(function() {
 
 });
 $(document).ready(function() {
+  $('input').change(function(event) {
+    if (Date.parse("1-1-2000 " + $('.monday_min').val()) > Date.parse("1-1-2000 " + $('.monday_max').val())) {
+      alert("End time on Monday cannot be earlier than start time");
+    }
+  });
+  $('input').change(function(event) {
+    if (Date.parse("1-1-2000 " + $('.tuesday_min').val()) > Date.parse("1-1-2000 " + $('.tuesday_max').val())) {
+      alert("End time on Tuesday cannot be earlier than start time");
+    }
+  });
+  $('input').change(function(event) {
+    if (Date.parse("1-1-2000 " + $('.wednesday_min').val()) > Date.parse("1-1-2000 " + $('.wednesday_max').val())) {
+      alert("End time on Wednesday cannot be earlier than start time");
+    }
+  });
+  $('input').change(function(event) {
+    if (Date.parse("1-1-2000 " + $('.thursday_min').val()) > Date.parse("1-1-2000 " + $('.thursday_max').val())) {
+      alert("End time on Thursday cannot be earlier than start time");
+    }
+  });
+  $('input').change(function(event) {
+    if (Date.parse("1-1-2000 " + $('.friday_min').val()) > Date.parse("1-1-2000 " + $('.friday_max').val())) {
+      alert("End time on Friday cannot be earlier than start time");
+    }
+  });
 
   if ($('.disable1').val() == "") {
 
@@ -11405,32 +11430,68 @@ $(document).ready(function() {
       }
     }
   });
-  })
+    $.validator.setDefaults({
+     errorClass: 'invalid',
+     validClass: "valid",
+     errorPlacement: function (error, element) {
+         $(element)
+             .closest("form")
+             .find("label[for='" + element.attr("id") + "']")
+             .attr('data-error', error.text());
+     }
+ });
 
-$('input').change(function(event) {
-  if (Date.parse("1-1-2000 " + $('.monday_min').val()) > Date.parse("1-1-2000 " + $('.monday_max').val())) {
-    alert("End time on Monday cannot be earlier than start time");
-  }
-});
-$('input').change(function(event) {
-  if (Date.parse("1-1-2000 " + $('.tuesday_min').val()) > Date.parse("1-1-2000 " + $('.tuesday_max').val())) {
-    alert("End time on Tuesday cannot be earlier than start time");
-  }
-});
-$('input').change(function(event) {
-  if (Date.parse("1-1-2000 " + $('.wednesday_min').val()) > Date.parse("1-1-2000 " + $('.wednesday_max').val())) {
-    alert("End time on Wednesday cannot be earlier than start time");
-  }
-});
-$('input').change(function(event) {
-  if (Date.parse("1-1-2000 " + $('.thursday_min').val()) > Date.parse("1-1-2000 " + $('.thursday_max').val())) {
-    alert("End time on Thursday cannot be earlier than start time");
-  }
-});
-$('input').change(function(event) {
-  if (Date.parse("1-1-2000 " + $('.friday_min').val()) > Date.parse("1-1-2000 " + $('.friday_max').val())) {
-    alert("End time on Friday cannot be earlier than start time");
-  }
+       $(".form").validate({
+
+         rules: {
+           "driver[password]": {
+             required: function() {
+               if ($('.workaround').val() == "true"){
+                 return false;
+               }
+               else{
+                 return true;
+               }
+               }
+           },
+           "driver[password_confirmation]": {
+             required: function() {
+               if ($('.workaround').val() == "true"){
+                 return false;
+               }
+               else{
+                 return true;
+               }
+               }
+           },
+           "driver[address_line1]": {
+             required: true
+           },
+           "driver[city]": {
+             required: true
+           },
+           "driver[zip]": {
+             required: true
+           }
+         },
+         messages: {
+             "driver[password]": "Please enter a password",
+             "driver[password_confirmation]": "Please enter a password confirmation",
+             "driver[address_line1]": "Please enter a valid email address",
+             "driver[city]": "Please enter the name of the city you live in",
+             "driver[zip]": "Please enter a valid zip code",
+          }
+
+        });
+
+        // timepicker for driver form
+        $('.timepicker2').pickatime({
+          interval: 15,
+          min: [
+            8, 30
+          ],
+          max: [16, 30]
+        });
 });
 (function() {
   var CSRFToken, Click, ComponentUrl, EVENTS, Link, ProgressBar, browserIsntBuggy, browserSupportsCustomEvents, browserSupportsPushState, browserSupportsTurbolinks, bypassOnLoadPopstate, cacheCurrentPage, cacheSize, changePage, clone, constrainPageCacheTo, createDocument, crossOriginRedirect, currentState, enableProgressBar, enableTransitionCache, executeScriptTags, extractTitleAndBody, fetch, fetchHistory, fetchReplacement, historyStateIsDefined, initializeTurbolinks, installDocumentReadyPageEventTriggers, installHistoryChangeHandler, installJqueryAjaxSuccessPageUpdateTrigger, loadedAssets, manuallyTriggerHashChangeForFirefox, pageCache, pageChangePrevented, pagesCached, popCookie, processResponse, progressBar, recallScrollPosition, ref, referer, reflectNewUrl, reflectRedirectedUrl, rememberCurrentState, rememberCurrentUrl, rememberReferer, removeNoscriptTags, requestMethodIsSafe, resetScrollPosition, setAutofocusElement, transitionCacheEnabled, transitionCacheFor, triggerEvent, visit, xhr,
@@ -12256,9 +12317,6 @@ $('input').change(function(event) {
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 ;
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
-;
 // date restrictions only for the member rides form
 
 $('.rides.new').ready(function() {
@@ -12329,6 +12387,61 @@ $('.rides.new').ready(function() {
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 ;
+
+
+   $(document).ready(function() {
+
+     $.validator.setDefaults({
+      errorClass: 'invalid',
+      validClass: "valid",
+      errorPlacement: function (error, element) {
+          $(element)
+              .closest("form")
+              .find("label[for='" + element.attr("id") + "']")
+              .attr('data-error', error.text());
+      }
+  });
+
+        $(".form").validate({
+
+          rules: {
+            "member[address_line1]": {
+              required: true
+            },
+            "member[city]": {
+              required: true
+            },
+            "member[zip]": {
+              required: true
+            },
+            "member[primaryEC_fname]": {
+              required: true
+            },
+            "member[primaryEC_lname]": {
+              required: true
+            },
+            "member[primaryEC_phone]": {
+              required: true
+            },
+            "member[primaryEC_relationship]": {
+              required: true
+            }
+          },
+          messages: {
+              "member[password]": "Please enter a password",
+              "member[password_confirmation]": "Please enter a password confirmation",
+              "member[address_line1]": "Please enter a valid address",
+              "member[city]": "Please enter the name of the city you live in",
+              "member[zip]": "Please enter a valid zip code",
+              "member[primaryEC_fname]": "Please enter your emergency contacts first name",
+              "member[primaryEC_lname]": "Please enter your emergency contacts last name",
+              "member[primaryEC_phone]": "Please enter your emergency contacts phone number",
+              "member[primaryEC_relationship]": "Please enter your emergency contacts phone number",
+
+           }
+
+   });
+   });
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -12442,13 +12555,13 @@ $(document).ready(function() {
 
   $('input.timepicker').change(function() {
 
-    $('.picker--time').close(this);
+    $('.timepicker').close(this);
 
   });
 
   $('input.timepicker2').change(function() {
 
-    $('.picker--time').close(this);
+    $('.timepicker').close(this);
 
   });
 
