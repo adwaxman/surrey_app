@@ -46,7 +46,7 @@ class Admin::RidesController < ApplicationController
     @driver = Driver.where(full_name: params[:driver_full_name]).first
     if current_admin
       @ride.update(driver_id: @driver.id, assigned_by: current_admin.fname + ' ' + current_admin.lname, status: 'scheduled')
-      DriverNotifier.send_ride_details(@driver, @ride).deliver
+      # DriverNotifier.send_ride_details(@driver, @ride).deliver
       redirect_to admin_ride_path @ride
     else
       flash[:alert] = 'There was a problem'
@@ -58,7 +58,7 @@ class Admin::RidesController < ApplicationController
     @ride = Ride.find(params[:ride_id])
     @driver = Driver.find(params[:driver_id])
     @ride.update(driver_id: @driver.id, assigned_by: current_admin.full_name, status: 'scheduled')
-    DriverNotifier.send_ride_details(@driver, @ride).deliver
+    # DriverNotifier.send_ride_details(@driver, @ride).deliver
     redirect_to driver_path @driver
   end
 
@@ -167,7 +167,7 @@ class Admin::RidesController < ApplicationController
         Match.create(ride_id: @ride.id, matcher_id: driver.id)
       end
 
-      StaffNotifier.new_ride_request(@ride.member, @ride).deliver
+      # StaffNotifier.new_ride_request(@ride.member, @ride).deliver
 
       flash[:notice] = 'Ride request has been requested successfully. Check below for matched drivers.'
       redirect_to admin_ride_path @ride
