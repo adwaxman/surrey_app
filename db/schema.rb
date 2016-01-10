@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160110201549) do
+ActiveRecord::Schema.define(version: 20160110201924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,8 +84,7 @@ ActiveRecord::Schema.define(version: 20160110201549) do
     t.boolean  "confirmed"
     t.boolean  "active"
     t.string   "prefered_contact"
-    t.boolean  "accomodate_pet"
-    t.boolean  "accomodate_aide"
+    t.boolean  "accommodate_pet"
   end
 
   create_table "matchers", force: :cascade do |t|
