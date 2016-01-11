@@ -40,7 +40,11 @@
             <%= link_to ride.member.full_name, member_path(ride.member) %>
           </td>
           <td>
+            <% if ride.driver %>
             <%= link_to ride.driver.full_name, driver_path(ride.driver) %>
+            <% else %>
+            No driver assigned
+            <% end %>
           </td>
           <td>
             <%= ride.origin.address_line1 %><br>
