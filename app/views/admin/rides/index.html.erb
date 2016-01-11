@@ -144,7 +144,7 @@
 
 <div class="row">
   <div class="col s12">
-    <h4>Upcoming Rides (<%=@scheduled_rides.length%>)</h2>
+    <h4>Upcoming Rides (<%=@upcoming_rides.length%>)</h2>
     <table class="striped">
       <thead>
         <tr>
@@ -162,7 +162,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @scheduled_rides.each do |ride| %>
+        <% @upcoming_rides.each do |ride| %>
         <tr>
           <td>
 
