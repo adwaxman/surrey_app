@@ -12340,7 +12340,7 @@ $('.rides.new').ready(function() {
 
 
     if (inputWeekday === 0 || inputWeekday === 6) {
-      $('#weekend-error').html('If you would like to request a ride for the weekend, please call Surrey Services at 555-555-5555.')
+      $('#weekend-error').html('If you would like to request a ride for the weekend, please call Surrey Services at 610-647-6404.')
       $('#ride-modal').openModal();
       $('.ride-pickup-date').val('');
     } else if (today > inputDate) {

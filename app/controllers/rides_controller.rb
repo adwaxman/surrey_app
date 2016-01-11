@@ -50,7 +50,7 @@ before_action :logged_in?, except: [:show]
     end
       if @destination.save
       else
-        flash[:alert] = 'There was a problem saving your destination.  Please try again or call Surrey Services at 555-555-5555 for assistance.'
+        flash[:alert] = 'There was a problem saving your destination.  Please try again or call Surrey Services at 610-647-6404 for assistance.'
         render :new
         return
       end
@@ -64,7 +64,7 @@ before_action :logged_in?, except: [:show]
 
       if @origin.save
       else
-        flash[:alert] = 'There was a problem saving your pickup location.  Please try again or call Surrey Services at 555-555-5555 for assistance.'
+        flash[:alert] = 'There was a problem saving your pickup location.  Please try again or call Surrey Services at 610-647-6404 for assistance.'
         render :new
         return
       end
