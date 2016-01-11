@@ -97,7 +97,7 @@
             <%= @member.primaryEC_relationship %>
           </td>
           <td>
-            <% if !@member.secondaryEC_fname = "" %>
+            <% if @member.secondaryEC_fname != "" %>
             <%= @member.secondaryEC_fname %>
             <%= @member.secondaryEC_lname %><br>
             <%= @member.secondaryEC_phone %><br>
