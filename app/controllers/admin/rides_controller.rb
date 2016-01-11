@@ -157,14 +157,16 @@ class Admin::RidesController < ApplicationController
     @ride = Ride.new(member_id: member_id, destination_id: destination_id_to_be_passed, origin_id: origin_id_to_be_passed, wheelchair: wheelchair, aide: aide, hearing_impaired: hearing_impaired, vision_impaired: vision_impaired, pickup_date: pickup_date, pickup_time: pickup_time, status: 'open', duration: duration, pet: pet)
     if @ride.save
       @weekday = Date.parse(@ride.pickup_date).strftime('%A').downcase
-      @matches = Driver.where("#{@weekday}": true).where("#{@weekday}_min <= ?", @ride.pickup_time).where("#{@weekday}_max >= ?", @ride.pickup_time).where("county_preference ilike '%\n- #{@ride.destination.county}\n%'").where(active: true)
-      if @ride.wheelchair
-        @matches = @matches.where(accommodate_wheelchair: true)
-      end
-      @matches = @matches.where(accommodate_aide: true) if @ride.aide
-      @matches = @matches.where(accommodate_pet: true) if @ride.pet
-      @matches.each do |driver|
-        Match.create(ride_id: @ride.id, matcher_id: driver.id)
+      if @weekday != "saturday" && @weekday != "sunday"
+        @matches = Driver.where("#{@weekday}": true).where("#{@weekday}_min <= ?", @ride.pickup_time).where("#{@weekday}_max >= ?", @ride.pickup_time).where("county_preference ilike '%\n- #{@ride.destination.county}\n%'").where(active: true)
+        if @ride.wheelchair
+          @matches = @matches.where(accommodate_wheelchair: true)
+        end
+        @matches = @matches.where(accommodate_aide: true) if @ride.aide
+        @matches = @matches.where(accommodate_pet: true) if @ride.pet
+        @matches.each do |driver|
+          Match.create(ride_id: @ride.id, matcher_id: driver.id)
+        end
       end
 
       # StaffNotifier.new_ride_request(@ride.member, @ride).deliver
