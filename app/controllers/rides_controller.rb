@@ -80,7 +80,9 @@ before_action :logged_in?, except: [:show]
     @ride = Ride.new(member_id: member_id, destination_id: destination_id_to_be_passed, origin_id: origin_id_to_be_passed, wheelchair: wheelchair, aide: aide, hearing_impaired: hearing_impaired, vision_impaired: vision_impaired, pickup_date: pickup_date, pickup_time: pickup_time, status: 'open', duration: duration, pet: pet)
     if @ride.save
       @weekday = Date.parse(@ride.pickup_date).strftime('%A').downcase
-      @matches = Driver.where("#{@weekday}": true).where("#{@weekday}_min <= ?", @ride.pickup_time).where("#{@weekday}_max >= ?", @ride.pickup_time).where("county_preference ilike '%\n- #{@ride.destination.county}\n%'").where(active: true)
+      @weekday_min = "#{@weekday}_min <= ?"
+      @weekday_max = "#{@weekday}_max >= ?"
+      @matches = Driver.where("#{@weekday}": true).where(@weekday_min, "#{@ride.pickup_time}").where(@weekday_max, "#{@ride.pickup_time}").where("county_preference ilike ?", "%\n- #{@ride.destination.county}\n%").where(active: true)
       if @ride.wheelchair
         @matches = @matches.where(accommodate_wheelchair: true)
       end

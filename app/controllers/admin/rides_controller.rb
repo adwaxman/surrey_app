@@ -5,7 +5,8 @@ class Admin::RidesController < ApplicationController
     @rides = Ride.all
     @open_rides = @rides.where(status: 'open')
     @upcoming_rides = rides_after_today.sort_by { |ride| DateTime.parse(ride.pickup_date) }
-    @rides_today_or_earlier = rides_today_or_earlier.sort_by { |ride| DateTime.parse(ride.pickup_date + " " + ride.pickup_time.strftime('%l:%M %p') )}
+    @rides_today_or_earlier = rides_today_or_earlier.sort_by { |ride| DateTime.parse(ride.pickup_date)}
+
     @sorted_open_rides = @open_rides.sort_by { |ride| DateTime.parse(ride.pickup_date) }
   end
 
@@ -45,7 +46,7 @@ class Admin::RidesController < ApplicationController
     @driver = Driver.where(full_name: params[:driver_full_name]).first
     if current_admin
       @ride.update(driver_id: @driver.id, assigned_by: current_admin.fname + ' ' + current_admin.lname, status: 'scheduled')
-      DriverNotifier.send_ride_details(@driver, @ride).deliver
+      # DriverNotifier.send_ride_details(@driver, @ride).deliver
       redirect_to admin_ride_path @ride
     else
       flash[:alert] = 'There was a problem'
@@ -57,7 +58,7 @@ class Admin::RidesController < ApplicationController
     @ride = Ride.find(params[:ride_id])
     @driver = Driver.find(params[:driver_id])
     @ride.update(driver_id: @driver.id, assigned_by: current_admin.full_name, status: 'scheduled')
-    DriverNotifier.send_ride_details(@driver, @ride).deliver
+    # DriverNotifier.send_ride_details(@driver, @ride).deliver
     redirect_to driver_path @driver
   end
 
@@ -157,7 +158,9 @@ class Admin::RidesController < ApplicationController
     if @ride.save
       @weekday = Date.parse(@ride.pickup_date).strftime('%A').downcase
       if @weekday != "saturday" && @weekday != "sunday"
-        @matches = Driver.where("#{@weekday}": true).where("#{@weekday}_min <= ?", @ride.pickup_time).where("#{@weekday}_max >= ?", @ride.pickup_time).where("county_preference ilike '%\n- #{@ride.destination.county}\n%'").where(active: true)
+        @weekday_min = "#{@weekday}_min <= ?"
+        @weekday_max = "#{@weekday}_max >= ?"
+        @matches = Driver.where("#{@weekday}": true).where(@weekday_min, "#{@ride.pickup_time}").where(@weekday_max, "#{@ride.pickup_time}").where("county_preference ilike ?", "%\n- #{@ride.destination.county}\n%").where(active: true)
         if @ride.wheelchair
           @matches = @matches.where(accommodate_wheelchair: true)
         end
@@ -168,7 +171,7 @@ class Admin::RidesController < ApplicationController
         end
       end
 
-      StaffNotifier.new_ride_request(@ride.member, @ride).deliver
+      # StaffNotifier.new_ride_request(@ride.member, @ride).deliver
 
       flash[:notice] = 'Ride request has been requested successfully. Check below for matched drivers.'
       redirect_to admin_ride_path @ride

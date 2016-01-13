@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151231181414) do
+ActiveRecord::Schema.define(version: 20160110204039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 20151231181414) do
     t.boolean  "super_admin"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.boolean  "active"
     t.string   "full_name"
+    t.boolean  "active"
   end
 
   create_table "destinations", force: :cascade do |t|
@@ -78,13 +78,13 @@ ActiveRecord::Schema.define(version: 20151231181414) do
     t.time     "thursday_max"
     t.time     "friday_min"
     t.time     "friday_max"
+    t.text     "county_preference"
+    t.string   "full_name"
+    t.boolean  "private"
     t.boolean  "confirmed"
     t.boolean  "active"
     t.string   "prefered_contact"
     t.boolean  "accommodate_pet"
-    t.text     "county_preference"
-    t.string   "full_name"
-    t.boolean  "private"
   end
 
   create_table "matchers", force: :cascade do |t|
@@ -125,7 +125,6 @@ ActiveRecord::Schema.define(version: 20151231181414) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.string   "mi"
-    t.boolean  "confirmed"
     t.string   "phone"
     t.string   "primaryEC_phone"
     t.string   "secondaryEC_phone"
@@ -135,6 +134,7 @@ ActiveRecord::Schema.define(version: 20151231181414) do
     t.string   "secondaryEC_cell"
     t.string   "tertiaryEC_cell"
     t.string   "full_name"
+    t.boolean  "confirmed"
   end
 
   create_table "notes", force: :cascade do |t|
@@ -190,17 +190,6 @@ ActiveRecord::Schema.define(version: 20151231181414) do
     t.string   "assigned_by"
     t.string   "duration"
     t.boolean  "pet"
-  end
-
-  create_table "settings", force: :cascade do |t|
-    t.text   "message"
-    t.string "background"
-    t.string "title"
-    t.string "nav"
-    t.string "container"
-    t.string "cardt"
-    t.string "cardbuttontext"
-    t.string "cardpanel"
   end
 
 end
