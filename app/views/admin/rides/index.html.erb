@@ -84,9 +84,9 @@
         <tr>
           <td>
             <% if Date.parse(ride.pickup_date.to_s) == Date.today %>
-            Today
+            <%= link_to "Today", admin_ride_path(ride) %>
             <% else %>
-            <a href="/admin/rides/<%=ride.id%>"><%= Date.parse(ride.pickup_date).strftime('%a %b %d, %Y') %>
+            <a href="/admin/rides/<%=ride.id%>"><%= Date.parse(ride.pickup_date).strftime('%a %b %d, %Y') %></a>
             <% end %>
           </td>
           <td>
