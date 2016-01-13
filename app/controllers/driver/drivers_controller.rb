@@ -6,20 +6,20 @@ class Driver::DriversController < ApplicationController
     else
       @driver = Driver.find(params[:id])
       # Show time in readable format
-      @monday_min = Time.parse(@driver.monday_min.to_s).strftime('%l:%M %p')
-      @monday_max = Time.parse(@driver.monday_max.to_s).strftime('%l:%M %p')
+      @monday_min = Time.parse(@driver.monday_min.to_s).strftime('%l:%M %p') if @driver.monday_min
+      @monday_max = Time.parse(@driver.monday_max.to_s).strftime('%l:%M %p') if @driver.monday_max
 
-      @tuesday_min = Time.parse(@driver.monday_min.to_s).strftime('%l:%M %p')
-      @tuesday_max = Time.parse(@driver.monday_max.to_s).strftime('%l:%M %p')
+      @tuesday_min = Time.parse(@driver.tuesday_min.to_s).strftime('%l:%M %p') if @driver.tuesday_min
+      @tuesday_max = Time.parse(@driver.tuesday_max.to_s).strftime('%l:%M %p') if @driver.tuesday_max
 
-      @wednesday_min = Time.parse(@driver.monday_min.to_s).strftime('%l:%M %p')
-      @wednesday_max = Time.parse(@driver.monday_max.to_s).strftime('%l:%M %p')
+      @wednesday_min = Time.parse(@driver.wednesday_min.to_s).strftime('%l:%M %p') if @driver.wednesday_min
+      @wednesday_max = Time.parse(@driver.wednesday_max.to_s).strftime('%l:%M %p') if @driver.wednesday_max
 
-      @thursday_min = Time.parse(@driver.monday_min.to_s).strftime('%l:%M %p')
-      @thursday_max = Time.parse(@driver.monday_max.to_s).strftime('%l:%M %p')
+      @thursday_min = Time.parse(@driver.thursday_min.to_s).strftime('%l:%M %p') if @driver.thursday_min
+      @thursday_max = Time.parse(@driver.thursday_max.to_s).strftime('%l:%M %p') if @driver.thursday_max
 
-      @friday_min = Time.parse(@driver.monday_min.to_s).strftime('%l:%M %p')
-      @friday_max = Time.parse(@driver.monday_max.to_s).strftime('%l:%M %p')
+      @friday_min = Time.parse(@driver.friday_min.to_s).strftime('%l:%M %p') if @driver.friday_min
+      @friday_max = Time.parse(@driver.friday_max.to_s).strftime('%l:%M %p') if @driver.friday_max
 
       @rides = @driver.rides.where(status: "scheduled")
 
