@@ -55,7 +55,7 @@ class DriversController < ApplicationController
       if @driver.update_attributes(driver_params)
 
         @open_rides = Ride.all.where(status: 'open')
-        @matches = find_matches_for_new_drivers(@open_rides)
+        @matches = @driver.find_matches_for_new_driver(@open_rides)
 
         @matches.each do |ride|
           Match.create(matcher_id: @driver.id, ride_id: ride.id)
