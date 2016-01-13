@@ -11,36 +11,6 @@ class Admin::DriversController < ApplicationController
     @driver.active = true
     if @driver.save
       Matcher.create(driver_id: @driver.id)
-      @open_rides = Ride.all.where(status: 'open')
-      @matches = []
-      @open_rides.each do |ride|
-        @weekday = Date.parse(ride.pickup_date).strftime('%A').downcase
-        if @weekday == 'monday' && @driver.monday
-          if @driver.monday_min < ride.pickup_time && @driver.monday_max > ride.pickup_time
-            @matches.push(ride)
-          end
-        elsif @weekday == 'tuesday' && @driver.tuesday
-          if @driver.tuesday_min < ride.pickup_time && @driver.tuesday_max > ride.pickup_time
-            @matches.push(ride)
-          end
-        elsif @weekday == 'wednesday' && @driver.wednesday
-          if @driver.wednesday_min < ride.pickup_time && @driver.wednesday_max > ride.pickup_time
-            @matches.push(ride)
-          end
-        elsif @weekday == 'thursday' && @driver.thursday
-          if @driver.thursday_min < ride.pickup_time && @driver.thursday_max > ride.pickup_time
-            @matches.push(ride)
-          end
-        elsif @weekday == 'friday' && @driver.friday
-          if @driver.friday_min < ride.pickup_time && @driver.friday_max > ride.pickup_time
-            @matches.push(ride)
-          end
-        end
-      end
-
-      @matches.each do |ride|
-        Match.create(matcher_id: @driver.id, ride_id: ride.id)
-      end
       redirect_to driver_path @driver
     else
       render 'new'
@@ -58,32 +28,7 @@ class Admin::DriversController < ApplicationController
       if @driver.update_attributes(driver_params)
 
         @open_rides = Ride.all.where(status: 'open')
-        @matches = []
-        @open_rides.each do |ride|
-          @weekday = Date.parse(ride.pickup_date).strftime('%A').downcase
-          if @weekday = 'monday' && @driver.monday
-            if @driver.monday_min < ride.pickup_time && @driver.monday_max > ride.pickup_time
-              @matches.push(ride)
-            end
-          elsif @weekday = 'tuesday' && @driver.tuesday
-            if @driver.tuesday_min < ride.pickup_time && @driver.tuesday_max > ride.pickup_time
-              @matches.push(ride)
-            end
-          elsif @weekday = 'wednesday' && @driver.wednesday
-            if @driver.wednesday_min < ride.pickup_time && @driver.wednesday_max > ride.pickup_time
-              @matches.push(ride)
-            end
-          elsif @weekday = 'thursday' && @driver.thursday
-            if @driver.thursday_min < ride.pickup_time && @driver.thursday_max > ride.pickup_time
-              @matches.push(ride)
-            end
-          elsif @weekday = 'friday' && @driver.friday
-            if @driver.friday_min < ride.pickup_time && @driver.friday_max > ride.pickup_time
-              @matches.push(ride)
-            end
-          end
-        end
-
+        @matches = find_matches_for_new_drivers(@open_rides)
         @matches.each do |ride|
           Match.create(matcher_id: @driver.id, ride_id: ride.id)
         end
