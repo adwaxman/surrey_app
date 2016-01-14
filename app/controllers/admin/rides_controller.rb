@@ -4,9 +4,9 @@ class Admin::RidesController < ApplicationController
   def index
     @rides = Ride.all
     @open_rides = @rides.where(status: 'open')
-    @upcoming_rides = rides_after_today.sort_by { |ride| DateTime.parse(ride.pickup_date) }
+    @upcoming_rides = rides_after_today.sort_by { |ride| DateTime.parse(ride.pickup_date + " " + ride.pickup_time.strftime('%l:%M %p')) }
     @rides_today_or_earlier = rides_today_or_earlier.sort_by { |ride| DateTime.parse(ride.pickup_date + " " + ride.pickup_time.strftime('%l:%M %p') )}
-    @sorted_open_rides = @open_rides.sort_by { |ride| DateTime.parse(ride.pickup_date) }
+    @sorted_open_rides = @open_rides.sort_by { |ride| DateTime.parse(ride.pickup_date + " " + ride.pickup_time.strftime('%l:%M %p')) }
   end
 
   def show
