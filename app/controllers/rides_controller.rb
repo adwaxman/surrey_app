@@ -80,9 +80,11 @@ before_action :logged_in?, except: [:show]
     @ride = Ride.new(member_id: member_id, destination_id: destination_id_to_be_passed, origin_id: origin_id_to_be_passed, wheelchair: wheelchair, aide: aide, hearing_impaired: hearing_impaired, vision_impaired: vision_impaired, pickup_date: pickup_date, pickup_time: pickup_time, status: 'open', duration: duration, pet: pet)
     if @ride.save
       @weekday = Date.parse(@ride.pickup_date).strftime('%A').downcase
-      @weekday_min = "#{@weekday}_min <= ?"
-      @weekday_max = "#{@weekday}_max >= ?"
-      @matches = Driver.where("#{@weekday}": true).where(@weekday_min, "#{@ride.pickup_time}").where(@weekday_max, "#{@ride.pickup_time}").where("county_preference ilike ?", "%\n- #{@ride.destination.county}\n%").where(active: true)
+      @matches = Driver.where(monday: true).where("monday_min <= ?", @ride.pickup_time).where("monday_max >= ?", @ride.pickup_time).where("county_preference ilike ?", "%\n- #{@ride.destination.county}\n%").where(active: true) if @weekday = "monday"
+      @matches = Driver.where(tuesday: true).where("tuesday_min <= ?", @ride.pickup_time).where("tuesday_min >= ?", @ride.pickup_time).where("county_preference ilike ?", "%\n- #{@ride.destination.county}\n%").where(active: true) if @weekday = "tuesday"
+      @matches = Driver.where(wednesday: true).where("wednesday_min <= ?", @ride.pickup_time).where("wednesday_max >= ?", @ride.pickup_time).where("county_preference ilike ?", "%\n- #{@ride.destination.county}\n%").where(active: true) if @weekday = "wednesday"
+      @matches = Driver.where(thursday: true).where("thursday_min <= ?", @ride.pickup_time).where("thursday_max >= ?", @ride.pickup_time).where("county_preference ilike ?", "%\n- #{@ride.destination.county}\n%").where(active: true) if @weekday = "thursday"
+      @matches = Driver.where(friday: true).where("friday_min <= ?", @ride.pickup_time).where("friday_max >= ?", @ride.pickup_time).where("county_preference ilike ?", "%\n- #{@ride.destination.county}\n%").where(active: true) if @weekday = "friday"
       if @ride.wheelchair
         @matches = @matches.where(accommodate_wheelchair: true)
       end
