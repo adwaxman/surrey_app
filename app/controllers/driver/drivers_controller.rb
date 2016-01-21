@@ -21,7 +21,7 @@ class Driver::DriversController < ApplicationController
       @friday_min = Time.parse(@driver.friday_min.to_s).strftime('%l:%M %p') if @driver.friday_min
       @friday_max = Time.parse(@driver.friday_max.to_s).strftime('%l:%M %p') if @driver.friday_max
 
-      @rides = @driver.rides.where(status: "scheduled")
+      @rides = @driver.rides.where(status: "scheduled").sort_by { |ride| DateTime.parse(ride.pickup_date + " " + ride.pickup_time.strftime('%l:%M %p')) }
 
   end
   end
