@@ -1,4 +1,7 @@
 class Ride < ActiveRecord::Base
+  require 'datefixer'
+  include DateFixer
+  extend DateFixer
 
   belongs_to :member
   belongs_to :driver
