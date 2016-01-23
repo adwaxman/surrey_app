@@ -6,7 +6,7 @@ class Admin::SessionsController < ApplicationController
 
   def create
     @admin = Admin.find_by(email: params[:email])
-    if @admin && @admin.password == params[:password]
+    if @admin && @admin.authenticate(params[:password])
       session[:admin_id] = @admin.id
       session[:member_id] = nil
       session[:driver_id] = nil
