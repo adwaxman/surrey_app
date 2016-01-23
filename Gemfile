@@ -41,6 +41,12 @@ gem 'nominatim'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# Dossier gem to generate reports
+gem 'dossier'
+
+# Use chronic gem for reports
+gem 'chronic'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160123204204) do
+ActiveRecord::Schema.define(version: 20160123222745) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -183,13 +183,13 @@ ActiveRecord::Schema.define(version: 20160123204204) do
     t.text     "completion_notes"
     t.integer  "requested_driver"
     t.boolean  "request_checked"
-    t.string   "pickup_date"
     t.time     "pickup_time"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.string   "assigned_by"
     t.string   "duration"
     t.boolean  "pet"
+    t.date     "pickup_date"
   end
 
 end
