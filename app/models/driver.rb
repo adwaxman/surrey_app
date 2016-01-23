@@ -1,4 +1,8 @@
 class Driver < ActiveRecord::Base
+
+  # use NameModule
+    require 'namemodule'
+    include NameModule
   # bcrypt
   has_secure_password
   has_many :rides
@@ -16,12 +20,8 @@ class Driver < ActiveRecord::Base
 
   serialize :county_preference
 
-  before_save :add_full_name_driver
+  before_save :add_full_name
 
-  def add_full_name_driver
-    @full_name = self.fname + " " + self.lname
-    self.full_name = @full_name
-  end
 
   def find_matches_for_new_driver(open_rides)
     @matches = []
