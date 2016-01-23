@@ -3,6 +3,9 @@ class Admin < ActiveRecord::Base
   require 'namemodule'
   include NameModule
 
+  #bycrypt
+  has_secure_password
+
   has_many :outreaches
 
   validates_uniqueness_of :username, :email
