@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160123222745) do
+ActiveRecord::Schema.define(version: 20160125013601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 20160123222745) do
     t.string   "destination_other_type"
     t.string   "county"
   end
+
+  add_index "destinations", ["member_id"], name: "index_destinations_on_member_id", using: :btree
 
   create_table "drivers", force: :cascade do |t|
     t.string   "fname"
@@ -94,12 +96,17 @@ ActiveRecord::Schema.define(version: 20160123222745) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "matchers", ["driver_id"], name: "index_matchers_on_driver_id", using: :btree
+
   create_table "matches", force: :cascade do |t|
     t.integer  "ride_id"
     t.integer  "matcher_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "matches", ["matcher_id"], name: "index_matches_on_matcher_id", using: :btree
+  add_index "matches", ["ride_id"], name: "index_matches_on_ride_id", using: :btree
 
   create_table "members", force: :cascade do |t|
     t.string   "fname"
@@ -146,6 +153,10 @@ ActiveRecord::Schema.define(version: 20160123222745) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "notes", ["admin_id"], name: "index_notes_on_admin_id", using: :btree
+  add_index "notes", ["driver_id"], name: "index_notes_on_driver_id", using: :btree
+  add_index "notes", ["ride_id"], name: "index_notes_on_ride_id", using: :btree
+
   create_table "origins", force: :cascade do |t|
     t.integer  "member_id"
     t.string   "address_line1"
@@ -159,6 +170,8 @@ ActiveRecord::Schema.define(version: 20160123222745) do
     t.string   "county"
   end
 
+  add_index "origins", ["member_id"], name: "index_origins_on_member_id", using: :btree
+
   create_table "outreaches", force: :cascade do |t|
     t.integer  "driver_id"
     t.integer  "ride_id"
@@ -168,6 +181,10 @@ ActiveRecord::Schema.define(version: 20160123222745) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
+
+  add_index "outreaches", ["admin_id"], name: "index_outreaches_on_admin_id", using: :btree
+  add_index "outreaches", ["driver_id"], name: "index_outreaches_on_driver_id", using: :btree
+  add_index "outreaches", ["ride_id"], name: "index_outreaches_on_ride_id", using: :btree
 
   create_table "rides", force: :cascade do |t|
     t.integer  "member_id"
@@ -191,5 +208,10 @@ ActiveRecord::Schema.define(version: 20160123222745) do
     t.boolean  "pet"
     t.date     "pickup_date"
   end
+
+  add_index "rides", ["destination_id"], name: "index_rides_on_destination_id", using: :btree
+  add_index "rides", ["driver_id"], name: "index_rides_on_driver_id", using: :btree
+  add_index "rides", ["member_id"], name: "index_rides_on_member_id", using: :btree
+  add_index "rides", ["origin_id"], name: "index_rides_on_origin_id", using: :btree
 
 end
