@@ -114,7 +114,7 @@ class DriversController < ApplicationController
       @upper = @counties.length - 1
 
       @assigned_rides = @driver.rides.sort_by { |ride| DateTime.parse(ride.pickup_date) }
-      @matched_rides = Matcher.find(@driver.id).rides.where(status: 'open').sort_by { |ride| DateTime.parse(ride.pickup_date) }
+      @matched_rides = Matcher.find(@driver.id).rides.where(status: 'open').sort_by { |ride| ride.pickup_date }
 
       @outreaches = @driver.outreaches
       @notes = @driver.notes

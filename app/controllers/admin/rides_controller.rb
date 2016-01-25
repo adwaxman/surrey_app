@@ -4,9 +4,9 @@ class Admin::RidesController < ApplicationController
   def index
     @rides = Ride.all
     @open_rides = @rides.where(status: 'open')
-    @upcoming_rides = rides_after_today.sort_by { |ride| DateTime.parse(ride.pickup_date + " " + ride.pickup_time.strftime('%l:%M %p')) }
-    @rides_today_or_earlier = rides_today_or_earlier.sort_by { |ride| DateTime.parse(ride.pickup_date + " " + ride.pickup_time.strftime('%l:%M %p'))}
-    @sorted_open_rides = @open_rides.sort_by { |ride| DateTime.parse(ride.pickup_date + " " + ride.pickup_time.strftime('%l:%M %p')) }
+    @upcoming_rides = rides_after_today.sort_by { |ride| DateTime.parse(ride.pickup_date.to_s + " " + ride.pickup_time.strftime('%l:%M %p')) }
+    @rides_today_or_earlier = rides_today_or_earlier.sort_by { |ride| DateTime.parse(ride.pickup_date.to_s + " " + ride.pickup_time.strftime('%l:%M %p'))}
+    @sorted_open_rides = @open_rides.sort_by { |ride| DateTime.parse(ride.pickup_date.to_s + " " + ride.pickup_time.strftime('%l:%M %p')) }
   end
 
   def show
@@ -193,11 +193,11 @@ class Admin::RidesController < ApplicationController
   end
 
   def archived
-    @archived_rides = Ride.where(status: 'complete').sort_by { |ride| DateTime.parse(ride.pickup_date) }
+    @archived_rides = Ride.where(status: 'complete').sort_by { |ride| ride.pickup_date }
   end
 
   def canceled
-    @canceled_rides = Ride.where(status: 'canceled').sort_by { |ride| DateTime.parse(ride.pickup_date) }
+    @canceled_rides = Ride.where(status: 'canceled').sort_by { |ride| ride.pickup_date }
   end
 
   def past

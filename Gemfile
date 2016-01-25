@@ -46,6 +46,8 @@ gem 'dossier'
 
 # Use chronic gem for reports
 gem 'chronic'
+# Use immigrant gem to find db areas to be indexed
+gem 'immigrant'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

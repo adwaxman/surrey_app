@@ -27,6 +27,5 @@ class FancyKetchupReport < Dossier::Report
 # hide columns
   def display_column?(x)
     x != 'updated_at'
-
   end
 end

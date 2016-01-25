@@ -28,7 +28,7 @@
         <tr>
           <td>
 
-            <a href="/admin/rides/past/<%=ride.id%>"><%= Date.parse(ride.pickup_date).strftime('%a %b %d, %Y') %></a>
+            <a href="/admin/rides/past/<%=ride.id%>"><%= Ride.string_date(ride.pickup_date) %></a>
 
           </td>
 

@@ -25,7 +25,7 @@
         <% @sorted_open_rides.each do |ride| %>
         <tr>
           <td>
-            <a href="/admin/rides/<%=ride.id%>"><%= Date.parse(ride.pickup_date).strftime('%a %b %d, %Y') %></a>
+            <a href="/admin/rides/<%=ride.id%>"><%= Ride.string_date(ride.pickup_date) %></a>
           </td>
           <td>
             <%= Time.parse(ride.pickup_time.to_s).strftime("%l:%M %p") %>
@@ -86,7 +86,7 @@
             <% if Date.parse(ride.pickup_date.to_s) == Date.today %>
             <%= link_to "Today", admin_ride_path(ride) %>
             <% else %>
-            <a href="/admin/rides/<%=ride.id%>"><%= Date.parse(ride.pickup_date).strftime('%a %b %d, %Y') %></a>
+            <a href="/admin/rides/<%=ride.id%>"><%= Ride.string_date(ride.pickup_date) %></a>
             <% end %>
           </td>
           <td>
@@ -166,7 +166,7 @@
         <tr>
           <td>
 
-            <a href="/admin/rides/<%=ride.id%>"><%= Date.parse(ride.pickup_date).strftime('%a %b %d, %Y') %></a>
+            <a href="/admin/rides/<%=ride.id%>"><%= Ride.string_date(ride.pickup_date) %></a>
 
           </td>
 

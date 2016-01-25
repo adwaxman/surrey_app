@@ -23,7 +23,7 @@ def rides_today_or_earlier
   @rides = Ride.all.where.not(driver_id: nil).where(status: "scheduled")
   @rides_today = []
   @rides.each do |ride|
-    if Date.parse(ride.pickup_date) <= Date.today
+    if ride.pickup_date <= Date.today
       @rides_today.push(ride)
     end
   end
@@ -34,7 +34,7 @@ def rides_after_today
   @rides = Ride.all.where.not(driver_id: nil).where(status: "scheduled")
   @rides_after = []
   @rides.each do |ride|
-    if Date.parse(ride.pickup_date) > Date.today
+    if ride.pickup_date > Date.today
       @rides_after.push(ride)
     end
   end

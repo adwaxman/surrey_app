@@ -13,6 +13,7 @@ module SurreyApp
     # -- all .rb files in that directory are automatically loaded.
     config.serve_static_assets = true
 
+    config.autoload_paths += %W(#{config.root}/models) # add this line
 
     config.assets.paths << Rails.root.join('vendor', 'assets')
 

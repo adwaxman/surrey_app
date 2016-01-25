@@ -28,7 +28,7 @@ class Driver < ActiveRecord::Base
   def find_matches_for_new_driver(open_rides)
     @matches = []
     open_rides.each do |ride|
-      weekday = Date.parse(ride.pickup_date).strftime('%A').downcase
+      weekday = ride.pickup_date.strftime('%A').downcase
       next if weekday == 'saturday' || weekday == 'sunday'
       next unless send(weekday.to_sym) == true
       next unless send("#{weekday}_min".to_sym) < ride.pickup_time
