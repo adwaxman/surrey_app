@@ -1,4 +1,10 @@
 class Admin < ActiveRecord::Base
+  # use NameModule
+  require 'namemodule'
+  include NameModule
+
+  #bycrypt
+  has_secure_password
 
   has_many :outreaches
 
@@ -9,11 +15,7 @@ class Admin < ActiveRecord::Base
   has_many :notes
 
 
-  before_save :add_full_name_admin
+  before_save :add_full_name
 
-  def add_full_name_admin
-    @full_name = self.fname + " " + self.lname
-    self.full_name = @full_name
-  end
 
 end
